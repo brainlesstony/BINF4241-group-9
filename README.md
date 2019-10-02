@@ -1,2 +1,2 @@
 # snakes_and_ladder
-Assignent 1
+Assignment 1
