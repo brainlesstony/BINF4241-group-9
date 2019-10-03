@@ -3,10 +3,9 @@ import java.util.Scanner;
 
 
 public class GameLogic {
-    // private Die die = new Die(); // I don`t know where the die should be initialized.
-    // int z = die.rollDie();
 
     public static void main(String[] args) {
+
 
         // BOARD
         System.out.println("Let's start the game by first deciding on the board size!\n");
@@ -19,6 +18,8 @@ public class GameLogic {
             board[i-1] = i; // square object noch anfügen
                             // wo sind snakes und ladders?
         }
+        System.out.println(Arrays.toString(board));
+
         // PLAYER INPUT
         System.out.println("How many players are playing?");
         Scanner scanner_name_num = new Scanner(System.in);
@@ -29,29 +30,37 @@ public class GameLogic {
             System.exit(0);
         }
 
-
-        Player [] thePlayer = new Player[player_count];
         System.out.println("What are the players name?");
-        //Scanner player_name = new Scanner(System.in);
-
-
-        //for (int i = 0; i <= player_count-1; i++){
-            //thePlayer[i] = player_names[i];
-        //}
-
         String[] player_names = new String[player_count];
         int temp_count = player_count;
+
         while(temp_count > 0 ) {
             Scanner player_name = new Scanner(System.in);
             String read_names = player_name.nextLine();
             player_names[temp_count-1] = read_names;
+            //Player [] thePlayers = new Player[player_count];
+            //thePlayers[temp_count-1] = read_names;
             temp_count -= 1;
-            //thePlayer[player_count] =
         }
-        // FIRST TURN
 
+        //redundant?
+        //for (int i = 0; i <= player_count-1; i++){
+            //thePlayer[i] = player_names[i];
+
+        System.out.println("This will be the order in which the players will take turns");
+        System.out.println(Arrays.toString(player_names));
+
+
+        // PLAY, ROLLING, MOVING
+
+        Die die = new Die();
+        int z = die.rollDie();
+
+        }
+
+        //Alle Spieler auf Pos. 1
         //Erster Spieler aus der Liste ziehen
         // Wieder hinten anfügen
+        //Initial State board.
 
     }
-}
