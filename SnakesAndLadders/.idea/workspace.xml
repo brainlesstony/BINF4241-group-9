@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fea0d772-5266-4ec5-a772-1481211bdbb6" name="Default Changelist" comment="" />
+    <list default="true" id="fea0d772-5266-4ec5-a772-1481211bdbb6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Die.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Die.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/FirstSquare.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/FirstSquare.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/GameLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Ladder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Ladder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/LastSquare.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/LastSquare.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Snake.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Snake.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Square.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Test34.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Test34.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Tile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameLogic.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +35,7 @@
   <component name="ProjectId" id="1RbUjjnRIYt3d1EHha5rAmyfi7D" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -74,6 +89,7 @@
       <updated>1569935425616</updated>
       <workItem from="1569935429691" duration="3904000" />
       <workItem from="1570035692564" duration="4517000" />
+      <workItem from="1570099805874" duration="1498000" />
     </task>
     <servers />
   </component>
@@ -85,7 +101,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
