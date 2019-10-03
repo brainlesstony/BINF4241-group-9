@@ -4,16 +4,7 @@
     <list default="true" id="fea0d772-5266-4ec5-a772-1481211bdbb6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Die.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Die.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/FirstSquare.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/FirstSquare.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/GameLogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Ladder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Ladder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/LastSquare.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/LastSquare.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Snake.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Snake.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Square.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Test34.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Test34.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Tile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Die.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Die.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameLogic.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,10 +46,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.GameLogic">
+  <component name="RunManager" selected="Application.HelloWorld">
     <configuration name="GameLogic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameLogic" />
       <module name="SnakesAndLaddersä" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HelloWorld" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Desktop" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -72,6 +70,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.HelloWorld" />
         <item itemvalue="Application.GameLogic" />
         <item itemvalue="Application.Test34" />
       </list>

@@ -1,7 +1,10 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
+
 public class GameLogic {
+    // private Die die = new Die(); // I don`t know where the die should be initialized.
+    // int z = die.rollDie();
 
     public static void main(String[] args) {
         System.out.println("Let's start the game by first deciding on the board size!\n");
