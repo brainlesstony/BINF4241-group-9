@@ -4,11 +4,16 @@ import java.util.Scanner;
 
 public class GameLogic {
 
+    //static void moveFwd(int z);
+      //  board[] = board[]
+    //static void square();
+        //gets location of player
+
     public static void main(String[] args) {
 
 
         // BOARD
-        System.out.println("Let's start the game by first deciding on the board size!\n");
+        System.out.println("Let's start the game by first deciding on the board size!");
         System.out.println("What would you like the board size to be?");
 
         Scanner scanner_board = new Scanner(System.in);
@@ -42,25 +47,39 @@ public class GameLogic {
             //thePlayers[temp_count-1] = read_names;
             temp_count -= 1;
         }
+        
+            //player_names(list of Player names) to Class Player to init Players
+            //Peter = new Player("Peter");
+            //Marcus = new Player("Marcus");
+            //player attribute current location
+            //remove method to dequeue first person in queue
+            //add method to enqueue playing person
+            //method moveAndLand(z) communicate with square
+            //Output: Players = list of Player objects
 
-        //redundant?
-        //for (int i = 0; i <= player_count-1; i++){
-            //thePlayer[i] = player_names[i];
 
+        /*  redundant?
+        for (int i = 0; i <= player_count-1; i++){
+            thePlayer[i] = player_names[i];
         System.out.println("This will be the order in which the players will take turns");
         System.out.println(Arrays.toString(player_names));
+        */
 
 
         // PLAY, ROLLING, MOVING
-
+        //init all players on square1
+        //print out state of game at the start
         Die die = new Die();
         int z = die.rollDie();
+        //currently_playing = players.remove();
+        //currently_playing.moveAndLand(z)
+        //Board gives back new position
+        //Board prints out current state of the game
+        //currently_playing.square(); If position is last square end the game else continue
+        //players.add(currently_playing);
+        //Board prints out final state of the game
+        //Loop
 
         }
-
-        //Alle Spieler auf Pos. 1
-        //Erster Spieler aus der Liste ziehen
-        // Wieder hinten anfügen
-        //Initial State board.
 
     }
