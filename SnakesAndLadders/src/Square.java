@@ -2,14 +2,17 @@
 
 
 public class Square {
-    private boolean free = True; // is Square occupied?
+    public static void main(String[] args) {
+        public boolean isLadder = False;
+        public boolean isSnake = False;
+        public boolean isFirst = False;
+        public boolean isLast = False;
 
-    void changeState(){ // changing the status of the Square if its free or not
-        if (free){
-            free = False;
-        }
-        else {
-            free = True;
-        }
+        public Player player;
+    }
+
+    public static get_player(){
+        return player
+
     }
 }
