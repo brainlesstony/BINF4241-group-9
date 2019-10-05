@@ -1,6 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
-
+import Square;
 
 public class GameLogic {
 
@@ -19,11 +19,20 @@ public class GameLogic {
         Scanner scanner_board = new Scanner(System.in);
         int board_size = scanner_board.nextInt();
         int [] board = new int[board_size]; // board size begrenzung ? min ? max ?
+        List<Square> board_liste = new ArrayList<Square>(); // Liste aller squares generieren
         for( int i = 1; i <= board_size; i++){
-            board[i-1] = i; // square object noch anfügen
+            //board[i-1] = ; // square object noch anfügen
                             // wo sind snakes und ladders?
+            board_liste.add(new Square());
         }
         System.out.println(Arrays.toString(board));
+
+        // SNAKES AND LADDERS
+        // wie machemer d begrenzig? wür sinn mache
+        // functions sind unne definiert
+
+
+
 
         // PLAYER INPUT
         System.out.println("How many players are playing?");
@@ -80,6 +89,16 @@ public class GameLogic {
         //Board prints out final state of the game
         //Loop
 
+        }
+
+        public static setSquareToSnake(Square square, int destination) {
+            Snake new_snake = new Snake(destination);
+            return new_snake
+        }
+
+        public static setSquareToLadder(Square square, int destination){
+            square = new Ladder(destination);
+            return square
         }
 
     }
