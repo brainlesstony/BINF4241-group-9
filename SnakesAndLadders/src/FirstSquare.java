@@ -1,8 +1,6 @@
-
-
-public class FirstSquare {
-
-    int start(){
-        return 0;
+public class FirstSquare extends Square {
+    private FirstSquare(){
+        private boolean isFirst = True;
+        private boolean isOccupied = True;
     }
 }
