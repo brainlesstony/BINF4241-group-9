@@ -1,5 +1,6 @@
 public class FirstSquare extends Square {
-    super(){
+    public FirstSquare(int position){
+        super(position);
         boolean isFirst = true;
     }
 }
