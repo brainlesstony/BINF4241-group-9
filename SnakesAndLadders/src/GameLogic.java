@@ -27,10 +27,8 @@ public class GameLogic {
         //for (int i = 1; i < board_size; i ++)
             //Square[] Squares = new Square[];
         Square [] Squares= InitializeSquares(board_size);
-        for(Square i: Squares){
-            System.out.println(i.toString());
+        System.out.println(Arrays.toString(Squares));
 
-        }
         // PLAYER INPUT
         System.out.println("How many players are playing?");
         Scanner scanner_name_num = new Scanner(System.in);
@@ -45,7 +43,7 @@ public class GameLogic {
         List<Player> player_list = new ArrayList<Player>();
         Scanner player_name = new Scanner(System.in); // creates Scanner
         for (int i = 1; i <= player_count; i++){
-            System.out.print("Player " + i " :")
+            System.out.print("Player " + i + " :");
             String read_names = player_name.nextLine(); // reads User Input
             player_list.add(new Player(read_names));
 
@@ -64,7 +62,7 @@ public class GameLogic {
 
         // PLAY, ROLLING, MOVING
         //init all players on square1
-
+        
         //print out state of game at the start
         for(int k = 0; k < board_size; k++){
             System.out.println(board_liste.get(k));
@@ -101,11 +99,13 @@ public class GameLogic {
             square = new Ladder(destination);
             return square;
         }
+
+
         private static Square[] InitializeSquares(int board_size) {
         Square[] Squares= new Square[board_size];
-        for(int i = 0; i < board_size + 1; i++)
+        for(int i = 1; i <= board_size ; i++)
         {
-            Squares[i] = new Square(i);
+            Squares[i-1] = new Square(i);
         }
         return Squares;
     }

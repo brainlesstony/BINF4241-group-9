@@ -57,5 +57,9 @@ public class Square {
     }
     public void set_isOccupied(boolean status){this.isOccupied = status;}
     public void set_playername(String new_playername) {this.player_name = new_playername;}
+    @Override
+    public String toString(){
+        return Integer.toString(this.position);
+    }
 }
 
