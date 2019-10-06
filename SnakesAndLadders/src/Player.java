@@ -3,7 +3,7 @@ public class Player {
     private int onSquare;
 
     Player(String name_user){ // each Player will be initialized with a name (probably user input) and on which square the player is
-        String name = name_user;
+        name = name_user;
         this.onSquare = 1;
         
     }

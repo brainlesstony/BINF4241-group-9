@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Square {
     private int position;
     private boolean isLadder;
@@ -6,16 +9,17 @@ public class Square {
     private boolean isLast;
     private boolean isOccupied;
     private String player_name;
-    private String type;
+    protected String type;
     private int destination;
+    private List<Player> player_list = new ArrayList<>();
     protected Square(int position_square) { // class Constructor. Every object of Square is initialized with those statements.
         this.position = position_square;
         this.isLadder = false;
         this.isSnake = false;
         this.isFirst = false;
         this.isLast = false;
-        this.isOccupied = false;
-        this.player_name = null;
+        //this.isOccupied = false;
+        //this.player_name = null;
         this.type = "Square";
     }
 
@@ -36,11 +40,11 @@ public class Square {
         return this.isLast;
     }
     public boolean get_isOccupied(){
-        return this.isOccupied;
+        return !player_list.isEmpty();
     }
-    public String get_playername(){
-        return this.player_name;
-    }
+    //public String get_playername(){
+        //return this.player_name;
+    //}
     public String get_type(){
         return this.type;
     }
@@ -64,14 +68,30 @@ public class Square {
     public void set_isLast(boolean status){
         this.isLast = status;
     }
-    public void set_isOccupied(boolean status){this.isOccupied = status;}
-    public void set_playername(String new_playername) {this.player_name = new_playername;}
+    //public void set_isOccupied(boolean status){this.isOccupied = status;}
+    //public void set_playername(String new_playername) {this.player_name = new_playername;}
     public void set_type(String new_type) {this.type = new_type;}
 
+    protected String get_names() {
+        String players_string = "";
+        if (this.get_isOccupied()) {
+            for (Player i : player_list) {
+                players_string += i.get_name() + ", ";
+            }
+        }
+        return players_string;
+    }
+    public void add_player(Player player){
+        player_list.add(player);
 
-    @Override
+    }
+    public void remove_player(Player player){
+        player_list.remove(player);
+    }
+
+        @Override
     public String toString(){
-        return "[Position: " + Integer.toString(this.position) + ", Type: " + this.type + ", Player: " + this.player_name + "]";
+        return "[Position: " + Integer.toString(position) + ", Type: " + type + ", Player: " + get_names() + "]";
     }
 }
 

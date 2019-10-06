@@ -12,6 +12,6 @@ public class Snake extends Square {
     }
     @Override
     public String toString(){
-        return "[Position: " + Integer.toString(this.get_position()) + ", Destination: " + Integer.toString(this.get_destination()) +  ", Type: " + this.get_type() + ", Player: " + this.get_playername() + "]";
+        return "[Position: " + Integer.toString(get_position()) + ", Destination: " + Integer.toString(get_destination()) +  ", Type: " + get_type() + ", Player: " + get_names() + "]";
     }
 }
