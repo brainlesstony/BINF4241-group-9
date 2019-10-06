@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.Scanner;
-import Square;
 
 public class GameLogic {
 
@@ -24,7 +23,7 @@ public class GameLogic {
         for( int i = 1; i <= board_size; i++){
             //board[i-1] = ; // square object noch anfügen
                             // wo sind snakes und ladders?
-            board_liste.add(new Square());
+            board_liste.add(new Square(i+1));
         }
         System.out.println(Arrays.toString(board));
 
@@ -83,6 +82,7 @@ public class GameLogic {
         int z = die.rollDie();
         //currently_playing = players.remove();
         //currently_playing.moveAndLand(z)
+        //check if anything special
         //Board gives back new position
         //Board prints out current state of the game
         //currently_playing.square(); If position is last square end the game else continue

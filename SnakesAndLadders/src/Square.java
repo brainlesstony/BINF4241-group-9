@@ -1,3 +1,5 @@
+import javax.lang.model.type.NullType;
+
 public class Square {
     public Square(int position_square) { // class Constructor. Every object of Square is initialized with those statements.
         int position = position_square;
@@ -6,10 +8,10 @@ public class Square {
         boolean isFirst = false;
         boolean isLast = false;
         boolean isOccupied = false;
-        Player player; // every Square object will be initilazied with a player object. is this ok?
+        String player_name = null;
     }
-    public void get_player() {
-        return player;
+    public String get_player() {
+        return player_name;
     }
      public void changeState() {
          if (this.isOccupied){
@@ -18,5 +20,8 @@ public class Square {
          else {
              isOccupied = false;
          }
+    }
+    public void occupySquare(Player neuer_player){
+        player = neuer_player;
     }
 }

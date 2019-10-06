@@ -1,6 +1,6 @@
 public class Player {
-    private Player(name){ // each Player will be initialized with a name (probably user input) and on which square the player is
-        String name;
+    private Player(String name_user){ // each Player will be initialized with a name (probably user input) and on which square the player is
+        String name = name_user;
         int onSquare = 1;
     }
 
