@@ -1,10 +1,10 @@
 public class Player {
     String name;
-    int onSquare;
+    private int onSquare;
 
     Player(String name_user){ // each Player will be initialized with a name (probably user input) and on which square the player is
         String name = name_user;
-        int onSquare = 1;
+        this.onSquare = 1;
         
     }
 

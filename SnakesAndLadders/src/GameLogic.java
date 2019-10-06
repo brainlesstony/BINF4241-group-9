@@ -92,18 +92,19 @@ public class GameLogic {
             System.out.print("Player " + i + " :");
             String read_names = player_name.nextLine(); // reads User Input
             player_list.add(new Player(read_names));
+            
 
         }
 
         Die die = new Die();
 
-        while(Squares[-1].get_isOccupied() == false){
+        while(!Squares[Squares.length - 1].get_isOccupied()){
             for (Player i : player_list){
                 int z = die.rollDie();
                 int target = i.get_onSquare()  +z;
-                if(Squares[target-1].get_isOccupied() == false){
-                    if(Squares[target-1].get_type() != "Square"){
-                        if(Squares[target-1].get_type() == "Snake"){
+                if(!Squares[target - 1].get_isOccupied()){
+                    if(!Squares[target - 1].get_type().equals("Square")){
+                        if(Squares[target - 1].get_type().equals("Snake")){
                             Square ziel = Squares[target-1];
                             if(Squares[ziel.get_destination()-1].get_isOccupied()){
                                 Squares[i.get_onSquare()-1].set_isOccupied(false);
