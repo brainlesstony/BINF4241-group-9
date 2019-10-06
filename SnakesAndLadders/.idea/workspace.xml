@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fea0d772-5266-4ec5-a772-1481211bdbb6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Die.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/FirstSquare.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/GameLogic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Ladder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/LastSquare.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/META-INF/SnakesAndLaddersä.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Snake.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Square.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Tile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ladder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ladder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Square.java" afterDir="false" />
     </list>
@@ -102,7 +91,7 @@
       <workItem from="1569935429691" duration="3904000" />
       <workItem from="1570035692564" duration="4517000" />
       <workItem from="1570099805874" duration="1498000" />
-      <workItem from="1570349964770" duration="284000" />
+      <workItem from="1570349964770" duration="831000" />
     </task>
     <servers />
   </component>
