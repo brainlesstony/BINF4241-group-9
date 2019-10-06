@@ -20,7 +20,7 @@ public class GameLogic {
         Scanner scanner_board = new Scanner(System.in);
         int board_size = scanner_board.nextInt();
         //int [] board = new int[board_size]; // board size begrenzung ? min ? max ?
-        List<Square> board_liste = new ArrayList<Square>(); // Liste aller squares generieren
+        ArrayList<Square> board_liste = new ArrayList<Square>(); // Liste aller squares generieren
         //Square[] Squares = new Square[board_size];
         for( int i = 1; i <= board_size; i++){
             //board[i-1] = ; // square object noch anfügen
@@ -78,20 +78,27 @@ public class GameLogic {
 
         // PLAY, ROLLING, MOVING
         //init all players on square1
+
         //print out state of game at the start
+        for(int k = 0; k < board_size; k++){
+            System.out.println(board_liste[0]
+        }
         Die die = new Die();
         int z = die.rollDie();
+        currently_playing = player_list.remove(0);
         //currently_playing = players.remove();
         //currently_playing.moveAndLand(z)
         //check if anything special
         //Board gives back new position
         //Board prints out current state of the game
         //currently_playing.square(); If position is last square end the game else continue
-        //players.add(currently_playing);
+        player_liste = player_list.add(currently_playing);
         //Board prints out final state of the game
         //Loop
 
-        }
+    }
+
+
         public Snake setSquareToSnake(Square square, int destination) {
             Snake new_snake = new Snake(destination);
             return new_snake;
@@ -102,5 +109,6 @@ public class GameLogic {
             return square;
         }
     }
+
 
 
