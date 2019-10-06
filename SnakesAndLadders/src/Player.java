@@ -17,8 +17,8 @@ public class Player {
 
     }
 
-    public void move_forward(int steps){
-        this.onSquare += steps;
+    public void set_position(int position){
+        this.onSquare = position;
     }
 
 

@@ -6,6 +6,8 @@ public class Square {
     private boolean isLast;
     private boolean isOccupied;
     private String player_name;
+    private String type;
+    private int destination;
     protected Square(int position_square) { // class Constructor. Every object of Square is initialized with those statements.
         this.position = position_square;
         this.isLadder = false;
@@ -14,6 +16,7 @@ public class Square {
         this.isLast = false;
         this.isOccupied = false;
         this.player_name = null;
+        this.type = "Square";
     }
 
     //getters
@@ -38,6 +41,12 @@ public class Square {
     public String get_playername(){
         return this.player_name;
     }
+    public String get_type(){
+        return this.type;
+    }
+    public int get_destination(){
+        return this.destination;
+    }
 
     //setters
     public void set_position(int new_position){
@@ -57,9 +66,12 @@ public class Square {
     }
     public void set_isOccupied(boolean status){this.isOccupied = status;}
     public void set_playername(String new_playername) {this.player_name = new_playername;}
+    public void set_type(String new_type) {this.type = new_type;}
+
+
     @Override
     public String toString(){
-        return Integer.toString(this.position);
+        return "[Position: " + Integer.toString(this.position) + ", Type: " + this.type + ", Player: " + this.player_name + "]";
     }
 }
 
