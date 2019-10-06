@@ -39,11 +39,11 @@ public class GameLogic {
             System.exit(0);
         }
 
-        System.out.println("What are the" + player_count + "players name? ");
+        System.out.println("What are the " + player_count + " players name? ");
         List<Player> player_list = new ArrayList<Player>();
         Scanner player_name = new Scanner(System.in); // creates Scanner
         for (int i = 1; i <= player_count; i++){
-            System.out.print("Player " + i + " :");
+            System.out.print("Player " + i + ": ");
             String read_names = player_name.nextLine(); // reads User Input
             player_list.add(new Player(read_names));
 
