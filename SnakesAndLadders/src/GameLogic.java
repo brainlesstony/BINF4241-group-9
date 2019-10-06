@@ -92,10 +92,12 @@ public class GameLogic {
             System.out.print("Player " + i + " :");
             String read_names = player_name.nextLine(); // reads User Input
             player_list.add(new Player(read_names));
-            
-
         }
+        FirstSquare firstsquare = new FirstSquare(1);
+        Squares[0] = firstsquare;
 
+        LastSquare lastsquare = new LastSquare(board_size);
+        Squares[Squares.length-1] = lastsquare;
         Die die = new Die();
 
         while(!Squares[Squares.length - 1].get_isOccupied()){
