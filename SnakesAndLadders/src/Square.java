@@ -1,21 +1,21 @@
 public class Square {
-    private Square() { // class Constructor. Every object of Square is initialized with those statements.
-        public boolean isLadder = False;
-        public boolean isSnake = False;
-        public boolean isFirst = False;
-        public boolean isLast = False;
-        public boolean isOccupied = False;
-        public Player player; // every Square object will be initilazied with a player object. is this ok?
+    public Square() { // class Constructor. Every object of Square is initialized with those statements.
+        boolean isLadder = false;
+        boolean isSnake = false;
+        boolean isFirst = false;
+        boolean isLast = false;
+        boolean isOccupied = false;
+        Player player; // every Square object will be initilazied with a player object. is this ok?
     }
-    public static get_player() {
+    public void get_player() {
         return player;
     }
      public void changeState() {
          if (this.isOccupied){
-             isOccupied = False;
+             isOccupied = false;
          }
          else {
-             isOccupied = True;
+             isOccupied = false;
          }
     }
 }
