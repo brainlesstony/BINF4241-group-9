@@ -91,7 +91,6 @@ public class GameLogic {
         //Loop
 
         }
-
         public Snake setSquareToSnake(Square square, int destination) {
             Snake new_snake = new Snake(destination);
             return new_snake;
@@ -101,5 +100,6 @@ public class GameLogic {
             square = new Ladder(destination);
             return square;
         }
-
     }
+
+
