@@ -18,8 +18,9 @@ public class GameLogic {
 
         Scanner scanner_board = new Scanner(System.in);
         int board_size = scanner_board.nextInt();
-        int [] board = new int[board_size]; // board size begrenzung ? min ? max ?
+        //int [] board = new int[board_size]; // board size begrenzung ? min ? max ?
         List<Square> board_liste = new ArrayList<Square>(); // Liste aller squares generieren
+        //Square[] Squares = new Square[board_size];
         for( int i = 1; i <= board_size; i++){
             //board[i-1] = ; // square object noch anfügen
                             // wo sind snakes und ladders?
@@ -91,14 +92,14 @@ public class GameLogic {
 
         }
 
-        public static setSquareToSnake(Square square, int destination) {
+        public Snake setSquareToSnake(Square square, int destination) {
             Snake new_snake = new Snake(destination);
-            return new_snake
+            return new_snake;
         }
 
-        public static setSquareToLadder(Square square, int destination){
+        public Square setSquareToLadder(Square square, int destination){
             square = new Ladder(destination);
-            return square
+            return square;
         }
 
     }
