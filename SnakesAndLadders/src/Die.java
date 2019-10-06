@@ -1,7 +1,7 @@
 import java.util.Random;
 // create one Die object in GameLogic.  Die die = new Die()
 // Use RollDie method when Player rolls the die. die.rollDie()
-private final class Die {
+final class Die {
     private Random rand = new Random();
 
     int rollDie(){
