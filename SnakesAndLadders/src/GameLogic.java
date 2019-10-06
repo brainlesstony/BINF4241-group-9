@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.List;
 
 public class GameLogic {
 
@@ -44,17 +46,16 @@ public class GameLogic {
             System.exit(0);
         }
 
-        System.out.println("What are the players name?");
-        String[] player_names = new String[player_count];
-        int temp_count = player_count;
+        System.out.println("What are the" + player_count + "players name? ");
+        List<Player> player_list = new ArrayList<Player>();
+        Scanner player_name = new Scanner(System.in); // creates Scanner
+        for (int i = 1; i <= player_count; i++){
+            System.out.print("Player " + i " :")
+            String read_names = player_name.nextLine(); // reads User Input
+            player_list.add(new Player(read_names));
 
-        while(temp_count > 0 ) {
-            Scanner player_name = new Scanner(System.in);
-            String read_names = player_name.nextLine();
-            player_names[temp_count-1] = read_names;
-            //Player [] thePlayers = new Player[player_count];
-            //thePlayers[temp_count-1] = read_names;
-            temp_count -= 1;
+        }
+
         }
         
             //player_names(list of Player names) to Class Player to init Players
