@@ -18,10 +18,11 @@ public class Square {
              isOccupied = false;
          }
          else {
-             isOccupied = false;
+             isOccupied = true;
          }
     }
     public void occupySquare(Player neuer_player){
         player = neuer_player;
     }
 }
+
