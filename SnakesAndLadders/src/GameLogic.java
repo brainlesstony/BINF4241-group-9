@@ -1,7 +1,6 @@
 import java.io.ObjectOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Scanner;
 import java.util.List;
 
@@ -19,17 +18,11 @@ public class GameLogic {
         if (board_size < 6 || board_size > 30){
             System.exit(0);
         }
-        //for( int i = 1; i <= board_size; i++){
-            //board[i-1] = ; // square object noch anfügen
-            // wo sind snakes und ladders?
-        //board_liste.add(new Square(i+1));
-        //ArrayList<Square> board_liste = new ArrayList<Square>(); // Liste aller squares generieren
-        //for (int i = 1; i < board_size; i ++)
-            //Square[] Squares = new Square[];
+
         Square [] Squares= InitializeSquares(board_size);
 
 
-        //snakes and ladders positioning
+        // INIT SNAKES & LADDERS
 
         if(board_size > 24) {
             //Ladder 1
@@ -72,7 +65,6 @@ public class GameLogic {
         }
 
 
-
         System.out.println(Arrays.toString(Squares));
 
         // PLAYER INPUT
@@ -93,6 +85,8 @@ public class GameLogic {
             String read_names = player_name.nextLine(); // reads User Input
             player_list.add(new Player(read_names));
         }
+
+        // DEFINITION FIRST & LAST SQUARE
         FirstSquare firstsquare = new FirstSquare(1);
         Squares[0] = firstsquare;
 
@@ -100,10 +94,11 @@ public class GameLogic {
         Squares[Squares.length-1] = lastsquare;
         Die die = new Die();
 
-        while(!Squares[Squares.length - 1].get_isOccupied()){
+        // PLAY, ROLLING, MOVING
+        while(!Squares[Squares.length - 1].get_isOccupied()){ // While last square is not occupied, the game will go on
             for (Player i : player_list){
                 int z = die.rollDie();
-                int target = i.get_onSquare()  +z;
+                int target = i.get_onSquare() + z;
                 if(!Squares[target - 1].get_isOccupied()){
                     if(!Squares[target - 1].get_type().equals("Square")){
                         if(Squares[target - 1].get_type().equals("Snake")){
@@ -171,36 +166,7 @@ public class GameLogic {
         }
 
     }
-        // PLAY, ROLLING, MOVING
-        //init all players on square1
 
-        /*
-        //print out state of game at the start
-        for(int k = 0; k < board_size; k++){
-            System.out.println(board_liste.get(k));
-        }
-        Die die = new Die();
-        int z = die.rollDie();
-        currently_playing = player_list.remove(0);
-
-        if (board_liste[z + Player.currently_playing.destination].isoccupied()){
-            Player.onsquare = Player.onsquare;
-        }
-        else {
-                Player.currently_playing.moveAndLand(z);
-        }
-
-
-        //check if anything special
-        //Board gives back new position
-        //Board prints out current state of the game
-        //currently_playing.square(); If position is last square end the game else continue
-        player_liste = player_list.add(currently_playing);
-        //Board prints out final state of the game
-        //Loop
-
-    }
-    */
     // SNAKES AND LADDERS
     private static Square[] InitializeSquares(int board_size) {
         Square[] Squares= new Square[board_size];
@@ -211,6 +177,7 @@ public class GameLogic {
         return Squares;
     }
 
+    // EXCHANGE STATEMENTS
     private static void exchangeSnake(Square square,int destination,  Square [] Squares) {
         Snake new_snake = new Snake(square.get_position(), destination);
         Squares[square.get_position() - 1] = new_snake;
