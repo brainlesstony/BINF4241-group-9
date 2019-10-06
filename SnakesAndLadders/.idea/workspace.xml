@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fea0d772-5266-4ec5-a772-1481211bdbb6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/BINF4241-group-9.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/BINF4241-group-9.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/snakes_and_ladder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/snakes_and_ladder.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/META-INF/SnakesAndLaddersä.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/META-INF/SnakesAndLaddersä.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Die.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Die.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FirstSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FirstSquare.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ladder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ladder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LastSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LastSquare.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/src/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Square.java" afterDir="false" />
     </list>
@@ -44,6 +28,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -104,6 +89,7 @@
       <workItem from="1569935429691" duration="3904000" />
       <workItem from="1570035692564" duration="4517000" />
       <workItem from="1570099805874" duration="1498000" />
+      <workItem from="1570349964770" duration="831000" />
     </task>
     <servers />
   </component>

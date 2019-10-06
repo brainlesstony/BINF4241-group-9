@@ -1,6 +1,6 @@
 public class Ladder extends Square {
-    public static void main(String[] args, int destination_Ladder) {
-        public boolean isLadder = True;
+    public Ladder(String[] args, int destination_Ladder) {
+        boolean isLadder = true;
         int destination = destination_Ladder;
     }
 }
