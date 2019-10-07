@@ -1,10 +1,5 @@
-import org.w3c.dom.ls.LSOutput;
-
 import java.io.ObjectOutput;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.List;
+import java.util.*;
 
 public class GameLogic {
 
@@ -93,6 +88,7 @@ public class GameLogic {
             Player new_player = new Player(read_names);
             player_list.add(new_player);
             Squares[0].add_player(new_player);
+
         }
 
         // PLAY, ROLLING, MOVING
@@ -103,11 +99,10 @@ public class GameLogic {
                 int z = die.rollDie();
                 int target = i.get_onSquare() + z;
                 if(target-1 >= board_size){
-
-                    // todo Special Case When going over the end. I try lg Tony
+                    //If player goes over board_size he remains at current square
                 } else if(!Squares[target - 1].get_isOccupied()){
                     if(!Squares[target - 1].get_type().equals("Square")){
-                        if(Squares[target - 1].get_type().equals("Snake")){
+                        if(Squares[target - 1].get_type().equals("Snake <-")){
                             Square ziel = Squares[target-1];
                             if(Squares[ziel.get_destination()-1].get_isOccupied()){
                                 //Squares[i.get_onSquare()-1].set_isOccupied(false);
@@ -119,59 +114,68 @@ public class GameLogic {
                                 //Squares[0].set_isOccupied(true);
                                 //Squares[0].set_playername(i.get_name());
                                 Squares[0].add_player(i);
+                                System.out.println(Arrays.toString(Squares));
                             }
                             else{
                                 //Squares[i.get_onSquare()-1].set_isOccupied(false);
                                 //Squares[i.get_onSquare()-1].set_playername(null);
-                                Squares[i.get_onSquare()-1].remove_player(i);
+//                                Squares[i.get_onSquare()-1].remove_player(i);
+                                special_position_update(Squares,target,i);
 
-
-                                i.set_position(ziel.get_destination());
+//                                i.set_position(ziel.get_destination());
 
                                 //Squares[ziel.get_destination()-1].set_isOccupied(true);
                                 //Squares[ziel.get_destination()-1].set_playername(i.get_name());
-                                Squares[ziel.get_destination()-1].add_player(i);
+//                                Squares[ziel.get_destination()-1].add_player(i);
+
                             }
                         }
-                        else if(Squares[target - 1].get_type().equals("Ladder")){
+                        else if(Squares[target - 1].get_type().equals("Ladder ->")){
                             Square ziel = Squares[target -1];
                             if(Squares[ziel.get_destination()-1].get_isOccupied()){
                                 //Squares[i.get_onSquare()-1].set_isOccupied(false);
                                 //Squares[i.get_onSquare()-1].set_playername(null);
-                                Squares[i.get_onSquare()-1].remove_player(i);
+//                                Squares[i.get_onSquare()-1].remove_player(i);
 
 
-                                i.set_position(ziel.get_position());
+//                                i.set_position(ziel.get_position());
 
                                 //Squares[ziel.get_position()-1].set_isOccupied(true);
                                 //Squares[ziel.get_position()-1].set_playername(i.get_name());
-                                Squares[ziel.get_position()-1].add_player(i);
-
+//                                Squares[ziel.get_position()-1].add_player(i);
+                                normal_position_update(Squares,target,i);
                             }
                             else{
                                 //Squares[i.get_onSquare()-1].set_isOccupied(false);
                                 //Squares[i.get_onSquare()-1].set_playername(null);
-                                Squares[i.get_onSquare()-1].remove_player(i);
+//                                Squares[i.get_onSquare()-1].remove_player(i);
 
 
-                                i.set_position(ziel.get_destination());
+//                                i.set_position(ziel.get_destination());
 
                                 //Squares[ziel.get_destination()-1].set_isOccupied(true);
                                 //Squares[ziel.get_destination()-1].set_playername(i.get_name());
-                                Squares[ziel.get_destination()-1].add_player(i);
+//                                Squares[ziel.get_destination()-1].add_player(i);
+                                special_position_update(Squares,target,i);
                             }
 
                         }
                         else if(Squares[target-1].get_isLast()){
+                            System.out.println(i.get_name() + " rolls " + z);
                             normal_position_update(Squares,target,i);
                             System.out.println(i.get_name() + " has won!");
                             System.exit(0);
                         }
                     }
                     else{
-                        normal_position_update(Squares,target,i); // todo: add the amount of "moves" to the output. so the z = die int.
+                        System.out.println(i.get_name() + " rolls " + z);
+                        normal_position_update(Squares,target,i);
 
                     }
+                }
+                else {
+                    System.out.println(i.get_name() + " rolls " + z);
+                    normal_position_update(Squares,target,i);
                 }
                 //Game Update
                 //System.out.println(Arrays.toString(Squares));
@@ -201,18 +205,20 @@ public class GameLogic {
         Squares[square.get_position() - 1] = new_ladder;
     }
 
-    /**
-     *
-     * @param Squares
-     * @param target
-     * @param i
-     */
     private static void normal_position_update(Square [] Squares,int target, Player i){
         Square ziel = Squares[target -1];
         Squares[i.get_onSquare()-1].remove_player(i);
         i.set_position(ziel.get_position());
         Squares[ziel.get_position()-1].add_player(i);
         System.out.println(Arrays.toString(Squares));
+    }
+    private static void special_position_update(Square [] Squares, int target, Player i){
+        Square ziel = Squares[target -1];
+        Squares[i.get_onSquare()-1].remove_player(i);
+        i.set_position(ziel.get_destination());
+        Squares[ziel.get_destination()-1].add_player(i);
+        System.out.println(Arrays.toString(Squares));
+
     }
 
 }
