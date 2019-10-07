@@ -21,6 +21,10 @@ public class GameLogic {
         String winner = null;
         while (!board.game_over()) { // While last square is not occupied, the game will go on
             for (Player player : playerList.get_player_list()) {
+                if (board.game_over()){
+                    System.out.println(board.get_board() + "\n" + winner + " wins");
+                    System.exit(0);
+                }
                 winner = player.get_name();
                 int z = die.rollDie();
                 board.print(player, z);
@@ -48,7 +52,5 @@ public class GameLogic {
                 }
             }
         }
-        System.out.println(board.get_board() + "\n" + winner + " wins");
-        System.exit(0);
     }
 }
