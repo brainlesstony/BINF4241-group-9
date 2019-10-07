@@ -1,9 +1,9 @@
 public class FirstSquare extends Square {
-    //private Player [] players;
     private String players_string = "";
     public FirstSquare(int position){
         super(position);
-        set_isFirst(true);
+        this.set_isFirst(true);
+        this.type = "FirstSquare";
     }
 
     @Override
