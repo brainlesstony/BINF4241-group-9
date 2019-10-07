@@ -68,7 +68,7 @@ public class GameLogic {
 
         // DEFINITION FIRST & LAST SQUARE
         FirstSquare firstsquare = new FirstSquare(1);
-        Squares[0] = firstsquare;
+        Squares[0] = firstsquare; //todo instead squares name it board?
 
         LastSquare lastsquare = new LastSquare(board_size);
         Squares[Squares.length-1] = lastsquare;
@@ -104,7 +104,7 @@ public class GameLogic {
                 int target = i.get_onSquare() + z;
                 if(target-1 >= board_size){
 
-                    // todo Special Case When going over the end
+                    // todo Special Case When going over the end. I try lg Tony
                 } else if(!Squares[target - 1].get_isOccupied()){
                     if(!Squares[target - 1].get_type().equals("Square")){
                         if(Squares[target - 1].get_type().equals("Snake")){
@@ -169,7 +169,8 @@ public class GameLogic {
                         }
                     }
                     else{
-                        normal_position_update(Squares,target,i);
+                        normal_position_update(Squares,target,i); // todo: add the amount of "moves" to the output. so the z = die int.
+
                     }
                 }
                 //Game Update
@@ -209,7 +210,6 @@ public class GameLogic {
     private static void normal_position_update(Square [] Squares,int target, Player i){
         Square ziel = Squares[target -1];
         Squares[i.get_onSquare()-1].remove_player(i);
-
         i.set_position(ziel.get_position());
         Squares[ziel.get_position()-1].add_player(i);
         System.out.println(Arrays.toString(Squares));

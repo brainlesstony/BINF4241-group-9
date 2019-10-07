@@ -4,7 +4,7 @@ public class Ladder extends Square {
     protected Ladder(int postition, int destination_Ladder) {
         super(postition);
         this.set_isLadder(true);
-        this.set_type("Ladder");
+        this.set_type("Ladder ->");
         this.destination = destination_Ladder;
     }
 
