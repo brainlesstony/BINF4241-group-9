@@ -4,7 +4,7 @@ public class Player {
 
     Player(String name_user){ // each Player will be initialized with a name (probably user input) and on which square the player is
         name = name_user;
-        this.onSquare = 1;
+        this.onSquare = 0;
         
     }
 
@@ -12,7 +12,7 @@ public class Player {
         return this.name;
     }
 
-    public int get_onSquare(){
+    public int get_pos(){
         return this.onSquare;
 
     }

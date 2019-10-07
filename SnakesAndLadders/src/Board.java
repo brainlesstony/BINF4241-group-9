@@ -41,42 +41,42 @@ public class Board {
     public void set_snakes_and_ladders(){
         if(board_size > 24) {
             //Ladder 1
-            exchangeLadder(1, 4);
+            exchangeLadder(1, 14);
 
             // Snake 1
-            exchangeSnake(4, 3);
+            exchangeSnake(15, 3);
 
             //Ladder 2
-            exchangeLadder(6, 10);
+            exchangeLadder(12, 22);
 
             // Snake 2
-            exchangeSnake(10, 6);
+            exchangeSnake(23, 6);
 
             //Ladder 3
-            exchangeLadder(20,12);
+            exchangeLadder(17,22);
 
             // Snake 3
-            exchangeSnake(13, 22);
+            exchangeSnake(21, 3);
         }
         else if (board_size > 12) {
             //Ladder 1
-            exchangeLadder(1, 4);
+            exchangeLadder(2, 4);
 
             // Snake 1
-            exchangeSnake(4, 3);
+            exchangeSnake(5, 3);
 
             //Ladder 2
-            exchangeLadder(6, 10);
+            exchangeLadder(7, 10);
 
             // Snake 2
-            exchangeSnake(10, 6);
+            exchangeSnake(11, 6);
         }
         else{
             //Ladder 1
-            exchangeLadder(1, 4);
+            exchangeLadder(1, 3);
 
             // Snake 1
-            exchangeSnake(4, 3);
+            exchangeSnake(4, 2);
         }
     }
     // EXCHANGE METHODS
@@ -88,13 +88,28 @@ public class Board {
         Ladder ladder = new Ladder(which_square, destination);
         get_board().set(which_square, ladder);
     }
-    public void print(){
+    public void print(Player player, int die){
         System.out.println(board);
+        System.out.println(player.get_name() + " rolls: " + die);
     }
     public boolean game_over(){
-        return get_board().get(get_board_size()-1).get_isLast();
+        return get_board().get(get_board_size()-1).get_isOccupied();
     }
     public String check_square(int x){
         return get_board().get(x).get_type();
     }
+    public void move(Player player, int moves){
+        get_board().get(player.get_pos()).remove_player(player);
+        player.set_position(moves);
+        get_board().get(player.get_pos()).add_player(player);
+    }
+    public Square get_butthole(int target){
+        return get_board().get(get_board().get(target).get_destination());
+    }
+    public void back_to_start(Player player){
+        get_board().get(player.get_pos()).remove_player(player); // remove player from origin square
+        player.set_position(0); // set player to pos 0
+        get_board().get(0).add_player(player);
+    }
+
 }

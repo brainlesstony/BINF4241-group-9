@@ -18,6 +18,7 @@ public class Square {
         this.isSnake = false;
         this.isFirst = false;
         this.isLast = false;
+        this.destination = get_position() + 1;
         //this.isOccupied = false;
         //this.player_name = null;
         this.type = "Square";
