@@ -89,7 +89,7 @@ public class Square {
         player_list.remove(player);
     }
 
-        @Override
+    @Override
     public String toString(){
         return "[Position: " + Integer.toString(position) + ", Type: " + type + ", Player: " + get_names() + "]";
     }

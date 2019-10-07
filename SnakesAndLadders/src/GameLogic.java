@@ -1,225 +1,88 @@
-import java.io.ObjectOutput;
 import java.util.*;
 
 public class GameLogic {
 
     public static void main(String[] args) {
 
-
         // BOARD
-        System.out.println("Let's start the game by first deciding on the board size!");
-        System.out.println("What would you like the board size to be?");
-        System.out.println("The board size cannot be smaller then 6 or larger than 30");
-        Scanner scanner_board = new Scanner(System.in);
-        int board_size = scanner_board.nextInt();
-        if (board_size < 6 || board_size > 30){
-            System.exit(0);
-        }
+        Board board = new Board();
+        board.board_message();
+        board.get_board_size_from_user();
+        board.make_board();
+        board.set_snakes_and_ladders();
 
-        Square [] Squares= InitializeSquares(board_size);
-
-
-        // INIT SNAKES & LADDERS
-
-        if(board_size > 24) {
-            //Ladder 1
-            exchangeLadder(Squares[1], 4, Squares);
-
-            // Snake 1
-            exchangeSnake(Squares[4], 3, Squares );
-
-            //Ladder 2
-            exchangeLadder(Squares[6], 10, Squares);
-
-            // Snake 2
-            exchangeSnake(Squares[10], 6, Squares);
-
-            //Ladder 3
-            exchangeLadder(Squares[20],12, Squares);
-
-            // Snake 3
-            exchangeSnake(Squares[13], 22, Squares);
-        }
-        else if (board_size > 12) {
-            //Ladder 1
-            exchangeLadder(Squares[1], 4, Squares );
-
-            // Snake 1
-            exchangeSnake(Squares[4], 3, Squares);
-
-            //Ladder 2
-            exchangeLadder(Squares[6], 10, Squares);
-
-            // Snake 2
-            exchangeSnake(Squares[10], 6, Squares);
-        }
-        else{
-            //Ladder 1
-            exchangeLadder(Squares[1], 4, Squares);
-
-            // Snake 1
-            exchangeSnake(Squares[4], 3, Squares);
-        }
-
-        // DEFINITION FIRST & LAST SQUARE
-        FirstSquare firstsquare = new FirstSquare(1);
-        Squares[0] = firstsquare; //todo instead squares name it board?
-
-        LastSquare lastsquare = new LastSquare(board_size);
-        Squares[Squares.length-1] = lastsquare;
-
-
-        // PLAYER INPUT
-        System.out.println("How many players are playing?");
-        Scanner scanner_name_num = new Scanner(System.in);
-        int player_count = scanner_name_num.nextInt();
-
-        if (player_count < 2 || player_count > 4){
-            System.out.println("Sorry, this game can only be played by 2-4 players");
-            System.exit(0);
-        }
-
-        System.out.println("What are the " + player_count + " players name? ");
-        List<Player> player_list = new ArrayList<Player>();
-        Scanner player_name = new Scanner(System.in); // creates Scanner
-        for (int i = 1; i <= player_count; i++){
-            System.out.print("Player " + i + ": ");
-            String read_names = player_name.nextLine(); // reads User Input
-            Player new_player = new Player(read_names);
-            player_list.add(new_player);
-            Squares[0].add_player(new_player);
-
-        }
+        // PLAYERS
+        PlayerList playerList = new PlayerList();
+        playerList.ui_player_count();
+        playerList.add_player_on_board(board);
 
         // PLAY, ROLLING, MOVING
-        System.out.println(Arrays.toString(Squares));
+        board.print(); // Starting board
         Die die = new Die();
-        while(!Squares[Squares.length - 1].get_isOccupied()){ // While last square is not occupied, the game will go on
-            for (Player i : player_list){
+        while (!board.game_over()) { // While last square is not occupied, the game will go on
+            for (Player player : playerList.get_player_list()) {
                 int z = die.rollDie();
-                int target = i.get_onSquare() + z;
-                if(target-1 >= board_size){
+                int target = player.get_onSquare() + z;
+                if (target - 1 >= board.get_board_size()) {
                     //If player goes over board_size he remains at current square
-                } else if(!Squares[target - 1].get_isOccupied()){
-                    if(!Squares[target - 1].get_type().equals("Square")){
-                        if(Squares[target - 1].get_type().equals("Snake <-")){
-                            Square ziel = Squares[target-1];
-                            if(Squares[ziel.get_destination()-1].get_isOccupied()){
-                                //Squares[i.get_onSquare()-1].set_isOccupied(false);
-                                //Squares[i.get_onSquare()-1].set_playername(null);
-                                Squares[i.get_onSquare()-1].remove_player(i);
+                } else if (!board.get_board().get(target - 1).get_isOccupied()) {
+                    if (!board.get_board().get(target - 1).get_type().equals("Square")) {
+                        if (board.get_board().get(target - 1).get_type().equals("Snake <-")) {
+                            Square ziel = board.get_board().get(target - 1);
+                            if (board.get_board().get(ziel.get_destination() - 1).get_isOccupied()) {
+                                board.get_board().get(player.get_onSquare() - 1).remove_player(player);
 
-                                i.set_position(1);
-
-                                //Squares[0].set_isOccupied(true);
-                                //Squares[0].set_playername(i.get_name());
-                                Squares[0].add_player(i);
-                                System.out.println(Arrays.toString(Squares));
+                                player.set_position(1);
+                                board.get_board().get(0).add_player(player);
+                                board.print();
+                            } else {
+                                special_position_update(board, target, player);
                             }
-                            else{
-                                //Squares[i.get_onSquare()-1].set_isOccupied(false);
-                                //Squares[i.get_onSquare()-1].set_playername(null);
-//                                Squares[i.get_onSquare()-1].remove_player(i);
-                                special_position_update(Squares,target,i);
-
-//                                i.set_position(ziel.get_destination());
-
-                                //Squares[ziel.get_destination()-1].set_isOccupied(true);
-                                //Squares[ziel.get_destination()-1].set_playername(i.get_name());
-//                                Squares[ziel.get_destination()-1].add_player(i);
-
-                            }
-                        }
-                        else if(Squares[target - 1].get_type().equals("Ladder ->")){
-                            Square ziel = Squares[target -1];
-                            if(Squares[ziel.get_destination()-1].get_isOccupied()){
-                                //Squares[i.get_onSquare()-1].set_isOccupied(false);
-                                //Squares[i.get_onSquare()-1].set_playername(null);
-//                                Squares[i.get_onSquare()-1].remove_player(i);
-
-
-//                                i.set_position(ziel.get_position());
-
-                                //Squares[ziel.get_position()-1].set_isOccupied(true);
-                                //Squares[ziel.get_position()-1].set_playername(i.get_name());
-//                                Squares[ziel.get_position()-1].add_player(i);
-                                normal_position_update(Squares,target,i);
-                            }
-                            else{
-                                //Squares[i.get_onSquare()-1].set_isOccupied(false);
-                                //Squares[i.get_onSquare()-1].set_playername(null);
-//                                Squares[i.get_onSquare()-1].remove_player(i);
-
-
-//                                i.set_position(ziel.get_destination());
-
-                                //Squares[ziel.get_destination()-1].set_isOccupied(true);
-                                //Squares[ziel.get_destination()-1].set_playername(i.get_name());
-//                                Squares[ziel.get_destination()-1].add_player(i);
-                                special_position_update(Squares,target,i);
+                        } else if (board.get_board().get(target - 1).get_type().equals("Ladder ->")) {
+                            Square ziel = board.get_board().get(target - 1);
+                            if (board.get_board().get(ziel.get_destination() - 1).get_isOccupied()) {
+                                normal_position_update(board, target, player);
+                            } else {
+                                special_position_update(board, target, player);
                             }
 
-                        }
-                        else if(Squares[target-1].get_isLast()){
-                            System.out.println(i.get_name() + " rolls " + z);
-                            normal_position_update(Squares,target,i);
-                            System.out.println(i.get_name() + " has won!");
+                        } else if (board.get_board().get(target - 1).get_isLast()) {
+                            System.out.println(player.get_name() + " rolls " + z);
+                            normal_position_update(board, target, player);
+                            System.out.println(player.get_name() + " has won!");
                             System.exit(0);
                         }
-                    }
-                    else{
-                        System.out.println(i.get_name() + " rolls " + z);
-                        normal_position_update(Squares,target,i);
+                    } else {
+                        System.out.println(player.get_name() + " rolls " + z);
+                        normal_position_update(board, target, player);
 
                     }
+                } else {
+                    System.out.println(player.get_name() + " rolls " + z);
+                    normal_position_update(board, target, player);
                 }
-                else {
-                    System.out.println(i.get_name() + " rolls " + z);
-                    normal_position_update(Squares,target,i);
-                }
-                //Game Update
-                //System.out.println(Arrays.toString(Squares));
-
             }
         }
     }
-
-    // SNAKES AND LADDERS
-    private static Square[] InitializeSquares(int board_size) {
-        Square[] Squares= new Square[board_size];
-        for(int i = 1; i <= board_size ; i++)
-        {
-            Squares[i-1] = new Square(i);
-        }
-        return Squares;
-    }
-
-    // EXCHANGE STATEMENTS
-    private static void exchangeSnake(Square square,int destination,  Square [] Squares) {
-        Snake new_snake = new Snake(square.get_position(), destination);
-        Squares[square.get_position() - 1] = new_snake;
-    }
-
-    private static void exchangeLadder(Square square,int destination,  Square [] Squares) {
-        Ladder new_ladder = new Ladder(square.get_position(), destination);
-        Squares[square.get_position() - 1] = new_ladder;
-    }
-
-    private static void normal_position_update(Square [] Squares,int target, Player i){
-        Square ziel = Squares[target -1];
-        Squares[i.get_onSquare()-1].remove_player(i);
+    private static void normal_position_update(Board board, int target, Player i){
+        Square ziel = board.get_board().get(target - 1);
+        board.get_board().get(i.get_onSquare() - 1).remove_player(i);
         i.set_position(ziel.get_position());
-        Squares[ziel.get_position()-1].add_player(i);
-        System.out.println(Arrays.toString(Squares));
-    }
-    private static void special_position_update(Square [] Squares, int target, Player i){
-        Square ziel = Squares[target -1];
-        Squares[i.get_onSquare()-1].remove_player(i);
-        i.set_position(ziel.get_destination());
-        Squares[ziel.get_destination()-1].add_player(i);
-        System.out.println(Arrays.toString(Squares));
+        board.get_board().get(ziel.get_position() - 1).add_player(i);
+        board.print();
+
 
     }
+    private static void special_position_update(Board board, int target, Player i){
+        Square ziel = board.get_board().get(target - 1);
+        board.get_board().get(i.get_onSquare() - 1).remove_player(i);
+        i.set_position(ziel.get_destination());
+        board.get_board().get(ziel.get_destination() - 1).add_player(i);
+        board.print();
+
+    }
+
+
+
 
 }
-
