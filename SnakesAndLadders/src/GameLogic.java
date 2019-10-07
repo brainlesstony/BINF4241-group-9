@@ -103,8 +103,7 @@ public class GameLogic {
                 int z = die.rollDie();
                 int target = i.get_onSquare() + z;
                 if(target-1 >= board_size){
-
-                    // todo Special Case When going over the end. I try lg Tony
+                    //If player goes over board_size he remains at current square
                 } else if(!Squares[target - 1].get_isOccupied()){
                     if(!Squares[target - 1].get_type().equals("Square")){
                         if(Squares[target - 1].get_type().equals("Snake")){
@@ -163,12 +162,14 @@ public class GameLogic {
 
                         }
                         else if(Squares[target-1].get_isLast()){
+                            System.out.println(i.get_name() + " rolls " + z);
                             normal_position_update(Squares,target,i);
                             System.out.println(i.get_name() + " has won!");
                             System.exit(0);
                         }
                     }
                     else{
+                        System.out.println(i.get_name() + " rolls " + z);
                         normal_position_update(Squares,target,i); // todo: add the amount of "moves" to the output. so the z = die int.
 
                     }
@@ -201,12 +202,6 @@ public class GameLogic {
         Squares[square.get_position() - 1] = new_ladder;
     }
 
-    /**
-     *
-     * @param Squares
-     * @param target
-     * @param i
-     */
     private static void normal_position_update(Square [] Squares,int target, Player i){
         Square ziel = Squares[target -1];
         Squares[i.get_onSquare()-1].remove_player(i);
