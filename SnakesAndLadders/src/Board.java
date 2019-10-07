@@ -92,6 +92,9 @@ public class Board {
         System.out.println(board);
     }
     public boolean game_over(){
-        return get_board().get(get_board_size()-1).get_isOccupied();
+        return get_board().get(get_board_size()-1).get_isLast();
+    }
+    public String check_square(int x){
+        return get_board().get(x).get_type();
     }
 }

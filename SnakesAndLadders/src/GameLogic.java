@@ -25,13 +25,12 @@ public class GameLogic {
                 int target = player.get_onSquare() + z;
                 if (target - 1 >= board.get_board_size()) {
                     //If player goes over board_size he remains at current square
-                } else if (!board.get_board().get(target - 1).get_isOccupied()) {
-                    if (!board.get_board().get(target - 1).get_type().equals("Square")) {
-                        if (board.get_board().get(target - 1).get_type().equals("Snake <-")) {
-                            Square ziel = board.get_board().get(target - 1);
-                            if (board.get_board().get(ziel.get_destination() - 1).get_isOccupied()) {
+                }
+                else if (!board.get_board().get(target - 1).get_isOccupied()) {
+                    if (!board.check_square(target - 1).equals("Square")) {
+                        if (board.check_square(target - 1).equals("Snake <-")) {
+                            if (board.get_board().get(target - 1).get_isOccupied()){
                                 board.get_board().get(player.get_onSquare() - 1).remove_player(player);
-
                                 player.set_position(1);
                                 board.get_board().get(0).add_player(player);
                                 board.print();
@@ -65,24 +64,18 @@ public class GameLogic {
         }
     }
     private static void normal_position_update(Board board, int target, Player i){
-        Square ziel = board.get_board().get(target - 1);
+        Square ziel = board.get_board().get(target - 1); 
         board.get_board().get(i.get_onSquare() - 1).remove_player(i);
         i.set_position(ziel.get_position());
         board.get_board().get(ziel.get_position() - 1).add_player(i);
         board.print();
-
 
     }
     private static void special_position_update(Board board, int target, Player i){
         Square ziel = board.get_board().get(target - 1);
         board.get_board().get(i.get_onSquare() - 1).remove_player(i);
         i.set_position(ziel.get_destination());
-        board.get_board().get(ziel.get_destination() - 1).add_player(i);
+        board.get_board().get(ziel.get_destination()).add_player(i);
         board.print();
-
     }
-
-
-
-
 }
