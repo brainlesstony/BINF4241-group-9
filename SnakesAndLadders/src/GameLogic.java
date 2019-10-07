@@ -173,6 +173,10 @@ public class GameLogic {
 
                     }
                 }
+                else {
+                    System.out.println(i.get_name() + " rolls " + z);
+                    normal_position_update(Squares,target,i);
+                }
                 //Game Update
                 //System.out.println(Arrays.toString(Squares));
 
