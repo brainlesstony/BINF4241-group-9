@@ -19,21 +19,22 @@ public class GameLogic {
         // PLAY, ROLLING, MOVING
         Die die = new Die();
         String winner = null;
+        System.out.print("Initial State: ");
         while (!board.game_over()) { // While last square is not occupied, the game will go on
             for (Player player : playerList.get_player_list()) {
+                int z = die.rollDie();
                 if (board.game_over()){
-                    System.out.println(board.get_board() + "\n" + winner + " wins");
+                    System.out.print(board.get_board() + "\n" + "Final State: " + board.get_board() + "\n" + winner + " wins!");
                     System.exit(0);
                 }
                 winner = player.get_name();
-                int z = die.rollDie();
                 board.print(player, z);
                 int target = player.get_pos() + z;
                 if (target < board.get_board_size()) {
                     if (!board.get_board().get(target).get_isOccupied()) {
                         if (board.get_board().get(target) instanceof Snake) {
                             if (board.get_butthole(target).get_isOccupied()) { // if true then butt**** of snake is occupied then player needs to go back to start
-                                board.back_to_start(player);
+                                board.back_to_start(player); // can be use for variation
                             } else {
                                 board.move(player, board.get_board().get(target).get_destination());
                             }
@@ -52,5 +53,7 @@ public class GameLogic {
                 }
             }
         }
+        System.out.print(board.get_board() + "\n" + "Final State: " + board.get_board() + "\n" + winner + " wins!");
+        System.exit(0);
     }
 }

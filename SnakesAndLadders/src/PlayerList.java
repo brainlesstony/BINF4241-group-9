@@ -5,12 +5,10 @@ import java.util.Scanner;
 public class PlayerList {
     private List<Player> playerList;
     private int player_count;
-    private int active_counter;
 
     public PlayerList(){
         this.playerList = new ArrayList<Player>();
         this.player_count = 0;
-        this.active_counter = -1;
     }
     public int get_player_count(){
         return player_count;
@@ -38,19 +36,6 @@ public class PlayerList {
     }
     public List<Player> get_player_list(){
         return playerList;
-    }
-    public int get_active_counter(){
-        return active_counter;
-    }
-    public Player active_player(){
-        int x = get_active_counter();
-        if (x == get_player_count()){
-            x = 0;
-        }
-        else {
-            x += 1;
-        }
-        return get_player_list().get(x);
     }
 
 }

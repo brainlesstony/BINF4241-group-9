@@ -90,7 +90,7 @@ public class Board {
     }
     public void print(Player player, int die){
         System.out.println(board);
-        System.out.println(player.get_name() + " rolls: " + die);
+        System.out.print(player.get_name() + " rolls " + die + ": ");
     }
     public boolean game_over(){
         return get_board().get(get_board_size()-1).get_isOccupied();

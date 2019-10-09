@@ -19,9 +19,9 @@ public class Square {
         this.isFirst = false;
         this.isLast = false;
         this.destination = get_position() + 1;
-        //this.isOccupied = false;
-        //this.player_name = null;
-        this.type = "Square";
+        this.isOccupied = false;
+        this.player_name = null;
+        this.type = "";
     }
 
     //getters
@@ -74,13 +74,13 @@ public class Square {
     public void set_type(String new_type) {this.type = new_type;}
 
     protected String get_names() {
-        String players_string = "";
+        StringBuilder players_string = new StringBuilder();
         if (this.get_isOccupied()) {
             for (Player i : player_list) {
-                players_string += i.get_name() + ", ";
+                players_string.append(" <").append(i.get_name()).append("> ");
             }
         }
-        return players_string;
+        return players_string.toString();
     }
     public void add_player(Player player){
         player_list.add(player);
@@ -92,7 +92,7 @@ public class Square {
 
     @Override
     public String toString(){
-        return "[Position: " + Integer.toString(position) + ", Type: " + type + ", Player: " + get_names() + "]";
+        return "[" + Integer.toString(position) + "]" +  this.get_type() + get_names();
     }
 }
 
