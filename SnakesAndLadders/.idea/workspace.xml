@@ -1,22 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="652d3f3a-b54f-44a6-806f-d36f9699a6bd" name="Default Changelist" comment="" />
+    <list default="true" id="fea0d772-5266-4ec5-a772-1481211bdbb6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/FirstSquare.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/FirstSquare.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/GameLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Ladder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Ladder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/LastSquare.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/LastSquare.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/PlayerList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/PlayerList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Snake.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Snake.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Square.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FirstSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FirstSquare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ladder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ladder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LastSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LastSquare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlayerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Square.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
-  <component name="ProjectId" id="1RnAAnNSlBluC9CqoucNrudar73" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1RbUjjnRIYt3d1EHha5rAmyfi7D" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -30,18 +61,50 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Application.GameLogic">
+    <configuration name="GameLogic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GameLogic" />
+      <module name="SnakesAndLaddersä" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HelloWorld" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Desktop" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test34" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test34" />
+      <module name="SnakesAndLaddersä" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GameLogic" />
+        <item itemvalue="Application.HelloWorld" />
+        <item itemvalue="Application.Test34" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="652d3f3a-b54f-44a6-806f-d36f9699a6bd" name="Default Changelist" comment="" />
-      <created>1570292344610</created>
+      <changelist id="fea0d772-5266-4ec5-a772-1481211bdbb6" name="Default Changelist" comment="" />
+      <created>1569935425616</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1570292344610</updated>
-      <workItem from="1570292347879" duration="6600000" />
-      <workItem from="1570478279494" duration="1331000" />
+      <updated>1569935425616</updated>
+      <workItem from="1569935429691" duration="3904000" />
+      <workItem from="1570035692564" duration="4517000" />
+      <workItem from="1570099805874" duration="1498000" />
+      <workItem from="1570349964770" duration="831000" />
     </task>
     <servers />
   </component>
