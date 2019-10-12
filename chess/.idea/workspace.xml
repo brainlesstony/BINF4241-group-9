@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="652d3f3a-b54f-44a6-806f-d36f9699a6bd" name="Default Changelist" comment="" />
+    <list default="true" id="4e0b6a8e-7a39-4225-9613-cd502876bbcc" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
-  <component name="ProjectId" id="1RnAAnNSlBluC9CqoucNrudar73" />
+  <component name="ProjectId" id="1S674FFLMNWqcVUu4l9T12nbySc" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -35,30 +40,16 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="652d3f3a-b54f-44a6-806f-d36f9699a6bd" name="Default Changelist" comment="" />
-      <created>1570292344610</created>
+      <changelist id="4e0b6a8e-7a39-4225-9613-cd502876bbcc" name="Default Changelist" comment="" />
+      <created>1570871998442</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1570292344610</updated>
-      <workItem from="1570292347879" duration="6600000" />
-      <workItem from="1570478279494" duration="1331000" />
+      <updated>1570871998442</updated>
+      <workItem from="1570872004838" duration="4573000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
