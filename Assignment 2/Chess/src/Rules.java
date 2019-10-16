@@ -21,6 +21,7 @@ public class Rules {
     }
     public void is_blocked(){
         //TODO 6 Road blocked
+        test
     }
     public void is_at_start(){
         //TODO 7 Peasant is at start
