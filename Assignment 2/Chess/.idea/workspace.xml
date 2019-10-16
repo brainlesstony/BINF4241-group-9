@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0db614c2-2184-4edf-85dc-de4a1a3f79d1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Board$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Board$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Color.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Color.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Column.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/GameLogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Row.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Rules.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Rules.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Square.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Type.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Square.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +23,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1S6TZFlIUoKQVKPb0q84u11UAuH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -47,6 +37,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -85,6 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1570885491530</updated>
       <workItem from="1571209694605" duration="10591000" />
+      <workItem from="1571231292614" duration="499000" />
     </task>
     <servers />
   </component>
@@ -103,5 +95,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
   </component>
 </project>

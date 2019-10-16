@@ -40,6 +40,14 @@ public class Board {
             list_copy.get(6).add(new Square(ColorSquare.W, new Piece(Color.W, Type.P)));
             list_copy.get(6).add(new Square(ColorSquare.B, new Piece(Color.W, Type.P)));
         }
+        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.T)));
+        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.N)));
+        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.B)));
+        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.K)));
+        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.Q)));
+        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.B)));
+        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.N)));
+        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.T)));
         return list_copy;
     }
 
