@@ -4,10 +4,11 @@ public class Rules {
         // TODO
     }
 
-    public void is_en_passant (){
+    public void is_en_passant(){
         //TODO 1 If pawn moved two then he can be eaten as if he only moved one
     }
-    public void is_promotion (){
+    public void is_promotion(){
+
         //TODO 2 If pawn reaches the end of the other side he gets to choose a new piece
     }
     public void is_castle(){
@@ -21,7 +22,6 @@ public class Rules {
     }
     public void is_blocked(){
         //TODO 6 Road blocked
-        test
     }
     public void is_at_start(){
         //TODO 7 Peasant is at start
