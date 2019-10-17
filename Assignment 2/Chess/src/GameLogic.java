@@ -13,7 +13,8 @@ public class GameLogic {
         Player player1 = new Player(get_user_input());
         Player player2 = new Player(get_user_input());
         board.print();
-
+        //TODO When player gets to promotion field(start field of the enemy) \n
+        // He gets to change his piece pawn into a new piece
         /*
         while (!board.checkmate()) {
             board.print(); // prints the board and also the eaten figures

@@ -14,6 +14,7 @@ public class Player {
 
     }
 
+    // TODO distinguish players in two different teams either via different color or team 1/2
     public String get_name(){
         return name;
     }
