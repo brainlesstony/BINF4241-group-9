@@ -10,6 +10,7 @@ public class Rules {
     public void is_en_passant(Piece piece){  //TODO list of previous moves?
         //TODO 1 If pawn moved two then he can be eaten as if he only moved one
     }
+    /*
     public boolean is_promotion(Piece pawn){
         return pawn.has_reached_end();
     }
@@ -25,4 +26,6 @@ public class Rules {
     public boolean is_at_start(Piece piece){
         return piece.current_location() == piece.start_location;
     }
+
+     */
 }

@@ -1,18 +1,16 @@
+import java.util.List;
 import java.util.Scanner;
 public class GameLogic {
-
-    private static String get_user_input(){    // This GameLogic Method will be used a lot because a move is done by a user input
-        Scanner input = new Scanner(System.in);
-        return input.nextLine();
-    }
 
     public static void main(String[] args){
         //BOARD & PLAYER
         Board board = new Board(); // creates a board with the figures
-        System.out.println("Player name: ");
-        Player player1 = new Player(get_user_input());
-        Player player2 = new Player(get_user_input());
+        System.out.println("Player 1 will play as white and Player 2 plays as black");
+        System.out.println("Player names: ");
+        Player player1 = new Player(name_from_player());
+        Player player2 = new Player(name_from_player());
         board.print();
+        List [] graveyard = new List[32];
         //TODO When player gets to promotion field(start field of the enemy) \n
         // He gets to change his piece pawn into a new piece
         /*
@@ -26,6 +24,22 @@ public class GameLogic {
 
         }
          */
+    }
+
+    public void is_eaten(List graveyard,Piece piece){
+        graveyard.add(piece);
+    }
+    private static String name_from_player() {
+        String line;
+        Scanner input = new Scanner(System.in);
+        line = input.nextLine();
+        if (line.equals("") || line == null) {
+            System.exit(0);
+            return null;
+        }
+        else {
+            return line;
+        }
     }
 }
 
