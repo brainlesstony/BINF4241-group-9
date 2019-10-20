@@ -2,10 +2,12 @@ enum ColorSquare {W,B}
 public class Square {
     private ColorSquare aColor;
     private Piece aPiece;
+    private String aPosition;
 
-    public Square (ColorSquare nColor, Piece nPiece){
+    public Square (ColorSquare nColor, Piece nPiece, String nPosition){
         aColor = nColor;
         aPiece = nPiece;
+        aPosition = nPosition;
     }
 
     @Override
@@ -22,6 +24,7 @@ public class Square {
         return aPiece;
     }
     public ColorSquare get_Color(){return aColor;}
+    public String get_Position(){ return aPosition;}
 
     /*protected String type;
     private String position;
