@@ -21,6 +21,7 @@ public class Square {
     public Piece get_Piece(){
         return aPiece;
     }
+    public ColorSquare get_Color(){return aColor;}
 
     /*protected String type;
     private String position;

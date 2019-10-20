@@ -59,21 +59,65 @@ public class Board {
         // TODO: should also print the eaten Figures
     }
 
-    public void move(String piece, String target){
+    public Piece move_check(String position, String target){
         // TODO: move method, all checks done here (is move possible, checkmate etc.)
-        Type type = get_Piece_from_position(piece).getType();
+        Type type = get_Piece_from_position(position).getType();
+        ArrayList<String> possible_moves = new ArrayList<>();
+        String abc = "ABCDEFGH";
+        String numbers = "87654321";
         switch (type){
             case K://King
                 break;
             case Q://Queen
                 break;
             case P://Pawn
+                if (position.substring(1).equals("2")){
+                    possible_moves.add(position.substring(0,1) + numbers.substring(numbers.indexOf(position.substring(1))+2));
+                }
+                else if (position.substring(1).equals("7")) {
+                    possible_moves.add(position.substring(0,1) + numbers.substring(numbers.indexOf(position.substring(1))-2));
+                }
+                else {
+                    // falls der pawn einen fressen kann
+                    ArrayList<String> possible_destinations = new ArrayList<>();
+                    possible_destinations.add(abc.substring(abc.indexOf(position.substring(0,1))+1)+numbers.substring(numbers.indexOf(position.substring(1))+1));
+                    possible_destinations.add(abc.substring(abc.indexOf(position.substring(0,1))+1)+numbers.substring(numbers.indexOf(position.substring(1))-1));
+                    possible_destinations.add(abc.substring(abc.indexOf(position.substring(0,1))-1)+numbers.substring(numbers.indexOf(position.substring(1))+1));
+                    possible_destinations.add(abc.substring(abc.indexOf(position.substring(0,1))-1)+numbers.substring(numbers.indexOf(position.substring(1))-1));
+
+                    if(get_Piece_from_position(position).getColor()==Color.B){
+                        possible_moves.add(position.substring(0,1)+numbers.substring(numbers.indexOf(position.substring(1))-1));
+                    }
+                    else if (get_Piece_from_position(position).getColor()==Color.W){
+                        possible_moves.add(position.substring(0,1)+numbers.substring(numbers.indexOf(position.substring(1))+1));
+                    }
+                    for (String ziel: possible_destinations) {
+                        if(get_Piece_from_position(ziel)!=null){
+                            if(get_Piece_from_position(ziel).getColor()!=get_Piece_from_position(position).getColor()){
+                                possible_moves.add(ziel);
+                            }
+                        }
+                    }
+
+                    if (possible_moves.contains(target)){
+                        return move(position, target);
+                    }
+                }
                 break;
             case T://Tower
                 break;
             case N://Knight
                 break;
         }
+        return null;
+    }
+
+    public Piece move(String position, String target){
+        Piece move_piece = get_Piece_from_position(position);
+        Piece target_piece = get_Piece_from_position(target);
+        this.board.get(Integer.parseInt(target.substring(1))-1).set("ABCDEFGH".indexOf(target.substring(0,1)), new Square(get_Square_from_position(target).get_Color(), move_piece));
+        this.board.get(Integer.parseInt(target.substring(1))-1).set("ABCDEFGH".indexOf(position.substring(0,1)), new Square(get_Square_from_position(position).get_Color(), null));
+        return target_piece;
     }
 
     public Piece get_Piece_from_position(String position){
@@ -83,17 +127,22 @@ public class Board {
         String abc = "ABCDEFGH";
         String numbers = "87654321";
 
-        System.out.println(row);
-        System.out.println(column);
-
         if (this.board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece() != null){
             return this.board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece();
         }
         else{
             return null;
         }
-        // then implement logic for retrieval of piece at this location or null if there is no piece
-        // TODO: returns the piece for this position, can be done because attributes of a piece are immutable
+    }
+
+    public Square get_Square_from_position(String position){
+        String row = position.substring(1);
+        String column = position.substring(0,1);
+        String abc = "ABCDEFGH";
+        String numbers = "87654321";
+
+        return this.board.get(numbers.indexOf(row)).get(abc.indexOf(column));
+
     }
 
     public boolean checkmate(){
