@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Board {
     private ArrayList<ArrayList<Square>> board;
+    private ArrayList<Piece> graveyard;
     public Board(){ // initialize the board with the pieces not in the GameLogic. Tony 15.10
         // TODO: init board with all pieces.
         this.board= init_board();
@@ -71,7 +72,7 @@ public class Board {
         for (ArrayList list : this.board){
             System.out.println(list);
         }
-        // TODO: should also print the eaten Figures
+        System.out.println("Eaten Figures: " + this.graveyard);
     }
 
     public boolean move_check(String position, String target){
@@ -479,9 +480,12 @@ public class Board {
     public Piece move(String position, String target){
         Piece move_piece = get_Piece_from_position(position);
         Piece target_piece = get_Piece_from_position(target);
-
+        if (target_piece != null){
+            this.graveyard.add(target_piece);
+        }
         this.board.get("87654321".indexOf(target.substring(1))).set("ABCDEFGH".indexOf(target.substring(0,1)), new Square(get_Square_from_position(target).get_Color(), move_piece, target));
         this.board.get("87654321".indexOf(position.substring(1))).set("ABCDEFGH".indexOf(position.substring(0,1)), new Square(get_Square_from_position(position).get_Color(), null, position));
+        
         return target_piece;
     }
 

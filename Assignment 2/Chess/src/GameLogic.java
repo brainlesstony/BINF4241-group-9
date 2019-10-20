@@ -15,7 +15,6 @@ public class GameLogic {
         Player player1 = new Player(name_from_player(), Color.W);
         Player player2 = new Player(name_from_player(), Color.B);
         board.print();
-        ArrayList [] graveyard = new ArrayList[32];
         board.print();
 
         while(true){
@@ -56,10 +55,6 @@ public class GameLogic {
         Scanner input = new Scanner(System.in);
         return input.nextLine();
     }
-
-    public void is_eaten(ArrayList graveyard,Piece piece){
-        graveyard.add(piece);
-    }
     private static String name_from_player() {
         String line;
         Scanner input = new Scanner(System.in);
@@ -76,6 +71,8 @@ public class GameLogic {
         String tmp;
         tmp = graveyard.toString();
     }
+
+
     public ArrayList<Piece> get_graveyard(ArrayList<Piece> graveyard){
         ArrayList<Piece> graveyard_out = new ArrayList<>();
         graveyard_out.addAll(graveyard);
