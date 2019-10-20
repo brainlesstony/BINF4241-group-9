@@ -15,6 +15,12 @@ public class Rules {
     }
 
     public boolean is_promotion(Piece pawn) {
+        //TODO:
+    }
+
+
+    /*
+    public boolean is_promotion(Piece pawn){
         return pawn.has_reached_end();
     }
 
@@ -33,4 +39,8 @@ public class Rules {
     public boolean is_at_start(Piece piece) {
         return piece.current_location() == piece.start_location;
     }
+}
+
+     */
+
 }
