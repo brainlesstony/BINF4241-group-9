@@ -11,6 +11,8 @@ public class GameLogic {
         Player player2 = new Player(name_from_player());
         board.print();
         List [] graveyard = new List[32];
+        board.move("B2", "B3");
+        board.print();
         //TODO When player gets to promotion field(start field of the enemy) \n
         // He gets to change his piece pawn into a new piece
         /*

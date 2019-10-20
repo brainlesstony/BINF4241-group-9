@@ -13,7 +13,7 @@ public class Square {
     @Override
     public String toString(){
         if (aPiece == null){
-            return "[ ]";
+            return "[   ]";
         }
         else{
             return aPiece.toString();
