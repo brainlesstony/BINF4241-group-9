@@ -17,7 +17,6 @@ public class Move {
             !rows.contains(end.substring(1))){
             return false;
         }
-        System.out.println(translation_list_index(3,2));
         if (!check_empty(end, board)){ // falls auf zielfeld eine Figur mit gleicher Farbe steht
             if(get_color_of_piece(end, board)==get_color_of_piece(start, board)){
                 return false;
@@ -82,25 +81,23 @@ public class Move {
                 switch (color) {
                     case B:
                         if (delta_column != 0) {
-                            if (delta_rows == -1) {
-                                if (board.get(rows.indexOf(end.substring(1)) + 1).get(columns.indexOf(end.substring(0, 1)) - 1).get_Piece().getType() != null) {
-                                    return true;
-                                }
-                                if (board.get(rows.indexOf(end.substring(1)) + 1).get(columns.indexOf(end.substring(0, 1)) + 1).get_Piece().getType() != null) {
-                                    return true;
-                                }
+                            if (board.get(rows.indexOf(end.substring(1)) + 1).get(columns.indexOf(end.substring(0, 1)) - 1).get_Piece().getType() != null) {
+                                return true;
+                            }
+                            if (board.get(rows.indexOf(end.substring(1)) + 1).get(columns.indexOf(end.substring(0, 1)) + 1).get_Piece().getType() != null) {
+                                return true;
                             }
                         } else {
-                            return delta_rows == -1 || delta_rows == -2;
+                            return delta_rows == 1 || delta_rows == 2;
                         }
                         break;
                     case W:
                         if (delta_column != 0) {
                             if (delta_rows == 1) {
-                                if (board.get(rows.indexOf(end.substring(1)) - 1).get(columns.indexOf(end.substring(0, 1)) - 1).get_Piece().getType() != null) {
+                                if (board.get(rows.indexOf(end.substring(1)) - 1).get(columns.indexOf(end.substring(0, 1)) - 1).get_Piece().getColor() != piece.getColor()) {
                                     return true;
                                 }
-                                if (board.get(rows.indexOf(end.substring(1)) - 1).get(columns.indexOf(end.substring(0, 1)) + 1).get_Piece().getType() != null) {
+                                if (board.get(rows.indexOf(end.substring(1)) - 1).get(columns.indexOf(end.substring(0, 1)) + 1).get_Piece().getColor() != piece.getColor()) {
                                     return true;
                                 }
                             }

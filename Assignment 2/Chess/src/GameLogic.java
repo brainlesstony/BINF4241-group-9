@@ -18,8 +18,6 @@ public class GameLogic {
         ArrayList [] graveyard = new ArrayList[32];
         board.print();
 
-        System.out.println(mover.move_check("A2", "A3", board.getBoard()));
-
         while(true){
             //player 1
             System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
