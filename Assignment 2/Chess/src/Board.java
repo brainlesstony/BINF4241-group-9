@@ -80,45 +80,47 @@ public class Board {
         ArrayList<String> possible_moves = new ArrayList<>();
         String abc = "ABCDEFGH";
         String numbers = "87654321";
+        String row_position = position.substring(1);
+        String column_position = position.substring(0, 1);
         switch (type){
             case K://King
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+1)+numbers.substring(numbers.indexOf(position.substring(1))+1));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)+1, abc.indexOf(column_position)+2) + numbers.substring(numbers.indexOf(row_position)+1, numbers.indexOf(row_position)+1));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+1)+numbers.substring(numbers.indexOf(position.substring(1))));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)+1,abc.indexOf(column_position)+2)+numbers.substring(numbers.indexOf(row_position), numbers.indexOf(row_position)+1));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+1)+numbers.substring(numbers.indexOf(position.substring(1))-1));
+                possible_moves.add(abc.substring(abc.indexOf(column_position)+1, abc.indexOf(column_position)+2)+numbers.substring(numbers.indexOf(row_position)-1));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1)))+numbers.substring(numbers.indexOf(position.substring(1))+1));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position))+numbers.substring(numbers.indexOf(row_position)+1));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1)))+numbers.substring(numbers.indexOf(position.substring(1))-1));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position))+numbers.substring(numbers.indexOf(row_position)-1));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-1)+numbers.substring(numbers.indexOf(position.substring(1))+1));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)-1)+numbers.substring(numbers.indexOf(row_position)+1));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-1)+numbers.substring(numbers.indexOf(position.substring(1))));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)-1)+numbers.substring(numbers.indexOf(row_position)));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-1)+numbers.substring(numbers.indexOf(position.substring(1))-1));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)-1)+numbers.substring(numbers.indexOf(row_position)-1));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
@@ -127,8 +129,8 @@ public class Board {
                 int i = 1;
                 while(true){//nach rechts
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1))+i)+position.substring(1)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+i)+numbers.substring(numbers.indexOf(position.substring(1))));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position)+i)+row_position).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position)+i)+numbers.substring(numbers.indexOf(row_position)));
                             i++;
                         }
                         else{
@@ -142,8 +144,8 @@ public class Board {
                 i=1;
                 while(true){//nach links
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1))-i)+position.substring(1)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-i)+numbers.substring(numbers.indexOf(position.substring(1))));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position)-i)+row_position).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position)-i)+numbers.substring(numbers.indexOf(row_position)));
                             i++;
                         }
                         else{
@@ -157,8 +159,8 @@ public class Board {
                 i=1;
                 while(true){//nach unten
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1)))+numbers.substring(numbers.indexOf(position.substring(1))+i)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1)))+numbers.substring(numbers.indexOf(position.substring(1))+i));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position))+numbers.substring(numbers.indexOf(row_position)+i)).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position))+numbers.substring(numbers.indexOf(row_position)+i));
                             i++;
                         }
                         else{
@@ -172,8 +174,8 @@ public class Board {
                 i=1;
                 while(true){//nach oben
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1)))+numbers.substring(numbers.indexOf(position.substring(1))-i)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1)))+numbers.substring(numbers.indexOf(position.substring(1))-i));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position))+numbers.substring(numbers.indexOf(row_position)-i)).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position))+numbers.substring(numbers.indexOf(row_position)-i));
                             i++;
                         }
                         else{
@@ -187,8 +189,8 @@ public class Board {
                 i=1;
                 while(true){//diagonal
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1))-i)+numbers.substring(numbers.indexOf(position.substring(1))-i)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-i)+numbers.substring(numbers.indexOf(position.substring(1))-i));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position)-i)+numbers.substring(numbers.indexOf(row_position)-i)).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position)-i)+numbers.substring(numbers.indexOf(row_position)-i));
                             i++;
                         }
                         else{
@@ -202,8 +204,8 @@ public class Board {
                 i=1;
                 while(true){//diagonal
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1))+i)+numbers.substring(numbers.indexOf(position.substring(1))-i)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+i)+numbers.substring(numbers.indexOf(position.substring(1))-i));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position)+i)+numbers.substring(numbers.indexOf(row_position)-i)).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position)+i)+numbers.substring(numbers.indexOf(row_position)-i));
                             i++;
                         }
                         else{
@@ -217,8 +219,8 @@ public class Board {
                 i=1;
                 while(true){//diagonal
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1))-i)+numbers.substring(numbers.indexOf(position.substring(1))+i)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-i)+numbers.substring(numbers.indexOf(position.substring(1))+i));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position)-i)+numbers.substring(numbers.indexOf(row_position)+i)).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position)-i)+numbers.substring(numbers.indexOf(row_position)+i));
                             i++;
                         }
                         else{
@@ -232,8 +234,8 @@ public class Board {
                 i=1;
                 while(true){//diagonal
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1))+i)+numbers.substring(numbers.indexOf(position.substring(1))+i)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+i)+numbers.substring(numbers.indexOf(position.substring(1))+i));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position)+i)+numbers.substring(numbers.indexOf(row_position)+i)).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position)+i)+numbers.substring(numbers.indexOf(row_position)+i));
                             i++;
                         }
                         else{
@@ -246,50 +248,37 @@ public class Board {
                 }
                 break;
             case P://Pawn
-                if (position.substring(1).equals("2")){
-                    possible_moves.add(position.substring(0,1) + numbers.substring(numbers.indexOf(position.substring(1))+2));
+                if (row_position.equals("2")){
+                    possible_moves.add(column_position + numbers.substring(numbers.indexOf(row_position)-2,numbers.indexOf(row_position)-1));
+
                 }
-                else if (position.substring(1).equals("7")) {
-                    possible_moves.add(position.substring(0,1) + numbers.substring(numbers.indexOf(position.substring(1))-2));
+                else if (row_position.equals("7")) {
+                    possible_moves.add(column_position + numbers.substring(numbers.indexOf(row_position)+2, numbers.indexOf(row_position)+1));
                 }
                 else {
                     // falls der pawn einen fressen kann
                     ArrayList<String> possible_destinations = new ArrayList<>();
                     try {
-                        possible_destinations.add(abc.substring(abc.indexOf(position.substring(0,1))+1)+numbers.substring(numbers.indexOf(position.substring(1))+1));
+                        possible_destinations.add(abc.substring(abc.indexOf(column_position)+1)+numbers.substring(numbers.indexOf(row_position)+1));
                     }
                     catch (Exception ArrayIndexOutOfBounds){
                     }
                     try {
-                        possible_destinations.add(abc.substring(abc.indexOf(position.substring(0,1))+1)+numbers.substring(numbers.indexOf(position.substring(1))-1));
+                        possible_destinations.add(abc.substring(abc.indexOf(column_position)+1)+numbers.substring(numbers.indexOf(row_position)-1));
                     }
                     catch(Exception ArrayIndexOutOfBounds){
                     }
                     try{
-                        possible_destinations.add(abc.substring(abc.indexOf(position.substring(0,1))-1)+numbers.substring(numbers.indexOf(position.substring(1))+1));
+                        possible_destinations.add(abc.substring(abc.indexOf(column_position)-1)+numbers.substring(numbers.indexOf(row_position)+1));
                     }
                     catch(Exception ArrayIndexOutOfBounds){
                     }
                     try{
-                        possible_destinations.add(abc.substring(abc.indexOf(position.substring(0,1))-1)+numbers.substring(numbers.indexOf(position.substring(1))-1));
+                        possible_destinations.add(abc.substring(abc.indexOf(column_position)-1)+numbers.substring(numbers.indexOf(row_position)-1));
                     }
                     catch(Exception ArrayIndexOutOfBounds){
                     }
 
-                    if(get_Piece_from_position(position).getColor()==Color.B){
-                        try{
-                            possible_moves.add(position.substring(0,1)+numbers.substring(numbers.indexOf(position.substring(1))-1));
-                        }
-                        catch (Exception ArrayIndexOutOfBounds){
-                        }
-                    }
-                    else if (get_Piece_from_position(position).getColor()==Color.W){
-                        try{
-                            possible_moves.add(position.substring(0,1)+numbers.substring(numbers.indexOf(position.substring(1))+1));
-                        }
-                        catch (Exception ArrayIndexOutOfBounds){
-                        }
-                    }
                     for (String ziel: possible_destinations) {
                         if(get_Piece_from_position(ziel)!=null){
                             if(get_Piece_from_position(ziel).getColor()!=get_Piece_from_position(position).getColor()){
@@ -298,13 +287,27 @@ public class Board {
                         }
                     }
                 }
+                if(get_Piece_from_position(position).getColor()==Color.B){
+                    try{
+                        possible_moves.add(column_position+numbers.substring(numbers.indexOf(row_position)+1));
+                    }
+                    catch (Exception ArrayIndexOutOfBounds){
+                    }
+                }
+                else if (get_Piece_from_position(position).getColor()==Color.W){
+                    try{
+                        possible_moves.add(column_position+numbers.substring(numbers.indexOf(row_position)-1));
+                    }
+                    catch (Exception ArrayIndexOutOfBounds){
+                    }
+                }
                 break;
             case T://Tower
                 i = 1;
                 while(true){//nach rechts
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1))+i)+position.substring(1)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+i)+numbers.substring(numbers.indexOf(position.substring(1))));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position)+i)+row_position).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position)+i)+numbers.substring(numbers.indexOf(row_position)));
                             i++;
                         }
                         else{
@@ -318,8 +321,8 @@ public class Board {
                 i=1;
                 while(true){//nach links
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1))-i)+position.substring(1)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-i)+numbers.substring(numbers.indexOf(position.substring(1))));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position)-i)+row_position).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position)-i)+numbers.substring(numbers.indexOf(row_position)));
                             i++;
                         }
                         else{
@@ -333,8 +336,8 @@ public class Board {
                 i=1;
                 while(true){//nach unten
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1)))+numbers.substring(numbers.indexOf(position.substring(1))+i)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1)))+numbers.substring(numbers.indexOf(position.substring(1))+i));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position))+numbers.substring(numbers.indexOf(row_position)+i)).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position))+numbers.substring(numbers.indexOf(row_position)+i));
                             i++;
                         }
                         else{
@@ -348,8 +351,8 @@ public class Board {
                 i=1;
                 while(true){//nach oben
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1)))+numbers.substring(numbers.indexOf(position.substring(1))-i)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1)))+numbers.substring(numbers.indexOf(position.substring(1))-i));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position))+numbers.substring(numbers.indexOf(row_position)-i)).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position))+numbers.substring(numbers.indexOf(row_position)-i));
                             i++;
                         }
                         else{
@@ -363,42 +366,42 @@ public class Board {
                 break;
             case N://Knight
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+1)+numbers.substring(numbers.indexOf(position.substring(1))+2));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)+1)+numbers.substring(numbers.indexOf(row_position)+2));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-1)+numbers.substring(numbers.indexOf(position.substring(1))+2));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)-1)+numbers.substring(numbers.indexOf(row_position)+2));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-2)+numbers.substring(numbers.indexOf(position.substring(1))+1));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)-2)+numbers.substring(numbers.indexOf(row_position)+1));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-2)+numbers.substring(numbers.indexOf(position.substring(1))-1));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)-2)+numbers.substring(numbers.indexOf(row_position)-1));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-1)+numbers.substring(numbers.indexOf(position.substring(1))-2));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)-1)+numbers.substring(numbers.indexOf(row_position)-2));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+1)+numbers.substring(numbers.indexOf(position.substring(1))-2));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)+1)+numbers.substring(numbers.indexOf(row_position)-2));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+2)+numbers.substring(numbers.indexOf(position.substring(1))+1));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)+2)+numbers.substring(numbers.indexOf(row_position)+1));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
                 try {
-                    possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+2)+numbers.substring(numbers.indexOf(position.substring(1))-1));
+                    possible_moves.add(abc.substring(abc.indexOf(column_position)+2)+numbers.substring(numbers.indexOf(row_position)-1));
                 }
                 catch (Exception ArrayIndexOutOfBounds){
                 }
@@ -407,8 +410,8 @@ public class Board {
                 i = 1;
                 while(true){//diagonal
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1))-i)+numbers.substring(numbers.indexOf(position.substring(1))-i)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-i)+numbers.substring(numbers.indexOf(position.substring(1))-i));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position)-i)+numbers.substring(numbers.indexOf(row_position)-i)).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position)-i)+numbers.substring(numbers.indexOf(row_position)-i));
                             i++;
                         }
                         else{
@@ -422,8 +425,8 @@ public class Board {
                 i=1;
                 while(true){//diagonal
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1))+i)+numbers.substring(numbers.indexOf(position.substring(1))-i)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+i)+numbers.substring(numbers.indexOf(position.substring(1))-i));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position)+i)+numbers.substring(numbers.indexOf(row_position)-i)).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position)+i)+numbers.substring(numbers.indexOf(row_position)-i));
                             i++;
                         }
                         else{
@@ -437,8 +440,8 @@ public class Board {
                 i=1;
                 while(true){//diagonal
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1))-i)+numbers.substring(numbers.indexOf(position.substring(1))+i)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))-i)+numbers.substring(numbers.indexOf(position.substring(1))+i));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position)-i)+numbers.substring(numbers.indexOf(row_position)+i)).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position)-i)+numbers.substring(numbers.indexOf(row_position)+i));
                             i++;
                         }
                         else{
@@ -452,8 +455,8 @@ public class Board {
                 i=1;
                 while(true){//diagonal
                     try{
-                        if (get_Square_from_position(abc.substring(abc.indexOf(position.substring(0,1))+i)+numbers.substring(numbers.indexOf(position.substring(1))+i)).get_Piece()==null){
-                            possible_moves.add(abc.substring(abc.indexOf(position.substring(0,1))+i)+numbers.substring(numbers.indexOf(position.substring(1))+i));
+                        if (get_Square_from_position(abc.substring(abc.indexOf(column_position)+i)+numbers.substring(numbers.indexOf(row_position)+i)).get_Piece()==null){
+                            possible_moves.add(abc.substring(abc.indexOf(column_position)+i)+numbers.substring(numbers.indexOf(row_position)+i));
                             i++;
                         }
                         else{

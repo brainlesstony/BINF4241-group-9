@@ -4,17 +4,40 @@ public class GameLogic {
 
     public static void main(String[] args){
         //BOARD & PLAYER
+        String player1_input1;
+        String player1_input2;
+        String player2_input1;
+        String player2_input2;
         Board board = new Board(); // creates a board with the figures
         System.out.println("Player 1 will play as white and Player 2 plays as black");
         System.out.println("Player names: ");
-        Player player1 = new Player(name_from_player());
-        Player player2 = new Player(name_from_player());
+        Player player1 = new Player(name_from_player(), Color.W);
+        Player player2 = new Player(name_from_player(), Color.B);
         board.print();
         ArrayList [] graveyard = new ArrayList[32];
-        board.move("B2", "B3");
         board.print();
-        //TODO When player gets to promotion field(start field of the enemy) \n
-        // He gets to change his piece pawn into a new piece
+
+        while(true){
+            //player 1
+            System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
+            player1_input1 = get_user_input();
+            System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
+            player1_input2 = get_user_input();
+            if (board.move_check(player1_input1, player1_input2)){
+                board.move(player1_input1, player1_input2);
+            }
+            board.print();
+            //player2
+            System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
+            player2_input1 = get_user_input();
+            System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
+            player2_input2 = get_user_input();
+            if (board.move_check(player2_input1, player2_input2)){ // funktioniert nicht
+                board.move(player2_input1, player2_input2);
+            }
+            board.print();
+        }
+
         /*
         while (!board.checkmate()) {
             board.print(); // prints the board and also the eaten figures
@@ -26,6 +49,11 @@ public class GameLogic {
 
         }
          */
+    }
+
+    private static String get_user_input(){
+        Scanner input = new Scanner(System.in);
+        return input.nextLine();
     }
 
     public void is_eaten(ArrayList graveyard,Piece piece){
