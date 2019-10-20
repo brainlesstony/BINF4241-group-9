@@ -13,6 +13,8 @@ public class GameLogic {
         Player player1 = new Player(get_user_input());
         Player player2 = new Player(get_user_input());
         board.print();
+        Rules rules = new Rules(board);
+
         //TODO When player gets to promotion field(start field of the enemy) \n
         // He gets to change his piece pawn into a new piece
         /*
