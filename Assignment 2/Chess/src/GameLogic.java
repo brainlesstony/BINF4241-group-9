@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class GameLogic {
 
@@ -10,7 +10,7 @@ public class GameLogic {
         Player player1 = new Player(name_from_player());
         Player player2 = new Player(name_from_player());
         board.print();
-        List [] graveyard = new List[32];
+        ArrayList [] graveyard = new ArrayList[32];
         board.move("B2", "B3");
         board.print();
         //TODO When player gets to promotion field(start field of the enemy) \n
@@ -28,7 +28,7 @@ public class GameLogic {
          */
     }
 
-    public void is_eaten(List graveyard,Piece piece){
+    public void is_eaten(ArrayList graveyard,Piece piece){
         graveyard.add(piece);
     }
     private static String name_from_player() {
@@ -43,5 +43,41 @@ public class GameLogic {
             return line;
         }
     }
+    public void print_graveyard(ArrayList<Piece> graveyard){
+        String tmp;
+        tmp = graveyard.toString();
+    }
+    public ArrayList<Piece> get_graveyard(ArrayList<Piece> graveyard){
+        ArrayList<Piece> graveyard_out = new ArrayList<>();
+        graveyard_out.addAll(graveyard);
+        return graveyard_out;
+    }
+
+//    public void promotion (Piece piece,Board board ){
+//        if (position.substring(1).equals("1") && Type.P && Color.W){
+//            System.out.println("You can choose what your pawn will transform into!");
+//            System.out.println("Type in one letter as indicated\n" +
+//                    "Queen = Q  , Tower = T, Bishop = B, Knight = N");
+//            do_promotion();
+//        }
+//        else if (position.substring(1).equals("") && Type.P && Color.B){
+//            System.out.println("You can choose what your pawn will transform into!");
+//            System.out.println("Type in one letter as indicated\n" +
+//                    "Queen = Q  , Tower = T, Bishop = B, Knight = N");
+//            do_promotion();
+//        }
+//    }
+//
+//    public void do_promotion() {
+//        String tmp = get_user_input();
+//        switch (tmp) {
+//            case "Q": // remove pawn from square add queen square
+//            case "T": // remove pawn from square add tower square
+//            case "B": // remove pawn from square add bishop square
+//            case "N": // remove pawn from square add knight square
+//        }
+//    }
+
+
 }
 
