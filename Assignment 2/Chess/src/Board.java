@@ -480,12 +480,12 @@ public class Board {
     public Piece move(String position, String target){
         Piece move_piece = get_Piece_from_position(position);
         Piece target_piece = get_Piece_from_position(target);
-
-        this.board.get("87654321".indexOf(target.substring(1))).set("ABCDEFGH".indexOf(target.substring(0,1)), new Square(get_Square_from_position(target).get_Color(), move_piece, target));
-        this.board.get("87654321".indexOf(position.substring(1))).set("ABCDEFGH".indexOf(position.substring(0,1)), new Square(get_Square_from_position(position).get_Color(), null, position));
         if (target_piece != null){
             this.graveyard.add(target_piece);
         }
+        this.board.get("87654321".indexOf(target.substring(1))).set("ABCDEFGH".indexOf(target.substring(0,1)), new Square(get_Square_from_position(target).get_Color(), move_piece, target));
+        this.board.get("87654321".indexOf(position.substring(1))).set("ABCDEFGH".indexOf(position.substring(0,1)), new Square(get_Square_from_position(position).get_Color(), null, position));
+        
         return target_piece;
     }
 
