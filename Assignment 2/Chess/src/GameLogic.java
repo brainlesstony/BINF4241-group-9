@@ -9,6 +9,7 @@ public class GameLogic {
         String player2_input1;
         String player2_input2;
         Board board = new Board(); // creates a board with the figures
+        Move mover = new Move();
         System.out.println("Player 1 will play as white and Player 2 plays as black");
         System.out.println("Player names: ");
         Player player1 = new Player(name_from_player(), Color.W);
@@ -17,13 +18,15 @@ public class GameLogic {
         ArrayList [] graveyard = new ArrayList[32];
         board.print();
 
+        System.out.println(mover.move_check("A2", "A3", board.getBoard()));
+
         while(true){
             //player 1
             System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
             player1_input1 = get_user_input();
             System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
             player1_input2 = get_user_input();
-            if (board.move_check(player1_input1, player1_input2)){
+            if (mover.move_check(player1_input1, player1_input2, board.getBoard())){
                 board.move(player1_input1, player1_input2);
             }
             board.print();
@@ -32,7 +35,7 @@ public class GameLogic {
             player2_input1 = get_user_input();
             System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
             player2_input2 = get_user_input();
-            if (board.move_check(player2_input1, player2_input2)){ // funktioniert nicht
+            if (mover.move_check(player2_input1, player2_input2, board.getBoard())){ // funktioniert nicht
                 board.move(player2_input1, player2_input2);
             }
             board.print();

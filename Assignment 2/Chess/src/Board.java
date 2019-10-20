@@ -509,7 +509,30 @@ public class Board {
         String numbers = "87654321";
 
         return this.board.get(numbers.indexOf(row)).get(abc.indexOf(column));
+    }
 
+    public ArrayList<ArrayList<Square>> getBoard(){
+        ArrayList<ArrayList<Square>> list_copy = new ArrayList<>();
+        list_copy.addAll(this.board);
+        return list_copy;
+    }
+
+    public boolean check_empty(String field){
+        String row = field.substring(1);
+        String column = field.substring(0,1);
+        String abc = "ABCDEFGH";
+        String numbers = "87654321";
+        Piece dummy = this.board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece();
+        return dummy == null;
+    }
+
+    public Color get_color_of_piece(String position){
+        String row = position.substring(1);
+        String column = position.substring(0,1);
+        String abc = "ABCDEFGH";
+        String numbers = "87654321";
+
+        return this.board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece().getColor();
     }
 
     public boolean checkmate(){
