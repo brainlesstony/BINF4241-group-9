@@ -492,10 +492,10 @@ public class Board {
         return target_piece;
     }
 
-    public boolean is_valid_turn(Player player, Piece piece){
+    public boolean valid_turn(Player player, Piece piece){
         // returns ob de player dra isch oder nid.
-        if (piece == null) { return false; }
-        return player.get_color() == piece.getColor();
+        if (piece == null) { return true; }
+        return player.get_color() != piece.getColor();
     }
 
 
