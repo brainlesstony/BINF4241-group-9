@@ -150,4 +150,22 @@ public class Move {
         String numbers = "87654321";
         return abc.substring(column-1, column)+numbers.substring(row-1, row);
     }
+
+    private boolean is_check(ArrayList<ArrayList<Square>> board, String target){ //target => wo der König hinmöchte
+        for(ArrayList list:board){
+            for(Object square:list){
+                if (square instanceof Square) {
+                    if (((Square) square).get_Piece().getColor() == Color.B) { //Color Black
+                        return move_check(((Square) square).get_Position(), target, board); //returns true if black piece can land there
+                    }
+                    else {
+                        return move_check(((Square) square).get_Position(), target, board);//returns true if white piece can land there
+                    }
+                }
+            }
+        }
+    return false;
+    }
+
+
 }
