@@ -18,18 +18,29 @@ public class GameLogic {
         board.print();
 
         while(true){
-            //player 1
+            /////////////player 1
             System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
             player1_input1 = get_user_input();
+            while (!board.is_valid_turn(player1, board.get_Piece_from_position(player1_input1))) {
+                // Wenn de player nid dra isch den wird er nomol gfrogt bis er mol cheggt het das er en validi figur gwählt het.
+                // oder er het en feld usgewählt wo gar nix drufe isch
+                System.out.println("Not possible figure. Try again: ");
+                player1_input1 = get_user_input();
+            }
             System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
             player1_input2 = get_user_input();
             if (mover.move_check(player1_input1, player1_input2, board.getBoard())){
                 board.move(player1_input1, player1_input2);
             }
             board.print();
-            //player2
+
+            ////////////player2
             System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
             player2_input1 = get_user_input();
+            while (!board.is_valid_turn(player2, board.get_Piece_from_position(player2_input1))) {
+                System.out.println("Not possible figure. Try again: ");
+                player2_input1 = get_user_input();
+            }
             System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
             player2_input2 = get_user_input();
             if (mover.move_check(player2_input1, player2_input2, board.getBoard())){ // funktioniert nicht

@@ -11,6 +11,7 @@ public class Move {
         Type type = piece.getType();
         Color color = piece.getColor();
 
+
         if (!columns.contains(start.substring(0,1))||   //falls eine der eingegebenen Positionen nicht stimmen
             !columns.contains(end.substring(0,1))||
             !rows.contains(start.substring(1))||
