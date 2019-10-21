@@ -18,7 +18,9 @@ public class GameLogic {
         board.print();
 
         while(true){
+            Color playing_color;
             //player 1
+            playing_color = Color.W;
             System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
             player1_input1 = get_user_input();
             System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
@@ -28,6 +30,7 @@ public class GameLogic {
             }
             board.print();
             //player2
+            playing_color = Color.B;
             System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
             player2_input1 = get_user_input();
             System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
@@ -60,6 +63,8 @@ public class GameLogic {
         Scanner input = new Scanner(System.in);
         line = input.nextLine();
         if (line.equals("") || line == null) {
+            System.out.println("Please insert a name next time not an empty string");
+            System.out.println("Thank you");
             System.exit(0);
             return null;
         }
