@@ -4,10 +4,13 @@ public class Square {
     private Piece aPiece;
     private String aPosition;
 
+
     public Square (ColorSquare nColor, Piece nPiece, String nPosition){
         aColor = nColor;
         aPiece = nPiece;
         aPosition = nPosition;
+
+
     }
 
     @Override
@@ -25,6 +28,7 @@ public class Square {
     }
     public ColorSquare get_Color(){return aColor;}
     public String get_Position(){ return aPosition;}
+
 
     /*protected String type;
     private String position;

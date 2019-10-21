@@ -15,20 +15,20 @@ public class Board {
         for (int i = 0;i<=7;i++){
             list_copy.add(new ArrayList<>());
         }
-        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.T), "A8"));
-        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.N), "B8"));
-        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.B), "C8"));
-        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.Q), "D8"));
-        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.K), "E8"));
-        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.B), "F8"));
-        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.N), "G8"));
-        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.T), "H8"));
+        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.T,false), "A8"));
+        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.N,false), "B8"));
+        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.B,false), "C8"));
+        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.Q,false), "D8"));
+        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.K,false), "E8"));
+        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.B,false), "F8"));
+        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.N,false), "G8"));
+        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.T,false), "H8"));
         List<String> liste_abc = Arrays.asList("A", "C", "E", "G");
         List<String> liste_abc2= Arrays.asList("B", "D", "F", "H");
 
         for (int i=0;i<=3;i++){
-            list_copy.get(1).add(new Square(ColorSquare.B, new Piece(Color.B, Type.P), liste_abc.get(i)+"7"));
-            list_copy.get(1).add(new Square(ColorSquare.W, new Piece(Color.B, Type.P), liste_abc2.get(i)+"7"));
+            list_copy.get(1).add(new Square(ColorSquare.B, new Piece(Color.B, Type.P,false), liste_abc.get(i)+"7"));
+            list_copy.get(1).add(new Square(ColorSquare.W, new Piece(Color.B, Type.P,false), liste_abc2.get(i)+"7"));
 
         }
         for (int i=0;i<=3;i++){
@@ -53,17 +53,17 @@ public class Board {
         }
 
         for (int i = 0; i<=3; i++) {
-            list_copy.get(6).add(new Square(ColorSquare.W, new Piece(Color.W, Type.P), liste_abc.get(i)+"2"));
-            list_copy.get(6).add(new Square(ColorSquare.B, new Piece(Color.W, Type.P), liste_abc.get(i)+"2"));
+            list_copy.get(6).add(new Square(ColorSquare.W, new Piece(Color.W, Type.P,false), liste_abc.get(i)+"2"));
+            list_copy.get(6).add(new Square(ColorSquare.B, new Piece(Color.W, Type.P,false), liste_abc.get(i)+"2"));
         }
-        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.T), "A1"));
-        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.N), "B1"));
-        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.B), "C1"));
-        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.Q), "D1"));
-        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.K), "E1"));
-        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.B), "F1"));
-        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.N), "G1"));
-        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.T), "H1"));
+        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.T,false), "A1"));
+        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.N,false), "B1"));
+        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.B,false), "C1"));
+        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.Q,false), "D1"));
+        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.K,false), "E1"));
+        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.B,false), "F1"));
+        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.N,false), "G1"));
+        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.T,false), "H1"));
         return list_copy;
     }
 
@@ -477,7 +477,7 @@ public class Board {
         }
     }
 
-    public Piece move(String position, String target){
+    public Piece move(String position, String target){ //TODO Set new piece status moved = true
         Piece move_piece = get_Piece_from_position(position);
         if (move_piece.getColor() == Color.B){
 

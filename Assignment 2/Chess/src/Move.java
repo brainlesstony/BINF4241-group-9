@@ -2,7 +2,7 @@ import javax.xml.crypto.dsig.TransformService;
 import java.util.ArrayList;
 
 public class Move {
-    public boolean move_check(String start,
+    public boolean move_check(String start, //TODO BLOCKED doesn't work yet
                               String end, ArrayList<ArrayList<Square>> board){
         String columns = "ABCDEFGH";
         String rows = "87654321";
@@ -167,5 +167,46 @@ public class Move {
     return false;
     }
 
+    private void castle(ArrayList<ArrayList<Square>> board){
+        for(ArrayList list:board) {
+            for (Object square : list) {
+                if (square instanceof Square) {
+                    if (((Square) square).get_Piece().getColor() == Color.B && ((Square) square).get_Piece().getType() == Type.T
+                    &&! ((Square) square).get_Piece().get_Moved()) { //Color Black & Tower
+                                ;
+                        //TODO LOS
+                    }
+                }
+            }
+        }
+    }
 
+    private void en_passent(ArrayList<ArrayList<Square>> board){
+        ; // TODO LOOOS
+    }
+
+//    public void promotion (ArrayList<ArrayList<Square>> board){
+//        if (position.substring(1).equals("1") && Type.P && Color.W){
+//            System.out.println("You can choose what your pawn will transform into!");
+//            System.out.println("Type in one letter as indicated\n" +
+//                    "Queen = Q  , Tower = T, Bishop = B, Knight = N");
+//            do_promotion();
+//        }
+//        else if (position.substring(1).equals("") && Type.P && Color.B){
+//            System.out.println("You can choose what your pawn will transform into!");
+//            System.out.println("Type in one letter as indicated\n" +
+//                    "Queen = Q  , Tower = T, Bishop = B, Knight = N");
+//            do_promotion();
+//        }
+//    }
+//
+//    public void do_promotion() {
+//        String tmp = get_user_input();
+//        switch (tmp) {
+//            case "Q": // remove pawn from square add queen square
+//            case "T": // remove pawn from square add tower square
+//            case "B": // remove pawn from square add bishop square
+//            case "N": // remove pawn from square add knight square
+//        }
+//    }
 }

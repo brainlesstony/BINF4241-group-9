@@ -71,7 +71,7 @@ public class GameLogic {
         Scanner input = new Scanner(System.in);
         line = input.nextLine();
         if (line.equals("") || line == null) {
-            System.out.println("Please insert a name next time not an empty string");
+            System.out.println("Please insert a name next time ;)");
             System.out.println("Thank you");
             System.exit(0);
             return null;
@@ -91,32 +91,6 @@ public class GameLogic {
         graveyard_out.addAll(graveyard);
         return graveyard_out;
     }
-
-//    public void promotion (Piece piece,Board board ){
-//        if (position.substring(1).equals("1") && Type.P && Color.W){
-//            System.out.println("You can choose what your pawn will transform into!");
-//            System.out.println("Type in one letter as indicated\n" +
-//                    "Queen = Q  , Tower = T, Bishop = B, Knight = N");
-//            do_promotion();
-//        }
-//        else if (position.substring(1).equals("") && Type.P && Color.B){
-//            System.out.println("You can choose what your pawn will transform into!");
-//            System.out.println("Type in one letter as indicated\n" +
-//                    "Queen = Q  , Tower = T, Bishop = B, Knight = N");
-//            do_promotion();
-//        }
-//    }
-//
-//    public void do_promotion() {
-//        String tmp = get_user_input();
-//        switch (tmp) {
-//            case "Q": // remove pawn from square add queen square
-//            case "T": // remove pawn from square add tower square
-//            case "B": // remove pawn from square add bishop square
-//            case "N": // remove pawn from square add knight square
-//        }
-//    }
-
 
 }
 

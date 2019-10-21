@@ -3,16 +3,16 @@ enum Color{W, B}
 public class Piece {
     private Color color;
     private Type type;
+    private boolean moved;
 
-    public Piece(Color color, Type type){
+    public Piece(Color color, Type type,Boolean has_moved){
         this.type = type;
         this.color = color;
+        this.moved = has_moved;
     }
-    //TODO These methods are mainly for rules
-    //TODO method has_reached_end() only implement for pawn
-    //TODO methods start_location(), current_location(), new_location()
     public Type getType(){ return this.type;}
     public Color getColor(){ return this.color;}
+    public Boolean get_Moved(){return this.moved;}
 
     @Override
     public String toString(){
