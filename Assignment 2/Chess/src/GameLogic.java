@@ -71,6 +71,8 @@ public class GameLogic {
         Scanner input = new Scanner(System.in);
         line = input.nextLine();
         if (line.equals("") || line == null) {
+            System.out.println("Please insert a name next time not an empty string");
+            System.out.println("Thank you");
             System.exit(0);
             return null;
         }
