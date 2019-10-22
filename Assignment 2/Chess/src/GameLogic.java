@@ -17,7 +17,7 @@ public class GameLogic {
         board.print();
         board.print();
 
-        while(!board.checkmate()){
+        while(true){ //!mover.checkmate()
             /////////////player 1
             System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
             player1_input1 = get_user_input();

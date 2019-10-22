@@ -1,4 +1,5 @@
 import javax.xml.crypto.dsig.TransformService;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Move {
@@ -14,114 +15,130 @@ public class Move {
                 return false;
             }
         }
-    return false;
+    return true; // TODO: AUFRUF CHECK VALID PATH METHODE
     }
-        private boolean possible_moves (String start,String end,Board board){
-            String columns = "ABCDEFGH";
-            String rows = "87654321";
-            Piece piece = get_Piece_from_position(start, board.getBoard());
+    /* TODO: PATH BLOCKED IN POSSIBLE MOVES*/
 
-            Type type = piece.getType();
-            Color color = piece.getColor();
+    //returns a list of all possible moves for a piece , to check path
+    private boolean possible_moves (String start,String end, Board board){
+        ArrayList<String> possible_moves = new ArrayList<String>();
+        String columns = "ABCDEFGH";
+        String rows = "87654321";
+        Piece piece = get_Piece_from_position(start, board);
 
-            int start_row = rows.indexOf(start.substring(1)) + 1;
-            int start_column = columns.indexOf(start.substring(0, 1)) + 1;
+        Type type = piece.getType();
+        Color color = piece.getColor();
 
-            int end_row = rows.indexOf(end.substring(1)) + 1;
-            int end_column = columns.indexOf(end.substring(0, 1)) + 1;
+        int start_row = rows.indexOf(start.substring(1)) + 1;
+        int start_column = columns.indexOf(start.substring(0, 1)) + 1;
 
-            int delta_rows = end_row - start_row;
-            int delta_column = end_column - start_column;
+        int end_row = rows.indexOf(end.substring(1)) + 1;
+        int end_column = columns.indexOf(end.substring(0, 1)) + 1;
 
-            switch (type) {
-                case B:
-                    //Diagonal
-                    if (delta_column >= -1 && delta_column <= 1 && delta_rows <= 1 && delta_rows >= -1) {
-                        return true;
-                    }
-                    if (delta_column < 0 && delta_rows > 0) {
-                        for (int i = 1; i < Math.abs(delta_column); i++) {
-                            if (!check_empty(translation_list_index(start_row + i, start_column - i), board.getBoard())) {
-                                return false;
-                            }
-                        }
-                    } else if (delta_column > 0 && delta_rows > 0) {
-                        for (int i = 1; i < Math.abs(delta_column); i++) {
-                            if (!check_empty(translation_list_index(start_row + i, start_column + i), board.getBoard())) {
-                                return false;
-                            }
-                        }
-                    } else if (delta_column < 0 && delta_rows < 0) {
-                        for (int i = 1; i < Math.abs(delta_column); i++) {
-                            if (!check_empty(translation_list_index(start_row - i, start_column - i), board.getBoard())) {
-                                return false;
-                            }
-                        }
-                    } else if (delta_column > 0 && delta_rows < 0) {
-                        for (int i = 1; i < Math.abs(delta_column); i++) {
-                            if (!check_empty(translation_list_index(start_row - i, start_column + i), board.getBoard())) {
-                                return false;
-                            }
-                        }
-                    }
+        int delta_rows = end_row - start_row;
+        int delta_column = end_column - start_column;
+
+        switch (type) {
+            case B:
+                //Diagonal
+                //TODO check if path is blocked -->insert each square that is passed through to check is_blocked
+                //for (int i=1; i< end_row & end_column) {
+                    //if (delta_column >= -1 && delta_rows > 1){
+                        //possible_moves.add(i);}
+                    //if (delta_column >= -1 && delta_rows > -1){
+                        //possible_moves.add(i);}
+                    //if (delta_column >= 1 && delta_rows > 1){
+                        //possible_moves.add(i);}
+                    //if (delta_column >= 1 && delta_rows > -1){
+                        //possible_moves.add(i);}
+                //}
+                if (delta_column >= -1 && delta_column <= 1 && delta_rows <= 1 && delta_rows >= -1) {
                     return true;
-                case K:
-                    return delta_column == 1 || delta_rows == -1 || delta_column == -1 || delta_rows == 1;
-                case N:
-                    return delta_column == 2 && delta_rows == 1 ||
-                            delta_column == 2 && delta_rows == -1 ||
-                            delta_column == -2 && delta_rows == 1 ||
-                            delta_column == -2 && delta_rows == -1 ||
-                            delta_column == 1 && delta_rows == 2 ||
-                            delta_column == 1 && delta_rows == -2 ||
-                            delta_column == -1 && delta_rows == 2 ||
-                            delta_column == -1 && delta_rows == -2;
-                case P:
-                    switch (color) {
-                        case B:
-                            if (delta_column != 0) {
-                                if (board.getBoard().get(rows.indexOf(end.substring(1)) + 1).get(columns.indexOf(end.substring(0, 1)) - 1).get_Piece().getType() != null) {
-                                    return true;
-                                }
-                                if (board.getBoard().get(rows.indexOf(end.substring(1)) + 1).get(columns.indexOf(end.substring(0, 1)) + 1).get_Piece().getType() != null) {
-                                    return true;
-                                }
-                            } else {
-                                return delta_rows == 1 || delta_rows == 2;
-                            }
-                            break;
-                        case W:
-                            if (delta_column != 0) {
-                                if (delta_rows == 1) {
-                                    if (board.getBoard().get(rows.indexOf(end.substring(1)) - 1).get(columns.indexOf(end.substring(0, 1)) - 1).get_Piece().getColor() != piece.getColor()) {
-                                        return true;
-                                    }
-                                    if (board.getBoard().get(rows.indexOf(end.substring(1)) - 1).get(columns.indexOf(end.substring(0, 1)) + 1).get_Piece().getColor() != piece.getColor()) {
-                                        return true;
-                                    }
-                                } else {
-                                    return false;
-                                }
-                            } else {
-                                return delta_rows == -1 || delta_rows == -2;
-                            }
-                            break;
+                }
+                if (delta_column < 0 && delta_rows > 0) {
+                    for (int i = 1; i < Math.abs(delta_column); i++) {
+                        if (!check_empty(translation_list_index(start_row + i, start_column - i), board.getBoard())) {
+                            return false;
+                        }
                     }
-                case Q:
-                    break;
-                case T:
-                    break;
-            }
-            return true;
+                } else if (delta_column > 0 && delta_rows > 0) {
+                    for (int i = 1; i < Math.abs(delta_column); i++) {
+                        if (!check_empty(translation_list_index(start_row + i, start_column + i), board.getBoard())) {
+                            return false;
+                        }
+                    }
+                } else if (delta_column < 0 && delta_rows < 0) {
+                    for (int i = 1; i < Math.abs(delta_column); i++) {
+                        if (!check_empty(translation_list_index(start_row - i, start_column - i), board.getBoard())) {
+                            return false;
+                        }
+                    }
+                } else if (delta_column > 0 && delta_rows < 0) {
+                    for (int i = 1; i < Math.abs(delta_column); i++) {
+                        if (!check_empty(translation_list_index(start_row - i, start_column + i), board.getBoard())) {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            case K:
+                return delta_column == 1 || delta_rows == -1 || delta_column == -1 || delta_rows == 1;
+            case N:
+                return delta_column == 2 && delta_rows == 1 ||
+                        delta_column == 2 && delta_rows == -1 ||
+                        delta_column == -2 && delta_rows == 1 ||
+                        delta_column == -2 && delta_rows == -1 ||
+                        delta_column == 1 && delta_rows == 2 ||
+                        delta_column == 1 && delta_rows == -2 ||
+                        delta_column == -1 && delta_rows == 2 ||
+                        delta_column == -1 && delta_rows == -2;
+            case P:
+                //TODO check if path is blocked
+                switch (color) {
+                    case B:
+                        if (delta_column != 0) {
+                            if (board.getBoard().get(rows.indexOf(end.substring(1)) + 1).get(columns.indexOf(end.substring(0, 1)) - 1).get_Piece().getType() != null) {
+                                return true;
+                            }
+                            if (board.getBoard().get(rows.indexOf(end.substring(1)) + 1).get(columns.indexOf(end.substring(0, 1)) + 1).get_Piece().getType() != null) {
+                                return true;
+                            }
+                        } else {
+                            return delta_rows == 1 || delta_rows == 2;
+                        }
+                        break;
+                    case W:
+                        if (delta_column != 0) {
+                            if (delta_rows == 1) {
+                                if (board.getBoard().get(rows.indexOf(end.substring(1)) - 1).get(columns.indexOf(end.substring(0, 1)) - 1).get_Piece().getColor() != piece.getColor()) {
+                                    return true;
+                                }
+                                if (board.getBoard().get(rows.indexOf(end.substring(1)) - 1).get(columns.indexOf(end.substring(0, 1)) + 1).get_Piece().getColor() != piece.getColor()) {
+                                    return true;
+                                }
+                            } else {
+                                return false;
+                            }
+                        } else {
+                            return delta_rows == -1 || delta_rows == -2;
+                        }
+                        break;
+                }
+            case Q://TODO check if path is blocked
+                break;
+            case T://TODO check if path is blocked
+                break;
         }
+        return true;
+    }
 
-    private Piece get_Piece_from_position(String position, ArrayList<ArrayList<Square>> board){
+    private Piece get_Piece_from_position(String position, Board board){
         String row = position.substring(1);
         String column = position.substring(0,1);
         String abc = "ABCDEFGH";
         String numbers = "87654321";
 
-        return board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece();
+        return board.getBoard().get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece();
     }
 
     private boolean check_empty(String field, ArrayList<ArrayList<Square>> board){
@@ -159,7 +176,7 @@ public class Move {
         return abc.substring(column-1, column)+numbers.substring(row-1, row);
     }
 
-    private boolean is_check(Board board,String kings_position,Piece king){
+    private boolean is_check(Board board, String kings_position, Piece king){
         for(ArrayList<Square> list: board.getBoard()){
             for (Square square : list){
                 if (square.get_Piece().getColor() != king.getColor()){
@@ -170,6 +187,13 @@ public class Move {
             }
         }
         return false;
+    }
+ // TODO CHECKMATE METHOD
+    public boolean checkmate(Board board, String kings_position, Piece king){
+        if (is_check(board, kings_position, king)){
+            return true;
+        }
+        return false; // TODO: need to check first if king in danger
     }
 
     private boolean is_suicide(Board board, String target, Piece king){ //target => wo der König hinmöchte

@@ -14,6 +14,7 @@ public class Piece {
     public Color getColor(){ return this.color;}
     public Boolean get_Moved(){return this.moved;}
 
+
     @Override
     public String toString(){
         return "["+this.color.toString()+"."+this.type.toString()+"]";
