@@ -9,6 +9,7 @@ public class Board {
     public Board(){ // initialize the board with the pieces not in the GameLogic. Tony 15.10
         // TODO: init board with all pieces.
         this.board= init_board();
+        this.graveyard= new ArrayList<Piece>();
     }
 
     private ArrayList<ArrayList<Square>> init_board() {

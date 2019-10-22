@@ -33,11 +33,11 @@ public class GameLogic {
             this should also check if the the move is a valid move like when a pawn wants to jump like a queen it should ask for a new destination again.
             but doesnt work yet
             * */
-            while (!board.valid_input(player1_input2)){
+            while (!mover.move_check(player1_input1,player1_input2,board)){
                 System.out.println("invalid Destination. Try again: ");
                 player1_input2 = get_user_input();
             }
-            if (mover.move_check(player1_input1, player1_input2, board.getBoard())){
+            if (mover.move_check(player1_input1, player1_input2, board)){
                 board.move(player1_input1, player1_input2);
             }
             board.print();
@@ -51,11 +51,11 @@ public class GameLogic {
             }
             System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
             player2_input2 = get_user_input();
-            while (!board.valid_input(player2_input2)){
+            while (!mover.move_check(player2_input1,player2_input2,board)){
                 System.out.println("invalid Destination. Try again: ");
                 player2_input2 = get_user_input();
             }
-            if (mover.move_check(player2_input1, player2_input2, board.getBoard())){ // funktioniert nicht
+            if (mover.move_check(player2_input1, player2_input2, board)){ // funktioniert nicht
                 board.move(player2_input1, player2_input2);
             }
             board.print();

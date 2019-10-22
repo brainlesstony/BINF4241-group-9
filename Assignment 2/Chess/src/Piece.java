@@ -5,7 +5,7 @@ public class Piece {
     private Type type;
     private boolean moved;
 
-    public Piece(Color color, Type type,Boolean has_moved){
+    public Piece(Color color, Type type,boolean has_moved){
         this.type = type;
         this.color = color;
         this.moved = has_moved;
