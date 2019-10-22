@@ -6,130 +6,42 @@ public class Move {
 
     public boolean move_check(String start, String end, Board board) {
 
-        if (!board.valid_input(start) && !board.valid_input(end)) {
+        if (!board.valid_input(start) && !board.valid_input(end)) { // checks if the input is valid
             return false;
         }
-
         if (!check_empty(end, board.getBoard())) { // falls auf zielfeld eine Figur mit gleicher Farbe steht
             if (get_color_of_piece(end, board.getBoard()) == get_color_of_piece(start, board.getBoard())) {
                 return false;
             }
         }
-    return true; // TODO: AUFRUF CHECK VALID PATH METHODE
+        if (!is_valid_path(start, end, board)){
+            return false;
+        }
+        if (check_path_occupied(start, end, board)) { // checks if the path of the figure is getting blocked
+            return false;
+        }
+        return true;
     }
     /* TODO: PATH BLOCKED IN POSSIBLE MOVES*/
 
     //returns a list of all possible moves for a piece , to check path
-    private boolean possible_moves (String start,String end, Board board){
-        ArrayList<String> possible_moves = new ArrayList<String>();
-        String columns = "ABCDEFGH";
-        String rows = "87654321";
-        Piece piece = get_Piece_from_position(start, board);
-
-        Type type = piece.getType();
-        Color color = piece.getColor();
-
-        int start_row = rows.indexOf(start.substring(1)) + 1;
-        int start_column = columns.indexOf(start.substring(0, 1)) + 1;
-
-        int end_row = rows.indexOf(end.substring(1)) + 1;
-        int end_column = columns.indexOf(end.substring(0, 1)) + 1;
-
-        int delta_rows = end_row - start_row;
-        int delta_column = end_column - start_column;
-
-        switch (type) {
-            case B:
-                //Diagonal
-                //TODO check if path is blocked -->insert each square that is passed through to check is_blocked
-                //for (int i=1; i< end_row & end_column) {
-                    //if (delta_column >= -1 && delta_rows > 1){
-                        //possible_moves.add(i);}
-                    //if (delta_column >= -1 && delta_rows > -1){
-                        //possible_moves.add(i);}
-                    //if (delta_column >= 1 && delta_rows > 1){
-                        //possible_moves.add(i);}
-                    //if (delta_column >= 1 && delta_rows > -1){
-                        //possible_moves.add(i);}
-                //}
-                if (delta_column >= -1 && delta_column <= 1 && delta_rows <= 1 && delta_rows >= -1) {
-                    return true;
-                }
-                if (delta_column < 0 && delta_rows > 0) {
-                    for (int i = 1; i < Math.abs(delta_column); i++) {
-                        if (!check_empty(translation_list_index(start_row + i, start_column - i), board.getBoard())) {
-                            return false;
-                        }
-                    }
-                } else if (delta_column > 0 && delta_rows > 0) {
-                    for (int i = 1; i < Math.abs(delta_column); i++) {
-                        if (!check_empty(translation_list_index(start_row + i, start_column + i), board.getBoard())) {
-                            return false;
-                        }
-                    }
-                } else if (delta_column < 0 && delta_rows < 0) {
-                    for (int i = 1; i < Math.abs(delta_column); i++) {
-                        if (!check_empty(translation_list_index(start_row - i, start_column - i), board.getBoard())) {
-                            return false;
-                        }
-                    }
-                } else if (delta_column > 0 && delta_rows < 0) {
-                    for (int i = 1; i < Math.abs(delta_column); i++) {
-                        if (!check_empty(translation_list_index(start_row - i, start_column + i), board.getBoard())) {
-                            return false;
-                        }
+    private ArrayList<ArrayList<Square>> possible_moves (String start, Board board){
+        /**
+         * @param start takes a specific Figure on the board
+         *@param board iterates trough board to any position to get an list of possible moves for that specific Figure
+         * @returns possible moves as nested arraylist
+         */
+        ArrayList<ArrayList<Square>> possible_moves = new ArrayList<>();
+        for (ArrayList<Square> arrayList: board.getBoard()){
+            for (Square square : arrayList){
+                if (board.get_Piece_from_position(start).getColor() != square.get_Piece().getColor()) { // This check checks that the opposite color is taken
+                    if (!check_path_occupied(start, square.get_Position(),board)) { // This check checks if the path is not blocked
+                        possible_moves.add(get_path(start, square.get_Position(), board));
                     }
                 }
-                return true;
-            case K:
-                return delta_column == 1 || delta_rows == -1 || delta_column == -1 || delta_rows == 1;
-            case N:
-                return delta_column == 2 && delta_rows == 1 ||
-                        delta_column == 2 && delta_rows == -1 ||
-                        delta_column == -2 && delta_rows == 1 ||
-                        delta_column == -2 && delta_rows == -1 ||
-                        delta_column == 1 && delta_rows == 2 ||
-                        delta_column == 1 && delta_rows == -2 ||
-                        delta_column == -1 && delta_rows == 2 ||
-                        delta_column == -1 && delta_rows == -2;
-            case P:
-                //TODO check if path is blocked
-                switch (color) {
-                    case B:
-                        if (delta_column != 0) {
-                            if (board.getBoard().get(rows.indexOf(end.substring(1)) + 1).get(columns.indexOf(end.substring(0, 1)) - 1).get_Piece().getType() != null) {
-                                return true;
-                            }
-                            if (board.getBoard().get(rows.indexOf(end.substring(1)) + 1).get(columns.indexOf(end.substring(0, 1)) + 1).get_Piece().getType() != null) {
-                                return true;
-                            }
-                        } else {
-                            return delta_rows == 1 || delta_rows == 2;
-                        }
-                        break;
-                    case W:
-                        if (delta_column != 0) {
-                            if (delta_rows == 1) {
-                                if (board.getBoard().get(rows.indexOf(end.substring(1)) - 1).get(columns.indexOf(end.substring(0, 1)) - 1).get_Piece().getColor() != piece.getColor()) {
-                                    return true;
-                                }
-                                if (board.getBoard().get(rows.indexOf(end.substring(1)) - 1).get(columns.indexOf(end.substring(0, 1)) + 1).get_Piece().getColor() != piece.getColor()) {
-                                    return true;
-                                }
-                            } else {
-                                return false;
-                            }
-                        } else {
-                            return delta_rows == -1 || delta_rows == -2;
-                        }
-                        break;
-                }
-            case Q://TODO check if path is blocked
-                break;
-            case T://TODO check if path is blocked
-                break;
+            }
         }
-        return true;
+        return possible_moves;
     }
 
     private Piece get_Piece_from_position(String position, Board board){
@@ -149,15 +61,278 @@ public class Move {
         Piece dummy = board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece();
         return dummy == null;
     }
-    /**
-     * @param field has x-cordinate and y-cordinate of piece
-     */
-    private boolean check_path_occupied(String field, String end_pos, ArrayList<ArrayList<Square>> board){
-        String row = field.substring(1);
-        String column = field.substring(0,1);
-        String abc = "ABCDEFGH";
-        String numbers = "87654321";
-        Piece dummy = board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece();
+
+    public ArrayList<Square> get_path(String start, String end, Board board){
+        ArrayList<Square> path_list = new ArrayList<Square>();
+        Piece piece = board.get_Piece_from_position(start);
+        Type type_of_piece = piece.getType();
+        int start_x = translation_string_to_board_row(start);
+        int start_y = translation_string_to_board_col(start);
+        int end_x = translation_string_to_board_row(end);
+        int end_y = translation_string_to_board_col(end);
+        switch (type_of_piece){
+            case B:
+                if (start_x < end_x && start_y < end_y){
+                    while (start_x != end_x && start_y != end_y){
+                        start_x++;
+                        start_y++;
+                        if (board.valid_input(translation_list_index(start_x, start_y))){
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }else if (start_x < end_x && start_y > end_y){
+                    while (start_x != end_x && start_y != end_y){
+                        start_x++;
+                        start_y--;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }else if ( start_x > end_x && start_y < end_y){
+                    while (start_x != end_x && start_y != end_y){
+                        start_x--;
+                        start_y++;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }else if (start_x > end_x && start_y > end_y){
+                    while (start_x != end_x && start_y != end_y){
+                        start_x--;
+                        start_y--;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }
+            case T:
+                if (start_x == end_x && start_y < end_y){
+                    while (start_y != end_y){
+                        start_y++;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }else if (start_x < end_x && start_y == end_y){
+                    while (start_x != end_x){
+                        start_x++;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }else if ( start_x == end_x && start_y > end_y){
+                    while (start_y != end_y){
+                        start_y--;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }else if (start_x > end_x && start_y == end_y){
+                    while (start_x != end_x){
+                        start_x--;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }
+            case Q:
+                if (start_x < end_x && start_y < end_y){
+                    while (start_x != end_x && start_y != end_y){
+                        start_x++;
+                        start_y++;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }else if (start_x < end_x && start_y > end_y){
+                    while (start_x != end_x && start_y != end_y){
+                        start_x++;
+                        start_y--;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }else if ( start_x > end_x && start_y < end_y){
+                    while (start_x != end_x && start_y != end_y){
+                        start_x--;
+                        start_y++;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }else if (start_x > end_x && start_y > end_y){
+                    while (start_x != end_x && start_y != end_y){
+                        start_x--;
+                        start_y--;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                } else if (start_x == end_x && start_y < end_y){
+                    while (start_y != end_y){
+                        start_y++;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }else if (start_x < end_x && start_y == end_y){
+                    while (start_x != end_x){
+                        start_x++;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }else if ( start_x == end_x && start_y > end_y){
+                    while (start_y != end_y){
+                        start_y--;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }else if (start_x > end_x && start_y == end_y){
+                    while (start_x != end_x){
+                        start_x--;
+                        if (board.valid_input(translation_list_index(start_x, start_y))) {
+                            path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                        }
+                    }
+                }
+            case K: // actually one does not need the path of the king bc he just moves one field, but this is important for Scharade.
+                if (start_x < end_x && start_y < end_y){
+                    start_x++;
+                    start_y++;
+                    if (board.valid_input(translation_list_index(start_x, start_y))){
+                        path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                    }
+                }else if (start_x < end_x && start_y > end_y){
+                    start_x++;
+                    start_y--;
+                    if (board.valid_input(translation_list_index(start_x, start_y))) {
+                        path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                    }
+                }else if ( start_x > end_x && start_y < end_y){
+                    start_x--;
+                    start_y++;
+                    if (board.valid_input(translation_list_index(start_x, start_y))) {
+                        path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                    }
+                }else if (start_x > end_x && start_y > end_y){
+                    start_x--;
+                    start_y--;
+                    if (board.valid_input(translation_list_index(start_x, start_y))) {
+                        path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                    }
+                } else if (start_x == end_x && start_y < end_y){
+                    start_y++;
+                    if (board.valid_input(translation_list_index(start_x, start_y))) {
+                        path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                    }
+                }else if (start_x < end_x && start_y == end_y){
+                    start_x++;
+                    if (board.valid_input(translation_list_index(start_x, start_y))) {
+                        path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                    }
+                }else if ( start_x == end_x && start_y > end_y){
+                    start_y--;
+                    if (board.valid_input(translation_list_index(start_x, start_y))) {
+                        path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                    }
+                }else if (start_x > end_x && start_y == end_y){
+                    start_x--;
+                    if (board.valid_input(translation_list_index(start_x, start_y))) {
+                        path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                    }
+                }
+
+            case N: // just check if endpoint is free
+                break;
+            case P:
+                    switch (piece.getColor()) {
+                        case B:
+                            while (start_y != end_y) {
+                                start_y--; // one directly above the pawn
+                                if (board.valid_input(translation_list_index(start_x,start_y))){ // for the double jump at start
+                                    path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                                }
+                            }
+                        case W:
+                            while (start_y != end_y) {
+                                start_y++;
+                                if (board.valid_input(translation_list_index(start_x,start_y))) {
+                                    path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
+                                }
+                            }
+                    }
+        }
+        return path_list;
+    }
+
+    public boolean is_valid_path(String start, String end, Board board){
+        Piece piece = board.get_Piece_from_position(start);
+        Type type_of_piece = piece.getType();
+        int start_x = translation_string_to_board_row(start);
+        int start_y = translation_string_to_board_col(start);
+        int end_x = translation_string_to_board_row(end);
+        int end_y = translation_string_to_board_col(end);
+        switch (type_of_piece){
+            case B:
+                return Math.abs(start_x - end_x) == Math.abs(start_y - end_y); //This statement must holds because the Bishop can only move diagonal.
+            case T:
+                return start_x == end_x || start_y == end_y; //This statement must holds because the Tower can just move horizontal or vertical
+            case Q:
+                return Math.abs(start_x - end_x) == Math.abs(start_y - end_y) || start_x == end_x || start_y == end_y; // Queen = Bishop + Tower
+            case N:
+                return (    start_x + 1 == end_x && start_y + 2 == end_y
+                        ||  start_x + 2 == end_x && start_y + 1 == end_y
+                        ||  start_x + 2 == end_x && start_y - 1 == end_y
+                        ||  start_x + 1 == end_x && start_y - 2 == end_y
+                        ||  start_x - 1 == end_x && start_y - 2 == end_y
+                        ||  start_x - 2 == end_x && start_y - 1 == end_y
+                        ||  start_x - 2 == end_x && start_y + 1 == end_y
+                        ||  start_x - 1 == end_x && start_y + 2 == end_y);
+                // Every 8 possible endpoints of knight is tested.
+            case K:
+                return      (!is_suicide(board, translation_list_index(end_x, end_y), piece) // when king doesn't suicide
+                        &&  (start_x  == end_x && start_y + 1  == end_y // and it moves just around itself
+                        ||  start_x + 1 == end_x && start_y + 1 == end_y
+                        ||  start_x + 1 == end_x && start_y == end_y
+                        ||  start_x + 1 == end_x && start_y - 1 == end_y
+                        ||  start_x == end_x && start_y - 1 == end_y
+                        ||  start_x - 1 == end_x && start_y - 1 == end_y
+                        ||  start_x - 1 == end_x && start_y == end_y
+                        ||  start_x - 1 == end_x && start_y + 1 == end_y))
+
+                        || possible_scharade(piece, board); // checks if scharade possible
+
+            case P:
+                switch (piece.getColor()){
+                    case W:
+                        System.out.println(!piece.get_has_moved() && end_y == 3);
+                        System.out.println(start_y + 1 == end_y   );
+                        System.out.println(board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null);
+                        System.out.println(start_x - 1 == end_x || start_x + 1 == end_x);
+                        return (    !piece.get_has_moved() && end_y == 3) // White pawn has never moved so it is allowed to jump 2 squares
+                                ||  start_y + 1 == end_y                  // or pawn is always allowed to jump one square
+                                ||  ((start_y + 1 == end_y && board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null)
+                                &&  (start_x - 1 == end_x || start_x + 1 == end_x)); // check if the both diagonal square are not empty, then are allowed to move because eat.
+                    case B:
+                        return (    !piece.get_has_moved() && end_y == 4)
+                                ||  start_y - 1 == end_y
+                                ||  ((start_y - 1 == end_y && board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null)
+                                &&  (start_x - 1 == end_x || start_x + 1 == end_x)); // check if the both diagonal square are not empty, then are allowed to move because eat.
+                }
+        }
+
+        return false;
+    }
+
+    private boolean check_path_occupied(String start, String end_pos, Board board){
+        ArrayList<Square> path_list = get_path(start, end_pos, board);
+        for (Square square : path_list){
+            if (square.get_Piece() != null) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -172,8 +347,19 @@ public class Move {
 
     private String translation_list_index(int row, int column){
         String abc = "ABCDEFGH";
-        String numbers = "87654321";
-        return abc.substring(column-1, column)+numbers.substring(row-1, row);
+        return abc.substring(row, row+1)+Integer.toString(column+1);
+    }
+
+    private int translation_string_to_board_col(String input){
+        String row = input.substring(1);
+        String numbers = "12345678";
+        return numbers.indexOf(row);
+    }
+
+    private int translation_string_to_board_row(String input){
+        String column = input.substring(0,1);
+        String abc = "ABCDEFGH";
+        return abc.indexOf(column);
     }
 
     private boolean is_check(Board board, String kings_position, Piece king){
@@ -200,7 +386,7 @@ public class Move {
         return is_check(board, target, king);
     }
 
-    private void castle(ArrayList<ArrayList<Square>> board) {
+    private boolean possible_scharade(Piece king, Board board){ // nur könig kann scharade ausführen
 //        boolean condition_T1 = false;
 //        boolean condition_T2 = false;
 //        boolean condition_K = false;
@@ -245,9 +431,12 @@ public class Move {
                 }*/
 //            }
 //        }
+        return false;
     }
-    private void en_passent(ArrayList<ArrayList<Square>> board){
+
+    private boolean is_en_passent(ArrayList<ArrayList<Square>> board){
         ; // TODO LOOOS STEF LOOOOS
+        return false;
     }
 
 //    public void promotion (ArrayList<ArrayList<Square>> board){

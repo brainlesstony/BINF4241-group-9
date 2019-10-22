@@ -5,14 +5,14 @@ public class Piece {
     private Type type;
     private boolean moved;
 
-    public Piece(Color color, Type type,boolean has_moved){
+    public Piece(Color color, Type type, boolean has_moved){
         this.type = type;
         this.color = color;
         this.moved = has_moved;
     }
     public Type getType(){ return this.type;}
     public Color getColor(){ return this.color;}
-    public Boolean get_Moved(){return this.moved;}
+    public boolean get_has_moved(){return this.moved;}
 
 
     @Override
