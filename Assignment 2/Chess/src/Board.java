@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.*;
 
 public class Board {
     private ArrayList<ArrayList<Square>> board;
@@ -494,17 +495,31 @@ public class Board {
 
     public boolean valid_turn(Player player, Piece piece){
         // returns ob de player dra isch oder nid.
+
         if (piece == null) { return true; }
         return player.get_color() != piece.getColor();
     }
 
+    public boolean valid_input(String algebraic_not){
+        /** @param algebraic_not like in in the assignments requirements
+         * @return boolean if it is like the requirements
+         */
+        String regex = "[A-H][1-8]"; //input should be a uppercase letter from A-H and a digit from 1-8
+        Pattern pattern = Pattern.compile(regex);
+        return algebraic_not.matches(regex);
+    }
 
     public Piece get_Piece_from_position(String position){
         //split the coordinates
+        if (!valid_input(position)){
+            return null;
+        }
+
         String row = position.substring(1);
         String column = position.substring(0,1);
         String abc = "ABCDEFGH";
         String numbers = "87654321";
+
 
         if (this.board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece() != null){
             return this.board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece();
