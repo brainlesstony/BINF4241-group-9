@@ -151,7 +151,23 @@ public class Move {
         return abc.substring(column-1, column)+numbers.substring(row-1, row);
     }
 
-    private boolean is_check(ArrayList<ArrayList<Square>> board, String target){ //target => wo der König hinmöchte
+    private boolean is_check(ArrayList<ArrayList<Square>> board,String kings_position,Piece king){
+        for(ArrayList list: board){
+            for(Object square:list){
+                if(square instanceof Square){
+                    if (((Square) square).get_Piece().getColor() == Color.B && king.getColor() == Color.W) { //Color Black
+                        return move_check(((Square) square).get_Position(), kings_position, board); //returns true if black piece can land there
+                    }
+                    else{
+                        return move_check(((Square) square).get_Position(), kings_position, board);
+                    }
+                }
+            }
+        }
+    return false;
+    }
+
+    private boolean is_suicide(ArrayList<ArrayList<Square>> board, String target){ //target => wo der König hinmöchte
         for(ArrayList list:board){
             for(Object square:list){
                 if (square instanceof Square) {
@@ -167,20 +183,52 @@ public class Move {
     return false;
     }
 
-    private void castle(ArrayList<ArrayList<Square>> board){
-        for(ArrayList list:board) {
-            for (Object square : list) {
-                if (square instanceof Square) {
-                    if (((Square) square).get_Piece().getColor() == Color.B && ((Square) square).get_Piece().getType() == Type.T
-                    &&! ((Square) square).get_Piece().get_Moved()) { //Color Black & Tower
-                                ;
-                        //TODO LOS
+    private void castle(ArrayList<ArrayList<Square>> board) {
+//        boolean condition_T1 = false;
+//        boolean condition_T2 = false;
+//        boolean condition_K = false;
+//        boolean color = false; //false/0 = weiss & true/1 = schwarz
+//        for (ArrayList list : board) {
+//            for (Object square : list) {
+//                if (square instanceof Square) {
+//                    if (((Square) square).get_Position().equals("A1")){
+//
+//                    }
+//                }
+/*                    if (((Square) square).get_Piece().getColor() == Color.B && ((Square) square).get_Piece().getType() == Type.T
+                            && !((Square) square).get_Piece().get_Moved()) {
+                        condition_T1 = true;
+                    } else if (((Square) square).get_Piece().getColor() == Color.B && ((Square) square).get_Piece().getType() == Type.T
+                            && !((Square) square).get_Piece().get_Moved() && condition_T1) {
+                        condition_T2 = true;
+                    } else if (((Square) square).get_Piece().getColor() == Color.B && ((Square) square).get_Piece().getType() == Type.K
+                            && !((Square) square).get_Piece().get_Moved()) {
+                        condition_K = true;
+                        color = true;
                     }
-                }
+                    else if (((Square) square).get_Piece().getColor() == Color.W && ((Square) square).get_Piece().getType() == Type.T
+                            && !((Square) square).get_Piece().get_Moved()) {
+                        condition_T1 = true;
+                    } else if (((Square) square).get_Piece().getColor() == Color.W && ((Square) square).get_Piece().getType() == Type.T
+                            && !((Square) square).get_Piece().get_Moved() && condition_T1) {
+                        condition_T2 = true;
+                    } else if (((Square) square).get_Piece().getColor() == Color.W && ((Square) square).get_Piece().getType() == Type.K
+                            && !((Square) square).get_Piece().get_Moved()) {
+                        condition_K = true;
+                        color = false;*/
+/*                }
+                if(((Square)))
             }
-        }
+            if (condition_K && condition_T1 && condition_T2 &&! color) { // weiss
+                    ; //TODO move white pieces tower and king T[A1]-[C1] K[E1]-[B1] oder T[H1]-[F1] K[E1]-[G1]
+                    ;
+                }
+                else if (condition_K && condition_T1 && condition_T2 && color){
+                    ;//TODO move white pieces tower and king T[A8]-[C8] K[E8]-[B8] oder T[H8]-[F8] K[E8]-[G8]
+                }*/
+//            }
+//        }
     }
-
     private void en_passent(ArrayList<ArrayList<Square>> board){
         ; // TODO LOOOS
     }
