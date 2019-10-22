@@ -17,7 +17,7 @@ public class GameLogic {
         board.print();
         board.print();
 
-        while(true){
+        while(!board.checkmate()){
             /////////////player 1
             System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
             player1_input1 = get_user_input();
@@ -37,41 +37,27 @@ public class GameLogic {
                 System.out.println("invalid Destination. Try again: ");
                 player1_input2 = get_user_input();
             }
-            if (mover.move_check(player1_input1, player1_input2, board)){
-                board.move(player1_input1, player1_input2);
-            }
+            board.move(player1_input1, player1_input2);
             board.print();
 
             ////////////player2
+            // Welche Figur bestimmt durch User Input des Feldes
             System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
             player2_input1 = get_user_input();
             while (board.valid_turn(player2, board.get_Piece_from_position(player2_input1))) {
                 System.out.println("Not possible figure. Try again: ");
                 player2_input1 = get_user_input();
             }
+            // Zielfeld durch User Input
             System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
             player2_input2 = get_user_input();
             while (!mover.move_check(player2_input1,player2_input2,board)){
                 System.out.println("invalid Destination. Try again: ");
                 player2_input2 = get_user_input();
             }
-            if (mover.move_check(player2_input1, player2_input2, board)){ // funktioniert nicht
-                board.move(player2_input1, player2_input2);
-            }
+            board.move(player2_input1, player2_input2);
             board.print();
         }
-
-        /*
-        while (!board.checkmate()) {
-            board.print(); // prints the board and also the eaten figures
-            board.move(get_user_input()); // from player1
-            board.flush();
-            board.print();
-            board.move(get_user_input()); // from player2
-            board.flush(); // This method should clear the console after the move was done (Terminal not Intellij Console)
-
-        }
-         */
     }
 
     private static String get_user_input(){

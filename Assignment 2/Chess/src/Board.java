@@ -563,10 +563,24 @@ public class Board {
         return this.board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece().getColor();
     }
 
-    public boolean checkmate(){
+    public boolean checkmate(Color color, Move mover){
+        if (get_King(color).check()){
+            break;
+        }
         return false; // TODO: need to check first if king in danger
     }
 
+
+
+    private Piece get_King(Color color){
+        for (ArrayList<Square> list : getBoard()){
+            for (Square square : list){
+                if (square.get_Piece().getType() == Type.K && square.get_Piece().getColor() == color){
+                    return square.get_Piece();
+                }
+            }
+        }
+    }
     public void flush() {
         System.out.flush();
     } // deletes the previous board on the screen but this does not happen in the Intellij console but in the terminal

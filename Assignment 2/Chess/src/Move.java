@@ -160,35 +160,20 @@ public class Move {
     }
 
     private boolean is_check(Board board,String kings_position,Piece king){
-        for(ArrayList list: board.getBoard()){
-            for(Object square:list){
-                if(square instanceof Square){
-                    if (((Square) square).get_Piece().getColor() == Color.B && king.getColor() == Color.W) { //Color Black
-                        return move_check(((Square) square).get_Position(), kings_position, board); //returns true if black piece can land there
-                    }
-                    else{
-                        return move_check(((Square) square).get_Position(), kings_position, board);
+        for(ArrayList<Square> list: board.getBoard()){
+            for (Square square : list){
+                if (square.get_Piece().getColor() != king.getColor()){
+                    if (move_check(square.get_Position(), kings_position, board)){
+                        return true;
                     }
                 }
             }
         }
-    return false;
+        return false;
     }
 
-    private boolean is_suicide(Board board, String target){ //target => wo der König hinmöchte
-        for(ArrayList list:board.getBoard()){
-            for(Object square:list){
-                if (square instanceof Square) {
-                    if (((Square) square).get_Piece().getColor() == Color.B) { //Color Black
-                        return move_check(((Square) square).get_Position(), target, board); //returns true if black piece can land there
-                    }
-                    else {
-                        return move_check(((Square) square).get_Position(), target, board);//returns true if white piece can land there
-                    }
-                }
-            }
-        }
-    return false;
+    private boolean is_suicide(Board board, String target, Piece king){ //target => wo der König hinmöchte
+        return is_check(board, target, king);
     }
 
     private void castle(ArrayList<ArrayList<Square>> board) {
