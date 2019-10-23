@@ -6,18 +6,21 @@ public class Move {
 
     public boolean move_check(String start, String end, Board board) {
 
-        if (!board.valid_input(start) && !board.valid_input(end)) { // checks if the input is valid
+        if (!board.valid_input(start) | !board.valid_input(end)) { // checks if the input is valid
             return false;
         }
         if (!check_empty(end, board.getBoard())) { // falls auf zielfeld eine Figur mit gleicher Farbe steht
             if (get_color_of_piece(end, board.getBoard()) == get_color_of_piece(start, board.getBoard())) {
+                System.out.println("You want to capture your own figure. Try again: ");
                 return false;
             }
         }
         if (!is_valid_path(start, end, board)){
+            System.out.println("This Figure cant make this move. Try again: ");
             return false;
         }
         if (check_path_occupied(start, end, board)) { // checks if the path of the figure is getting blocked
+            System.out.println("Blocked. Try again: ");
             return false;
         }
         return true;
@@ -28,7 +31,7 @@ public class Move {
     private ArrayList<ArrayList<Square>> possible_moves (String start, Board board){
         /**
          * @param start takes a specific Figure on the board
-         *@param board iterates trough board to any position to get an list of possible moves for that specific Figure
+         * @param board iterates trough board to any position to get an list of possible moves for that specific Figure
          * @returns possible moves as nested arraylist
          */
         ArrayList<ArrayList<Square>> possible_moves = new ArrayList<>();
@@ -63,6 +66,13 @@ public class Move {
     }
 
     public ArrayList<Square> get_path(String start, String end, Board board){
+        /**
+         * This method draws a path from start to end even if it is a specific path for the specific figure on the start
+         * @param start
+         * @param end
+         * @param board
+         * @return ArrayList with Square element
+         */
         ArrayList<Square> path_list = new ArrayList<Square>();
         Piece piece = board.get_Piece_from_position(start);
         Type type_of_piece = piece.getType();
@@ -244,7 +254,7 @@ public class Move {
                     }
                 }
 
-            case N: // just check if endpoint is free
+            case N: // just check if endpoint is free or captureable
                 break;
             case P:
                     switch (piece.getColor()) {
@@ -268,6 +278,14 @@ public class Move {
     }
 
     public boolean is_valid_path(String start, String end, Board board){
+        /**
+         * This method is used to calculate a path from start to end. It then decides if it is weather valid
+         * for the figure on the start position to walk this path to the end position.
+         * @param start eg: A6, B4,
+         * @param end dito
+         * @param board it need a coordinate system
+         * @return boolean if it is a valid path
+         */
         Piece piece = board.get_Piece_from_position(start);
         Type type_of_piece = piece.getType();
         int start_x = translation_string_to_board_row(start);
@@ -278,48 +296,53 @@ public class Move {
             case B:
                 return Math.abs(start_x - end_x) == Math.abs(start_y - end_y); //This statement must holds because the Bishop can only move diagonal.
             case T:
-                return start_x == end_x || start_y == end_y; //This statement must holds because the Tower can just move horizontal or vertical
+                return start_x == end_x | start_y == end_y; //This statement must holds because the Tower can just move horizontal or vertical
             case Q:
-                return Math.abs(start_x - end_x) == Math.abs(start_y - end_y) || start_x == end_x || start_y == end_y; // Queen = Bishop + Tower
+                return Math.abs(start_x - end_x) == Math.abs(start_y - end_y) | start_x == end_x | start_y == end_y; // Queen = Bishop + Tower
             case N:
-                return (    start_x + 1 == end_x && start_y + 2 == end_y
-                        ||  start_x + 2 == end_x && start_y + 1 == end_y
-                        ||  start_x + 2 == end_x && start_y - 1 == end_y
-                        ||  start_x + 1 == end_x && start_y - 2 == end_y
-                        ||  start_x - 1 == end_x && start_y - 2 == end_y
-                        ||  start_x - 2 == end_x && start_y - 1 == end_y
-                        ||  start_x - 2 == end_x && start_y + 1 == end_y
-                        ||  start_x - 1 == end_x && start_y + 2 == end_y);
+                return (   (start_x + 1 == end_x && start_y + 2 == end_y) // One of those statements must hold when it is a valid path for Knight.
+                        |  (start_x + 2 == end_x && start_y + 1 == end_y)
+                        |  (start_x + 2 == end_x && start_y - 1 == end_y)
+                        |  (start_x + 1 == end_x && start_y - 2 == end_y)
+                        |  (start_x - 1 == end_x && start_y - 2 == end_y)
+                        |  (start_x - 2 == end_x && start_y - 1 == end_y)
+                        |  (start_x - 2 == end_x && start_y + 1 == end_y)
+                        |  (start_x - 1 == end_x && start_y + 2 == end_y)
+                );
                 // Every 8 possible endpoints of knight is tested.
             case K:
-                return      (!is_suicide(board, translation_list_index(end_x, end_y), piece) // when king doesn't suicide
-                        &&  (start_x  == end_x && start_y + 1  == end_y // and it moves just around itself
-                        ||  start_x + 1 == end_x && start_y + 1 == end_y
-                        ||  start_x + 1 == end_x && start_y == end_y
-                        ||  start_x + 1 == end_x && start_y - 1 == end_y
-                        ||  start_x == end_x && start_y - 1 == end_y
-                        ||  start_x - 1 == end_x && start_y - 1 == end_y
-                        ||  start_x - 1 == end_x && start_y == end_y
-                        ||  start_x - 1 == end_x && start_y + 1 == end_y))
-
-                        || possible_scharade(piece, board); // checks if scharade possible
+                return     !is_suicide(board, translation_list_index(end_x, end_y), piece) // when king doesn't suicide
+                        &  (
+                            (start_x  == end_x && start_y + 1  == end_y) // and it moves just around itself
+                        |   (start_x + 1 == end_x && start_y + 1 == end_y)
+                        |   (start_x + 1 == end_x && start_y == end_y)
+                        |   (start_x + 1 == end_x && start_y - 1 == end_y)
+                        |   (start_x == end_x && start_y - 1 == end_y)
+                        |   (start_x - 1 == end_x && start_y - 1 == end_y)
+                        |   (start_x - 1 == end_x && start_y == end_y)
+                        |   (start_x - 1 == end_x && start_y + 1 == end_y)
+                        |   possible_scharade(piece, board)
+                            ); // checks if scharade possible
 
             case P:
                 switch (piece.getColor()){
                     case W:
-                        System.out.println(!piece.get_has_moved() && end_y == 3);
-                        System.out.println(start_y + 1 == end_y   );
-                        System.out.println(board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null);
-                        System.out.println(start_x - 1 == end_x || start_x + 1 == end_x);
-                        return (    !piece.get_has_moved() && end_y == 3) // White pawn has never moved so it is allowed to jump 2 squares
-                                ||  start_y + 1 == end_y                  // or pawn is always allowed to jump one square
-                                ||  ((start_y + 1 == end_y && board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null)
-                                &&  (start_x - 1 == end_x || start_x + 1 == end_x)); // check if the both diagonal square are not empty, then are allowed to move because eat.
+                        if (start_y + 1 == end_y){ // if the target is one above
+                            if (start_x - 1 == end_x | start_x + 1 == end_x) { // one above and left or right
+                                if (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null){
+                                    // when left or right target must contain enemy
+                                    return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.W;
+                                }else return false;
+                            }else return start_x == end_x;
+                        }else if (start_y + 2 == end_y & start_x == end_x){
+                            return !piece.get_has_moved();
+                        }else return false;
+
                     case B:
-                        return (    !piece.get_has_moved() && end_y == 4)
-                                ||  start_y - 1 == end_y
-                                ||  ((start_y - 1 == end_y && board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null)
-                                &&  (start_x - 1 == end_x || start_x + 1 == end_x)); // check if the both diagonal square are not empty, then are allowed to move because eat.
+                        return     (!piece.get_has_moved() & end_y == 4)
+                                |  (start_y - 1 == end_y)
+                                |  (((start_y - 1 == end_y) & (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null))
+                                &  (start_x - 1 == end_x | start_x + 1 == end_x)); // check if the both diagonal square are not empty, then are allowed to move because eat.
                 }
         }
 

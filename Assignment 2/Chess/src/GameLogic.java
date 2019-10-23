@@ -15,7 +15,6 @@ public class GameLogic {
         Player player1 = new Player(name_from_player(), Color.W);
         Player player2 = new Player(name_from_player(), Color.B);
         board.print();
-        board.print();
 
         while(true){ //!mover.checkmate()
             /////////////player 1
@@ -33,7 +32,7 @@ public class GameLogic {
             this should also check if the the move is a valid move like when a pawn wants to jump like a queen it should ask for a new destination again.
             but doesnt work yet
             * */
-            while (!mover.move_check(player1_input1,player1_input2,board)){
+            while (!mover.move_check(player1_input1, player1_input2, board)){
                 System.out.println("invalid Destination. Try again: ");
                 player1_input2 = get_user_input();
             }
