@@ -9,6 +9,7 @@ public class Move {
         if (!board.valid_input(start) | !board.valid_input(end)) { // checks if the input is valid
             return false;
         }
+
         if (!check_empty(end, board.getBoard())) { // falls auf zielfeld eine Figur mit gleicher Farbe steht
             if (get_color_of_piece(end, board.getBoard()) == get_color_of_piece(start, board.getBoard())) {
                 System.out.println("Don't try to capture your own figure. Try again: ");
@@ -26,6 +27,14 @@ public class Move {
         return true;
     }
 
+//    public boolean can_move(String start,Board board){
+//        if (possible_moves(start,board).isEmpty()){ // check if piece can actually move from start position
+//            return false;
+//        }
+//        return true;
+//    }
+
+
     private ArrayList<ArrayList<Square>> possible_moves (String start, Board board){
         /**
          * @param start takes a specific Figure on the board
@@ -35,10 +44,14 @@ public class Move {
         ArrayList<ArrayList<Square>> possible_moves = new ArrayList<>();
         for (ArrayList<Square> arrayList: board.getBoard()){
             for (Square square : arrayList){
-                if (board.get_Piece_from_position(start).getColor() != square.get_Piece().getColor()) { // This check checks that the opposite color is taken
-                    if (!check_path_occupied(start, square.get_Position(),board)) { // This check checks if the path is not blocked
+
+                if (!check_path_occupied(start, square.get_Position(), board)) { // This check checks if the path is not blocked
+//                    if (!square.get_is_empty()) {
+                    if (board.get_Piece_from_position(start).getColor() != board.get_Piece_from_position(start).getColor()) { // This check checks that the opposite color is taken
                         possible_moves.add(get_path(start, square.get_Position(), board));
-                    }
+                        System.out.println(square);
+                        }
+//                    }
                 }
             }
         }
