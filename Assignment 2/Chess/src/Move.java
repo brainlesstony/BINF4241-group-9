@@ -11,7 +11,7 @@ public class Move {
         }
         if (!check_empty(end, board.getBoard())) { // falls auf zielfeld eine Figur mit gleicher Farbe steht
             if (get_color_of_piece(end, board.getBoard()) == get_color_of_piece(start, board.getBoard())) {
-                System.out.println("You want to capture your own figure. Try again: ");
+                System.out.println("Don't try to capture your own figure. Try again: ");
                 return false;
             }
         }
@@ -25,9 +25,7 @@ public class Move {
         }
         return true;
     }
-    /* TODO: PATH BLOCKED IN POSSIBLE MOVES*/
 
-    //returns a list of all possible moves for a piece , to check path
     private ArrayList<ArrayList<Square>> possible_moves (String start, Board board){
         /**
          * @param start takes a specific Figure on the board
@@ -339,10 +337,16 @@ public class Move {
                         }else return false;
 
                     case B:
-                        return     (!piece.get_has_moved() & end_y == 4)
-                                |  (start_y - 1 == end_y)
-                                |  (((start_y - 1 == end_y) & (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null))
-                                &  (start_x - 1 == end_x | start_x + 1 == end_x)); // check if the both diagonal square are not empty, then are allowed to move because eat.
+                        if (start_y - 1 == end_y){ // if the target is one above
+                            if (start_x - 1 == end_x | start_x + 1 == end_x) { // one above and left or right
+                                if (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null){
+                                    // when left or right target must contain enemy
+                                    return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.W;
+                                }else return false;
+                            }else return start_x == end_x;
+                        }else if (start_y - 2 == end_y & start_x == end_x){
+                            return !piece.get_has_moved();
+                        }else return false;
                 }
         }
 
@@ -350,7 +354,11 @@ public class Move {
     }
 
     private boolean check_path_occupied(String start, String end_pos, Board board){
+        /**
+         * @return if the path is blocked or not
+         */
         ArrayList<Square> path_list = get_path(start, end_pos, board);
+        if (path_list.size() != 0) { path_list.remove(path_list.size() - 1);}  // If an enemy is on the target square (=last element) it is possible to capture it.
         for (Square square : path_list){
             if (square.get_Piece() != null) {
                 return true;
