@@ -70,9 +70,16 @@ public class Board {
     }
 
     public void print(){
-        for (ArrayList list : this.board){
-            System.out.println(list);
+        int i = 8;
+        for (ArrayList<Square> list : this.board){
+            System.out.print("[" + i + "]");
+            for (Square square : list){
+                System.out.print(square);
+            }
+            i--;
+            System.out.println();
         }
+        System.out.println("[ ][ A ][ B ][ C ][ D ][ E ][ F ][ G ][ H ]");
         System.out.println("Eaten Figures: " + this.graveyard);
     }
 
@@ -142,35 +149,9 @@ public class Board {
         return list_copy;
     }
 
-    public boolean check_empty(String field){
-        String row = field.substring(1);
-        String column = field.substring(0,1);
-        String abc = "ABCDEFGH";
-        String numbers = "87654321";
-        Piece dummy = this.board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece();
-        return dummy == null;
-    }
-
-    public Color get_color_of_piece(String position){
-        String row = position.substring(1);
-        String column = position.substring(0,1);
-        String abc = "ABCDEFGH";
-        String numbers = "87654321";
-
-        return this.board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece().getColor();
-    }
-
-    public Piece get_Piece(Color color, Type x){
-        for (ArrayList<Square> list : getBoard()){
-            for (Square square : list){
-                if (square.get_Piece().getType() == x && square.get_Piece().getColor() == color){
-                    return square.get_Piece();
-                }
-            }
+    public void fake_flush() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println();
         }
-    return null;}
-
-    public void flush() {
-        System.out.flush();
-    } // deletes the previous board on the screen but this does not happen in the Intellij console but in the terminal
+    }
 }

@@ -14,6 +14,7 @@ public class GameLogic {
         System.out.println("Player names: ");
         Player player1 = new Player(name_from_player(), Color.W);
         Player player2 = new Player(name_from_player(), Color.B);
+        board.fake_flush();
         board.print();
 
         while(true){ //!mover.checkmate()
@@ -37,7 +38,9 @@ public class GameLogic {
                 player1_input2 = get_user_input();
             }
             board.move(player1_input1, player1_input2);
+            board.fake_flush();
             board.print();
+
 
             ////////////player2
             // Welche Figur bestimmt durch User Input des Feldes
@@ -55,6 +58,7 @@ public class GameLogic {
                 player2_input2 = get_user_input();
             }
             board.move(player2_input1, player2_input2);
+            board.fake_flush();
             board.print();
         }
     }
