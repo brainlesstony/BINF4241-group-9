@@ -58,15 +58,6 @@ public class Move {
         return possible_moves;
     }
 
-    private Piece get_Piece_from_position(String position, Board board){
-        String row = position.substring(1);
-        String column = position.substring(0,1);
-        String abc = "ABCDEFGH";
-        String numbers = "87654321";
-
-        return board.getBoard().get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece();
-    }
-
     private boolean check_empty(String field, ArrayList<ArrayList<Square>> board){
         String row = field.substring(1);
         String column = field.substring(0,1);
@@ -266,7 +257,6 @@ public class Move {
                 }
 
             case N: // just check if endpoint is free or captureable
-                break;
             case P:
                     switch (piece.getColor()) {
                         case B:
@@ -297,6 +287,9 @@ public class Move {
          * @param board it need a coordinate system
          * @return boolean if it is a valid path
          */
+        if (board.get_Piece_from_position(start) == null){
+            return false;
+        }
         Piece piece = board.get_Piece_from_position(start);
         Type type_of_piece = piece.getType();
         int start_x = translation_string_to_board_row(start);
@@ -371,10 +364,12 @@ public class Move {
          * @return if the path is blocked or not
          */
         ArrayList<Square> path_list = get_path(start, end_pos, board);
-        if (path_list.size() != 0) { path_list.remove(path_list.size() - 1);}  // If an enemy is on the target square (=last element) it is possible to capture it.
-        for (Square square : path_list){
-            if (square.get_Piece() != null) {
-                return true;
+        if (path_list.size() != 0) {
+            path_list.remove(path_list.size() - 1); // If an enemy is on the target square (=last element) it is possible to capture it.
+            for (Square square : path_list) {
+                if (square.get_Piece() != null) {
+                    return true;
+                }
             }
         }
         return false;
@@ -406,28 +401,60 @@ public class Move {
         return abc.indexOf(column);
     }
 
-    private boolean is_check(Board board, String kings_position, Piece king){
-        for(ArrayList<Square> list: board.getBoard()){
+    public String get_Kings_position(Board board, Color color){
+        for (ArrayList<Square> list : board.getBoard()){
             for (Square square : list){
-                if (square.get_Piece().getColor() != king.getColor()){
-                    if (move_check(square.get_Position(), kings_position, board)){
-                        return true;
+                if (square.get_Piece() != null){
+                    if (square.get_Piece().getType() == Type.K){
+                        if (square.get_Piece().getColor() == color){
+                            return square.get_Position();
+                        }
                     }
                 }
             }
         }
+        return "";
+    }
+
+    public boolean is_check(Board board){
+        String white_King_pos = get_Kings_position(board, Color.W);
+        String black_King_pos = get_Kings_position(board, Color.B);
+
+        for (ArrayList<Square> list : board.getBoard()){
+            for (Square square : list){
+                if (square.get_Piece() != null){
+                    if (square.get_Piece().getType() != Type.K) // a King can never check another king
+                        if (square.get_Piece().getColor() != Color.W){
+                            if (is_valid_path(square.get_Position(), white_King_pos, board)){
+                                if (!check_path_occupied(square.get_Position(), white_King_pos, board)) {
+                                    System.out.println("White King in check!");
+                                    return true;
+                                }
+                            }
+                        }else if (square.get_Piece().getColor() != Color.B){
+                            if (is_valid_path(square.get_Position(), black_King_pos, board)) {
+                                if (!check_path_occupied(square.get_Position(), black_King_pos, board)) {
+                                    System.out.println("Black King in check!");
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+            }
+        }
         return false;
     }
+
  // TODO CHECKMATE METHOD
     public boolean checkmate(Board board, String kings_position, Piece king){
-        if (is_check(board, kings_position, king)){
+        if (is_check(board)){
             return true;
         }
         return false; // TODO: need to check first if king in danger
     }
 
     private boolean is_suicide(Board board, String target, Piece king){ //target => wo der König hinmöchte
-        return is_check(board, target, king);
+        return is_check(board);
     }
 
     private boolean possible_scharade(Piece king, Board board){ // nur könig kann scharade ausführen
