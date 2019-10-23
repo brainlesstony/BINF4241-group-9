@@ -71,15 +71,18 @@ public class Board {
 
     public void print(){
         int i = 8;
+        String ANSI_Reset = "\u001B[0m";
+        String ANSI_Green = "\u001B[32m"; //yellow 33, blue 34, cyan 36
         for (ArrayList<Square> list : this.board){
-            System.out.print("[" + i + "]");
+            System.out.print(ANSI_Green+"[" + i + "]"+ANSI_Reset);
             for (Square square : list){
                 System.out.print(square);
             }
             i--;
             System.out.println();
         }
-        System.out.println("[ ][ A ][ B ][ C ][ D ][ E ][ F ][ G ][ H ]");
+
+        System.out.println(ANSI_Green+"[ ][ A ][ B ][ C ][ D ][ E ][ F ][ G ][ H ]"+ANSI_Reset);
         System.out.println("Eaten Figures: " + this.graveyard);
     }
 
