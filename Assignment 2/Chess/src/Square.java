@@ -28,6 +28,8 @@ public class Square {
     }
     public ColorSquare get_Color(){return aColor;}
     public String get_Position(){ return aPosition;}
+    public Boolean get_is_empty(){return aPiece == null;}
+
 
 
     /*protected String type;
