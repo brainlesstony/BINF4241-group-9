@@ -14,7 +14,6 @@ public class GameLogic {
         System.out.println("Player names: ");
         Player player1 = new Player(name_from_player(), Color.W);
         Player player2 = new Player(name_from_player(), Color.B);
-        board.fake_flush();
         board.print();
 
         while(true){ //!mover.checkmate()
@@ -39,6 +38,7 @@ public class GameLogic {
             }
             board.move(player1_input1, player1_input2);
             board.fake_flush();
+            mover.is_check(board);
             board.print();
 
 
@@ -59,6 +59,7 @@ public class GameLogic {
             }
             board.move(player2_input1, player2_input2);
             board.fake_flush();
+            mover.is_check(board);
             board.print();
         }
     }
@@ -81,17 +82,5 @@ public class GameLogic {
             return line;
         }
     }
-    public void print_graveyard(ArrayList<Piece> graveyard){
-        String tmp;
-        tmp = graveyard.toString();
-    }
-
-
-    public ArrayList<Piece> get_graveyard(ArrayList<Piece> graveyard){
-        ArrayList<Piece> graveyard_out = new ArrayList<>();
-        graveyard_out.addAll(graveyard);
-        return graveyard_out;
-    }
-
 }
 
