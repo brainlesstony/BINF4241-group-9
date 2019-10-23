@@ -14,6 +14,7 @@ public class GameLogic {
         System.out.println("Player names: ");
         Player player1 = new Player(name_from_player(), Color.W);
         Player player2 = new Player(name_from_player(), Color.B);
+        board.fake_flush();
         board.print();
 
         while(true){ //!mover.checkmate()

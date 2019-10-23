@@ -152,7 +152,7 @@ public class Board {
         return list_copy;
     }
 
-    public void fake_flush() {
+    public void fake_flush(){
         for (int i = 0; i < 100; i++) {
             System.out.println();
         }
