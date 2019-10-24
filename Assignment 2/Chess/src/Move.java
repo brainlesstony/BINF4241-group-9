@@ -340,6 +340,12 @@ public class Move {
                                 if (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null){
                                     // when left or right target must contain enemy
                                     return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.W;
+                                }else if(is_en_passent(board,piece,start,end)) {
+                                    if(is_leftW(board,piece,start,end)){
+                                        return true;
+                                    }else if(is_rightW(board,piece,start,end)) {
+                                        return true;
+                                    }
                                 }else return false;
                             }else return start_x == end_x;
                         }else if (start_y + 2 == end_y & start_x == end_x){
@@ -352,6 +358,12 @@ public class Move {
                                 if (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null){
                                     // when left or right target must contain enemy
                                     return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.B;
+                                }else if(is_en_passent(board,piece,start,end)) {
+                                    if(is_leftB(board,piece,start,end)){
+                                        return true;
+                                    }else if(is_rightB(board,piece,start,end)) {
+                                        return true;
+                                    }
                                 }else return false;
                             }else return start_x == end_x;
                         }else if (start_y - 2 == end_y & start_x == end_x){
@@ -462,21 +474,66 @@ public class Move {
     }
 
 
-    private boolean is_en_passent(ArrayList<ArrayList<Square>> board, Piece mover,String start,  String target){
+    private boolean is_en_passent(Board board, Piece piece,String start,  String end){
         // wird gluegt, öb mer uf die richtig Zeile gahd als target und öb links oder rechts en pawn vo de andere farb stahd
         String abc = "ABCDEFGH";
-        switch (mover.getColor()){
+        Square tmp = null;
+        switch (piece.getColor()){
             case W:
-                Square square_left_W = board.get(3).get(abc.indexOf(target.substring(0,1))-1);
-                Square square_right_W = board.get(3).get(abc.indexOf(target.substring(0,1))+1);
-                return target.substring(1).equals("6") && ((square_left_W.get_Piece().getType() == Type.P && square_left_W.get_Piece().getColor() != mover.getColor()) || (square_right_W.get_Piece().getType() == Type.P && square_right_W.get_Piece().getColor() != mover.getColor()));
+                Square square_left_W = board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))-1);
+                Square square_right_W = board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))+1);
+                if (is_rightW(board,piece,start,end)){
+                    tmp = board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))-1);
+                    board.getBoard().get("87654321".indexOf(tmp.get_Position().substring(1))).set("ABCDEFGH".indexOf(tmp.get_Position().substring(0,1)), new Square(tmp.get_Color(), null, tmp.get_Position()));
+                }else if( is_leftW(board,piece,start,end)) {
+                    tmp = board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))+1);
+                    board.getBoard().get("87654321".indexOf(tmp.get_Position().substring(1))).set("ABCDEFGH".indexOf(tmp.get_Position().substring(0,1)), new Square(tmp.get_Color(), null, tmp.get_Position()));
+                }
+
+                return end.substring(0,1).equals("6") && ((square_left_W.get_Piece().getType() == Type.P && square_left_W.get_Piece().getColor() != piece.getColor()) || (square_right_W.get_Piece().getType() == Type.P && square_right_W.get_Piece().getColor() != piece.getColor()));
             case B:
-                Square square_left_B = board.get(5).get(abc.indexOf(target.substring(0,1))-1);
-                Square square_right_B = board.get(5).get(abc.indexOf(target.substring(0,1))+1);
-                return target.substring(1).equals("3") && ((square_left_B.get_Piece().getType() == Type.P && square_left_B.get_Piece().getColor() != mover.getColor()) || (square_right_B.get_Piece().getType() == Type.P && square_right_B.get_Piece().getColor() != mover.getColor()));
+                Square square_left_B = board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))-1);
+                Square square_right_B = board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))+1);
+                if (is_rightW(board,piece,start,end)){
+                    tmp = board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))-1);
+                    board.getBoard().get("87654321".indexOf(tmp.get_Position().substring(1))).set("ABCDEFGH".indexOf(tmp.get_Position().substring(0,1)), new Square(tmp.get_Color(), null, tmp.get_Position()));
+                }else if( is_leftW(board,piece,start,end)) {
+                    tmp = board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))+1);
+                    board.getBoard().get("87654321".indexOf(tmp.get_Position().substring(1))).set("ABCDEFGH".indexOf(tmp.get_Position().substring(0,1)), new Square(tmp.get_Color(), null, tmp.get_Position()));
+                }
+                return end.substring(0,1).equals("3") && ((square_left_B.get_Piece().getType() == Type.P && square_left_B.get_Piece().getColor() != piece.getColor()) || (square_right_B.get_Piece().getType() == Type.P && square_right_B.get_Piece().getColor() != piece.getColor()));
         }
         return false;
     }
+    private boolean is_leftW(Board board, Piece piece, String start, String end){
+        String abc = "ABCDEFGH";
+        if (null != board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))-1)) {
+            return true;
+        }
+        return false;
+    }
+    private boolean is_rightW(Board board, Piece piece, String start, String end){
+        String abc = "ABCDEFGH";
+        if (null != board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))+1)){
+            return true;
+        }
+        return false;
+    }
+    private boolean is_leftB(Board board, Piece piece, String start, String end){
+        String abc = "ABCDEFGH";
+        if (null != board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))-1)) {
+            return true;
+        }
+        return false;
+    }
+    private boolean is_rightB(Board board, Piece piece, String start, String end){
+        String abc = "ABCDEFGH";
+        if (null != board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))+1)){
+            return true;
+        }
+        return false;
+    }
+
 
     public void is_promotion (Board board, String position){
 
