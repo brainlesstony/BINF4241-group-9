@@ -324,8 +324,8 @@ public class Move {
                         |   (start_x == end_x & start_y - 1 == end_y)
                         |   (start_x - 1 == end_x & start_y - 1 == end_y)
                         |   (start_x - 1 == end_x & start_y == end_y)
-                        |   (start_x - 1 == end_x & start_y + 1 == end_y)
-                        |   possible_scharade(piece, end, board, piece.getColor()));
+                        |   (start_x - 1 == end_x & start_y + 1 == end_y));
+//                        |   possible_scharade(piece, end, board, piece.getColor()));
 
 
             case P:
@@ -457,44 +457,6 @@ public class Move {
         return is_check(board);
     }
 
-   // nur könig kann scharade ausführen
-    private boolean possible_scharade (Piece king, String end, Board board, Color color) { // nur könig kann scharade ausführen
-        boolean condition_T1 = false;
-        boolean condition_T2 = false;
-        boolean condition_K = false;
-        for (ArrayList<Square> arraylist : board.getBoard()) {
-            for (Square square : arraylist) {
-                if (square.get_Piece().getColor() == color) { //Case 1
-                    if (square.get_Piece().getType() == Type.T && square.get_Piece().get_has_moved() && !condition_T1) {
-                        condition_T1 = true;
-                    }
-                    if (square.get_Piece().getType() == Type.K && square.get_Piece().get_has_moved()) {
-                        condition_K = true;
-                    }
-                    if (square.get_Piece().getType() == Type.T && square.get_Piece().get_has_moved()) {
-                        condition_T2 = true;
-                    }
-
-                } else { // other color
-
-
-                }
-            }
-            if (color == Color.W && end.equals("B1")) {
-                Piece tmp = king;
-                king = board.get_Piece_from_position(end);
-                // maybe a setter ? to new position or a new square at target location`?
-            } else if (color == Color.W && end.equals("G1")) {
-                ;
-            }
-
-//                    ; //TODO move white pieces tower and king T[A1]-[C1] K[E1]-[B1] oder T[H1]-[F1] K[E1]-[G1] STEF
-//                    ;//TODO move white pieces tower and king T[A8]-[C8] K[E8]-[B8] oder T[H8]-[F8] K[E8]-[G8] STEF
-
-        }
-        return false;
-    }
-
 
 //    private boolean is_en_passent(ArrayList<ArrayList<Square>> board){
 //        ; // TODO LOOOS STEF LOOOOS
@@ -525,4 +487,49 @@ public class Move {
 //            case "N": // remove pawn from square add knight square
 //        }
 //    }
+    public boolean is_scharade(String start,Board board,Color color) {
+
+        if (start.equals("0-0") & color == Color.W) {
+            if (!check_path_occupied("E1", "G1", board)){
+                swap_scharade(board,62,61,Color.W);
+                return true;
+            }
+
+        } else if (start.equals("0-0-0") & color == Color.W) {
+            if (check_path_occupied("E1", "B1", board)){
+                swap_scharade(board,57,58,Color.W);
+                return true;
+            }
+        } else if (start.equals("0-0") & color == Color.B) {
+            if(check_path_occupied("E8", "G8", board)){
+                swap_scharade(board,6,5,Color.B);
+                return true;
+            }
+        } else if (start.equals("0-0-0") & color == Color.B) {
+            if(check_path_occupied("E8", "B8", board)){
+                swap_scharade(board,1,2,Color.B);
+                return  true;
+            }
+        }
+        return false;
+    }
+
+    private void swap_scharade(Board board,Integer index_k,Integer index_t, Color color){
+        Square tmp = null;
+        Square tmp1 = null;
+        for (ArrayList<Square> list : board.getBoard()) {
+            for (Square square : list) {
+                if (square.get_Piece().getType() == Type.K & square.get_Piece().getColor() == color) {
+                    tmp = square;
+                    list.remove(square);
+                }
+                if (square.get_Piece().getType() == Type.T & square.get_Piece().getColor() == color) {
+                    tmp1 = square;
+                    list.remove(square);
+                }
+            }
+            list.add(index_k,tmp); //King goes to G1
+            list.add(index_t,tmp1); //Tower goes to F1
+        }
+    }
 }
