@@ -44,6 +44,7 @@ public class GameLogic {
                 player1_input2 = get_user_input();
             }
             board.move(player1_input1, player1_input2);
+            mover.is_promotion(board,player1_input2);
             board.fake_flush();
             mover.is_check(board);
             board.print();
@@ -73,13 +74,14 @@ public class GameLogic {
                 player2_input2 = get_user_input();
             }
             board.move(player2_input1, player2_input2);
+            mover.is_promotion(board,player2_input2);
             board.fake_flush();
             mover.is_check(board);
             board.print();
         }
     }
 
-    private static String get_user_input(){
+    public static String get_user_input(){
         Scanner input = new Scanner(System.in);
         return input.nextLine();
     }

@@ -343,6 +343,12 @@ public class Move {
                                 if (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null){
                                     // when left or right target must contain enemy
                                     return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.W;
+                                }else if(is_en_passent(board,piece,start,end)) {
+                                    if(is_leftW(board,piece,start,end)){
+                                        return true;
+                                    }else if(is_rightW(board,piece,start,end)) {
+                                        return true;
+                                    }
                                 }else return false;
                             }else return start_x == end_x;
                         }else if (start_y + 2 == end_y & start_x == end_x){
@@ -355,6 +361,12 @@ public class Move {
                                 if (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null){
                                     // when left or right target must contain enemy
                                     return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.B;
+                                }else if(is_en_passent(board,piece,start,end)) {
+                                    if(is_leftB(board,piece,start,end)){
+                                        return true;
+                                    }else if(is_rightB(board,piece,start,end)) {
+                                        return true;
+                                    }
                                 }else return false;
                             }else return start_x == end_x;
                         }else if (start_y - 2 == end_y & start_x == end_x){
@@ -465,35 +477,104 @@ public class Move {
     }
 
 
-//    private boolean is_en_passent(ArrayList<ArrayList<Square>> board){
-//        ; // TODO LOOOS STEF LOOOOS
-//        return false;
-//    }
+    private boolean is_en_passent(Board board, Piece piece,String start,  String end){ //TODO ENPASSENT IM TERMINAL
+        // wird gluegt, öb mer uf die richtig Zeile gahd als target und öb links oder rechts en pawn vo de andere farb stahd
+        String abc = "ABCDEFGH";
+        Square tmp = null;
+        switch (piece.getColor()){
+            case W:
+                Square square_left_W = board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))-1);
+                Square square_right_W = board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))+1);
+                if (is_rightW(board,piece,start,end)){
+                    tmp = board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))-1);
+                    board.getBoard().get("87654321".indexOf(tmp.get_Position().substring(1))).set("ABCDEFGH".indexOf(tmp.get_Position().substring(0,1)), new Square(tmp.get_Color(), null, tmp.get_Position()));
+                }else if( is_leftW(board,piece,start,end)) {
+                    tmp = board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))+1);
+                    board.getBoard().get("87654321".indexOf(tmp.get_Position().substring(1))).set("ABCDEFGH".indexOf(tmp.get_Position().substring(0,1)), new Square(tmp.get_Color(), null, tmp.get_Position()));
+                }
 
-//    public void promotion (ArrayList<ArrayList<Square>> board){
-//        if (position.substring(1).equals("1") && Type.P && Color.W){
-//            System.out.println("You can choose what your pawn will transform into!");
-//            System.out.println("Type in one letter as indicated\n" +
-//                    "Queen = Q  , Tower = T, Bishop = B, Knight = N");
-//            do_promotion();
-//        }
-//        else if (position.substring(1).equals("") && Type.P && Color.B){
-//            System.out.println("You can choose what your pawn will transform into!");
-//            System.out.println("Type in one letter as indicated\n" +
-//                    "Queen = Q  , Tower = T, Bishop = B, Knight = N");
-//            do_promotion();
-//        }
-//    }
-//
-//    public void do_promotion() {
-//        String tmp = get_user_input();
-//        switch (tmp) {
-//            case "Q": // remove pawn from square add queen square
-//            case "T": // remove pawn from square add tower square
-//            case "B": // remove pawn from square add bishop square
-//            case "N": // remove pawn from square add knight square
-//        }
-//    }
+                return end.substring(0,1).equals("6") && ((square_left_W.get_Piece().getType() == Type.P && square_left_W.get_Piece().getColor() != piece.getColor()) || (square_right_W.get_Piece().getType() == Type.P && square_right_W.get_Piece().getColor() != piece.getColor()));
+            case B:
+                Square square_left_B = board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))-1);
+                Square square_right_B = board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))+1);
+                if (is_rightW(board,piece,start,end)){
+                    tmp = board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))-1);
+                    board.getBoard().get("87654321".indexOf(tmp.get_Position().substring(1))).set("ABCDEFGH".indexOf(tmp.get_Position().substring(0,1)), new Square(tmp.get_Color(), null, tmp.get_Position()));
+                }else if( is_leftW(board,piece,start,end)) {
+                    tmp = board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))+1);
+                    board.getBoard().get("87654321".indexOf(tmp.get_Position().substring(1))).set("ABCDEFGH".indexOf(tmp.get_Position().substring(0,1)), new Square(tmp.get_Color(), null, tmp.get_Position()));
+                }
+                return end.substring(0,1).equals("3") && ((square_left_B.get_Piece().getType() == Type.P && square_left_B.get_Piece().getColor() != piece.getColor()) || (square_right_B.get_Piece().getType() == Type.P && square_right_B.get_Piece().getColor() != piece.getColor()));
+        }
+        return false;
+    }
+    private boolean is_leftW(Board board, Piece piece, String start, String end){
+        String abc = "ABCDEFGH";
+        if (null != board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))-1)) {
+            return true;
+        }
+        return false;
+    }
+    private boolean is_rightW(Board board, Piece piece, String start, String end){
+        String abc = "ABCDEFGH";
+        if (null != board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))+1)){
+            return true;
+        }
+        return false;
+    }
+    private boolean is_leftB(Board board, Piece piece, String start, String end){
+        String abc = "ABCDEFGH";
+        if (null != board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))-1)) {
+            return true;
+        }
+        return false;
+    }
+    private boolean is_rightB(Board board, Piece piece, String start, String end){
+        String abc = "ABCDEFGH";
+        if (null != board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))+1)){
+            return true;
+        }
+        return false;
+    }
+
+
+    public void is_promotion (Board board, String position){
+
+        for (ArrayList<Square> list : board.getBoard()) {
+            for (Square square : list){
+                if (position.substring(0,1).equals("1") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.B) {
+                    System.out.println("You can choose what your pawn will transform into!");
+                    System.out.println("Type in one letter as indicated\n" +
+                            "Queen = Q  , Tower = T, Bishop = B, Knight = N");
+                    do_promotion(square,square.get_Piece().getColor());
+
+                } else if (position.substring(0,1).equals("8") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.W) {
+                    System.out.println("You can choose what your pawn will transform into!");
+                    System.out.println("Type in one letter as indicated\n" +
+                            "Queen = Q  , Tower = T, Bishop = B, Knight = N");
+                    do_promotion(square, square.get_Piece().getColor());
+
+                }
+            }
+        }
+    }
+
+    private void do_promotion(Square square, Color color) {
+        String tmp = GameLogic.get_user_input();
+        String position = square.get_Position();
+        ColorSquare tmp_color = square.get_Color();
+        switch (tmp) {
+            case "Q":
+                square = new Square(tmp_color,new Piece(color, Type.Q, true),position);
+            case "T":
+                square = new Square(tmp_color,new Piece(color, Type.T, true),position);
+            case "B":
+                square = new Square(tmp_color,new Piece(color, Type.B, true),position);
+            case "N":
+                square = new Square(tmp_color,new Piece(color, Type.N, true),position);
+        }
+    }
+
     public boolean is_scharade(String start,Board board,Color color) {
 
         if (start.equals("0-0") & color == Color.W) {
@@ -538,5 +619,6 @@ public class Move {
             list.add(index_k,tmp); //King goes to G1
             list.add(index_t,tmp1); //Tower goes to F1
         }
+
     }
 }
