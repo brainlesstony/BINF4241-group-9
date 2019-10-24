@@ -1,5 +1,3 @@
-import javax.xml.crypto.dsig.TransformService;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Move {
@@ -27,39 +25,44 @@ public class Move {
         return true;
     }
 
-//    public boolean can_move(String start,Board board){
-//        if (possible_moves(start,board).isEmpty()){ // check if piece can actually move from start position
-//            return false;
-//        }
-//        return true;
-//    }
-
-    public boolean can_move(String start, Board board){
-        if (board.valid_input(start)){ return possible_moves(start, board).size() > 0; }
-        else{ return false; }
+    public boolean cannot_move(String start, Board board) {
+        return (possible_moves(start, board) == null);
     }
 
-    public ArrayList<ArrayList<Square>> possible_moves (String start, Board board){
+    public ArrayList<ArrayList<Square>> possible_moves(String start, Board board){
         /**
          * @param start takes a specific Figure on the board
          * @param board iterates trough board to any position to get an list of possible moves for that specific Figure
          * @returns possible moves as nested arraylist
          */
-        ArrayList<ArrayList<Square>> possible_moves = new ArrayList<>();
+        ArrayList<ArrayList<Square>> possible_move = new ArrayList<ArrayList<Square>>();
         for (ArrayList<Square> arrayList: board.getBoard()){
             for (Square square : arrayList){
-
-                if (!check_path_occupied(start, square.get_Position(), board)) { // This check checks if the path is not blocked
-//                    if (!square.get_is_empty()) {
-                    if (board.get_Piece_from_position(start).getColor() != board.get_Piece_from_position(start).getColor()) { // This check checks that the opposite color is taken
-                        possible_moves.add(get_path(start, square.get_Position(), board));
-                        System.out.println(square);
+                if (is_valid_path(start, square.get_Position(), board)){
+                    if (!check_path_occupied(start, square.get_Position(), board)){
+                        possible_move.add(get_path(start, square.get_Position(), board));
+                        for(ArrayList<Square> list : possible_move){
+                            for (Square square2 : list){
+                                System.out.println(square2.get_Position());
+                            }
                         }
-//                    }
+                    }
                 }
+
+                /*
+                if (is_valid_path(start, square.get_Position(), board)){
+                    if (!check_path_occupied(start, square.get_Position(), board)) { // This check checks if the path is not blocked
+                        if (board.get_Piece_from_position(start).getColor() != board.get_Piece_from_position(start).getColor()){ // This check checks that the opposite color is taken
+                            possible_move.add(get_path(start, square.get_Position(), board));
+                        }
+                    }
+                }
+
+                 */
             }
         }
-        return possible_moves;
+        System.out.println(possible_move);
+        return possible_move;
     }
 
     private boolean check_empty(String field, ArrayList<ArrayList<Square>> board){
