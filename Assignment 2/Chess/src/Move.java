@@ -474,7 +474,7 @@ public class Move {
     }
 
 
-    private boolean is_en_passent(Board board, Piece piece,String start,  String end){
+    private boolean is_en_passent(Board board, Piece piece,String start,  String end){ //TODO ENPASSENT IM TERMINAL
         // wird gluegt, öb mer uf die richtig Zeile gahd als target und öb links oder rechts en pawn vo de andere farb stahd
         String abc = "ABCDEFGH";
         Square tmp = null;
