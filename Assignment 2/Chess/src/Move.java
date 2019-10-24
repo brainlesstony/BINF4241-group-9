@@ -478,7 +478,7 @@ public class Move {
         return false;
     }
 
-    public void promotion (Board board, String position){
+    public void is_promotion (Board board, String position){
 
         for (ArrayList<Square> list : board.getBoard()) {
             for (Square square : list){
@@ -487,11 +487,13 @@ public class Move {
                     System.out.println("Type in one letter as indicated\n" +
                             "Queen = Q  , Tower = T, Bishop = B, Knight = N");
                     do_promotion(square,square.get_Piece().getColor());
+
                 } else if (position.substring(0,1).equals("8") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.W) {
                     System.out.println("You can choose what your pawn will transform into!");
                     System.out.println("Type in one letter as indicated\n" +
                             "Queen = Q  , Tower = T, Bishop = B, Knight = N");
                     do_promotion(square, square.get_Piece().getColor());
+
                 }
             }
         }
