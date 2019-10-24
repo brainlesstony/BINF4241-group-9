@@ -496,10 +496,21 @@ public class Move {
     }
 
 
-//    private boolean is_en_passent(ArrayList<ArrayList<Square>> board){
-//        ; // TODO LOOOS STEF LOOOOS
-//        return false;
-//    }
+    private boolean is_en_passent(ArrayList<ArrayList<Square>> board, Piece mover,String start,  String target){
+        // wird gluegt, öb mer uf die richtig Zeile gahd als target und öb links oder rechts en
+        String abc = "ABCDEFGH";
+        switch (mover.getColor()){
+            case W:
+                Square square_left_W = board.get(3).get(abc.indexOf(target.substring(0,1))-1);
+                Square square_right_W = board.get(3).get(abc.indexOf(target.substring(0,1))+1);
+                return target.substring(1).equals("7") && (square_left_W.get_Piece().getType() == Type.P || square_right_W.get_Piece().getType() == Type.P);
+            case B:
+                Square square_left_B = board.get(5).get(abc.indexOf(target.substring(0,1))-1);
+                Square square_right_B = board.get(5).get(abc.indexOf(target.substring(0,1))+1);
+                return target.substring(1).equals("2") && (square_left_B.get_Piece().getType() == Type.P || square_right_B.get_Piece().getType() == Type.P);
+        }
+        return false;
+    }
 
 //    public void promotion (ArrayList<ArrayList<Square>> board){
 //        if (position.substring(1).equals("1") && Type.P && Color.W){
