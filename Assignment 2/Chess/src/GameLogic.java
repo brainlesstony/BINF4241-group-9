@@ -25,7 +25,7 @@ public class GameLogic {
                 player1_input1 = get_user_input();
             }
             while (mover.cannot_move(player1_input1, board)){
-                System.out.println("Invalid input! Try again: ");
+                System.out.println("Can`t move! Try again: ");
                 player1_input1 = get_user_input();
             }
             // //CHECK If the selected piece can actually move from its position

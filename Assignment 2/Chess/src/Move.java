@@ -26,7 +26,7 @@ public class Move {
     }
 
     public boolean cannot_move(String start, Board board) {
-        return (possible_moves(start, board) == null);
+        return (possible_moves(start, board).size() == 0);
     }
 
     public ArrayList<ArrayList<Square>> possible_moves(String start, Board board){
@@ -40,28 +40,14 @@ public class Move {
             for (Square square : arrayList){
                 if (is_valid_path(start, square.get_Position(), board)){
                     if (!check_path_occupied(start, square.get_Position(), board)){
-                        possible_move.add(get_path(start, square.get_Position(), board));
-                        for(ArrayList<Square> list : possible_move){
-                            for (Square square2 : list){
-                                System.out.println(square2.get_Position());
-                            }
+                        ArrayList<Square> path = get_path(start, square.get_Position(), board);
+                        if (path.size() != 0){
+                            possible_move.add(path);
                         }
                     }
                 }
-
-                /*
-                if (is_valid_path(start, square.get_Position(), board)){
-                    if (!check_path_occupied(start, square.get_Position(), board)) { // This check checks if the path is not blocked
-                        if (board.get_Piece_from_position(start).getColor() != board.get_Piece_from_position(start).getColor()){ // This check checks that the opposite color is taken
-                            possible_move.add(get_path(start, square.get_Position(), board));
-                        }
-                    }
-                }
-
-                 */
             }
         }
-        System.out.println(possible_move);
         return possible_move;
     }
 
@@ -263,7 +249,9 @@ public class Move {
                     }
                 }
 
-            case N: // just check if endpoint is free or captureable
+            case N:
+                path_list.add(new Square(ColorSquare.B, null, "Platzhalter"));
+                path_list.add(board.get_Square_from_position(end));
             case P:
                     switch (piece.getColor()) {
                         case B:
@@ -384,7 +372,12 @@ public class Move {
          */
         ArrayList<Square> path_list = get_path(start, end_pos, board);
         if (path_list.size() != 0) {
-            path_list.remove(path_list.size() - 1); // If an enemy is on the target square (=last element) it is possible to capture it.
+            if (path_list.get(path_list.size()-1).get_Piece() != null) {
+                if (path_list.get(path_list.size() - 1).get_Piece().getColor() == board.get_Piece_from_position(start).getColor()) {
+                    return true;
+                }
+            }
+            path_list.remove(path_list.size() - 1); // If an enemy is on the target square (=last element) or it is free it is possible to capture it.
             for (Square square : path_list) {
                 if (square.get_Piece() != null) {
                     return true;

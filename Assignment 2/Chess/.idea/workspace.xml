@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0db614c2-2184-4edf-85dc-de4a1a3f79d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Board$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Board.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/GameLogic.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/Move$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Move$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/Move.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Move.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Rules.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Square.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Move.java" afterDir="false" />
@@ -87,7 +84,7 @@
       <workItem from="1571231292614" duration="1268000" />
       <workItem from="1571558950546" duration="4805000" />
       <workItem from="1571585745766" duration="10737000" />
-      <workItem from="1571945311659" duration="11693000" />
+      <workItem from="1571945311659" duration="14271000" />
     </task>
     <servers />
   </component>
@@ -117,33 +114,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Move.java</url>
-          <line>6</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Move.java</url>
           <line>9</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Move.java</url>
-          <line>305</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Move.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Move.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GameLogic.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="35" />
+          <line>272</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
