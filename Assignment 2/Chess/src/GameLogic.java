@@ -80,7 +80,7 @@ public class GameLogic {
         }
     }
 
-    private static String get_user_input(){
+    public static String get_user_input(){
         Scanner input = new Scanner(System.in);
         return input.nextLine();
     }

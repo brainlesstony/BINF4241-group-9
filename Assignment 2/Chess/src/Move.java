@@ -478,30 +478,41 @@ public class Move {
         return false;
     }
 
-//    public void promotion (ArrayList<ArrayList<Square>> board){
-//        if (position.substring(1).equals("1") && Type.P && Color.W){
-//            System.out.println("You can choose what your pawn will transform into!");
-//            System.out.println("Type in one letter as indicated\n" +
-//                    "Queen = Q  , Tower = T, Bishop = B, Knight = N");
-//            do_promotion();
-//        }
-//        else if (position.substring(1).equals("") && Type.P && Color.B){
-//            System.out.println("You can choose what your pawn will transform into!");
-//            System.out.println("Type in one letter as indicated\n" +
-//                    "Queen = Q  , Tower = T, Bishop = B, Knight = N");
-//            do_promotion();
-//        }
-//    }
-//
-//    public void do_promotion() {
-//        String tmp = get_user_input();
-//        switch (tmp) {
-//            case "Q": // remove pawn from square add queen square
-//            case "T": // remove pawn from square add tower square
-//            case "B": // remove pawn from square add bishop square
-//            case "N": // remove pawn from square add knight square
-//        }
-//    }
+    public void promotion (Board board, String position){
+
+        for (ArrayList<Square> list : board.getBoard()) {
+            for (Square square : list){
+                if (position.substring(0,1).equals("1") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.B) {
+                    System.out.println("You can choose what your pawn will transform into!");
+                    System.out.println("Type in one letter as indicated\n" +
+                            "Queen = Q  , Tower = T, Bishop = B, Knight = N");
+                    do_promotion(square,square.get_Piece().getColor());
+                } else if (position.substring(0,1).equals("8") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.W) {
+                    System.out.println("You can choose what your pawn will transform into!");
+                    System.out.println("Type in one letter as indicated\n" +
+                            "Queen = Q  , Tower = T, Bishop = B, Knight = N");
+                    do_promotion(square, square.get_Piece().getColor());
+                }
+            }
+        }
+    }
+
+    private void do_promotion(Square square, Color color) {
+        String tmp = GameLogic.get_user_input();
+        String position = square.get_Position();
+        ColorSquare tmp_color = square.get_Color();
+        switch (tmp) {
+            case "Q":
+                square = new Square(tmp_color,new Piece(color, Type.Q, true),position);
+            case "T":
+                square = new Square(tmp_color,new Piece(color, Type.T, true),position);
+            case "B":
+                square = new Square(tmp_color,new Piece(color, Type.B, true),position);
+            case "N":
+                square = new Square(tmp_color,new Piece(color, Type.N, true),position);
+        }
+    }
+
     public boolean is_scharade(String start,Board board,Color color) {
 
         if (start.equals("0-0") & color == Color.W) {
@@ -546,5 +557,6 @@ public class Move {
             list.add(index_k,tmp); //King goes to G1
             list.add(index_t,tmp1); //Tower goes to F1
         }
+
     }
 }
