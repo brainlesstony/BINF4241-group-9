@@ -34,8 +34,12 @@ public class Move {
 //        return true;
 //    }
 
+    public boolean can_move(String start, Board board){
+        if (board.valid_input(start)){ return possible_moves(start, board).size() > 0; }
+        else{ return false; }
+    }
 
-    private ArrayList<ArrayList<Square>> possible_moves (String start, Board board){
+    public ArrayList<ArrayList<Square>> possible_moves (String start, Board board){
         /**
          * @param start takes a specific Figure on the board
          * @param board iterates trough board to any position to get an list of possible moves for that specific Figure

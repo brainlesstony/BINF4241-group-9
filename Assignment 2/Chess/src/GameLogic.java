@@ -21,26 +21,25 @@ public class GameLogic {
             /////////////player 1
             System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
             player1_input1 = get_user_input();
-            //CHECK
-            // If the selected piece can actually move from its position
-//            while (!mover.can_move(player1_input1,board)) {
-//                System.out.println("This piece cannot move yet!");
-//                player1_input1 = get_user_input();
-//            }
-            while (board.valid_turn(player1, board.get_Piece_from_position(player1_input1))) {
+            while (!mover.can_move(player1_input1, board)){
+                if (!board.valid_input(player1_input1)){
+                    System.out.println("Invalid input! Try again: ");
+                    player1_input1 = get_user_input();
+                }
+                else {
+                    System.out.println("This piece cannot move! Try again!");
+                    player1_input1 = get_user_input();}
+            } // //CHECK If the selected piece can actually move from its position
+            while (board.valid_turn(player1, board.get_Piece_from_position(player1_input1))){
                 // Wenn de player nid dra isch den wird er nomol gfrogt bis er mol cheggt het das er en validi figur gwählt het.
                 // oder er het en feld usgewählt wo gar nix drufe isch
-                System.out.println("Not possible figure. Try again: ");
-                player1_input1 = get_user_input();
+                    System.out.println("Not possible figure. Try again: ");
+                    player1_input1 = get_user_input();
+
 
             }
-
             System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
             player1_input2 = get_user_input();
-            /*while (!board.valid_input(player1_input2) && !mover.move_check(player1_input1, player1_input2, board.getBoard())){
-            this should also check if the the move is a valid move like when a pawn wants to jump like a queen it should ask for a new destination again.
-            but doesnt work yet
-            * */
             while (!mover.move_check(player1_input1, player1_input2, board)){
                 System.out.println("invalid Destination. Try again: ");
                 player1_input2 = get_user_input();
@@ -55,19 +54,19 @@ public class GameLogic {
             // Welche Figur bestimmt durch User Input des Feldes
             System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
             player2_input1 = get_user_input();
-
-//            while (!mover.can_move(player2_input1,board)) {
-//                System.out.println("This piece cannot move yet!");
-//                player2_input1 = get_user_input();
-//            }
+            while (!mover.can_move(player2_input1, board)){
+                if (!board.valid_input(player2_input1)){
+                    System.out.println("Invalid input! Try again: ");
+                    player1_input1 = get_user_input();
+                }
+                else {
+                    System.out.println("This piece cannot move! Try again!");
+                    player2_input1 = get_user_input();}
+            }
             while (board.valid_turn(player2, board.get_Piece_from_position(player2_input1))) {
                 System.out.println("Not possible figure. Try again: ");
                 player2_input1 = get_user_input();
             }
-
-
-
-            // Zielfeld durch User Input
             System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
             player2_input2 = get_user_input();
             while (!mover.move_check(player2_input1,player2_input2,board)){
