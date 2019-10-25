@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0db614c2-2184-4edf-85dc-de4a1a3f79d1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Move.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Move.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Move.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,7 +77,7 @@
       <workItem from="1571231292614" duration="1268000" />
       <workItem from="1571558950546" duration="4805000" />
       <workItem from="1571585745766" duration="10737000" />
-      <workItem from="1571945311659" duration="16497000" />
+      <workItem from="1571945311659" duration="17917000" />
     </task>
     <servers />
   </component>
