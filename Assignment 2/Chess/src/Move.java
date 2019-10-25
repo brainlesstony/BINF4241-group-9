@@ -602,29 +602,39 @@ public class Move {
         return false;
     }
 
-    public boolean is_scharade(String start,Board board,Color color) {
+    public boolean is_scharade(String start,String end,Board board) {
 
-        if (start.equals("0-0") & color == Color.W) {
-            if (!check_path_occupied("E1", "G1", board)){
-                swap_scharade(board,62,61,Color.W);
-                return true;
-            }
+        if (start.equals("E1") & end.equals("G1")){
+                if(board.get_Square_from_position(start).get_Piece().getColor() == Color.W & board.get_Square_from_position(start).get_Piece().getType() == Type.K) {
+                    if (!check_path_occupied("E1", "G1", board)){
+                        swap_scharade(board,62,61,Color.W);
+                        return true;
+                    }
+                }
 
-        } else if (start.equals("0-0-0") & color == Color.W) {
-            if (check_path_occupied("E1", "B1", board)){
-                swap_scharade(board,57,58,Color.W);
-                return true;
-            }
-        } else if (start.equals("0-0") & color == Color.B) {
-            if(check_path_occupied("E8", "G8", board)){
-                swap_scharade(board,6,5,Color.B);
-                return true;
-            }
-        } else if (start.equals("0-0-0") & color == Color.B) {
-            if(check_path_occupied("E8", "B8", board)){
-                swap_scharade(board,1,2,Color.B);
-                return  true;
-            }
+        } else if (start.equals("E1") & end.equals("B1")){
+                if(board.get_Square_from_position(start).get_Piece().getColor() == Color.W & board.get_Square_from_position(start).get_Piece().getType() == Type.K) {
+                    if (check_path_occupied("E1", "B1", board)){
+                        swap_scharade(board,57,58,Color.W);
+                        return true;
+                    }
+                }
+
+        } else if (start.equals("E8") & end.equals("G8")){
+                if(board.get_Square_from_position(start).get_Piece().getColor() == Color.B & board.get_Square_from_position(start).get_Piece().getType() == Type.K) {
+                    if(check_path_occupied("E8", "G8", board)) {
+                        swap_scharade(board, 6, 5, Color.B);
+                        return true;
+                    }
+                }
+
+        } else if (start.equals("E8") & end.equals("B8")){
+                if(board.get_Square_from_position(start).get_Piece().getColor() == Color.B & board.get_Square_from_position(start).get_Piece().getType() == Type.K) {
+                    if(check_path_occupied("E8", "B8", board)) {
+                        swap_scharade(board, 1, 2, Color.B);
+                        return true;
+                    }
+                }
         }
         return false;
     }
@@ -648,4 +658,5 @@ public class Move {
         }
 
     }
+
 }
