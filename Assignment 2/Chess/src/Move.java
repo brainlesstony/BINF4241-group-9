@@ -252,6 +252,7 @@ public class Move {
             case N:
                 path_list.add(new Square(ColorSquare.B, null, "Platzhalter"));
                 path_list.add(board.get_Square_from_position(end));
+                return path_list;
             case P:
                     switch (piece.getColor()) {
                         case B:
@@ -361,13 +362,13 @@ public class Move {
         ArrayList<Square> path_list = get_path(start, end_pos, board);
         if (path_list.size() != 0) {
             if (path_list.get(path_list.size()-1).get_Piece() != null) {
-                if (path_list.get(path_list.size() - 1).get_Piece().getColor() == board.get_Piece_from_position(start).getColor()) {
+                if (path_list.get(path_list.size() - 1).get_Piece().getColor() == board.get_Piece_from_position(start).getColor()){
                     return true;
                 }
             }
             path_list.remove(path_list.size() - 1); // If an enemy is on the target square (=last element) or it is free it is possible to capture it.
             for (Square square : path_list) {
-                if (square.get_Piece() != null) {
+                if (square.get_Piece() != null){
                     return true;
                 }
             }
