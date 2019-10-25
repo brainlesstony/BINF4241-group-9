@@ -26,6 +26,13 @@ public class Move {
     }
 
     public boolean cannot_move(String start, Board board) {
+        Piece save_piece = board.get_Piece_from_position(start);
+        board.get_Square_from_position(start).set_Piece(null);
+        if (is_check(board)){
+            board.get_Square_from_position(start).set_Piece(save_piece);
+            return true;
+        }
+        board.get_Square_from_position(start).set_Piece(save_piece);
         return (possible_moves(start, board).size() == 0);
     }
 
