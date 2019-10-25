@@ -535,18 +535,20 @@ public class Move {
 
         for (ArrayList<Square> list : board.getBoard()) {
             for (Square square : list){
-                if (position.substring(0,1).equals("1") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.B) {
-                    System.out.println("You can choose what your pawn will transform into!");
-                    System.out.println("Type in one letter as indicated\n" +
-                            "Queen = Q  , Tower = T, Bishop = B, Knight = N");
-                    do_promotion(square,square.get_Piece().getColor());
+                if (square.get_Piece() != null){
+                    if (position.substring(0,1).equals("1") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.B) {
+                        System.out.println("You can choose what your pawn will transform into!");
+                        System.out.println("Type in one letter as indicated\n" +
+                                "Queen = Q  , Tower = T, Bishop = B, Knight = N");
+                        do_promotion(square,square.get_Piece().getColor());
 
-                } else if (position.substring(0,1).equals("8") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.W) {
-                    System.out.println("You can choose what your pawn will transform into!");
-                    System.out.println("Type in one letter as indicated\n" +
-                            "Queen = Q  , Tower = T, Bishop = B, Knight = N");
-                    do_promotion(square, square.get_Piece().getColor());
+                    }   else if (position.substring(0,1).equals("8") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.W) {
+                        System.out.println("You can choose what your pawn will transform into!");
+                        System.out.println("Type in one letter as indicated\n" +
+                                "Queen = Q  , Tower = T, Bishop = B, Knight = N");
+                        do_promotion(square, square.get_Piece().getColor());
 
+                    }
                 }
             }
         }
