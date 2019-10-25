@@ -18,7 +18,7 @@ public class GameLogic {
 
         while(true){ //!mover.checkmate()
             /////////////player 1
-            System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
+            System.out.println(player1.get_name() + ", it's your turn to play. Please choose your figure:");
             player1_input1 = get_user_input();
             while (!board.valid_input(player1_input1)){
                 System.out.println("Input not valid! Try again!");
@@ -37,7 +37,8 @@ public class GameLogic {
 
 
             }
-            System.out.println(player1.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
+//            System.out.println("You have choosen" + board.get_Piece_from_position(player1_input1) + "from Square " + "\'"+ player1_input1 + "\'");
+            System.out.println(player1.get_name() + ", it's your turn to play. Please choose your destination:");
             player1_input2 = get_user_input();
             while (!mover.move_check(player1_input1, player1_input2, board)){
                 System.out.println("invalid Destination. Try again: ");
@@ -52,7 +53,7 @@ public class GameLogic {
 
             ////////////player2
             // Welche Figur bestimmt durch User Input des Feldes
-            System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie ihre Figur:");
+            System.out.println(player2.get_name() + ", it's your turn to play. Please choose your figure:");
             player2_input1 = get_user_input();
             while (mover.cannot_move(player2_input1, board)){
                 if (!board.valid_input(player2_input1)){
@@ -67,7 +68,8 @@ public class GameLogic {
                 System.out.println("Not possible figure. Try again: ");
                 player2_input1 = get_user_input();
             }
-            System.out.println(player2.get_name() + ", Sie sind dran. Bitte wählen Sie das Zielfeld:");
+//            System.out.println("You have choosen" + board.get_Piece_from_position(player2_input1) + "from Square " + "\'"+ player2_input1 + "\'");
+            System.out.println(player2.get_name() + ", it's your turn to play. Please choose your destination:");
             player2_input2 = get_user_input();
             while (!mover.move_check(player2_input1,player2_input2,board)){
                 System.out.println("invalid Destination. Try again: ");
@@ -90,7 +92,7 @@ public class GameLogic {
         Scanner input = new Scanner(System.in);
         line = input.nextLine();
         if (line.equals("") || line == null) {
-            System.out.println("Please insert a name next time ;)");
+            System.out.println("Please insert a name next time ;-)");
             System.out.println("Thank you");
             System.exit(0);
             return null;
