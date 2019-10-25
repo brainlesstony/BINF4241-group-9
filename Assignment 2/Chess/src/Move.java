@@ -8,8 +8,8 @@ public class Move {
             return false;
         }
 
-        if (!check_empty(end, board.getBoard())) { // falls auf zielfeld eine Figur mit gleicher Farbe steht
-            if (get_color_of_piece(end, board.getBoard()) == get_color_of_piece(start, board.getBoard())) {
+        if (!check_empty(end, board)) { // falls auf zielfeld eine Figur mit gleicher Farbe steht
+            if (get_color_of_piece(end, board) == get_color_of_piece(start, board)) {
                 System.out.println("Don't try to capture your own figure. Try again: ");
                 return false;
             }
@@ -35,16 +35,16 @@ public class Move {
         return (possible_moves(start, board).size() == 0);
     }
 
-    public boolean is_defended(String start, Board board){
-        Piece save_piece = board.get_Piece_from_position(start);
-        board.get_Square_from_position(start).set_Piece(null);
-        if (is_check(board)){
-            board.get_Square_from_position(start).set_Piece(save_piece);
-            return true;
-        }
-        board.get_Square_from_position(start).set_Piece(save_piece);
-        return false;
-    }
+//    public boolean is_defended(String start, Board board){
+//        Piece save_piece = board.get_Piece_from_position(start);
+////        board.get_Square_from_position(start).set_Piece(null);
+//        if (is_check(board)){
+//            board.get_Square_from_position(start).set_Piece(save_piece);
+//            return true;
+//        }
+//        board.get_Square_from_position(start).set_Piece(save_piece);
+//        return false;
+//    }
 
     public ArrayList<ArrayList<Square>> possible_moves(String start, Board board){
         /**
@@ -68,12 +68,12 @@ public class Move {
         return possible_move;
     }
 
-    private boolean check_empty(String field, ArrayList<ArrayList<Square>> board){
+    private boolean check_empty(String field, Board board){
         String row = field.substring(1);
         String column = field.substring(0,1);
         String abc = "ABCDEFGH";
         String numbers = "87654321";
-        Piece dummy = board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece();
+        Piece dummy = board.getBoard().get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece();
         return dummy == null;
     }
 
@@ -307,6 +307,10 @@ public class Move {
         if (board.get_Piece_from_position(start) == null){
             return false;
         }
+        if (end.equals("")){
+            return false;
+        }
+
         Piece piece = board.get_Piece_from_position(start);
         Type type_of_piece = piece.getType();
         int start_x = translation_string_to_board_row(start);
@@ -332,27 +336,27 @@ public class Move {
                 );
                 // Every 8 possible endpoints of knight is tested.
             case K:
-                return     !is_suicide(board, end) // when king doesn't suicide
-                        &  (
-                            (start_x  == end_x & start_y + 1  == end_y) // and it moves just around itself
+                return ((start_x  == end_x & start_y + 1  == end_y) // and it moves just around itself
                         |   (start_x + 1 == end_x & start_y + 1 == end_y)
                         |   (start_x + 1 == end_x & start_y == end_y)
                         |   (start_x + 1 == end_x & start_y - 1 == end_y)
                         |   (start_x == end_x & start_y - 1 == end_y)
                         |   (start_x - 1 == end_x & start_y - 1 == end_y)
                         |   (start_x - 1 == end_x & start_y == end_y)
-                        |   (start_x - 1 == end_x & start_y + 1 == end_y))
-                        |   is_scharade(start, board, piece.getColor());
+                        |   (start_x - 1 == end_x & start_y + 1 == end_y)
+                        |    is_scharade(start,end,board,get_color_of_piece(start,board)));
+
 
 
             case P:
                 switch (piece.getColor()){
                     case W:
-                        if (start_y + 1 == end_y & is_square_empty(start_x,start_y + 1 ,board) | start_x - 1 == end_x | start_x + 1 == end_x){ // if the destination is valid
+                        if (start_y + 1 == end_y & is_square_empty(start_x,start_y + 1 ,board)){ // if the destination is valid
+                            //| start_x - 1 == end_x | start_x + 1 == end_x
                             if (start_x - 1 == end_x | start_x + 1 == end_x) { // one above and left or right
                                 if (!is_square_empty(end_x,end_y,board)){
                                     // when left or right target must contain enemy;
-                                    return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.W;
+                                    return get_piece(end_x,end_y,board).getColor() != Color.W;
                                 }else return (is_en_passent(board, start, end));
                             }else return start_x == end_x;
                         }else if (start_y + 2 == end_y & start_x == end_x & is_square_empty(start_x,start_y + 1,board) & is_square_empty(start_x,start_y + 2,board)){
@@ -360,11 +364,12 @@ public class Move {
                         }else return false;
 
                     case B:
-                        if (start_y - 1 == end_y & is_square_empty(start_x,start_y-1,board) | start_x - 1 == end_x | start_x + 1 == end_x){ // if the destination is valid
+                        if (start_y - 1 == end_y & is_square_empty(start_x,start_y-1,board)){ // if the destination is valid
+                            // | start_x - 1 == end_x | start_x + 1 == end_x
                             if (start_x - 1 == end_x | start_x + 1 == end_x) { // one down and left or right
                                 if (!is_square_empty(end_x,end_y,board)){
                                     // when left or right target must contain enemy
-                                    return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.B;
+                                    return get_piece(end_x,end_y,board).getColor() != Color.B;
                                 }else return (is_en_passent(board, start, end));
                             }else return start_x == end_x;
                         }else if (start_y - 2 == end_y & start_x == end_x & is_square_empty(start_x,start_y - 1,board) & is_square_empty(start_x,start_y - 2,board)){
@@ -397,13 +402,13 @@ public class Move {
         return false;
     }
 
-    private Color get_color_of_piece(String position, ArrayList<ArrayList<Square>> board){
+    private Color get_color_of_piece(String position, Board board){
         String row = position.substring(1);
         String column = position.substring(0,1);
         String abc = "ABCDEFGH";
         String numbers = "87654321";
 
-        return board.get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece().getColor();
+        return board.getBoard().get(numbers.indexOf(row)).get(abc.indexOf(column)).get_Piece().getColor();
     }
 
     private String translation_list_index(int row, int column){
@@ -435,6 +440,7 @@ public class Move {
                 }
             }
         }
+
         return "";
     }
 
@@ -615,36 +621,42 @@ public class Move {
         return false;
     }
 
-    public boolean is_scharade(String start,String end,Board board) {
+    public boolean is_scharade(String start,String end,Board board, Color color) {
 
         if (start.equals("E1") & end.equals("G1")){
+            board.get_Square_from_position(start).set_Piece(new Piece(color, Type.K, true));
                 if(board.get_Square_from_position(start).get_Piece().getColor() == Color.W & board.get_Square_from_position(start).get_Piece().getType() == Type.K) {
                     if (!check_path_occupied("E1", "G1", board)){
-                        swap_scharade(board,62,61,Color.W);
+                        swap_scharade(board,Color.W,start,end);
+                        board.get_Square_from_position(start).set_Piece(null);
+                        board.get_Square_from_position(end).set_Piece(null);
                         return true;
                     }
                 }
 
         } else if (start.equals("E1") & end.equals("B1")){
+            board.get_Square_from_position(start).set_Piece(new Piece(color, Type.K, true));
                 if(board.get_Square_from_position(start).get_Piece().getColor() == Color.W & board.get_Square_from_position(start).get_Piece().getType() == Type.K) {
                     if (check_path_occupied("E1", "B1", board)){
-                        swap_scharade(board,57,58,Color.W);
+                        swap_scharade(board,Color.W,start,end);
                         return true;
                     }
                 }
 
         } else if (start.equals("E8") & end.equals("G8")){
+            board.get_Square_from_position(start).set_Piece(new Piece(color, Type.K, true));
                 if(board.get_Square_from_position(start).get_Piece().getColor() == Color.B & board.get_Square_from_position(start).get_Piece().getType() == Type.K) {
                     if(check_path_occupied("E8", "G8", board)) {
-                        swap_scharade(board, 6, 5, Color.B);
+                        swap_scharade(board, Color.B,start,end);
                         return true;
                     }
                 }
 
         } else if (start.equals("E8") & end.equals("B8")){
+            board.get_Square_from_position(start).set_Piece(new Piece(color, Type.K, true));
                 if(board.get_Square_from_position(start).get_Piece().getColor() == Color.B & board.get_Square_from_position(start).get_Piece().getType() == Type.K) {
                     if(check_path_occupied("E8", "B8", board)) {
-                        swap_scharade(board, 1, 2, Color.B);
+                        swap_scharade(board, Color.B,start,end);
                         return true;
                     }
                 }
@@ -652,22 +664,26 @@ public class Move {
         return false;
     }
 
-    private void swap_scharade(Board board,Integer index_k,Integer index_t, Color color){
-        Square tmp = null;
-        Square tmp1 = null;
+    private void swap_scharade(Board board, Color color,String start,String end){
+
         for (ArrayList<Square> list : board.getBoard()) {
             for (Square square : list) {
-                if (square.get_Piece().getType() == Type.K & square.get_Piece().getColor() == color) {
-                    tmp = square;
-                    list.remove(square);
-                }
-                if (square.get_Piece().getType() == Type.T & square.get_Piece().getColor() == color) {
-                    tmp1 = square;
-                    list.remove(square);
+                if (square.get_Piece() != null) {
+                    if ((square.get_Piece().getType() == Type.K |square.get_Piece().getType() == Type.T)  & square.get_Piece().getColor() == color & (square.get_Position().equals(start)|square.get_Position().equals(end))){
+                        if (square.get_Position().equals(start)){
+                            square.set_Piece(new Piece(color, Type.T, true));
+                        }
+                        else if (square.get_Position().equals(end)){
+                            square.set_Piece(new Piece(color, Type.K, true));
+                        }
+
+                    }
+//                    if (square.get_Piece().getType() == Type.T & square.get_Piece().getColor() == color) {
+//                        square.set_Piece(new Piece(color, Type.K, true));
+//                    }
                 }
             }
-            list.add(index_k,tmp); //King goes to G1
-            list.add(index_t,tmp1); //Tower goes to F1
+
         }
 
     }
