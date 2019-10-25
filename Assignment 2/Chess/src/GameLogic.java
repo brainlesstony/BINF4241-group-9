@@ -28,10 +28,7 @@ public class GameLogic {
                 System.out.println("Can`t move! Try again: ");
                 player1_input1 = get_user_input();
             }
-//            while (mover.is_defended(player1_input1, board)) {
-//                System.out.println("Protect your king with your body (Dont move away!). Try again: ");
-//                player1_input1 = get_user_input();
-//            }
+
             // //CHECK If the selected piece can actually move from its position
             while (board.valid_turn(player1, board.get_Piece_from_position(player1_input1))){
                 // Wenn de player nid dra isch den wird er nomol gfrogt bis er mol cheggt het das er en validi figur gwählt het.
@@ -51,7 +48,7 @@ public class GameLogic {
             mover.is_promotion(board,player1_input2);
             board.fake_flush();
             mover.is_scharade(player1_input1,player1_input2,board,player1.get_color());
-//            mover.is_check(board);
+            mover.is_check(board);
             board.print();
 
 
@@ -67,10 +64,7 @@ public class GameLogic {
                 System.out.println("Can`t move! Try again: ");
                 player2_input1 = get_user_input();
             }
-//            while (mover.is_defended(player2_input1, board)) {
-//                System.out.println("Protect your king with your body (Dont move away!). Try again: ");
-//                player2_input1 = get_user_input();
-//            }
+
             while (board.valid_turn(player2, board.get_Piece_from_position(player2_input1))) {
                 System.out.println("Not possible figure. Try again: ");
                 player2_input1 = get_user_input();
@@ -86,7 +80,7 @@ public class GameLogic {
             mover.is_promotion(board,player2_input2);
             mover.is_scharade(player2_input1,player2_input2,board,player2.get_color());
             board.fake_flush();
-//            mover.is_check(board);
+            mover.is_check(board);
             board.print();
         }
     }

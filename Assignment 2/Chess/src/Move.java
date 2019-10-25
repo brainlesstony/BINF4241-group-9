@@ -35,17 +35,6 @@ public class Move {
         return (possible_moves(start, board).size() == 0);
     }
 
-//    public boolean is_defended(String start, Board board){
-//        Piece save_piece = board.get_Piece_from_position(start);
-////        board.get_Square_from_position(start).set_Piece(null);
-//        if (is_check(board)){
-//            board.get_Square_from_position(start).set_Piece(save_piece);
-//            return true;
-//        }
-//        board.get_Square_from_position(start).set_Piece(save_piece);
-//        return false;
-//    }
-
     public ArrayList<ArrayList<Square>> possible_moves(String start, Board board){
         /**
          * @param start takes a specific Figure on the board
@@ -679,11 +668,7 @@ public class Move {
                         else if (square.get_Position().equals(end)){
                             square.set_Piece(new Piece(color, Type.K, true));
                         }
-
                     }
-//                    if (square.get_Piece().getType() == Type.T & square.get_Piece().getColor() == color) {
-//                        square.set_Piece(new Piece(color, Type.K, true));
-//                    }
                 }
             }
 
