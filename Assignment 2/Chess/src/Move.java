@@ -628,8 +628,8 @@ public class Move {
                 if(board.get_Square_from_position(start).get_Piece().getColor() == Color.W & board.get_Square_from_position(start).get_Piece().getType() == Type.K) {
                     if (!check_path_occupied("E1", "G1", board)){
                         swap_scharade(board,Color.W,start,end);
-                        board.get_Square_from_position(start).set_Piece(null);
-                        board.get_Square_from_position(end).set_Piece(null);
+                        board.get_Square_from_position(end).set_Piece(new Piece(color,Type.K,true));
+
                         return true;
                     }
                 }
@@ -639,6 +639,7 @@ public class Move {
                 if(board.get_Square_from_position(start).get_Piece().getColor() == Color.W & board.get_Square_from_position(start).get_Piece().getType() == Type.K) {
                     if (check_path_occupied("E1", "B1", board)){
                         swap_scharade(board,Color.W,start,end);
+                        board.get_Square_from_position(end).set_Piece(new Piece(color,Type.K,true));
                         return true;
                     }
                 }
@@ -648,6 +649,7 @@ public class Move {
                 if(board.get_Square_from_position(start).get_Piece().getColor() == Color.B & board.get_Square_from_position(start).get_Piece().getType() == Type.K) {
                     if(check_path_occupied("E8", "G8", board)) {
                         swap_scharade(board, Color.B,start,end);
+                        board.get_Square_from_position(end).set_Piece(new Piece(color,Type.K,true));
                         return true;
                     }
                 }
@@ -657,6 +659,7 @@ public class Move {
                 if(board.get_Square_from_position(start).get_Piece().getColor() == Color.B & board.get_Square_from_position(start).get_Piece().getType() == Type.K) {
                     if(check_path_occupied("E8", "B8", board)) {
                         swap_scharade(board, Color.B,start,end);
+                        board.get_Square_from_position(end).set_Piece(new Piece(color,Type.K,true));
                         return true;
                     }
                 }
