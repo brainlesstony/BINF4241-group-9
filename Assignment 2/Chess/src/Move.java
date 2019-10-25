@@ -331,26 +331,26 @@ public class Move {
             case P:
                 switch (piece.getColor()){
                     case W:
-                        if (start_y + 1 == end_y){ // if the target is one above
+                        if (start_y + 1 == end_y & is_square_empty(start_x,start_y + 1 ,board) | start_x - 1 == end_x | start_x + 1 == end_x){ // if the destination is valid
                             if (start_x - 1 == end_x | start_x + 1 == end_x) { // one above and left or right
-                                if (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null){
+                                if (!is_square_empty(end_x,end_y,board)){
                                     // when left or right target must contain enemy;
                                     return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.W;
                                 }else return (is_en_passent(board, start, end));
                             }else return start_x == end_x;
-                        }else if (start_y + 2 == end_y & start_x == end_x){
+                        }else if (start_y + 2 == end_y & start_x == end_x & is_square_empty(start_x,start_y + 1,board) & is_square_empty(start_x,start_y + 2,board)){
                             return !piece.get_has_moved();
                         }else return false;
 
                     case B:
-                        if (start_y - 1 == end_y){ // if the target is one down
+                        if (start_y - 1 == end_y & is_square_empty(start_x,start_y-1,board) | start_x - 1 == end_x | start_x + 1 == end_x){ // if the destination is valid
                             if (start_x - 1 == end_x | start_x + 1 == end_x) { // one down and left or right
-                                if (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null){
+                                if (!is_square_empty(end_x,end_y,board)){
                                     // when left or right target must contain enemy
                                     return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.B;
                                 }else return (is_en_passent(board, start, end));
                             }else return start_x == end_x;
-                        }else if (start_y - 2 == end_y & start_x == end_x){
+                        }else if (start_y - 2 == end_y & start_x == end_x & is_square_empty(start_x,start_y - 1,board) & is_square_empty(start_x,start_y - 2,board)){
                             return !piece.get_has_moved();
                         }else return false;
                 }
@@ -421,6 +421,13 @@ public class Move {
         return "";
     }
 
+    private boolean is_square_empty(Integer row, Integer column, Board board){
+        return board.get_Piece_from_position(translation_list_index(row, column)) == null;
+    }
+    private Piece get_piece(Integer row, Integer column, Board board){
+        return board.get_Piece_from_position(translation_list_index(row, column));
+    }
+
     public boolean is_check(Board board){
         String white_King_pos = get_Kings_position(board, Color.W);
         String black_King_pos = get_Kings_position(board, Color.B);
@@ -450,6 +457,7 @@ public class Move {
         return false;
     }
 
+
  // TODO CHECKMATE METHOD
     public boolean checkmate(Board board, String kings_position, Piece king){
         if (is_check(board)){
@@ -474,17 +482,25 @@ public class Move {
         switch (piece.getColor()) {
             case W:
                 if (start_y == 4 & end_y == 5) {
-                    if (board.get_Piece_from_position(translation_list_index(start_x - 1, 4)) != null) { // looks left
-                        if (board.get_Piece_from_position(translation_list_index(start_x - 1, 4)).getColor() != Color.B) {
-                            if (board.get_Piece_from_position(translation_list_index(start_x - 1, 4)).getType() == Type.P) {
+                    if (start.substring(0, 1).equals("A") |! is_square_empty(start_x + 1, 4, board)) { //EDGE CASE
+                        if (get_piece(start_x + 1, 4, board).getColor() != Color.B) {
+                            if (get_piece(start_x + 1, 4, board).getType() == Type.P) {
+                                if (start_x + 1 == end_x) {
+                                    return true;
+                                }
+                            }
+                        }
+                    } else if (!is_square_empty(start_x - 1, 4, board)) { // looks left
+                        if (get_piece(start_x - 1, 4, board).getColor() != Color.B) {
+                            if (get_piece(start_x - 1, 4, board).getType() == Type.P) {
                                 if (start_x - 1 == end_x) {
                                     return true;
                                 }
                             }
                         }
-                    } else if (board.get_Piece_from_position(translation_list_index(start_x + 1, 4)) != null) { // looks right
-                        if (board.get_Piece_from_position(translation_list_index(start_x + 1, 4)).getColor() != Color.B) {
-                            if (board.get_Piece_from_position(translation_list_index(start_x + 1, 4)).getType() == Type.P) {
+                    } else if (!is_square_empty(start_x + 1, 4, board)) { // looks right
+                        if (get_piece(start_x + 1, 4, board).getColor() != Color.B) {
+                            if (get_piece(start_x + 1, 4, board).getType() == Type.P) {
                                 if (start_x + 1 == end_x) {
                                     return true;
                                 }
@@ -492,19 +508,28 @@ public class Move {
                         }
                     }
                 }
+            break;
             case B:
                 if (start_y == 3 & end_y == 2) {
-                    if (board.get_Piece_from_position(translation_list_index(start_x - 1, 3)) != null) { // looks left
-                        if (board.get_Piece_from_position(translation_list_index(start_x - 1, 3)).getColor() != Color.B) {
-                            if (board.get_Piece_from_position(translation_list_index(start_x - 1, 3)).getType() == Type.P) {
+                    if (start.substring(0, 1).equals("H")) { //EDGE CASE
+                        if (get_piece(start_x - 1, 3, board).getColor() != Color.B) {
+                            if (get_piece(start_x - 1, 3, board).getType() == Type.P) {
                                 if (start_x - 1 == end_x) {
                                     return true;
                                 }
                             }
                         }
-                    } else if (board.get_Piece_from_position(translation_list_index(start_x + 1, 3)) != null) { // looks right
-                        if (board.get_Piece_from_position(translation_list_index(start_x + 1, 3)).getColor() != Color.B) {
-                            if (board.get_Piece_from_position(translation_list_index(start_x + 1, 3)).getType() == Type.P) {
+                    } else if (!is_square_empty(start_x - 1, 3, board)) { // looks left
+                        if (get_piece(start_x - 1, 3, board).getColor() != Color.B) {
+                            if (get_piece(start_x - 1, 3, board).getType() == Type.P) {
+                                if (start_x - 1 == end_x) {
+                                    return true;
+                                }
+                            }
+                        }
+                    } else if (!is_square_empty(start_x + 1, 3, board)) { // looks right
+                        if (get_piece(start_x + 1, 3, board).getColor() != Color.B) {
+                            if (get_piece(start_x + 1, 3, board).getType() == Type.P) {
                                 if (start_x + 1 == end_x) {
                                     return true;
                                 }
@@ -515,7 +540,6 @@ public class Move {
         }
         return false;
     }
-
 
     public void is_promotion (Board board, String position){
         String done = "";
