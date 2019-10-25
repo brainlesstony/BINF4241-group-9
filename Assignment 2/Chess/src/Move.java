@@ -459,7 +459,7 @@ public class Move {
     }
 
 
-    private boolean is_en_passent(Board board, String start,  String end) { //TODO ENPASSENT IM TERMINAL
+    private boolean is_en_passent(Board board, String start,  String end) {
         // wird gluegt, öb mer uf die richtig Zeile gahd als target und öb links oder rechts en pawn vo de andere farb stahd
         Piece piece = board.get_Piece_from_position(start);
         int start_x = translation_string_to_board_row(start);
@@ -507,35 +507,6 @@ public class Move {
                         }
                     }
                 }
-        }
-        return false;
-    }
-
-    private boolean is_leftW(Board board, Piece piece, String start, String end){
-        String abc = "ABCDEFGH";
-        if (null != board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))-1)) {
-            return true;
-        }
-        return false;
-    }
-    private boolean is_rightW(Board board, Piece piece, String start, String end){
-        String abc = "ABCDEFGH";
-        if (null != board.getBoard().get(3).get(abc.indexOf(start.substring(0,1))+1)){
-            return true;
-        }
-        return false;
-    }
-    private boolean is_leftB(Board board, Piece piece, String start, String end){
-        String abc = "ABCDEFGH";
-        if (null != board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))-1)) {
-            return true;
-        }
-        return false;
-    }
-    private boolean is_rightB(Board board, Piece piece, String start, String end){
-        String abc = "ABCDEFGH";
-        if (null != board.getBoard().get(5).get(abc.indexOf(start.substring(0,1))+1)){
-            return true;
         }
         return false;
     }
