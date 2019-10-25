@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/Move$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Move$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/Move.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Move.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Square.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Move.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,7 +81,7 @@
       <workItem from="1571231292614" duration="1268000" />
       <workItem from="1571558950546" duration="4805000" />
       <workItem from="1571585745766" duration="10737000" />
-      <workItem from="1571945311659" duration="21336000" />
+      <workItem from="1571945311659" duration="22929000" />
     </task>
     <servers />
   </component>
@@ -115,13 +116,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Move.java</url>
-          <line>255</line>
+          <line>254</line>
           <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Move.java</url>
-          <line>373</line>
-          <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
