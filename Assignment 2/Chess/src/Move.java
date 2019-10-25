@@ -461,6 +461,7 @@ public class Move {
 
     private boolean is_en_passent(Board board, String start,  String end) {
         // wird gluegt, öb mer uf die richtig Zeile gahd als target und öb links oder rechts en pawn vo de andere farb stahd
+
         Piece piece = board.get_Piece_from_position(start);
         int start_x = translation_string_to_board_row(start);
         int start_y = translation_string_to_board_col(start);
@@ -513,42 +514,57 @@ public class Move {
 
 
     public void is_promotion (Board board, String position){
-
+        String done = "";
         for (ArrayList<Square> list : board.getBoard()) {
             for (Square square : list){
-                if (square.get_Piece() != null){
-                    if (position.substring(0,1).equals("1") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.B) {
+                if (square.get_Piece() != null) {
+                    if (position.substring(1).equals("1") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.B &! done.equals("yes") & square.get_Position().substring(1).equals("1")) {
+                        System.out.println("Your pawn has reached the end of the board, this triggers a promotion");
                         System.out.println("You can choose what your pawn will transform into!");
                         System.out.println("Type in one letter as indicated\n" +
                                 "Queen = Q  , Tower = T, Bishop = B, Knight = N");
-                        do_promotion(square,square.get_Piece().getColor());
-
-                    }   else if (position.substring(0,1).equals("8") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.W) {
+                        if (do_promotion(square, square.get_Piece().getColor())) {
+                            done = "yes";
+                            break;
+                        }
+                    }else if (position.substring(1).equals("8") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.W &! done.equals("yes")) {
+                        System.out.println("Your pawn has reached the end of the board, this triggers a promotion");
                         System.out.println("You can choose what your pawn will transform into!");
                         System.out.println("Type in one letter as indicated\n" +
                                 "Queen = Q  , Tower = T, Bishop = B, Knight = N");
-                        do_promotion(square, square.get_Piece().getColor());
-
+                        if (do_promotion(square, square.get_Piece().getColor())) {
+                            done = "yes";
+                            break;
+                        }
                     }
                 }
             }
         }
     }
 
-    private void do_promotion(Square square, Color color) {
-        String tmp = GameLogic.get_user_input();
-        String position = square.get_Position();
-        ColorSquare tmp_color = square.get_Color();
+    private boolean do_promotion(Square square, Color color) {
+        String tmp = "";
+        do {
+            tmp = GameLogic.get_user_input();
+        } while (!(tmp.equals("Q") | tmp.equals("T") | tmp.equals("B") | tmp.equals("N")));
+
         switch (tmp) {
             case "Q":
-                square = new Square(tmp_color,new Piece(color, Type.Q, true),position);
+                 square.set_Piece(new Piece(color, Type.Q,true));
+                 return true;
+
             case "T":
-                square = new Square(tmp_color,new Piece(color, Type.T, true),position);
+                square.set_Piece(new Piece(color, Type.T, true));
+                return true;
+
             case "B":
-                square = new Square(tmp_color,new Piece(color, Type.B, true),position);
+                square.set_Piece(new Piece(color, Type.B, true));
+                return true;
             case "N":
-                square = new Square(tmp_color,new Piece(color, Type.N, true),position);
+                square.set_Piece(new Piece(color, Type.N, true));
+                return true;
         }
+        return false;
     }
 
     public boolean is_scharade(String start,Board board,Color color) {
