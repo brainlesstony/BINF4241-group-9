@@ -110,6 +110,7 @@ public class Move {
                         }
                     }
                 }
+                return path_list;
             case T:
                 if (start_x == end_x & start_y < end_y){
                     while (start_y != end_y){
@@ -140,6 +141,7 @@ public class Move {
                         }
                     }
                 }
+                return path_list;
             case Q:
                 if (start_x < end_x & start_y < end_y){
                     while (start_x != end_x & start_y != end_y){
@@ -202,6 +204,7 @@ public class Move {
                         }
                     }
                 }
+                return path_list;
             case K: // actually one does not need the path of the king bc he just moves one field, but this is important for Scharade.
                 if (start_x < end_x & start_y < end_y){
                     start_x++;
@@ -248,28 +251,29 @@ public class Move {
                         path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
                     }
                 }
-
+                return path_list;
             case N:
                 path_list.add(new Square(ColorSquare.B, null, "Platzhalter"));
                 path_list.add(board.get_Square_from_position(end));
                 return path_list;
             case P:
-                    switch (piece.getColor()) {
-                        case B:
-                            while (start_y != end_y) {
-                                start_y--; // one directly above the pawn
-                                if (board.valid_input(translation_list_index(start_x,start_y))){ // for the double jump at start
-                                    path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
-                                }
+                switch (piece.getColor()) {
+                    case B:
+                        while (start_y != end_y) {
+                            start_y--; // one directly above the pawn
+                            if (board.valid_input(translation_list_index(start_x,start_y))){ // for the double jump at start
+                                path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
                             }
-                        case W:
-                            while (start_y != end_y) {
-                                start_y++;
-                                if (board.valid_input(translation_list_index(start_x,start_y))) {
-                                    path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
-                                }
+                        }
+                    case W:
+                        while (start_y != end_y) {
+                            start_y++;
+                            if (board.valid_input(translation_list_index(start_x,start_y))) {
+                                path_list.add(board.get_Square_from_position(translation_list_index(start_x, start_y)));
                             }
-                    }
+                        }
+                }
+                return path_list;
         }
         return path_list;
     }
@@ -330,7 +334,7 @@ public class Move {
                         if (start_y + 1 == end_y){ // if the target is one above
                             if (start_x - 1 == end_x | start_x + 1 == end_x) { // one above and left or right
                                 if (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null){
-                                    // when left or right target must contain enemy
+                                    // when left or right target must contain enemy;
                                     return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.W;
                                 }else return (is_en_passent(board, start, end));
                             }else return start_x == end_x;
