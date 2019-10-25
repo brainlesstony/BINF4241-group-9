@@ -29,6 +29,7 @@ public class Square {
     public ColorSquare get_Color(){return aColor;}
     public String get_Position(){ return aPosition;}
     public Boolean get_is_empty(){return aPiece == null;}
+    public void set_Piece(Piece piece){this.aPiece = piece; }
 
 
 
