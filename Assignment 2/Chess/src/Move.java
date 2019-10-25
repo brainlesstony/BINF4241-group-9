@@ -14,6 +14,12 @@ public class Move {
                 return false;
             }
         }
+
+        if (is_check(board)){
+            System.out.println("Your king is in danger! Save him: ");
+            return false;
+        }
+
         if (!is_valid_path(start, end, board)){
             System.out.println("This Figure cant make this move. Try again: ");
             return false;
@@ -25,7 +31,11 @@ public class Move {
         return true;
     }
 
-    public boolean cannot_move(String start, Board board) {
+    public boolean cannot_move(String start, Board board){
+        return (possible_moves(start, board).size() == 0);
+    }
+
+    public boolean is_defended(String start, Board board){
         Piece save_piece = board.get_Piece_from_position(start);
         board.get_Square_from_position(start).set_Piece(null);
         if (is_check(board)){
@@ -33,7 +43,7 @@ public class Move {
             return true;
         }
         board.get_Square_from_position(start).set_Piece(save_piece);
-        return (possible_moves(start, board).size() == 0);
+        return false;
     }
 
     public ArrayList<ArrayList<Square>> possible_moves(String start, Board board){
@@ -322,7 +332,7 @@ public class Move {
                 );
                 // Every 8 possible endpoints of knight is tested.
             case K:
-                return     !is_suicide(board, translation_list_index(end_x, end_y), piece) // when king doesn't suicide
+                return     !is_suicide(board, end) // when king doesn't suicide
                         &  (
                             (start_x  == end_x & start_y + 1  == end_y) // and it moves just around itself
                         |   (start_x + 1 == end_x & start_y + 1 == end_y)
@@ -331,8 +341,8 @@ public class Move {
                         |   (start_x == end_x & start_y - 1 == end_y)
                         |   (start_x - 1 == end_x & start_y - 1 == end_y)
                         |   (start_x - 1 == end_x & start_y == end_y)
-                        |   (start_x - 1 == end_x & start_y + 1 == end_y));
-//                        |   possible_scharade(piece, end, board, piece.getColor()));
+                        |   (start_x - 1 == end_x & start_y + 1 == end_y))
+                        |   is_scharade(start, board, piece.getColor());
 
 
             case P:
@@ -466,17 +476,20 @@ public class Move {
 
 
  // TODO CHECKMATE METHOD
-    public boolean checkmate(Board board, String kings_position, Piece king){
+    public boolean checkmate(Board board){
         if (is_check(board)){
-            return true;
+            if (cannot_move(get_Kings_position(board, Color.W), board)) {
+                System.out.println("Checkmate! Black wins!");
+            } else if (cannot_move(get_Kings_position(board, Color.B), board)){
+                System.out.println("Checkmate! White wins!");
+            }
         }
-        return false; // TODO: need to check first if king in danger
+        return false;
     }
 
-    private boolean is_suicide(Board board, String target, Piece king){ //target => wo der König hinmöchte
+    private boolean is_suicide(Board board, String target){ //target => wo der König hinmöchte
         return is_check(board);
     }
-
 
     private boolean is_en_passent(Board board, String start,  String end) {
         // wird gluegt, öb mer uf die richtig Zeile gahd als target und öb links oder rechts en pawn vo de andere farb stahd

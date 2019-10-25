@@ -28,18 +28,21 @@ public class GameLogic {
                 System.out.println("Can`t move! Try again: ");
                 player1_input1 = get_user_input();
             }
+            while (mover.is_defended(player1_input1, board)) {
+                System.out.println("Protect your king with your body (Dont move away!). Try again: ");
+                player1_input1 = get_user_input();
+            }
             // //CHECK If the selected piece can actually move from its position
             while (board.valid_turn(player1, board.get_Piece_from_position(player1_input1))){
                 // Wenn de player nid dra isch den wird er nomol gfrogt bis er mol cheggt het das er en validi figur gwählt het.
                 // oder er het en feld usgewählt wo gar nix drufe isch
                     System.out.println("Not possible figure. Try again: ");
                     player1_input1 = get_user_input();
-
-
             }
 //            System.out.println("You have choosen" + board.get_Piece_from_position(player1_input1) + "from Square " + "\'"+ player1_input1 + "\'");
             System.out.println(player1.get_name() + ", it's your turn to play. Please choose your destination:");
             player1_input2 = get_user_input();
+
             while (!mover.move_check(player1_input1, player1_input2, board)){
                 System.out.println("invalid Destination. Try again: ");
                 player1_input2 = get_user_input();
@@ -56,14 +59,17 @@ public class GameLogic {
             // Welche Figur bestimmt durch User Input des Feldes
             System.out.println(player2.get_name() + ", it's your turn to play. Please choose your figure:");
             player2_input1 = get_user_input();
+            while (!board.valid_input(player2_input1)){
+                System.out.println("Input not valid! Try again!");
+                player2_input1 = get_user_input();
+            }
             while (mover.cannot_move(player2_input1, board)){
-                if (!board.valid_input(player2_input1)){
-                    System.out.println("Invalid input! Try again: ");
-                    player1_input1 = get_user_input();
-                }
-                else {
-                    System.out.println("This piece cannot move! Try again!");
-                    player2_input1 = get_user_input();}
+                System.out.println("Can`t move! Try again: ");
+                player2_input1 = get_user_input();
+            }
+            while (mover.is_defended(player2_input1, board)) {
+                System.out.println("Protect your king with your body (Dont move away!). Try again: ");
+                player2_input1 = get_user_input();
             }
             while (board.valid_turn(player2, board.get_Piece_from_position(player2_input1))) {
                 System.out.println("Not possible figure. Try again: ");
