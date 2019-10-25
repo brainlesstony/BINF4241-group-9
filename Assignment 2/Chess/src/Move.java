@@ -252,6 +252,7 @@ public class Move {
             case N:
                 path_list.add(new Square(ColorSquare.B, null, "Platzhalter"));
                 path_list.add(board.get_Square_from_position(end));
+                return path_list;
             case P:
                     switch (piece.getColor()) {
                         case B:
@@ -331,13 +332,7 @@ public class Move {
                                 if (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null){
                                     // when left or right target must contain enemy
                                     return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.W;
-                                }else if(is_en_passent(board,piece,start,end)) {
-                                    if(is_leftW(board,piece,start,end)){
-                                        return true;
-                                    }else if(is_rightW(board,piece,start,end)) {
-                                        return true;
-                                    }
-                                }else return false;
+                                }else return (is_en_passent(board, start, end));
                             }else return start_x == end_x;
                         }else if (start_y + 2 == end_y & start_x == end_x){
                             return !piece.get_has_moved();
@@ -349,13 +344,7 @@ public class Move {
                                 if (board.get_Piece_from_position(translation_list_index(end_x, end_y)) != null){
                                     // when left or right target must contain enemy
                                     return board.get_Piece_from_position((translation_list_index(end_x, end_y))).getColor() != Color.B;
-                                }else if(is_en_passent(board,piece,start,end)) {
-                                    if(is_leftB(board,piece,start,end)){
-                                        return true;
-                                    }else if(is_rightB(board,piece,start,end)) {
-                                        return true;
-                                    }
-                                }else return false;
+                                }else return (is_en_passent(board, start, end));
                             }else return start_x == end_x;
                         }else if (start_y - 2 == end_y & start_x == end_x){
                             return !piece.get_has_moved();
@@ -373,13 +362,13 @@ public class Move {
         ArrayList<Square> path_list = get_path(start, end_pos, board);
         if (path_list.size() != 0) {
             if (path_list.get(path_list.size()-1).get_Piece() != null) {
-                if (path_list.get(path_list.size() - 1).get_Piece().getColor() == board.get_Piece_from_position(start).getColor()) {
+                if (path_list.get(path_list.size() - 1).get_Piece().getColor() == board.get_Piece_from_position(start).getColor()){
                     return true;
                 }
             }
             path_list.remove(path_list.size() - 1); // If an enemy is on the target square (=last element) or it is free it is possible to capture it.
             for (Square square : path_list) {
-                if (square.get_Piece() != null) {
+                if (square.get_Piece() != null){
                     return true;
                 }
             }
@@ -470,25 +459,56 @@ public class Move {
     }
 
 
-    private boolean is_en_passent(Board board, Piece piece,String start,  String end){ //TODO ENPASSENT IM TERMINAL
+    private boolean is_en_passent(Board board, String start,  String end) { //TODO ENPASSENT IM TERMINAL
         // wird gluegt, öb mer uf die richtig Zeile gahd als target und öb links oder rechts en pawn vo de andere farb stahd
-        if (board.get_Piece_from_position(start) == null){
-            return false;
-        }
-//        Piece piece = board.get_Piece_from_position(start);
-        Type type_of_piece = piece.getType();
+
+        Piece piece = board.get_Piece_from_position(start);
         int start_x = translation_string_to_board_row(start);
         int start_y = translation_string_to_board_col(start);
         int end_x = translation_string_to_board_row(end);
         int end_y = translation_string_to_board_col(end);
-        switch (piece.getColor()){
+        switch (piece.getColor()) {
             case W:
+                if (start_y == 4 & end_y == 5) {
+                    if (board.get_Piece_from_position(translation_list_index(start_x - 1, 4)) != null) { // looks left
+                        if (board.get_Piece_from_position(translation_list_index(start_x - 1, 4)).getColor() != Color.B) {
+                            if (board.get_Piece_from_position(translation_list_index(start_x - 1, 4)).getType() == Type.P) {
+                                if (start_x - 1 == end_x) {
+                                    return true;
+                                }
+                            }
+                        }
+                    } else if (board.get_Piece_from_position(translation_list_index(start_x + 1, 4)) != null) { // looks right
+                        if (board.get_Piece_from_position(translation_list_index(start_x + 1, 4)).getColor() != Color.B) {
+                            if (board.get_Piece_from_position(translation_list_index(start_x + 1, 4)).getType() == Type.P) {
+                                if (start_x + 1 == end_x) {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
             case B:
-                if (start_y == 3 & end_y == 2){
-//                    if (board.get_Piece_from_position(translation_list_index(start_x-1, 3)) != null | )
+                if (start_y == 3 & end_y == 2) {
+                    if (board.get_Piece_from_position(translation_list_index(start_x - 1, 3)) != null) { // looks left
+                        if (board.get_Piece_from_position(translation_list_index(start_x - 1, 3)).getColor() != Color.B) {
+                            if (board.get_Piece_from_position(translation_list_index(start_x - 1, 3)).getType() == Type.P) {
+                                if (start_x - 1 == end_x) {
+                                    return true;
+                                }
+                            }
+                        }
+                    } else if (board.get_Piece_from_position(translation_list_index(start_x + 1, 3)) != null) { // looks right
+                        if (board.get_Piece_from_position(translation_list_index(start_x + 1, 3)).getColor() != Color.B) {
+                            if (board.get_Piece_from_position(translation_list_index(start_x + 1, 3)).getType() == Type.P) {
+                                if (start_x + 1 == end_x) {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
                 }
         }
-
         return false;
     }
 
