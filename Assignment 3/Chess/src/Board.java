@@ -1,16 +1,42 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.regex.*;
 
-public class Board {
+public class Board implements Iterator {
     private ArrayList<ArrayList<Square>> board;
     private ArrayList<Piece> graveyard;
+    int postition_x = 0;
+    int postition_y = 0;
     public Board(){ // initialize the board with the pieces not in the GameLogic. Tony 15.10
         // TODO: init board with all pieces.
         this.board= init_board();
         this.graveyard= new ArrayList<Piece>();
     }
+
+
+//    Iterator iterator = Board.createIterator();
+    public Object next() {
+        ArrayList<ArrayList<Square>> board = getBoard();
+        if (postition_x  < 7) {
+            postition_x ++;
+            return board.get(postition_x).get(postition_y).get_Piece();
+        }else if (postition_x == 7 & postition_y <7){
+            postition_x = 0;
+            postition_y ++;
+            return board.get(postition_x).get(postition_y).get_Piece();
+        }else {
+            postition_y = 0;
+            postition_x = 0;
+            return board.get(postition_x).get(postition_y).get_Piece();
+        }
+    }
+
+    public boolean hasNext(){
+        return !(postition_x >= 8 | postition_y >= 8);
+    }
+
 
     private ArrayList<ArrayList<Square>> init_board() {
         ArrayList<ArrayList<Square>> list_copy = new ArrayList<>();
