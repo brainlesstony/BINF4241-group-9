@@ -7,7 +7,8 @@ public class GameLogic {
         String player1_input2;
         String player2_input1;
         String player2_input2;
-        Board board = new Board(); // creates a board with the figures
+        Singleton board = null; // creates a board with the figures
+        board = Singleton.getInstance();
         Move mover = new Move();
         System.out.println("Player 1 will play as white and Player 2 plays as black");
         System.out.println("Player names: ");

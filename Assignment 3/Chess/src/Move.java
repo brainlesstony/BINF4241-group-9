@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Move {
 
-    public boolean move_check(String start, String end, Board board) {
+    public boolean move_check(String start, String end, Singleton board) {
 
         if (!board.valid_input(start) | !board.valid_input(end)) { // checks if the input is valid
             return false;
@@ -31,23 +31,23 @@ public class Move {
         return true;
     }
 
-    public boolean cannot_move(String start, Board board){
+    public boolean cannot_move(String start, Singleton board){
         return (possible_moves(start, board).size() == 0);
     }
 
-    public ArrayList<ArrayList<Square>> possible_moves(String start, Board board){
+    public ArrayList<ArrayList<Square>> possible_moves(String start, Singleton board) {
         /**
          * @param start takes a specific Figure on the board
          * @param board iterates trough board to any position to get an list of possible moves for that specific Figure
          * @returns possible moves as nested arraylist
          */
         ArrayList<ArrayList<Square>> possible_move = new ArrayList<ArrayList<Square>>();
-        for (ArrayList<Square> arrayList: board.getBoard()){
-            for (Square square : arrayList){
-                if (is_valid_path(start, square.get_Position(), board)){
-                    if (!check_path_occupied(start, square.get_Position(), board)){
+        for (ArrayList<Square> list : board.getBoard()) {
+            for (Square square : list) {
+                if (is_valid_path(start, square.get_Position(), board)) {
+                    if (!check_path_occupied(start, square.get_Position(), board)) {
                         ArrayList<Square> path = get_path(start, square.get_Position(), board);
-                        if (path.size() != 0){
+                        if (path.size() != 0) {
                             possible_move.add(path);
                         }
                     }
@@ -57,7 +57,7 @@ public class Move {
         return possible_move;
     }
 
-    private boolean check_empty(String field, Board board){
+    private boolean check_empty(String field, Singleton board){
         String row = field.substring(1);
         String column = field.substring(0,1);
         String abc = "ABCDEFGH";
@@ -66,7 +66,7 @@ public class Move {
         return dummy == null;
     }
 
-    private ArrayList<Square> get_path(String start, String end, Board board){
+    private ArrayList<Square> get_path(String start, String end, Singleton board){
         /**
          * This method draws a path from start to end even if it is a specific path for the specific figure on the start
          * @param start
@@ -259,7 +259,7 @@ public class Move {
                 }
                 return path_list;
             case N:
-                path_list.add(new Square(ColorSquare.B, null, "Platzhalter"));
+                path_list.add(new Square(ColorSquare.B, null, "Platzhalter",false));
                 path_list.add(board.get_Square_from_position(end));
                 return path_list;
             case P:
@@ -284,7 +284,7 @@ public class Move {
         return path_list;
     }
 
-    private boolean is_valid_path(String start, String end, Board board){
+    private boolean is_valid_path(String start, String end, Singleton board){
         /**
          * This method is used to calculate a path from start to end. It then decides if it is weather valid
          * for the figure on the start position to walk this path to the end position.
@@ -370,7 +370,7 @@ public class Move {
         return false;
     }
 
-    private boolean check_path_occupied(String start, String end_pos, Board board){
+    private boolean check_path_occupied(String start, String end_pos, Singleton board){
         /**
          * @return if the path is blocked or not
          */
@@ -391,7 +391,7 @@ public class Move {
         return false;
     }
 
-    private Color get_color_of_piece(String position, Board board){
+    private Color get_color_of_piece(String position, Singleton board){
         String row = position.substring(1);
         String column = position.substring(0,1);
         String abc = "ABCDEFGH";
@@ -417,7 +417,7 @@ public class Move {
         return abc.indexOf(column);
     }
 
-    private String get_Kings_position(Board board, Color color){
+    private String get_Kings_position(Singleton board, Color color){
         for (ArrayList<Square> list : board.getBoard()){
             for (Square square : list){
                 if (square.get_Piece() != null){
@@ -433,14 +433,14 @@ public class Move {
         return "";
     }
 
-    private boolean is_square_empty(Integer row, Integer column, Board board){
+    private boolean is_square_empty(Integer row, Integer column, Singleton board){
         return board.get_Piece_from_position(translation_list_index(row, column)) == null;
     }
-    private Piece get_piece(Integer row, Integer column, Board board){
+    private Piece get_piece(Integer row, Integer column, Singleton board){
         return board.get_Piece_from_position(translation_list_index(row, column));
     }
 
-    public boolean is_check(Board board){
+    public boolean is_check(Singleton board){
         String white_King_pos = get_Kings_position(board, Color.W);
         String black_King_pos = get_Kings_position(board, Color.B);
 
@@ -471,7 +471,7 @@ public class Move {
 
 
  // TODO CHECKMATE METHOD
-    public boolean checkmate(Board board){
+    public boolean checkmate(Singleton board){
         if (is_check(board)){
             if (cannot_move(get_Kings_position(board, Color.W), board)) {
                 System.out.println("Checkmate! Black wins!");
@@ -482,11 +482,11 @@ public class Move {
         return false;
     }
 
-    private boolean is_suicide(Board board, String target){ //target => wo der König hinmöchte
+    private boolean is_suicide(Singleton board, String target){ //target => wo der König hinmöchte
         return is_check(board);
     }
 
-    private boolean is_en_passent(Board board, String start,  String end) {
+    private boolean is_en_passent(Singleton board, String start,  String end) {
         // wird gluegt, öb mer uf die richtig Zeile gahd als target und öb links oder rechts en pawn vo de andere farb stahd
 
         Piece piece = board.get_Piece_from_position(start);
@@ -556,7 +556,7 @@ public class Move {
         return false;
     }
 
-    public void is_promotion (Board board, String position){
+    public void is_promotion (Singleton board, String position){
         String done = "";
         for (ArrayList<Square> list : board.getBoard()) {
             for (Square square : list){
@@ -610,7 +610,7 @@ public class Move {
         return false;
     }
 
-    public boolean is_scharade(String start,String end,Board board, Color color) {
+    public boolean is_scharade(String start,String end,Singleton board, Color color) {
 
         if (start.equals("E1") & end.equals("G1")){
             board.get_Square_from_position(start).set_Piece(new Piece(color, Type.K, true));
@@ -656,7 +656,7 @@ public class Move {
         return false;
     }
 
-    private void swap_scharade(Board board, Color color,String start,String end){
+    private void swap_scharade(Singleton board, Color color,String start,String end){
 
         for (ArrayList<Square> list : board.getBoard()) {
             for (Square square : list) {
