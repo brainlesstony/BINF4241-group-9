@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0db614c2-2184-4edf-85dc-de4a1a3f79d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/GameLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/Move$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Move$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/Move.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Move.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/Singleton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Singleton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BoardIteratorX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardIterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BoardIteratorY.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Move.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Singleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Singleton.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -111,13 +119,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Move.java</url>
-          <line>271</line>
+          <line>279</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Move.java</url>
-          <line>37</line>
-          <properties class="Move" method="is_defended">
+          <line>46</line>
+          <properties class="Move" method="possible_moves">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="60" />

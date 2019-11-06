@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-public class BoardIteratorX implements Iterator {
-    ArrayList<Square> board;
-    int position = 0;
+public class BoardIterator implements Iterator {
+    private ArrayList<Square> board;
+    private int position = 0;
 
-    public BoardIteratorX(ArrayList<Square> board) {
+    public BoardIterator(ArrayList<Square> board) {
         this.board = board;
     }
 
@@ -15,9 +15,10 @@ public class BoardIteratorX implements Iterator {
     }
 
     public boolean hasNext() {
-        if (position >= board.size() | board.get(position) == null) {
+        if (position >= board.size() || board.get(position) == null) {
             return false;
         } else {
             return true;
         }
+    }
 }

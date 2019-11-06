@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.regex.*;
 
@@ -248,5 +247,9 @@ public class Singleton implements Score {
         int black_score = getWhitePieces();
 
         notifyObservers(white_score, black_score);
+    }
+
+    public Iterator createIterator(){
+        return new BoardIterator(this.iterator_list());
     }
 }

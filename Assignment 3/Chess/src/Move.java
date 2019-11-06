@@ -3,9 +3,10 @@ import java.util.ArrayList;
 
 public class Move {
     ArrayList<ArrayList<Square>> liste_board;
-
-    public Move(ArrayList<ArrayList<Square>> board){
+    Iterator iterator;
+    public Move(ArrayList<ArrayList<Square>> board, Iterator iterator){
         this.liste_board = board;
+        this.iterator = iterator;
     }
 
 
@@ -50,14 +51,13 @@ public class Move {
          * @returns possible moves as nested arraylist
          */
         ArrayList<ArrayList<Square>> possible_move = new ArrayList<ArrayList<Square>>();
-        for (ArrayList<Square> list : board.getBoard()) {
-            for (Square square : list) {
-                if (is_valid_path(start, square.get_Position(), board)) {
-                    if (!check_path_occupied(start, square.get_Position(), board)) {
-                        ArrayList<Square> path = get_path(start, square.get_Position(), board);
-                        if (path.size() != 0) {
-                            possible_move.add(path);
-                        }
+        while(iterator.hasNext()){
+            Square square = (Square)iterator.next();
+            if (is_valid_path(start, square.get_Position(), board)) {
+                if (!check_path_occupied(start, square.get_Position(), board)) {
+                    ArrayList<Square> path = get_path(start, square.get_Position(), board);
+                    if (path.size() != 0) {
+                        possible_move.add(path);
                     }
                 }
             }

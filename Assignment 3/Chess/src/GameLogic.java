@@ -10,10 +10,12 @@ public class GameLogic {
         Singleton board = null; // creates a board with the figures
         board = Singleton.getInstance();
 
+        Iterator iterator = board.createIterator();
+
         Observer scoreboard = new Scoreboard();
         board.registerObserver(scoreboard);
 
-        Move mover = new Move(board.getBoard());
+        Move mover = new Move(board.getBoard(), iterator);
         System.out.println("Player 1 will play as white and Player 2 plays as black");
         System.out.println("Player names: ");
         Player player1 = new Player(name_from_player(), Color.W);
