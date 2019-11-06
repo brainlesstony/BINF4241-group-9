@@ -46,7 +46,7 @@ public class Move {
 
     public ArrayList<ArrayList<Square>> possible_moves(String start, Singleton board) {
         /**
-         * @param start takes a specific Figure on the board
+         * @param start takes a specific Figure on the board    
          * @param board iterates trough board to any position to get an list of possible moves for that specific Figure
          * @returns possible moves as nested arraylist
          */
@@ -426,8 +426,8 @@ public class Move {
     }
 
     private String get_Kings_position(Singleton board, Color color){
-        for (ArrayList<Square> list : board.getBoard()){
-            for (Square square : list){
+        while(iterator.hasNext()){
+            Square square = (Square)iterator.next();
                 if (square.get_Piece() != null){
                     if (square.get_Piece().getType() == Type.K){
                         if (square.get_Piece().getColor() == color){
@@ -435,7 +435,7 @@ public class Move {
                         }
                     }
                 }
-            }
+
         }
 
         return "";
@@ -452,8 +452,8 @@ public class Move {
         String white_King_pos = get_Kings_position(board, Color.W);
         String black_King_pos = get_Kings_position(board, Color.B);
 
-        for (ArrayList<Square> list : board.getBoard()){
-            for (Square square : list){
+        while(iterator.hasNext()){
+            Square square = (Square)iterator.next();
                 if (square.get_Piece() != null){
                     if (square.get_Piece().getType() != Type.K) // a King can never check another king
                         if (square.get_Piece().getColor() != Color.W){
@@ -472,7 +472,7 @@ public class Move {
                             }
                         }
                     }
-            }
+
         }
         return false;
     }
@@ -566,8 +566,8 @@ public class Move {
 
     public void is_promotion (Singleton board, String position){
         String done = "";
-        for (ArrayList<Square> list : board.getBoard()) {
-            for (Square square : list){
+        while(iterator.hasNext()){
+            Square square = (Square)iterator.next();
                 if (square.get_Piece() != null) {
                     if (position.substring(1).equals("1") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.B &! done.equals("yes") & square.get_Position().substring(1).equals("1")) {
                         System.out.println("Your pawn has reached the end of the board, this triggers a promotion");
@@ -589,7 +589,7 @@ public class Move {
                         }
                     }
                 }
-            }
+
         }
     }
 
@@ -666,8 +666,8 @@ public class Move {
 
     private void swap_scharade(Singleton board, Color color,String start,String end){
 
-        for (ArrayList<Square> list : board.getBoard()) {
-            for (Square square : list) {
+        while(iterator.hasNext()){
+            Square square = (Square)iterator.next();
                 if (square.get_Piece() != null) {
                     if ((square.get_Piece().getType() == Type.K |square.get_Piece().getType() == Type.T)  & square.get_Piece().getColor() == color & (square.get_Position().equals(start)|square.get_Position().equals(end))){
                         if (square.get_Position().equals(start)){
@@ -678,7 +678,6 @@ public class Move {
                         }
                     }
                 }
-            }
 
         }
 
