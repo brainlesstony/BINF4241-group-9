@@ -21,4 +21,7 @@ public class BoardIterator implements Iterator {
             return true;
         }
     }
+    public void reset(){
+        position = 0;
+    }
 }

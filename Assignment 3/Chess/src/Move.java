@@ -62,6 +62,7 @@ public class Move {
                 }
             }
         }
+        iterator.reset();
         return possible_move;
     }
 
@@ -431,13 +432,14 @@ public class Move {
                 if (square.get_Piece() != null){
                     if (square.get_Piece().getType() == Type.K){
                         if (square.get_Piece().getColor() == color){
+                            iterator.reset();
                             return square.get_Position();
                         }
                     }
                 }
 
         }
-
+        iterator.reset();
         return "";
     }
 
@@ -460,6 +462,7 @@ public class Move {
                             if (is_valid_path(square.get_Position(), white_King_pos, board)){
                                 if (!check_path_occupied(square.get_Position(), white_King_pos, board)) {
                                     System.out.println("White King in check!");
+                                    iterator.reset();
                                     return true;
                                 }
                             }
@@ -467,6 +470,7 @@ public class Move {
                             if (is_valid_path(square.get_Position(), black_King_pos, board)) {
                                 if (!check_path_occupied(square.get_Position(), black_King_pos, board)) {
                                     System.out.println("Black King in check!");
+                                    iterator.reset();
                                     return true;
                                 }
                             }
@@ -474,6 +478,7 @@ public class Move {
                     }
 
         }
+        iterator.reset();
         return false;
     }
 
@@ -576,6 +581,7 @@ public class Move {
                                 "Queen = Q  , Tower = T, Bishop = B, Knight = N");
                         if (do_promotion(square, square.get_Piece().getColor())) {
                             done = "yes";
+                            iterator.reset();
                             break;
                         }
                     }else if (position.substring(1).equals("8") & square.get_Piece().getType() == Type.P & square.get_Piece().getColor() == Color.W &! done.equals("yes")) {
@@ -585,6 +591,7 @@ public class Move {
                                 "Queen = Q  , Tower = T, Bishop = B, Knight = N");
                         if (do_promotion(square, square.get_Piece().getColor())) {
                             done = "yes";
+                            iterator.reset();
                             break;
                         }
                     }
