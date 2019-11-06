@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.*;
 
-public class Singleton implements Iterator {
+public class Singleton implements Iterator, Score {
 
     private ArrayList<ArrayList<Square>> board;
     private ArrayList<Piece> graveyard;
@@ -199,5 +199,60 @@ public class Singleton implements Iterator {
         for (int i = 0; i < 100; i++) {
             System.out.println();
         }
+    }
+
+    public int getWhitePieces(){
+        int result = 0;
+        for (Piece piece : graveyard){
+            if (piece.getColor() == Color.W){
+                if (piece.getType() == Type.Q){
+                    result = result+5;
+                }
+                else{
+                    result++;
+                }
+            }
+        }
+        return result;
+    }
+
+    public int getBlackPieces(){
+        int result = 0;
+        for (Piece piece : graveyard){
+            if (piece.getColor() == Color.B){
+                if (piece.getType() == Type.Q){
+                    result = result+5;
+                }
+                else{
+                    result++;
+                }
+            }
+        }
+        return result;
+    }
+
+    private List<Observer> observers = new ArrayList<Observer>();
+
+    public void registerObserver(Observer aObserver){
+        observers.add(aObserver);
+    }
+
+    public void removeObserver(Observer aObserver){
+        if (observers.contains(aObserver)) {
+            observers.remove(aObserver);
+        }
+    }
+
+    public void notifyObservers(int white_score, int black_score){
+        for(Observer eachObserver : observers){
+            eachObserver.update(white_score, black_score);
+        }
+    }
+
+    public void scoreChanged(){
+        int white_score = getBlackPieces();
+        int black_score = getWhitePieces();
+
+        notifyObservers(white_score, black_score);
     }
 }

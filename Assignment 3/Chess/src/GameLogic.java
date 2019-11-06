@@ -9,6 +9,10 @@ public class GameLogic {
         String player2_input2;
         Singleton board = null; // creates a board with the figures
         board = Singleton.getInstance();
+
+        Observer scoreboard = new Scoreboard();
+        board.registerObserver(scoreboard);
+
         Move mover = new Move();
         System.out.println("Player 1 will play as white and Player 2 plays as black");
         System.out.println("Player names: ");
@@ -52,6 +56,9 @@ public class GameLogic {
             mover.is_check(board);
             board.print();
 
+            board.scoreChanged();
+            System.out.println(scoreboard);
+
 
             ////////////player2
             // Welche Figur bestimmt durch User Input des Feldes
@@ -83,6 +90,9 @@ public class GameLogic {
             board.fake_flush();
             mover.is_check(board);
             board.print();
+
+            board.scoreChanged();
+            System.out.println(scoreboard);
         }
     }
 
