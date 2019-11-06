@@ -23,5 +23,5 @@ In the Scoreboard class the only method is update() which is used to update the 
 
 The rest of the implementation is in the Board or rather Singleton class. There are functions to register, remove and notify observers.
 
-The method scoreChanged() is used after every move to update/notify the scoreboard.
+The method scoreChanged() is executed after a piece has been eaten.
 
