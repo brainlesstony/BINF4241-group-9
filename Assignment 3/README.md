@@ -1,6 +1,23 @@
 ***Assignment 3***
 
 **Task 1**
+In Task 1 we chose to implement the Singleton and Iterator design pattern.
+1.1 Singleton was implemented for the Board. We renamed the board class to Singleton to make it even more clear.
+2.1
+
+3.Sequence diagram Singleton
+```mermaid
+sequenceDiagram
+Singleton ->> Singleton:  Oh hi it's you
+Board ->> Singleton:  wow
+```
+4.Sequence diagram Iterator
+
+```mermaid
+sequenceDiagram
+Board ->> Board: init_board()
+Board ->> Board: move()
+```
 
 **Task 2**
 
