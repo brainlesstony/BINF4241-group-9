@@ -4,12 +4,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.*;
 
-public class Singleton implements Iterator, Score {
+public class Singleton implements Score {
 
     private ArrayList<ArrayList<Square>> board;
     private ArrayList<Piece> graveyard;
-    int postition_x = 0;
-    int postition_y = 0;
 
     private static Singleton uniqueInstance; // Board
     private Singleton(){
@@ -23,6 +21,12 @@ public class Singleton implements Iterator, Score {
         }
         return  uniqueInstance;
     }
+//    public Iterator createIteratorX(){
+//        return new BoardIteratorX(board);
+//    }
+//    public Iterator createIteratorY(){
+//        return new BoardIteratorY(board);
+//    }
 
 //    public Board(){ // initialize the board with the pieces not in the GameLogic. Tony 15.10
 //        // TODO: init board with all pieces.
@@ -32,26 +36,16 @@ public class Singleton implements Iterator, Score {
 
 
 //    Iterator iterator = Board.createIterator();
-    public Square next() {
-        Singleton.getInstance();
-        if (postition_x  < 7) {
-            postition_x ++;
-            return board.get(postition_x).get(postition_y);
-        }else if (postition_x == 7 & postition_y <7){
-            postition_x = 0;
-            postition_y ++;
-            return board.get(postition_x).get(postition_y);
-        }else {
-            postition_y = 0;
-            postition_x = 0;
-            return board.get(postition_x).get(postition_y);
+
+    public ArrayList<Square> iterator_list(){
+        ArrayList<Square> tmp;
+        tmp = new ArrayList<>();
+        for(ArrayList<Square> liste: this.board){
+            tmp.addAll(liste);
+
         }
+        return tmp;
     }
-
-    public boolean hasNext(){
-        return !(postition_x >= 8 | postition_y >= 8);
-    }
-
 
     private ArrayList<ArrayList<Square>> init_board() {
         ArrayList<ArrayList<Square>> list_copy = new ArrayList<>();

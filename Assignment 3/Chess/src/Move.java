@@ -1,6 +1,14 @@
 import java.util.ArrayList;
 
+
 public class Move {
+    ArrayList<ArrayList<Square>> liste_board;
+
+    public Move(ArrayList<ArrayList<Square>> board){
+        this.liste_board = board;
+    }
+
+
 
     public boolean move_check(String start, String end, Singleton board) {
 
