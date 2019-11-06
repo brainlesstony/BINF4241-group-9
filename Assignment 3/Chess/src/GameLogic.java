@@ -22,6 +22,7 @@ public class GameLogic {
         Player player2 = new Player(name_from_player(), Color.B);
         board.fake_flush();
         board.print();
+        System.out.println(scoreboard);
 
         while(true){ //!mover.checkmate()
             /////////////player 1
@@ -58,7 +59,7 @@ public class GameLogic {
             mover.is_check(board);
             board.print();
 
-            board.scoreChanged();
+            //board.scoreChanged();
             System.out.println(scoreboard);
 
 
@@ -93,7 +94,7 @@ public class GameLogic {
             mover.is_check(board);
             board.print();
 
-            board.scoreChanged();
+            //board.scoreChanged();
             System.out.println(scoreboard);
         }
     }

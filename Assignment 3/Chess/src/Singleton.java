@@ -8,6 +8,9 @@ public class Singleton implements Score {
     private ArrayList<ArrayList<Square>> board;
     private ArrayList<Piece> graveyard;
 
+    //Observer scoreboard = new Scoreboard();
+
+
     private static Singleton uniqueInstance; // Board
     private Singleton(){
         this.board= init_board();
@@ -130,6 +133,7 @@ public class Singleton implements Score {
         Piece target_piece = get_Piece_from_position(target);
         if (target_piece != null){
             this.graveyard.add(target_piece);
+            scoreChanged();
         }
         this.board.get("87654321".indexOf(target.substring(1))).set("ABCDEFGH".indexOf(target.substring(0,1)), new Square(get_Square_from_position(target).get_Color(), move_piece, target,true));
         this.board.get("87654321".indexOf(position.substring(1))).set("ABCDEFGH".indexOf(position.substring(0,1)), new Square(get_Square_from_position(position).get_Color(), null, position,false));
