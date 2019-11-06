@@ -1,20 +1,15 @@
-#Chess
+Assignment 3
 
-MAIN function in Game Logic
+Task 1
 
-We decided to use Enums as piece types (insted of a single class each with an interface that extends the piece class) since they are unique
-Movement input can be specified as start position and end position
+Task 2
 
-e.g.
-start pos:
-A2
-end pos:
-A4
+```mermaid
+sequenceDiagram
+Board ->> Board: init_board()
+Board ->> Board: move()
+```
 
-Castle can also be specified as Start position and End position
+Task 3
 
-e.g 
-start pos:
-E1
-end pos:
-G1
+We have chosen to implement the Observer Pattern
