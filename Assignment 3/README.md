@@ -2,11 +2,12 @@
 
 **Task 1**
 In Task 1 we chose to implement the Singleton and Iterator design pattern.
-1.1 Singleton was implemented for the Board. We renamed the board class to Singleton to make it even more clear.
-2.1
-<img src="Singleton_ClassDiagram.png" alt="Singleton_CD" width="350"/>
+1.1 Singleton was implemented for the Board. We renamed the board class to Singleton to make it even more clear.  
+1.2.1 Class diagram Singleton  
+<img src="Singleton_ClassDiagram.png" alt="Singleton_CD" width="350"/>  
+1.2.2 Class diagram Iterator  
+<img src="Iterator_ClassDiagram.png" alt="Iterator_CD" width="350"/>
 
-```
 
 3.Sequence diagram Singleton
 ```mermaid
