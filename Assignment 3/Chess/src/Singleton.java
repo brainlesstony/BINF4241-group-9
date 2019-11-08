@@ -54,56 +54,56 @@ public class Singleton implements Score {
         for (int i = 0;i<=7;i++){
             list_copy.add(new ArrayList<>());
         }
-        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.T,false), "A8",true));
-        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.N,false), "B8",true));
-        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.B,false), "C8",true));
-        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.Q,false), "D8",true));
-        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.K,false), "E8",true));
-        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.B,false), "F8",true));
-        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.N,false), "G8",true));
-        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.T,false), "H8",true));
+        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.T,false), "A8"));
+        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.N,false), "B8"));
+        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.B,false), "C8"));
+        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.Q,false), "D8"));
+        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.K,false), "E8"));
+        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.B,false), "F8"));
+        list_copy.get(0).add(new Square(ColorSquare.W, new Piece(Color.B, Type.N,false), "G8"));
+        list_copy.get(0).add(new Square(ColorSquare.B, new Piece(Color.B, Type.T,false), "H8"));
         List<String> liste_abc = Arrays.asList("A", "C", "E", "G");
         List<String> liste_abc2= Arrays.asList("B", "D", "F", "H");
 
         for (int i=0;i<=3;i++){
-            list_copy.get(1).add(new Square(ColorSquare.B, new Piece(Color.B, Type.P,false), liste_abc.get(i)+"7",false));
-            list_copy.get(1).add(new Square(ColorSquare.W, new Piece(Color.B, Type.P,false), liste_abc2.get(i)+"7",false));
+            list_copy.get(1).add(new Square(ColorSquare.B, new Piece(Color.B, Type.P,false), liste_abc.get(i)+"7"));
+            list_copy.get(1).add(new Square(ColorSquare.W, new Piece(Color.B, Type.P,false), liste_abc2.get(i)+"7"));
 
         }
         for (int i=0;i<=3;i++){
-            list_copy.get(2).add(new Square(ColorSquare.W, null, liste_abc.get(i)+"6",false));
-            list_copy.get(2).add(new Square(ColorSquare.B, null, liste_abc2.get(i)+"6",false));
+            list_copy.get(2).add(new Square(ColorSquare.W, null, liste_abc.get(i)+"6"));
+            list_copy.get(2).add(new Square(ColorSquare.B, null, liste_abc2.get(i)+"6"));
 
         }
         for (int i=0;i<=3;i++){
-            list_copy.get(3).add(new Square(ColorSquare.B, null, liste_abc.get(i)+"5",false));
-            list_copy.get(3).add(new Square(ColorSquare.W, null, liste_abc2.get(i)+"5",false));
+            list_copy.get(3).add(new Square(ColorSquare.B, null, liste_abc.get(i)+"5"));
+            list_copy.get(3).add(new Square(ColorSquare.W, null, liste_abc2.get(i)+"5"));
 
         }
         for (int i=0;i<=3;i++){
-            list_copy.get(4).add(new Square(ColorSquare.W, null, liste_abc.get(i)+"4",false));
-            list_copy.get(4).add(new Square(ColorSquare.B, null, liste_abc2.get(i)+"4",false));
+            list_copy.get(4).add(new Square(ColorSquare.W, null, liste_abc.get(i)+"4"));
+            list_copy.get(4).add(new Square(ColorSquare.B, null, liste_abc2.get(i)+"4"));
 
         }
         for (int i=0;i<=3;i++){
-            list_copy.get(5).add(new Square(ColorSquare.B, null, liste_abc.get(i)+"3",false));
-            list_copy.get(5).add(new Square(ColorSquare.W, null, liste_abc2.get(i)+"3",false));
+            list_copy.get(5).add(new Square(ColorSquare.B, null, liste_abc.get(i)+"3"));
+            list_copy.get(5).add(new Square(ColorSquare.W, null, liste_abc2.get(i)+"3"));
 
         }
 
         for (int i = 0; i<=3; i++) {
-            list_copy.get(6).add(new Square(ColorSquare.W, new Piece(Color.W, Type.P,false), liste_abc.get(i)+"2",false));
-            list_copy.get(6).add(new Square(ColorSquare.B, new Piece(Color.W, Type.P,false), liste_abc2.get(i)+"2",false));
+            list_copy.get(6).add(new Square(ColorSquare.W, new Piece(Color.W, Type.P,false), liste_abc.get(i)+"2"));
+            list_copy.get(6).add(new Square(ColorSquare.B, new Piece(Color.W, Type.P,false), liste_abc2.get(i)+"2"));
         }
 
-        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.T,false), "A1",true));
-        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.N,false), "B1",true));
-        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.B,false), "C1",true));
-        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.Q,false), "D1",true));
-        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.K,false), "E1",true));
-        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.B,false), "F1",true));
-        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.N,false), "G1",true));
-        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.T,false), "H1",true));
+        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.T,false), "A1"));
+        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.N,false), "B1"));
+        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.B,false), "C1"));
+        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.Q,false), "D1"));
+        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.K,false), "E1"));
+        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.B,false), "F1"));
+        list_copy.get(7).add(new Square(ColorSquare.B, new Piece(Color.W, Type.N,false), "G1"));
+        list_copy.get(7).add(new Square(ColorSquare.W, new Piece(Color.W, Type.T,false), "H1"));
         return list_copy;
     }
 
@@ -135,8 +135,8 @@ public class Singleton implements Score {
             this.graveyard.add(target_piece);
             scoreChanged();
         }
-        this.board.get("87654321".indexOf(target.substring(1))).set("ABCDEFGH".indexOf(target.substring(0,1)), new Square(get_Square_from_position(target).get_Color(), move_piece, target,true));
-        this.board.get("87654321".indexOf(position.substring(1))).set("ABCDEFGH".indexOf(position.substring(0,1)), new Square(get_Square_from_position(position).get_Color(), null, position,false));
+        this.board.get("87654321".indexOf(target.substring(1))).set("ABCDEFGH".indexOf(target.substring(0,1)), new Square(get_Square_from_position(target).get_Color(), move_piece, target));
+        this.board.get("87654321".indexOf(position.substring(1))).set("ABCDEFGH".indexOf(position.substring(0,1)), new Square(get_Square_from_position(position).get_Color(), null, position));
         move_piece.change_has_moved(); // when moved then change his has_moved state
         return target_piece;
     }
