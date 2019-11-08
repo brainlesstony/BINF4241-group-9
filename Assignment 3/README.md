@@ -49,11 +49,7 @@ Board ->> Board: move()
 
 **Task 2**
 
-```mermaid
-sequenceDiagram
-Board ->> Board: init_board()
-Board ->> Board: move()
-```
+<img src="Chessboard_SequenceDiagram.png" alt="Chessboard_SD" width="350"/>
 
 **Task 3**
 

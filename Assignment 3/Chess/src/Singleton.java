@@ -10,7 +10,6 @@ public class Singleton implements Score {
 
     //Observer scoreboard = new Scoreboard();
 
-
     private static Singleton uniqueInstance; // Board
     private Singleton(){
         this.board= init_board();
@@ -23,21 +22,6 @@ public class Singleton implements Score {
         }
         return  uniqueInstance;
     }
-//    public Iterator createIteratorX(){
-//        return new BoardIteratorX(board);
-//    }
-//    public Iterator createIteratorY(){
-//        return new BoardIteratorY(board);
-//    }
-
-//    public Board(){ // initialize the board with the pieces not in the GameLogic. Tony 15.10
-//        // TODO: init board with all pieces.
-//        this.board= init_board();
-//        this.graveyard= new ArrayList<Piece>();
-//    }
-
-
-//    Iterator iterator = Board.createIterator();
 
     public ArrayList<Square> iterator_list(){
         ArrayList<Square> tmp;
@@ -126,19 +110,21 @@ public class Singleton implements Score {
     }
 
     public Piece move(String position, String target){ //TODO Set new piece status moved = true
-        Piece move_piece = get_Piece_from_position(position);
-        if (move_piece.getColor() == Color.B){
 
-        }
         Piece target_piece = get_Piece_from_position(target);
         if (target_piece != null){
             this.graveyard.add(target_piece);
             scoreChanged();
         }
+        swap(position,target);
+        return target_piece;
+    }
+
+    private void swap(String position, String target){
+        Piece move_piece = get_Piece_from_position(position);
         this.board.get("87654321".indexOf(target.substring(1))).set("ABCDEFGH".indexOf(target.substring(0,1)), new Square(get_Square_from_position(target).get_Color(), move_piece, target));
         this.board.get("87654321".indexOf(position.substring(1))).set("ABCDEFGH".indexOf(position.substring(0,1)), new Square(get_Square_from_position(position).get_Color(), null, position));
         move_piece.change_has_moved(); // when moved then change his has_moved state
-        return target_piece;
     }
 
     public boolean valid_turn(Player player, Piece piece){

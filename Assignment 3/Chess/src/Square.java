@@ -10,7 +10,6 @@ public class Square {
         aPiece = nPiece;
         aPosition = nPosition;
 
-
     }
 
     @Override

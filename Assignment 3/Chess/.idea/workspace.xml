@@ -5,10 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/GameLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/Move$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Move$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/Move.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Move.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/Singleton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Singleton.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Singleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Singleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Square.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,6 +88,7 @@
       <workItem from="1571585745766" duration="10737000" />
       <workItem from="1571945311659" duration="29201000" />
       <workItem from="1573046492814" duration="5000000" />
+      <workItem from="1573204171821" duration="2739000" />
     </task>
     <servers />
   </component>
@@ -113,11 +116,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Move.java</url>
-          <line>271</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Move.java</url>
           <line>46</line>
