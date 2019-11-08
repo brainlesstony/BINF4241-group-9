@@ -16,11 +16,7 @@ Our Implementation of the Singleton design pattern follows the structure as indi
 
 *1.3* Sequence diagram Singleton
 
-```mermaid
-sequenceDiagram
-Singleton ->> Singleton:  Oh hi it's you
-Board ->> Singleton:  wow
-```
+<img src="Singleton_SequenceDiagram.png" alt="Singleton_SD" width="350"/>  
 
 **Iterator**
 
@@ -41,11 +37,7 @@ possible_moves(), get_Kings_position(), is_check(), is_promotion() and swap_scha
 
 *1.3* Sequence diagram Iterator
 
-```mermaid
-sequenceDiagram
-Board ->> Board: init_board()
-Board ->> Board: move()
-```
+<img src="Iterator_SequenceDiagram.png" alt="Iterator_SD" width="350"/>
 
 **Task 2**
 
