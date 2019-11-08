@@ -10,6 +10,7 @@ In Task 1 we chose to implement the Singleton and Iterator design pattern.
 We renamed the board class to Singleton (to follow naming convention) to make it clear that only one chess board at a time should exist. 
 
 Our Implementation of the Singleton design pattern follows the structure as indicated in the lecture.
+Little Modification --> new method swap(only moved codelines no new lines written) to make it visually more clear in the sequence diagram in task 2.
 
 *1.2* Class diagram Singleton  
 <img src="Singleton_ClassDiagram.png" alt="Singleton_CD" width="350"/>  
