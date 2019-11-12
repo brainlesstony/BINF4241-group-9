@@ -9,7 +9,6 @@ public class GameLogic {
         String player2_input2;
         Singleton board = null; // creates a board with the figures
         board = Singleton.getInstance();
-
         Iterator iterator = board.createIterator();
 
         Observer scoreboard = new Scoreboard();
@@ -58,8 +57,7 @@ public class GameLogic {
             mover.is_scharade(player1_input1,player1_input2,board,player1.get_color());
             mover.is_check(board);
             board.print();
-
-            //board.scoreChanged();
+            board.scoreChanged();
             System.out.println(scoreboard);
 
 
@@ -93,8 +91,7 @@ public class GameLogic {
             board.fake_flush();
             mover.is_check(board);
             board.print();
-
-            //board.scoreChanged();
+            board.scoreChanged();
             System.out.println(scoreboard);
         }
     }

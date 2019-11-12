@@ -3,15 +3,12 @@ public class Square {
     private ColorSquare aColor;
     private Piece aPiece;
     private String aPosition;
-    private Boolean aOccupied;
 
 
-    public Square (ColorSquare nColor, Piece nPiece, String nPosition, Boolean nOccupied){
+    public Square (ColorSquare nColor, Piece nPiece, String nPosition){
         aColor = nColor;
         aPiece = nPiece;
         aPosition = nPosition;
-        aOccupied = nOccupied;
-
 
     }
 

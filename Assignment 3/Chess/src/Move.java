@@ -268,7 +268,7 @@ public class Move {
                 }
                 return path_list;
             case N:
-                path_list.add(new Square(ColorSquare.B, null, "Platzhalter",false));
+                path_list.add(new Square(ColorSquare.B, null, "Platzhalter"));
                 path_list.add(board.get_Square_from_position(end));
                 return path_list;
             case P:
