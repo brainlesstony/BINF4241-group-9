@@ -8,9 +8,15 @@ public class Oven{
     private String program;
 
     public Oven(Boolean state){
-        this.state = state;
+        this.state = false;
     }
+
     //setters
+    void on(){ //package-private
+        this.state = true;
+    }
 
-
+    void off() {
+        this.state = false;
+    }
 }
