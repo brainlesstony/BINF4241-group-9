@@ -1,15 +1,17 @@
 package Oven;
-enum program_oven{Grill, Ventilated, Normal, Off}
+enum Program_oven{Grill, Ventilated, Normal, Off}
 
 public class Oven{
     private boolean state;
     private int temperature;
     private int timer;
-    private program_oven program;
+    private Program_oven program;
+    private Thread thread;
+    private Runnable runnable;
 
     public Oven(){
         this.state = false;
-        this.program = program_oven.Off;
+        this.program = Program_oven.Off;
     }
 
     void on(){ //package-private
@@ -20,7 +22,7 @@ public class Oven{
         this.state = false;
         this.temperature = -1;
         this.timer = -1;
-        this.program = program_oven.Off;
+        this.program = Program_oven.Off;
 
     }
 
@@ -55,15 +57,15 @@ public class Oven{
 
     // SETTERS
     void setProgramGrill(){
-        this.program = program_oven.Grill;
+        this.program = Program_oven.Grill;
     }
 
     void setProgramNormal(){
-        this.program = program_oven.Normal;
+        this.program = Program_oven.Normal;
     }
 
     void setProgramVentilated(){
-        this.program = program_oven.Ventilated;
+        this.program = Program_oven.Ventilated;
     }
 
     void setTimer(int i){
@@ -72,5 +74,13 @@ public class Oven{
 
     void setTemperature(int i){
         this.temperature = i;
+    }
+
+    void setThread(Thread mythread){
+        this.thread = mythread;
+    }
+
+    void setRunnable(Runnable run){
+        this.runnable = run;
     }
 }
