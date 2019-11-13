@@ -1,8 +1,6 @@
 package Dishwasher;
 
-import Oven.*; // Das isch wichtig! und Riuchtiig
-
-public class Dishwasher extends Oven{
+public class Dishwasher{
     private boolean state;
     public Dishwasher(Boolean state){
 //        super(); // inheritance

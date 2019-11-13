@@ -1,6 +1,5 @@
 package Microwave;
-import Oven.*;
-public class Microwave extends Oven{
+public class Microwave {
     private boolean state;
     private int temperature;
     private int timer;
