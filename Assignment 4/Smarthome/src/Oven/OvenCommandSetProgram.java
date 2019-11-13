@@ -3,6 +3,11 @@ import Interfaces.Command;
 import java.util.Scanner;
 public class OvenCommandSetProgram implements Command {
     private Oven oven;
+
+    public OvenCommandSetProgram(Oven oven){ // Tf?
+        this.oven = oven;
+    }
+
     public void execute() {
         System.out.println("Choose one of the following Programs:");
         System.out.println(("[Ventilated]  [Grill]  [Normal]"));
@@ -21,6 +26,8 @@ public class OvenCommandSetProgram implements Command {
             case "Normal":
                 oven.setProgramNormal();
                 break;
+            default:
+                System.out.println("Input not valid. Please enter one the available programs");
         }
     }
 }
