@@ -4,7 +4,11 @@ import Interfaces.Command;
 import Threads.MyThread;
 
 public class OvenCommandStartCooking implements Command {
-    Oven oven;
+    private Oven oven;
+
+    public OvenCommandStartCooking(Oven oven){ // Tf?
+        this.oven = oven;
+    }
 
     @Override
     public void execute() {

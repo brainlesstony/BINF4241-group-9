@@ -1,16 +1,17 @@
 package Oven;
+enum program_oven{Grill, Ventilated, Normal, Off}
 
 public class Oven{
     private boolean state;
     private int temperature;
     private int timer;
-    private String program;
+    private program_oven program;
 
-    public Oven(Boolean state){
+    public Oven(){
         this.state = false;
+        this.program = program_oven.Off;
     }
 
-    //setters
     void on(){ //package-private
         this.state = true;
     }
@@ -19,39 +20,57 @@ public class Oven{
         this.state = false;
         this.temperature = -1;
         this.timer = -1;
-        this.program = null;
+        this.program = program_oven.Off;
 
     }
 
+    @Override public String toString(){
+        String state;
+
+        if (this.state){
+            state="On";
+        }
+        else{
+            state="Off";
+        }
+        return "Appliance: Oven\nState: " + state + "\nProgram: " + program + "\nTemperature: " + temperature;
+    }
+
+
+    // GETTERS
     String getProgram(){
-        return this.program;
+        return program.toString();
     }
 
-    void setProgramVentilated(){
-        this.program = "Ventilated";
+    int getTimer(){
+        return this.timer;
     }
 
+    int getTemperature(){
+        return this.temperature;
+    }
+
+
+
+
+    // SETTERS
     void setProgramGrill(){
-        this.program = "Grill";
+        this.program = program_oven.Grill;
     }
 
     void setProgramNormal(){
-        this.program = "Normal";
+        this.program = program_oven.Normal;
+    }
+
+    void setProgramVentilated(){
+        this.program = program_oven.Ventilated;
     }
 
     void setTimer(int i){
         this.timer = i;
     }
 
-    int getTimer(){
-        return timer;
-    }
-
     void setTemperature(int i){
         this.temperature = i;
-    }
-
-    int getTemperature(){
-        return this.temperature;
     }
 }
