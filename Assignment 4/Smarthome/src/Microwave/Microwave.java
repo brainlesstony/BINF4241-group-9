@@ -4,9 +4,9 @@ public class Microwave {
     private int temperature;
     private int timer;
     private String program;
-    public Microwave(Boolean state){
+    public Microwave(){
 //        super(); // inheritance
-        this.state = state;
+        this.state = false;
     }
     public void on(){
         this.state = true;

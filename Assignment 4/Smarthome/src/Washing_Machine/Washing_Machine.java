@@ -3,9 +3,16 @@ enum Program{Double_Rinse, Intense, Quick, Spin, None}
 
 public class Washing_Machine {
     private Program my_program;
-
+    private boolean state;
     public Washing_Machine(){
         this.my_program = Program.None;
+        this.state = false;
+    }
+    void on(){
+        this.state = true;
+    }
+    void off(){
+        this.state = false;
     }
 
     private Program get_program(){
@@ -21,6 +28,8 @@ public class Washing_Machine {
             this.my_program = Program.Quick;
         }else if (program_input == Program.Spin){
             this.my_program = Program.Spin;
+        }else{
+            System.out.println("Invalid Program");;
         }
     }
 }

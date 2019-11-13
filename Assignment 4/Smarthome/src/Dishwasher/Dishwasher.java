@@ -2,10 +2,11 @@ package Dishwasher;
 
 public class Dishwasher{
     private boolean state;
-    public Dishwasher(Boolean state){
-//        super(); // inheritance
-        this.state = state;
+
+    public Dishwasher(){
+        this.state = false;
     }
+
     void on(){
         this.state = true;
     }
