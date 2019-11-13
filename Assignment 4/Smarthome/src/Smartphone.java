@@ -1,10 +1,10 @@
 import Interfaces.Command;
 public class Smartphone {
-    Command[] onSlots;
+    private Command[] onSlots;
 
     public Smartphone() {
         Command noCommand = new NoCommand();
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 8; i++) {
             onSlots[i] = noCommand;
 }
     }
