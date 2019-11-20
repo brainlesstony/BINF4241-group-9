@@ -7,7 +7,7 @@ public class Cleaning_Robot implements Machine{
     private int battery_status;
     private int elapsed;
 
-    public Cleaning_Robot(){
+    public Cleaning_Robot() {
         this.state = false;
         this.timer = 0;
         this.battery_status = 100;
@@ -17,6 +17,7 @@ public class Cleaning_Robot implements Machine{
     public void on(){
         this.state = true;
         System.out.println("Cleaning Robot is turned on.");
+//        this.commandlist = getCommands();
     }
 
     public void off(){
@@ -47,5 +48,7 @@ public class Cleaning_Robot implements Machine{
     }
 
 
+//    private Command [] getCommands(){
+//        return new Command[]{Cleaning_RobotCommandOn,Cleaning_RobotCommandOff,Cleaning_RobotSetTimer};
 
 }

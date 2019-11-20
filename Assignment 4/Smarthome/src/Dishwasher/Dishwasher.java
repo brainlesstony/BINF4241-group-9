@@ -1,6 +1,6 @@
 package Dishwasher;
 
-public class Dishwasher{
+public class Dishwasher {
     private boolean state;
 
     public Dishwasher(){
@@ -10,7 +10,9 @@ public class Dishwasher{
     void on(){
         this.state = true;
     }
+
     void off(){
         this.state = false;
     }
+
 }

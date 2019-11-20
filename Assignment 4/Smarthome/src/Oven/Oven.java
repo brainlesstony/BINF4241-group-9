@@ -1,86 +1,104 @@
 package Oven;
+
+import Interfaces.Command;
+
 enum Program_oven{Grill, Ventilated, Normal, Off}
 
-public class Oven{
-    private boolean state;
+public class Oven {
+    private boolean power;
     private int temperature;
     private int timer;
     private Program_oven program;
     private Thread thread;
     private Runnable runnable;
+//    public Command[] commandlist ;
+//    private Command OvenCommandInterrupt;
+//    private Command OvenCommandOff;
+//    private Command OvenCommandOn;
+//    private Command SetProgram;
+//    private Command SetTemperature;
+//    private Command SetTimer;
+//    private Command CheckTimer;
+//    private Command StartCooking;
 
-    public Oven(){
-        this.state = false;
+    public Oven() {
+        this.power = false;
         this.program = Program_oven.Off;
+//        this.commandlist = new Command[]{OvenCommandOn};
     }
 
-    void on(){ //package-private
-        this.state = true;
+    void on() { //package-private
+        this.power = true;
+//        this.commandlist = getCommands();
     }
 
     void off() {
-        this.state = false;
+        this.power = false;
         this.temperature = -1;
         this.timer = -1;
         this.program = Program_oven.Off;
 
     }
 
-    @Override public String toString(){
+    @Override
+    public String toString() {
         String state;
 
-        if (this.state){
-            state="On";
-        }
-        else{
-            state="Off";
+        if (this.power) {
+            state = "On";
+        } else {
+            state = "Off";
         }
         return "Appliance: Oven\nState: " + state + "\nProgram: " + program + "\nTemperature: " + temperature;
     }
 
 
     // GETTERS
-    String getProgram(){
+    String getProgram() {
         return program.toString();
     }
 
-    int getTimer(){
+    int getTimer() {
         return this.timer;
     }
 
-    int getTemperature(){
+    int getTemperature() {
         return this.temperature;
     }
 
 
-
-
     // SETTERS
-    void setProgramGrill(){
+    void setProgramGrill() {
         this.program = Program_oven.Grill;
     }
 
-    void setProgramNormal(){
+    void setProgramNormal() {
         this.program = Program_oven.Normal;
     }
 
-    void setProgramVentilated(){
+    void setProgramVentilated() {
         this.program = Program_oven.Ventilated;
     }
 
-    void setTimer(int i){
+    void setTimer(int i) {
         this.timer = i;
     }
 
-    void setTemperature(int i){
+    void setTemperature(int i) {
         this.temperature = i;
     }
 
-    void setThread(Thread mythread){
+    void setThread(Thread mythread) {
         this.thread = mythread;
     }
 
-    void setRunnable(Runnable run){
+    void setRunnable(Runnable run) {
         this.runnable = run;
     }
+
+//    //COMMAND LISTS
+//    private Command[] getCommands() {
+//        return new Command [] {OvenCommandInterrupt,OvenCommandOff,OvenCommandOn,SetProgram,SetTemperature,SetTimer,StartCooking};
+//    }
+
 }
