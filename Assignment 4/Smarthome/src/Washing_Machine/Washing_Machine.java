@@ -1,48 +1,104 @@
 package Washing_Machine;
-
-import Interfaces.Command;
-
-enum Program{Double_Rinse, Intense, Quick, Spin, None}
+import Threads.MyThread;
+import java.util.Scanner;
 
 public class Washing_Machine {
-    private Program my_program;
+    private String my_program;
     private boolean state;
-    public Command[] commandlist ;
-    private Command Washing_MachineCommandOn;
-    private Command Washing_MachineCommandOff;
+    private boolean washing;
+    private String degree;
+    private Thread thread;
+    private Runnable runnable;
+    private int timer;
     public Washing_Machine(){
-        this.my_program = Program.None;
-        this.Washing_MachineCommandOff = new Washing_MachineCommandOff(this);
-        this.Washing_MachineCommandOn = new Washing_MachineCommandOn(this);
+        this.washing = false;
+        this.timer = -1;
+        this.my_program = "";
         this.state = false;
-        this.commandlist = new Command[] {Washing_MachineCommandOn};
+        this.degree = "0";
     }
+
     void on(){
         this.state = true;
-        this.commandlist = getCommands();
     }
+
     void off(){
-        this.state = false;
-    }
-
-    private Program get_program(){
-        return my_program;
-    }
-
-    void set_Program(Program program_input){
-        if (program_input == Program.Double_Rinse) {
-            this.my_program = Program.Double_Rinse;
-        }else if (program_input == Program.Intense) {
-            this.my_program = Program.Intense;
-        }else if (program_input == Program.Quick) {
-            this.my_program = Program.Quick;
-        }else if (program_input == Program.Spin){
-            this.my_program = Program.Spin;
-        }else{
-            System.out.println("Invalid Program");;
+        if (washing){
+            this.state = true; // do not change state while washing
+        }else {
+            this.state = false;
         }
     }
-    private Command[] getCommands (){
-        return new Command[] {Washing_MachineCommandOn, Washing_MachineCommandOff};
+
+    private String getProgram(){
+        return my_program;
+    }
+    private String getDegree() {return this.degree;}
+    void setProgram(){
+        boolean not_done = true;
+        while (not_done){
+            System.out.println("Select a program [Double_Rinse,Intense,Quick,Spin]");
+            Scanner scanner = new Scanner(System.in);
+            String program = scanner.nextLine();
+            switch(program) {
+                case "Double_Rinse":
+                    this.my_program = "Double_Rinse";
+                    this.timer = 20;
+                    startProgram();
+                case "Intense":
+                    this.my_program = "Intense";
+                    this.timer = 10;
+                    startProgram();
+                case "Quick":
+                    this.my_program = "Quick";
+                    this.timer = 5;
+                    startProgram();
+                case "Spin":
+                    this.my_program = "Spin";
+                    this.timer = 15;
+                    startProgram();
+                default:
+                    System.out.println("Invalid Program");
+            }
+            not_done = false;
+        }
+    }
+    void setDegree () {
+        boolean not_done = true;
+        while (not_done) {
+            System.out.println("Select a degree 15/30/45/60/90 for the washing machine");
+            Scanner scanner = new Scanner(System.in);
+            String degree = scanner.nextLine();
+            switch (degree) {
+                case "15":
+                    this.degree = "15";
+                    break;
+                case "30":
+                    this.degree = "30";
+                    break;
+                case "45":
+                    this.degree = "45";
+                    break;
+                case "60":
+                    this.degree = "60";
+                    break;
+                case "90":
+                    this.degree = "90";
+                    break;
+                default:
+                    System.out.println("This degree is not allowed");
+                    break;
+            }
+            not_done = false;
+        }
+    }
+    void startProgram(){
+        this.runnable = new MyThread(this.timer);
+        Thread rt1;
+        rt1 = new Thread(runnable,this.my_program);
+        this.thread = rt1;
+        washing = true;
+        rt1.start();
+        washing = false;
     }
 }
