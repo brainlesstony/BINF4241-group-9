@@ -1,28 +1,51 @@
 package Cleaning_Robot;
+import Interfaces.Machine;
 
-import Interfaces.Command;
-
-public class Cleaning_Robot {
+public class Cleaning_Robot implements Machine{
     private boolean state;
-    public Command[] commandlist;
-    private Command Cleaning_RobotCommandOff;
-    private Command Cleaning_RobotCommandOn;
-    private Command Cleaning_RobotSetTimer;
-    public Cleaning_Robot(){
+    private int timer;
+    private int battery_status;
+    private int elapsed;
+
+    public Cleaning_Robot() {
         this.state = false;
-        this.Cleaning_RobotCommandOn = new Cleaning_RobotCommandOn(this);
-        this.Cleaning_RobotCommandOff = new Cleaning_RobotCommandOff(this);
-        this.Cleaning_RobotSetTimer = new Cleaning_RobotSetTimer(this);
-        this.commandlist = new Command[]{Cleaning_RobotCommandOn};
+        this.timer = 0;
+        this.battery_status = 100;
+        this.elapsed = 0;
     }
-    void on(){
-        this.state = true;
-        this.commandlist = getCommands();
-    }
-    void off(){
-        this.state = false;
-    }
-    private Command [] getCommands(){
-        return new Command[]{Cleaning_RobotCommandOn,Cleaning_RobotCommandOff,Cleaning_RobotSetTimer};
-    }
+        public void on () {
+            this.state = true;
+            System.out.println("Cleaning Robot is turned on.");
+        }
+
+        public void off () {
+            this.state = false;
+            System.out.println("Cleaning Robot is turned off.");
+        }
+
+        void setTimer () {
+            this.timer = 60;
+            System.out.println("Timer is set.");
+        }
+
+        int get_battery_status () {
+            return this.battery_status;
+        }
+
+        void start_cleaner () {
+            if (get_battery_status() == 100) {
+                System.out.println("Started the vacuum cleaner.");
+            } else {
+                System.out.println("Battery status too low.");
+            }
+        }
+
+        int get_cleaning_rate () {
+            return this.elapsed / this.timer;
+        }
+
+
+//    private Command [] getCommands(){
+//        return new Command[]{Cleaning_RobotCommandOn,Cleaning_RobotCommandOff,Cleaning_RobotSetTimer};
 }
+
