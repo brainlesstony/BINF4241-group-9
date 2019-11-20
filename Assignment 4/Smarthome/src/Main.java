@@ -1,4 +1,5 @@
 import Dishwasher.Dishwasher;
+import Interfaces.Command;
 import Oven.Oven;
 import Washing_Machine.Washing_Machine;
 import Cleaning_Robot.Cleaning_Robot;
@@ -14,5 +15,6 @@ public class Main {
         Smartphone smartphone = new Smartphone();
         //MAYBE ASK USER FOR # of OBJECTS GIVE THEM POSSIBLITY TO ADD OR REMOVE WHENEVER
         System.out.println(oven);
+
     }
 }

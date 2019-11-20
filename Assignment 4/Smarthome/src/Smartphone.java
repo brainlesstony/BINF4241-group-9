@@ -1,18 +1,21 @@
 import Interfaces.Command;
 public class Smartphone {
-    private Command[] onSlots;
+    public Command[] listofcommands;
 
     public Smartphone() {
         Command noCommand = new NoCommand();
         for (int i = 0; i < 8; i++) {
-            onSlots[i] = noCommand;
+            listofcommands[i] = noCommand;
 }
     }
-    public void setOnCommand(int i, Command c) {
-        onSlots[i] = c; }
 
-    public void pressOnButton(int buttonNum) {
-        onSlots[buttonNum].execute(); }
+
+
+    public void setCommand(int i, Command c) {
+        listofcommands[i] = c; }
+
+    public void pressButton(int buttonNum) {
+        listofcommands[buttonNum].execute(); }
 
 
 }

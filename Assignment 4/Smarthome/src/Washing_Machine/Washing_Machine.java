@@ -1,12 +1,19 @@
 package Washing_Machine;
+
+import Interfaces.Command;
+
 enum Program{Double_Rinse, Intense, Quick, Spin, None}
 
 public class Washing_Machine {
     private Program my_program;
     private boolean state;
+    private Command[] Commandlist ;
+    private Command Washing_MachineCommandOn;
+    private Command Washing_MachineCommandOff;
     public Washing_Machine(){
         this.my_program = Program.None;
         this.state = false;
+        this.Commandlist = new Command[] {Washing_MachineCommandOn};
     }
     void on(){
         this.state = true;
@@ -31,5 +38,8 @@ public class Washing_Machine {
         }else{
             System.out.println("Invalid Program");;
         }
+    }
+    public Command[] getCommands (){
+        return this.Commandlist = new Command[] {Washing_MachineCommandOn, Washing_MachineCommandOff};
     }
 }
