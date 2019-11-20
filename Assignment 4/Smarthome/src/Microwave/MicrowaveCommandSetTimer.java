@@ -28,7 +28,7 @@ public class MicrowaveCommandSetTimer implements Command{
 
         if(isAllDigit){
             int timer = Integer.parseInt(answer);
-            microwave.setTimer(timer);
+            microwave.setTimer(timer*1000);
         }
         else{
             System.out.println("Timer Input is not valid");

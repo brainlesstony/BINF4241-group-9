@@ -19,5 +19,7 @@ public class OvenCommandInterrupt implements Command {
         this.mt1 = new MyThread();
         this.rt1 = new Thread(mt1, "Oven");
 
+        this.oven.setProgramNull();
+
     }
 }

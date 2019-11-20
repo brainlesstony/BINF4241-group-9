@@ -6,20 +6,23 @@ public class Microwave {
     private boolean state;
     private int temperature;
     private int timer;
-
+    private Thread thread;
+    private  Runnable runnable;
     private boolean running;
     private Command[] Commandlist ;
     private Command MicrowaveCommandOff;
     private Command MicrowaveCommandOn;
+    private long startTime;
+
     public Microwave(){
         this.state = false;
-        this.MicrowaveCommandOff = new MicrowaveCommandOn(this);
-        this.MicrowaveCommandOn = new MicrowaveCommandOff(this);
-        this.commandlist = new Command[] {MicrowaveCommandOn};
+        //this.MicrowaveCommandOff = new MicrowaveCommandOn(this);
+        //this.MicrowaveCommandOn = new MicrowaveCommandOff(this);
+        //this.commandlist = new Command[] {MicrowaveCommandOn};
     }
     public void on(){
         this.state = true;
-        this.commandlist = getCommands();
+        //this.commandlist = getCommands();
     }
     public void off(){
         this.state = false;
@@ -41,17 +44,46 @@ public class Microwave {
 
         return "Appliance: Microwave\nState: " + state + "\nTemperature: " + temperature;
     }
+
+    // GETTERS
     private Command[] getCommands(){
         return new Command[] {MicrowaveCommandOn,MicrowaveCommandOff};
     }
 
-    // SETTERS
+    int getTimer(){
+        return this.timer;
+    }
 
+    int getTemperature(){return this.temperature;}
+
+    boolean getState(){return this.state;}
+
+    boolean getRunning(){return this.running;}
+
+    long getStartTime(){return this.startTime;}
+
+    // SETTERS
     void setTimer(int i){
         this.timer = i;
     }
 
     void setTemperature(int i){this.temperature = i;}
 
-    public boolean getState(){return this.state;}
+    void setRunnable(Runnable runnable){
+        this.runnable = runnable;
+    }
+
+    void setThread(Thread mythread){
+        this.thread = mythread;
+    }
+
+    void setRunningTrue(){
+        this.running = true;
+    }
+
+    void setRunningFalse(){this.running = false;}
+
+    void setStartTime() {
+        this.startTime = System.currentTimeMillis();
+    }
 }
