@@ -12,7 +12,7 @@ public class OvenCommandSetTimer implements Command {
     }
 
     public void execute() {
-        System.out.println("Set Timer: ");
+        System.out.println("Set Timer in seconds: ");
         Scanner in = new Scanner(System.in);
 
         String answer = in.nextLine();
@@ -28,7 +28,7 @@ public class OvenCommandSetTimer implements Command {
 
         if (isAllDigit){
             int timer = Integer.parseInt(answer);
-            oven.setTimer(timer);
+            oven.setTimer(1000*timer);
         }
         else{
             System.out.println("Timer Input not valid");
