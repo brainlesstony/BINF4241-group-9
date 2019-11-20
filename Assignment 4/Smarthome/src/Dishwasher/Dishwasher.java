@@ -49,7 +49,19 @@ public class Dishwasher {
             System.out.println("Time left: " + (System.currentTimeMillis() - startTime));
         }
     }
+    @Override
+    public String toString(){
+        String state;
 
+        if (this.washing) {
+            state = "Washing";
+        }
+        else{
+            state = "Not Washing";
+        }
+
+        return "Appliance: Dishwasher\nState: " + state + "\nProgram: " + myProgram ;
+    }
     void setProgram() {
         boolean not_done = false;
         while (not_done) {

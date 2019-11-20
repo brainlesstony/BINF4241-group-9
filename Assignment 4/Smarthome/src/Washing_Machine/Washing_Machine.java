@@ -31,6 +31,19 @@ public class Washing_Machine {
             this.state = false;
         }
     }
+    @Override
+    public String toString(){
+        String state;
+
+        if (this.washing) {
+            state = "Washing";
+        }
+        else{
+            state = "Not Washing";
+        }
+
+        return "Appliance: Washing_Machine\nState: " + state + "\nProgram: " + myProgram ;
+    }
 
     private String getProgram(){
         return myProgram;
