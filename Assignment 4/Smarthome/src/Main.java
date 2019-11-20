@@ -1,18 +1,19 @@
-import Dishwasher.Dishwasher;
-import Oven.Oven;
-import Washing_Machine.Washing_Machine;
-import Cleaning_Robot.Cleaning_Robot;
-import Microwave.Microwave;
 public class Main {
-    public static void main(String args[]){
-        // INIT ALL OBJECTS
-        Oven oven = new Oven();
-        Washing_Machine washing_machine = new Washing_Machine();
-        Microwave microwave = new Microwave();
-        Cleaning_Robot cleaning_robot = new Cleaning_Robot();
-        Dishwasher dishwasher = new Dishwasher();
+    public static void main(String[] args){
         Smartphone smartphone = new Smartphone();
-        //MAYBE ASK USER FOR # of OBJECTS GIVE THEM POSSIBLITY TO ADD OR REMOVE WHENEVER
-        System.out.println(oven);
+
+        while (true){
+            run();
+        }
     }
+
+    public void run(){
+        print_menu(); // should print available machines as stated in the assignment
+        receive_next_action(); // user should choose which machine and action
+        print_user_action(); // prints the user action or a fail notification
+        fake_flush();
+    }
+
+
+
 }
