@@ -12,6 +12,8 @@ public class Oven {
     private Program_oven program;
     private Thread thread;
     private Runnable runnable;
+    private long startTime;
+
     public Command[] commandlist ;
     private Command OvenCommandInterrupt;
     private Command OvenCommandOff;
@@ -80,7 +82,7 @@ public class Oven {
         return this.power;
     }
 
-
+    long getStartTime(){ return this.startTime;}
     // SETTERS
     void setProgramGrill() {
         this.program = Program_oven.Grill;
@@ -98,6 +100,10 @@ public class Oven {
         this.program = Program_oven.Done;
     }
 
+    void setProgramNull(){
+        this.program = null;
+    }
+
     void setTimer(int i) {
         this.timer = i;
     }
@@ -112,6 +118,10 @@ public class Oven {
 
     void setRunnable(Runnable run) {
         this.runnable = run;
+    }
+
+    void setStartTime() {
+        this.startTime = System.currentTimeMillis();
     }
 
     //COMMAND LISTS

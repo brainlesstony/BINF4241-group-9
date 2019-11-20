@@ -10,7 +10,13 @@ public class OvenCommandCheckTimer implements Command {
         }
 
         public void execute(){
-            ;
+
+            if(this.oven.getProgram() != Program_oven.Done){
+                System.out.println("Time left: " + (System.currentTimeMillis()-this.oven.getStartTime()));
+            }
+            else{
+                System.out.println("No active program. Last active timer was: " + this.oven.getTimer());
+            }
         }
 }
 

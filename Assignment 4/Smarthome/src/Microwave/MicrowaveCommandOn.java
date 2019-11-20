@@ -4,7 +4,7 @@ import Interfaces.Machine;
 
 public class MicrowaveCommandOn implements Command {
     private Microwave microwave;
-    public MicrowaveCommandOn(Machine microwave){
+    public MicrowaveCommandOn(Microwave microwave){
         this.microwave = microwave;
     }
     public void execute(){

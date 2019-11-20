@@ -19,11 +19,10 @@ public class OvenCommandStartCooking implements Command {
         if(oven.getTimer() != -1 && oven.getProgram()!=null && oven.getTemperature()!=-1 && oven.getState()){
             rt1 = new Thread(mt1, "Oven");
             this.oven.setThread(rt1);
+            this.oven.setStartTime();
             rt1.start();
 
             this.oven.setProgramDone();
         }
-
-
     }
 }
