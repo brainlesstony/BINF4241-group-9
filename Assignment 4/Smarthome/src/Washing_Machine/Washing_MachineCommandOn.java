@@ -12,5 +12,5 @@ public class Washing_MachineCommandOn implements Command {
     public void execute() {
         washing_machine.on();
     }
-    
+
 }

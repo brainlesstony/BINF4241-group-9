@@ -3,7 +3,7 @@ import Threads.MyThread;
 import java.util.Scanner;
 
 public class Washing_Machine {
-    private String my_program;
+    private String myProgram;
     private boolean state;
     private boolean washing;
     private String degree;
@@ -13,13 +13,15 @@ public class Washing_Machine {
     public Washing_Machine(){
         this.washing = false;
         this.timer = -1;
-        this.my_program = "";
+        this.myProgram = "";
         this.state = false;
         this.degree = "0";
     }
 
     void on(){
         this.state = true;
+        setDegree();
+        setProgram();
     }
 
     void off(){
@@ -31,7 +33,7 @@ public class Washing_Machine {
     }
 
     private String getProgram(){
-        return my_program;
+        return myProgram;
     }
     private String getDegree() {return this.degree;}
     void setProgram(){
@@ -42,19 +44,19 @@ public class Washing_Machine {
             String program = scanner.nextLine();
             switch(program) {
                 case "Double_Rinse":
-                    this.my_program = "Double_Rinse";
+                    this.myProgram = "Double_Rinse";
                     this.timer = 20;
                     startProgram();
                 case "Intense":
-                    this.my_program = "Intense";
+                    this.myProgram = "Intense";
                     this.timer = 10;
                     startProgram();
                 case "Quick":
-                    this.my_program = "Quick";
+                    this.myProgram = "Quick";
                     this.timer = 5;
                     startProgram();
                 case "Spin":
-                    this.my_program = "Spin";
+                    this.myProgram = "Spin";
                     this.timer = 15;
                     startProgram();
                 default:
@@ -95,7 +97,7 @@ public class Washing_Machine {
     void startProgram(){
         this.runnable = new MyThread(this.timer);
         Thread rt1;
-        rt1 = new Thread(runnable,this.my_program);
+        rt1 = new Thread(runnable,this.myProgram);
         this.thread = rt1;
         washing = true;
         rt1.start();

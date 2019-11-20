@@ -4,7 +4,7 @@ import Interfaces.Machine;
 
 public class DishwasherCommandOn implements Command {
     private Dishwasher dishwasher;
-    public DishwasherCommandOn(Machine dishwasher){
+    public DishwasherCommandOn(Dishwasher dishwasher){
         this.dishwasher = dishwasher;
     }
 

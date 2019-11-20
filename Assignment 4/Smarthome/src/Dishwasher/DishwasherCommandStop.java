@@ -1,13 +1,11 @@
 package Dishwasher;
-
 import Interfaces.Command;
-
-public class DishwasherCommandInterrput implements Command {
+public class DishwasherCommandStop implements Command {
     private Dishwasher dishwasher;
-    public DishwasherCommandInterrput(Dishwasher dishwasher){
+    public DishwasherCommandStop(Dishwasher dishwasher){
         this.dishwasher = dishwasher;
     }
     public void execute(){
-        ;
+        this.dishwasher.stop();
     }
 }
