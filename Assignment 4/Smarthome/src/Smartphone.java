@@ -23,28 +23,28 @@ public class Smartphone {
         listofcommands[buttonNum].execute();
     }
 
-//    void getCommands(Cleaning_Robot cleaning_robot, Dishwasher dishwasher, Oven oven, Microwave microwave, Washing_Machine washing_machine) {
-//        int i = 0;
-//        for (Command each_command : cleaning_robot.commandlist) {
-//            setCommand(i, each_command);
-//            i++;
-//        }
-//        for (Command each_command : dishwasher.commandlist) {
-//            setCommand(i, each_command);
-//            i++;
-//        }
-//        for (Command each_command : oven.commandlist) {
-//            setCommand(i, each_command);
-//            i++;
-//        }
-//        for(Command each_command: microwave.commandlist) {
-//            setCommand(i, each_command);
-//            i++;
-//        }
-//        for(Command each_command: washing_machine.commandlist) {
-//            setCommand(i, each_command);
-//            i++;
-//        }
-//    }
+    void getCommands(Cleaning_Robot cleaning_robot, Dishwasher dishwasher, Oven oven, Microwave microwave, Washing_Machine washing_machine) {
+        int i = 0;
+        for (Command each_command : cleaning_robot.commandlist) {
+            setCommand(i, each_command);
+            i++;
+        }
+        for (Command each_command : dishwasher.commandlist) {
+            setCommand(i, each_command);
+            i++;
+        }
+        for (Command each_command : oven.commandlist) {
+            setCommand(i, each_command);
+            i++;
+        }
+        for(Command each_command: microwave.commandlist) {
+            setCommand(i, each_command);
+            i++;
+        }
+        for(Command each_command: washing_machine.commandlist) {
+            setCommand(i, each_command);
+            i++;
+        }
+    }
 }
 
