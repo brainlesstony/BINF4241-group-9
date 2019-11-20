@@ -11,24 +11,25 @@ public class Oven {
     private Program_oven program;
     private Thread thread;
     private Runnable runnable;
-    private Command[] Commandlist ;
-    private Command OvenCommandInterrupt;
-    private Command OvenCommandOff;
-    private Command OvenCommandOn;
-    private Command SetProgram;
-    private Command SetTemperature;
-    private Command SetTimer;
-    private Command StartCooking;
+//    public Command[] commandlist ;
+//    private Command OvenCommandInterrupt;
+//    private Command OvenCommandOff;
+//    private Command OvenCommandOn;
+//    private Command SetProgram;
+//    private Command SetTemperature;
+//    private Command SetTimer;
+//    private Command CheckTimer;
+//    private Command StartCooking;
 
     public Oven() {
         this.power = false;
         this.program = Program_oven.Off;
-        this.Commandlist = new Command[]{OvenCommandOn};
+//        this.commandlist = new Command[]{OvenCommandOn};
     }
 
     void on() { //package-private
         this.power = true;
-        this.Commandlist = getCommands();
+//        this.commandlist = getCommands();
     }
 
     void off() {
@@ -95,9 +96,9 @@ public class Oven {
         this.runnable = run;
     }
 
-    //COMMAND LISTS
-    public Command[] getCommands() {
-        return new Command [] {OvenCommandInterrupt,OvenCommandOff,OvenCommandOn,SetProgram,SetTemperature,SetTimer,StartCooking};
-    }
+//    //COMMAND LISTS
+//    private Command[] getCommands() {
+//        return new Command [] {OvenCommandInterrupt,OvenCommandOff,OvenCommandOn,SetProgram,SetTemperature,SetTimer,StartCooking};
+//    }
 
 }

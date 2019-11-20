@@ -7,16 +7,17 @@ enum Program{Double_Rinse, Intense, Quick, Spin, None}
 public class Washing_Machine {
     private Program my_program;
     private boolean state;
-    private Command[] Commandlist ;
-    private Command Washing_MachineCommandOn;
-    private Command Washing_MachineCommandOff;
+//    public Command[] commandlist ;
+//    private Command Washing_MachineCommandOn;
+//    private Command Washing_MachineCommandOff;
     public Washing_Machine(){
         this.my_program = Program.None;
         this.state = false;
-        this.Commandlist = new Command[] {Washing_MachineCommandOn};
+//        this.commandlist = new Command[] {Washing_MachineCommandOn};
     }
     void on(){
         this.state = true;
+//        this.commandlist = getCommands();
     }
     void off(){
         this.state = false;
@@ -39,7 +40,7 @@ public class Washing_Machine {
             System.out.println("Invalid Program");;
         }
     }
-    public Command[] getCommands (){
-        return this.Commandlist = new Command[] {Washing_MachineCommandOn, Washing_MachineCommandOff};
-    }
+//    private Command[] getCommands (){
+//        return new Command[] {Washing_MachineCommandOn, Washing_MachineCommandOff};
+//    }
 }
