@@ -3,11 +3,11 @@ package Dishwasher;
 public class Dishwasher {
     private boolean state;
 
-    public Dishwasher(){
+    public Dishwasher() {
         this.state = false;
     }
 
-    void on(){
+    void on() {
         this.state = true;
     }
 

@@ -1,8 +1,9 @@
 package Cleaning_Robot;
-
+import Interfaces.Command;
 import Interfaces.Machine;
 
-public class Cleaning_RobotSetTimer {
+
+public class Cleaning_RobotSetTimer implements Command {
     private Machine cleaning_robot;
 
     public Cleaning_RobotSetTimer(Machine cleaning_robot){
@@ -12,6 +13,6 @@ public class Cleaning_RobotSetTimer {
     public void execute() {
         cleaning_robot.setTimer();
     }
-
-
 }
+
+
