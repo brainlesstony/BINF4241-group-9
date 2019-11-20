@@ -6,17 +6,20 @@ public class Microwave {
     private boolean state;
     private int temperature;
     private int timer;
+
     private boolean running;
     private Command[] Commandlist ;
     private Command MicrowaveCommandOff;
     private Command MicrowaveCommandOn;
     public Microwave(){
-//        super(); // inheritance
         this.state = false;
-        this.Commandlist = new Command[] {MicrowaveCommandOn};
+        this.MicrowaveCommandOff = new MicrowaveCommandOn(this);
+        this.MicrowaveCommandOn = new MicrowaveCommandOff(this);
+        this.commandlist = new Command[] {MicrowaveCommandOn};
     }
     public void on(){
         this.state = true;
+        this.commandlist = getCommands();
     }
     public void off(){
         this.state = false;
@@ -38,8 +41,8 @@ public class Microwave {
 
         return "Appliance: Microwave\nState: " + state + "\nTemperature: " + temperature;
     }
-    public Command[] getCommands(){
-        return this.Commandlist = new Command[] {MicrowaveCommandOn,MicrowaveCommandOff};
+    private Command[] getCommands(){
+        return new Command[] {MicrowaveCommandOn,MicrowaveCommandOff};
     }
 
     // SETTERS

@@ -1,6 +1,8 @@
 package Cleaning_Robot;
 
-public class Cleaning_RobotCommandOff {
+import Interfaces.Command;
+
+public class Cleaning_RobotCommandOff implements Command {
 
     private Cleaning_Robot cleaning_robot;
 

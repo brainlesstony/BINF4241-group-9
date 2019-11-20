@@ -4,13 +4,16 @@ import Interfaces.Command;
 
 public class Dishwasher{
     private boolean state;
-    private Command[] commandlist ;
+    public Command[] commandlist ;
     private Command DishwasherCommandInterrupt;
     private Command DishwasherCommandOff;
     private Command DishwasherCommandOn;
 
     public Dishwasher(){
         this.state = false;
+        this.DishwasherCommandOn = new DishwasherCommandOn(this);
+        this.DishwasherCommandOff = new DishwasherCommandOff(this);
+        this.DishwasherCommandInterrupt = new DishwasherCommandInterrput(this);
         this.commandlist = new Command[]{DishwasherCommandOn};
     }
 
@@ -22,7 +25,7 @@ public class Dishwasher{
         this.state = false;
     }
 
-    public Command[] getCommands(){
+    private Command[] getCommands(){
         return this.commandlist = new Command[]{DishwasherCommandOn,DishwasherCommandInterrupt,DishwasherCommandOff};
     }
 }
