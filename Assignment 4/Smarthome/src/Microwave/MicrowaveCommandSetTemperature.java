@@ -1,17 +1,17 @@
-package Oven;
+package Microwave;
 
 import Interfaces.Command;
 
 import java.util.Scanner;
 
-public class OvenCommandSetTemperature implements Command {
-    private Oven oven;
+public class MicrowaveCommandSetTemperature implements Command{
+    private Microwave microwave;
 
-    public OvenCommandSetTemperature(Oven oven){
-        this.oven = oven;
+    public MicrowaveCommandSetTemperature(Microwave microwave){
+        this.microwave = microwave;
     }
 
-    public void execute() {
+    public void execute(){
         System.out.println("Set Temperature: ");
         Scanner in = new Scanner(System.in);
 
@@ -25,12 +25,10 @@ public class OvenCommandSetTemperature implements Command {
             }
         }
 
-
-
         if (isAllDigit) {
             int temperature = Integer.parseInt(answer);
             if (temperature >= 100&& temperature <=300) {
-                this.oven.setTemperature(temperature);
+                this.microwave.setTemperature(temperature);
             }
             else{
                 System.out.println("Temperature too high or too low!");

@@ -2,7 +2,8 @@ package Oven;
 
 import Interfaces.Command;
 
-enum Program_oven{Grill, Ventilated, Normal, Off}
+enum Program_oven{Grill, Ventilated, Normal, Off, Done}
+
 
 public class Oven {
     private boolean power;
@@ -53,8 +54,8 @@ public class Oven {
 
 
     // GETTERS
-    String getProgram() {
-        return program.toString();
+    Enum getProgram() {
+        return program;
     }
 
     int getTimer() {
@@ -63,6 +64,10 @@ public class Oven {
 
     int getTemperature() {
         return this.temperature;
+    }
+
+    boolean getState(){
+        return this.power;
     }
 
 
@@ -77,6 +82,10 @@ public class Oven {
 
     void setProgramVentilated() {
         this.program = Program_oven.Ventilated;
+    }
+
+    void setProgramDone(){
+        this.program = Program_oven.Done;
     }
 
     void setTimer(int i) {

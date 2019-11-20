@@ -8,6 +8,12 @@ public class OvenCommandOff implements Command {
     }
 
     public void execute(){
-        oven.off();
+
+        if (this.oven.getProgram() == Program_oven.Done) {
+            oven.off();
+        }
+        else{
+            System.out.println("Program must be finished first!");
+        }
     }
 }

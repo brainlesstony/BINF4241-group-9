@@ -1,24 +1,24 @@
-package Oven;
+package Microwave;
 
 import Interfaces.Command;
 
 import java.util.Scanner;
 
-public class OvenCommandSetTimer implements Command {
-    private Oven oven;
+public class MicrowaveCommandSetTimer implements Command{
+    private Microwave microwave;
 
-    public OvenCommandSetTimer(Oven oven){ // Tf?
-        this.oven = oven;
+    public MicrowaveCommandSetTimer(Microwave microwave){
+        this.microwave = microwave;
     }
 
-    public void execute() {
+    public void execute(){
         System.out.println("Set Timer: ");
         Scanner in = new Scanner(System.in);
 
         String answer = in.nextLine();
-        boolean isAllDigit = true;
+        boolean isAllDigit= true;
 
-        for (int i = 0; i< answer.length(); i++){
+        for (int i = 0; i<answer.length(); i++){
             char character = answer.charAt(i);
             if (!Character.isDigit(character)){
                 isAllDigit = false;
@@ -26,12 +26,12 @@ public class OvenCommandSetTimer implements Command {
             }
         }
 
-        if (isAllDigit){
+        if(isAllDigit){
             int timer = Integer.parseInt(answer);
-            oven.setTimer(timer);
+            microwave.setTimer(timer);
         }
         else{
-            System.out.println("Timer Input not valid");
+            System.out.println("Timer Input is not valid");
         }
     }
 }

@@ -9,6 +9,10 @@ public class MyThread implements Runnable {
         running = false;
     }
 
+    public MyThread(){
+        this(10000);
+    }
+
     public boolean isRunning() {
         return running;
     }
