@@ -53,25 +53,30 @@ public class Washing_Machine {
         boolean not_done = true;
         while (not_done){
             System.out.println("Select a program [Double_Rinse,Intense,Quick,Spin]");
+            System.out.println("Input a letter (to choose a program type the first capital letter e.g. D for Double_Rinse");
             Scanner scanner = new Scanner(System.in);
             String program = scanner.nextLine();
             switch(program) {
-                case "Double_Rinse":
+                case "D":
                     this.myProgram = "Double_Rinse";
                     this.timer = 20;
                     startProgram();
-                case "Intense":
+                    break;
+                case "I":
                     this.myProgram = "Intense";
                     this.timer = 10;
                     startProgram();
-                case "Quick":
+                    break;
+                case "Q":
                     this.myProgram = "Quick";
                     this.timer = 5;
                     startProgram();
-                case "Spin":
+                    break;
+                case "S":
                     this.myProgram = "Spin";
                     this.timer = 15;
                     startProgram();
+                    break;
                 default:
                     System.out.println("Invalid Program");
             }
