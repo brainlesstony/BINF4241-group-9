@@ -75,7 +75,8 @@ public class Cleaning_Robot{
     }
 
     int get_battery_status() {
-        return this.battery_status;
+        battery_status = (int) ((System.currentTimeMillis()-startTime) / 1000);
+        return battery_status;
     }
 
     private void charging(){
@@ -89,7 +90,7 @@ public class Cleaning_Robot{
             rt1.start();
             battery_status = 100;
         }else {
-            int tmp = 100-battery_status; //Differenz zur Vollladung
+            int tmp = 100 - battery_status; //Differenz zur Vollladung
             MyThread mt1 = new MyThread(tmp * 1000);
             runnable = mt1;
             Thread rt1;
@@ -108,6 +109,7 @@ public class Cleaning_Robot{
     }
 
     float get_cleaning_percentage() {
+        elapsed = (int) ((startTime - System.currentTimeMillis())/1000);
         cleaning_percentage = elapsed - timer;
         return cleaning_percentage;
     }
@@ -116,41 +118,34 @@ public class Cleaning_Robot{
         if (get_battery_status() == 100 && inBase) {
             System.out.println("Started the vacuum cleaner.");
             if (timer > battery_status) {
-                MyThread mt1 = new MyThread(timer);
-                runnable = mt1;
-                Thread rt1;
-                rt1 = new Thread(mt1, "Cleaning_Robot");
-                this.thread = rt1;
-                this.inBase = false;
-                this.setSTime();
-                this.setETime();
-                on();
-                rt1.start();
-                off();
+                run();
                 battery_status = timer - battery_status;
-                return_toBase();
-                charging();
             }
             else {
-                MyThread mt1 = new MyThread(battery_status);
-                runnable = mt1;
-                Thread rt1;
-                rt1 = new Thread(mt1, "Cleaning_Robot");
-                this.thread = rt1;
-                this.inBase = false;
-                this.setSTime();
-                this.setETime();
-                on();
-                rt1.start();
-                off();
-                battery_status = 0;
-                return_toBase();
-                charging();
+                run();
             }
         } else {
             System.out.println("Battery status too low.");
         }
     }
+
+    private void run(){
+        MyThread mt1 = new MyThread(battery_status*1000);
+        runnable = mt1;
+        Thread rt1;
+        rt1 = new Thread(mt1, "Cleaning_Robot");
+        this.thread = rt1;
+        this.inBase = false;
+        this.setSTime();
+        this.setETime();
+        on();
+        rt1.start();
+        off();
+        battery_status = 0;
+        return_toBase();
+        charging();
+    }
+
 
     @Override
     public String toString(){
