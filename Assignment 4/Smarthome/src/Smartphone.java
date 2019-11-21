@@ -47,7 +47,7 @@ public class Smartphone {
 
 
 
-        //---------assign each remote variable an arraylist-------------//
+        //---------assign each remote variable an ArrayList-------------//
         remote_cleaning_robot = new ArrayList<Command>();
         remote_dishwasher = new ArrayList<Command>();
         remote_microwave = new ArrayList<Command>();
@@ -56,8 +56,12 @@ public class Smartphone {
 
         //---------init command list for Cleaning robot-----------//
         remote_cleaning_robot.add(new Cleaning_RobotCommandOff(cleaning_robot));
-        remote_cleaning_robot.add(new Cleaning_RobotCommandOn(cleaning_robot));
         remote_cleaning_robot.add(new Cleaning_RobotSetTimer(cleaning_robot));
+        remote_cleaning_robot.add(new Cleaning_RobotCommandCheckBattery(cleaning_robot));
+        remote_cleaning_robot.add(new Cleaning_RobotCommandCheckCharging(cleaning_robot));
+        remote_cleaning_robot.add(new Cleaning_RobotCommandCheckCleaningPercentage(cleaning_robot));
+        remote_cleaning_robot.add(new Cleaning_RobotCommandCompleteOutstanding(cleaning_robot));
+        remote_cleaning_robot.add(new Cleaning_RobotCommandStart(cleaning_robot));
 
         //--------init command list for Dishwasher --------------//
         remote_dishwasher.add(new DishwasherCommandCheckTimer(dishwasher));

@@ -17,7 +17,7 @@ public class Dishwasher {
         this.state = false;
         this.washing = false;
         this.timer = -1;
-        this.myProgram = "";
+        this.myProgram = "None";
     }
     void on() {
         this.state = true;

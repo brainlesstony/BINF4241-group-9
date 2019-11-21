@@ -13,7 +13,7 @@ public class Washing_Machine {
     public Washing_Machine(){
         this.washing = false;
         this.timer = -1;
-        this.myProgram = "";
+        this.myProgram = "None";
         this.state = false;
         this.degree = "0";
     }
