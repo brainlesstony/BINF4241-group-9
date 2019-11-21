@@ -14,34 +14,13 @@ public class Oven {
     private Runnable runnable;
     private long startTime;
 
-    public Command[] commandlist ;
-    private Command OvenCommandInterrupt;
-    private Command OvenCommandOff;
-    private Command OvenCommandOn;
-    private Command OvenCommandSetProgram;
-    private Command OvenCommandSetTemperature;
-    private Command OvenCommandSetTimer;
-    private Command OvenCommandCheckTimer;
-    private Command OvenCommandStartCooking;
-
     public Oven() {
         this.power = false;
         this.program = Program_oven.Off;
-        this.OvenCommandOn = new OvenCommandOn(this);
-        this.OvenCommandOff = new OvenCommandOff(this);
-        this.OvenCommandInterrupt = new OvenCommandInterrupt(this);
-        this.OvenCommandSetProgram = new OvenCommandSetProgram(this);
-        this.OvenCommandSetTemperature = new OvenCommandSetTemperature(this);
-        this.OvenCommandSetTimer = new OvenCommandSetTimer(this);
-        this.OvenCommandCheckTimer = new OvenCommandCheckTimer(this);
-        this.OvenCommandStartCooking = new OvenCommandStartCooking(this);
-
-        this.commandlist = new Command[]{OvenCommandOn};
     }
 
     void on() { //package-private
         this.power = true;
-//        this.commandlist = getCommands();
     }
 
     void off() {
@@ -61,7 +40,7 @@ public class Oven {
         } else {
             state = "Off";
         }
-        return "Appliance: Oven\nState: " + state + "\nProgram: " + program + "\nTemperature: " + temperature;
+        return "Appliance: Oven | State: " + state + " | Program: " + program + " | Temperature: " + temperature;
     }
 
 
@@ -122,11 +101,6 @@ public class Oven {
 
     void setStartTime() {
         this.startTime = System.currentTimeMillis();
-    }
-
-    //COMMAND LISTS
-    private Command[] getCommands() {
-        return new Command [] {this.OvenCommandCheckTimer,this.OvenCommandInterrupt,this.OvenCommandOff,this.OvenCommandOn,this.OvenCommandSetProgram,this.OvenCommandSetTemperature,this.OvenCommandSetTimer,this.OvenCommandStartCooking};
     }
 
 }

@@ -42,7 +42,7 @@ public class Washing_Machine {
             state = "Not Washing";
         }
 
-        return "Appliance: Washing_Machine\nState: " + state + "\nProgram: " + myProgram ;
+        return "Appliance: Washing_Machine | State: " + state + " | Program: " + myProgram ;
     }
 
     private String getProgram(){

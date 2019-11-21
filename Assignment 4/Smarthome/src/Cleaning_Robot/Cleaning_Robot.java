@@ -24,13 +24,18 @@ public class Cleaning_Robot{
         this.cleaning_percentage = 0;
     }
 
+    public boolean get_state(){
+        return this.state;
+    }
+
     public void on() {
         this.state = true;
-        System.out.println("Cleaning Robot is now cleaning.");
+        System.out.println("Turn Cleaning Robot on.");
     }
 
     public void off() {
         this.state = false;
+        System.out.println("Turn Cleaning Robot off");
     }
 
     void setTimer() {
@@ -145,5 +150,19 @@ public class Cleaning_Robot{
         } else {
             System.out.println("Battery status too low.");
         }
+    }
+
+    @Override
+    public String toString(){
+        String state;
+
+        if (!this.inBase) {
+            state = "Cleaning Robot is running";
+        }
+        else{
+            state = "Cleaning Robot is not Running";
+        }
+
+        return "Appliance: Cleaning Robot | State: " + state + " | Cleaning percentage: " + get_cleaning_percentage();
     }
 }

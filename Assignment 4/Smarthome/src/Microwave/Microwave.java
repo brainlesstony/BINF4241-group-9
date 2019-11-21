@@ -35,7 +35,7 @@ public class Microwave {
             state = "Microwave is not Running";
         }
 
-        return "Appliance: Microwave\nState: " + state + "\nTemperature: " + temperature;
+        return "Appliance: Microwave | State: " + state + " | Temperature: " + temperature;
     }
 
     // GETTERS

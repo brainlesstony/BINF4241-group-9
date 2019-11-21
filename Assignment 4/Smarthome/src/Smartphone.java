@@ -16,25 +16,36 @@ public class Smartphone {
     Microwave microwave;
     Cleaning_Robot cleaning_robot;
     Dishwasher dishwasher;
-
+    //--------machine List----------//
+    private ArrayList<Object> machine_list;
 
     //---------Command Remote List--------- // (each machine gets a list with its commands objects)
-    ArrayList<Command> remote_cleaning_robot;
-    ArrayList<Command> remote_dishwasher;
-    ArrayList<Command> remote_microwave;
-    ArrayList<Command> remote_oven;
-    ArrayList<Command> remote_washing_machine;
+    private ArrayList<Command> remote_cleaning_robot;
+    private ArrayList<Command> remote_dishwasher;
+    private ArrayList<Command> remote_microwave;
+    private ArrayList<Command> remote_oven;
+    private ArrayList<Command> remote_washing_machine;
 
 
     public Smartphone() {
+
+        //--------add all machine to a list---------//
         Oven oven = new Oven();
         Washing_Machine washing_machine = new Washing_Machine();
         Microwave microwave = new Microwave();
         Cleaning_Robot cleaning_robot = new Cleaning_Robot();
         Dishwasher dishwasher = new Dishwasher();
 
+        machine_list = new ArrayList<Object>();
+        machine_list.add(oven);
+        machine_list.add(washing_machine);
+        machine_list.add(microwave);
+        machine_list.add(cleaning_robot);
+        machine_list.add(dishwasher);
 
-        //---------assign each variable an arraylist-------------//
+
+
+        //---------assign each remote variable an arraylist-------------//
         remote_cleaning_robot = new ArrayList<Command>();
         remote_dishwasher = new ArrayList<Command>();
         remote_microwave = new ArrayList<Command>();
@@ -77,24 +88,23 @@ public class Smartphone {
 
         remote_washing_machine.add( new Washing_MachineCommandOff(washing_machine));
         remote_washing_machine.add( new Washing_MachineCommandOn(washing_machine));
-
-
     }
 
-    public void setOnCommand(int i, Command c) {
-        onSlots[i] = c; }
 
-    /*
-public class Smartphone {
-    public Command[] listofcommands = new Command[50];
-
-    Smartphone() {
-        Command noCommand = new NoCommand();
-        for (int i = 0; i<50; i++) {
-            listofcommands[i] = noCommand;
+    public void print_available_machines(){
+        /***
+         * Method to print the main screen of the smarthome app showing all available machines.
+         * available machines are those which are not in use at the moment.
+         */
+        System.out.println("||||||||||||||||||||||||||||||||||||||\n" +
+                "SMARTHOME APP\n" +
+                "Choose an available machine: ");
+        for (Object machine : this.machine_list){
+                System.out.println(machine);
         }
     }
-    */
+
+/*
 
     public void setCommand(int i, Command c) {
         listofcommands[i] = c;
@@ -104,28 +114,6 @@ public class Smartphone {
         listofcommands[buttonNum].execute();
     }
 
-    void getCommands(Cleaning_Robot cleaning_robot, Dishwasher dishwasher, Oven oven, Microwave microwave, Washing_Machine washing_machine) {
-        int i = 0;
-        for (Command each_command : cleaning_robot.commandlist) {
-            setCommand(i, each_command);
-            i++;
-        }
-        for (Command each_command : dishwasher.commandlist) {
-            setCommand(i, each_command);
-            i++;
-        }
-        for (Command each_command : oven.commandlist) {
-            setCommand(i, each_command);
-            i++;
-        }
-        for(Command each_command: microwave.commandlist) {
-            setCommand(i, each_command);
-            i++;
-        }
-        for(Command each_command: washing_machine.commandlist) {
-            setCommand(i, each_command);
-            i++;
-        }
-    }
+ */
 }
 
