@@ -10,4 +10,8 @@ public class Cleaning_RobotCommandCheckCharging implements Command {
     public void execute(){
         cleaning_robot.check_charging_status();
     }
+    @Override
+    public String toString(){
+        return "[CHECK CHARGING BATTERY STATUS]";
+    }
 }

@@ -51,16 +51,16 @@ public class Dishwasher {
     }
     @Override
     public String toString(){
-        String state;
+        String stat;
 
         if (this.state) {
-            state = "On";
+            stat = "On";
         }
         else{
-            state = "Off";
+            stat = "Off";
         }
 
-        return "Appliance: Dishwasher | State: " + state + " | Program: " + myProgram ;
+        return "Appliance: Dishwasher | State: " + stat + " | Program: " + myProgram;
     }
     void setProgram() {
         boolean not_done = true;

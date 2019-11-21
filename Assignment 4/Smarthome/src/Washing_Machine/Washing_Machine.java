@@ -19,7 +19,7 @@ public class Washing_Machine {
     }
 
     void on(){
-        this.state = true;
+        this.washing = true;
         setDegree();
         setProgram();
     }
@@ -33,16 +33,16 @@ public class Washing_Machine {
     }
     @Override
     public String toString(){
-        String state;
+        String stat;
 
         if (this.washing) {
-            state = "Washing";
+            stat = "On";
         }
         else{
-            state = "Not Washing";
+            stat = "Off";
         }
 
-        return "Appliance: Washing_Machine | State: " + state + " | Program: " + myProgram ;
+        return "Appliance: Washing_Machine | State: " + stat + " | Program: " + myProgram ;
     }
 
     private String getProgram(){
