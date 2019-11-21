@@ -203,8 +203,6 @@ public class Smartphone {
         return (Command) remote.get(button_number - 1);
     }
 
-
-
     public void pressButton(Command command){
         command.execute();
     }
