@@ -8,4 +8,8 @@ public class Cleaning_RobotCommandCheckCleaningPercentage implements Command{
     public void execute(){
         cleaning_robot.get_cleaning_percentage();
     }
+    @Override
+    public String toString(){
+        return "[CURRENT CLEANING PERCENTAGE]";
+    }
 }

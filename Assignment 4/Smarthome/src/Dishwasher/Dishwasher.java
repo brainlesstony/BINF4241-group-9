@@ -10,7 +10,7 @@ public class Dishwasher {
     private Runnable runnable;
     private int timer;
     private long startTime;
-    private String myProgram;
+    String myProgram;
     private int stopped;
 
     public Dishwasher() {
@@ -51,23 +51,25 @@ public class Dishwasher {
     }
     @Override
     public String toString(){
-        String state;
+        String stat;
 
-        if (this.washing) {
-            state = "Washing";
+        if (this.state) {
+            stat = "On";
         }
         else{
-            state = "Not Washing";
+            stat = "Off";
         }
 
-        return "Appliance: Dishwasher | State: " + state + " | Program: " + myProgram ;
+        return "Appliance: Dishwasher | State: " + stat + " | Program: " + myProgram;
     }
     void setProgram() {
-        boolean not_done = false;
+        boolean not_done = true;
         while (not_done) {
-            System.out.println("Please choose a Program for the dishwasher");
+            System.out.println("Choose one of the following Programs:");
+            System.out.println(("[Glasses]  [Plates]  [Pans]  [Mixed]  [Quick]"));
             Scanner scanner = new Scanner(System.in);
             String program = scanner.nextLine();
+
             switch (program) {
                 case "Glasses":
                     this.myProgram = "Glasses";

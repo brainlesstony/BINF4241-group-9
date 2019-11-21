@@ -11,6 +11,6 @@ public class Cleaning_RobotCommandCompleteOutstanding implements Command{
 
     @Override
     public String toString(){
-        return "[COMPLETE OUTSTANDING]";
+        return "[COMPLETE OUTSTANDING CLEANING]";
     }
 }

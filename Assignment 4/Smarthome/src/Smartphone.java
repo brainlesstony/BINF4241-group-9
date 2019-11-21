@@ -70,6 +70,7 @@ public class Smartphone {
         remote_dishwasher.add(new DishwasherCommandOn(dishwasher));
         remote_dishwasher.add(new DishwasherCommandStart(dishwasher));
         remote_dishwasher.add(new DishwasherCommandStop(dishwasher));
+        remote_dishwasher.add(new DishwasherCommandSetProgram(dishwasher));
 
         //--------init command list for Microwave ---------------//
         remote_microwave.add(new MicrowaveCommandCheckTimer(microwave));
