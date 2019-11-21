@@ -1,6 +1,5 @@
 package Dishwasher;
 import Interfaces.Command;
-import Interfaces.Machine;
 
 public class DishwasherCommandOn implements Command {
     private Dishwasher dishwasher;

@@ -9,20 +9,13 @@ public class Microwave {
     private Thread thread;
     private  Runnable runnable;
     private boolean running;
-    private Command[] Commandlist ;
-    private Command MicrowaveCommandOff;
-    private Command MicrowaveCommandOn;
     private long startTime;
 
     public Microwave(){
         this.state = false;
-        //this.MicrowaveCommandOff = new MicrowaveCommandOn(this);
-        //this.MicrowaveCommandOn = new MicrowaveCommandOff(this);
-        //this.commandlist = new Command[] {MicrowaveCommandOn};
     }
     public void on(){
         this.state = true;
-        //this.commandlist = getCommands();
     }
     public void off(){
         this.state = false;
@@ -36,19 +29,16 @@ public class Microwave {
         String state;
 
         if (this.running) {
-            state = "Running";
+            state = "Microwave is running";
         }
         else{
-            state = "Not Running";
+            state = "Microwave is not Running";
         }
 
         return "Appliance: Microwave\nState: " + state + "\nTemperature: " + temperature;
     }
 
     // GETTERS
-    private Command[] getCommands(){
-        return new Command[] {MicrowaveCommandOn,MicrowaveCommandOff};
-    }
 
     int getTimer(){
         return this.timer;

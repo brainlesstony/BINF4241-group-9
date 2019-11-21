@@ -1,10 +1,9 @@
 package Cleaning_Robot;
-import Interfaces.Machine;
 import Threads.MyThread;
 
 import java.util.Scanner;
 
-public class Cleaning_Robot implements Machine {
+public class Cleaning_Robot{
     private boolean state;
     private int timer;
     private int battery_status;
@@ -56,6 +55,7 @@ public class Cleaning_Robot implements Machine {
             System.out.println("Timer is set.");
         }
     }
+
 
     private void setSTime() {
         this.startTime = System.currentTimeMillis();

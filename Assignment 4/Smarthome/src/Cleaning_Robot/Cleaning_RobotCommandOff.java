@@ -1,6 +1,5 @@
 package Cleaning_Robot;
 import Interfaces.Command;
-import Interfaces.Machine;
 
 public class Cleaning_RobotCommandOff implements Command {
 
