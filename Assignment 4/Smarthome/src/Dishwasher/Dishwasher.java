@@ -97,7 +97,7 @@ public class Dishwasher {
         }
         if (stopped >= 1){
 
-            this.runnable = new MyThread(this.timer);
+            this.runnable = new MyThread(this.timer * 1000);
             Thread rt1;
             rt1 = new Thread(runnable,this.myProgram);
             this.thread = rt1;
@@ -109,7 +109,7 @@ public class Dishwasher {
             washing = false;
         }
 
-        this.runnable = new MyThread(this.timer);
+        this.runnable = new MyThread(this.timer * 1000);
         Thread rt1;
         rt1 = new Thread(runnable,this.myProgram);
         this.thread = rt1;

@@ -6,6 +6,6 @@ public class Cleaning_RobotCommandCheckPercentage implements Command{
         this.cleaning_robot = cleaning_robot;
     }
     public void execute(){
-        ;
+        cleaning_robot.get_cleaning_percentage();
     }
 }

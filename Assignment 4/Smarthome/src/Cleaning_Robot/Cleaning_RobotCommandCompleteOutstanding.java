@@ -6,6 +6,6 @@ public class Cleaning_RobotCommandCompleteOutstanding implements Command{
         this.cleaning_robot = cleaning_robot;
     }
     public void execute(){
-        ;
+        cleaning_robot.complete_outstanding();
     }
 }

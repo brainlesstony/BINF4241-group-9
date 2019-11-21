@@ -8,7 +8,7 @@ public class Cleaning_RobotCommandOn implements Command {
         this.cleaning_robot = cleaning_robot;
     }
     public void execute() {
-        cleaning_robot.on();
+        cleaning_robot.start_cleaner();
     }
 
 }
