@@ -27,12 +27,11 @@ public class Cleaning_Robot implements Machine {
 
     public void on() {
         this.state = true;
-        System.out.println("Cleaning Robot is turned on.");
+        System.out.println("Cleaning Robot is now cleaning.");
     }
 
     public void off() {
         this.state = false;
-        System.out.println("Cleaning Robot is turned off.");
     }
 
     void setTimer() {
@@ -66,7 +65,7 @@ public class Cleaning_Robot implements Machine {
         this.completeTime = startTime + timer * 1000;
     }
 
-    private void return_toBase() {
+    void return_toBase() {
         this.inBase = true;
     }
 
@@ -74,7 +73,7 @@ public class Cleaning_Robot implements Machine {
         return this.battery_status;
     }
 
-    void charging(){
+    private void charging(){
         if (battery_status == 0) {
             MyThread mt1 = new MyThread(100 * 1000);
             runnable = mt1;
@@ -120,7 +119,9 @@ public class Cleaning_Robot implements Machine {
                 this.inBase = false;
                 this.setSTime();
                 this.setETime();
+                on();
                 rt1.start();
+                off();
                 battery_status = timer - battery_status;
                 return_toBase();
                 charging();
@@ -134,7 +135,9 @@ public class Cleaning_Robot implements Machine {
                 this.inBase = false;
                 this.setSTime();
                 this.setETime();
+                on();
                 rt1.start();
+                off();
                 battery_status = 0;
                 return_toBase();
                 charging();
