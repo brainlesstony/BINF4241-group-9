@@ -39,7 +39,6 @@ public class Cleaning_Robot{
     }
 
     void setTimer() {
-
         System.out.println("Set Timer: ");
         Scanner in = new Scanner(System.in);
         String answer = in.nextLine();
@@ -144,6 +143,12 @@ public class Cleaning_Robot{
         battery_status = 0;
         return_toBase();
         charging();
+    }
+
+    void check_charging_status(){
+        if (this.inBase){
+            System.out.println("Battery status: " + this.battery_status + " | Time remaining until full charged: 100 seconds");
+        }
     }
 
 

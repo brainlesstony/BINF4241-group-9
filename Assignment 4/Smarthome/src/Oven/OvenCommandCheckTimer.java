@@ -24,4 +24,3 @@ public class OvenCommandCheckTimer implements Command {
         return "[CHECK TIMER]";
     }
 }
-
