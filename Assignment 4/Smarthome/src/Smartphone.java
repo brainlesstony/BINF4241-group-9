@@ -18,6 +18,7 @@ public class Smartphone {
     Microwave microwave;
     Cleaning_Robot cleaning_robot;
     Dishwasher dishwasher;
+
     //--------machine List----------//
     private ArrayList<Object> machine_list;
 
@@ -101,8 +102,8 @@ public class Smartphone {
         print_remote();
     }
 
-    //----------important methods-------------//
-    public void print_machines(){
+    //----------display/print methods-------------//
+    private void print_machines(){
         /***
          * Method to print the main screen of the smarthome app showing all available machines.
          * available machines are those which are not in use at the moment.
@@ -113,39 +114,45 @@ public class Smartphone {
         }
     }
 
-    public void print_remote(){ // but which remote?
+    private void print_remote(){ // but which remote?
         System.out.println("Choose a machine (to choose a machine type the first capital letter e.g. O for oven): ");
         // the user defines the remote
         String remote = which_machine_fu();
+        int button_number = 1;
         if (remote.equals("C")){
             for (Command command : remote_cleaning_robot){
-                System.out.print(command);
+                System.out.println("[" + button_number + "]" + command);
+                button_number++;
             }
-            System.out.println(); // to make an absatz at the end
+            pressButton(setCommand(remote_cleaning_robot));
         }
         else if (remote.equals("D")){
             for (Command command : remote_dishwasher){
-                System.out.print(command);
+                System.out.println("[" + button_number + "]" + command);
+                button_number++;
             }
-            System.out.println(); // to make an absatz at the end
+            pressButton(setCommand(remote_dishwasher));
         }
         else if (remote.equals("O")){
             for (Command command : remote_oven){
-                System.out.print(command);
+                System.out.println("[" + button_number + "]" + command);
+                button_number++;
             }
-            System.out.println(); // to make an absatz at the end
+            pressButton(setCommand(remote_oven));
         }
         else if (remote.equals("W")){
             for (Command command : remote_washing_machine){
-                System.out.print(command);
+                System.out.println("[" + button_number + "]" + command);
+                button_number++;
             }
-            System.out.println(); // to make an absatz at the end
+            pressButton(setCommand(remote_washing_machine));
         }
         else if (remote.equals("M")) {
             for (Command command : remote_microwave) {
-                System.out.print(command);
+                System.out.println("[" + button_number + "]" + command);
+                button_number++;
             }
-            System.out.println(); // to make an absatz at the end
+            pressButton(setCommand(remote_microwave));
         }
     }
 
@@ -164,7 +171,7 @@ public class Smartphone {
         return letter;
     }
 
-    public String which_machine_fu(){
+    private String which_machine_fu(){
         String letter = get_user_input();
         String regex = "[CDMOW]";
         Pattern pattern = Pattern.compile(regex);
@@ -176,19 +183,33 @@ public class Smartphone {
         return letter;
     }
 
+    private String which_command_fu(){
 
-
-/*
-
-    public void setCommand(int i, Command c) {
-        listofcommands[i] = c;
+        String button_number = get_user_input();
+        String regex = "[1-9]";
+        Pattern pattern = Pattern.compile(regex);
+        while (!button_number.matches(regex)){
+            System.out.println("Input not valid. Must be a number from 1-9\n" +
+                    "Try again: ");
+            button_number = get_user_input();
+        }
+        return button_number;
     }
 
-    public void pressButton(int buttonNum) {
-        listofcommands[buttonNum].execute();
+    public Command setCommand(ArrayList remote){
+        System.out.println("Press a button: ");
+        String command_fu = which_command_fu(); // integer 1-9
+        int button_number = Integer.parseInt(command_fu);
+        return (Command) remote.get(button_number - 1);
     }
 
- */
+
+
+    public void pressButton(Command command){
+        command.execute();
+    }
+
+
 
 }
 
