@@ -17,4 +17,9 @@ public class MicrowaveCommandCheckTimer implements Command {
             System.out.println("Microwave isn't active. Last active timer was: " + this.microwave.getTimer());
         }
     }
+
+    @Override
+    public String toString(){
+        return "[CHECK TIMER]";
+    }
 }

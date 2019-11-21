@@ -9,4 +9,9 @@ public class DishwasherCommandStart implements Command{
     public void execute(){
         this.dishwasher.startProgram();
     }
+
+    @Override
+    public String toString(){
+        return "[START]";
+    }
 }

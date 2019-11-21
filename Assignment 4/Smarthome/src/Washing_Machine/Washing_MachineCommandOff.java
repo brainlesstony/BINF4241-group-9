@@ -12,4 +12,9 @@ public class Washing_MachineCommandOff implements Command {
     public void execute() {
         washing_machine.off();
     }
+
+    @Override
+    public String toString(){
+        return "[OFF]";
+    }
 }

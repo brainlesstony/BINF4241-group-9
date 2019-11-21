@@ -8,6 +8,8 @@ import Washing_Machine.*;
 import Interfaces.Command;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Smartphone {
     //---------all machines----------//
@@ -90,19 +92,87 @@ public class Smartphone {
         remote_washing_machine.add( new Washing_MachineCommandOn(washing_machine));
     }
 
+    public void run(){
+        print_machines();
+        print_remote();
+    }
 
-    public void print_available_machines(){
+    //----------important methods-------------//
+    public void print_machines(){
         /***
          * Method to print the main screen of the smarthome app showing all available machines.
          * available machines are those which are not in use at the moment.
          */
-        System.out.println("||||||||||||||||||||||||||||||||||||||\n" +
-                "SMARTHOME APP\n" +
-                "Choose an available machine: ");
+        System.out.println("||||||||||||||||||||SMARTHOME APP||||||||||||||||||");
         for (Object machine : this.machine_list){
                 System.out.println(machine);
         }
     }
+
+    public void print_remote(){ // but which remote?
+        System.out.println("Choose a machine (to choose a machine type the first capital letter e.g. O for oven): ");
+        // the user defines the remote
+        String remote = which_machine_fu();
+        if (remote.equals("C")){
+            for (Command command : remote_cleaning_robot){
+                System.out.print(command);
+            }
+            System.out.println(); // to make an absatz at the end
+        }
+        else if (remote.equals("D")){
+            for (Command command : remote_dishwasher){
+                System.out.print(command);
+            }
+            System.out.println(); // to make an absatz at the end
+        }
+        else if (remote.equals("O")){
+            for (Command command : remote_oven){
+                System.out.print(command);
+            }
+            System.out.println(); // to make an absatz at the end
+        }
+        else if (remote.equals("W")){
+            for (Command command : remote_washing_machine){
+                System.out.print(command);
+            }
+            System.out.println(); // to make an absatz at the end
+        }
+        else if (remote.equals("M")) {
+            for (Command command : remote_microwave) {
+                System.out.print(command);
+            }
+            System.out.println(); // to make an absatz at the end
+        }
+    }
+
+
+    //-----------Helper methods---------------//
+    private String get_user_input(){
+        /**
+         * This is the method for user input
+         * If a user types "e" the app will turn off.
+         */
+        Scanner scanner = new Scanner(System.in);
+        String letter = scanner.nextLine();
+        if (letter.equals("e")){
+            System.exit(0);
+        }
+        return letter;
+    }
+
+    public String which_machine_fu(){
+        String letter = get_user_input();
+        String regex = "[CDMOW]";
+        Pattern pattern = Pattern.compile(regex);
+        while (!letter.matches(regex)){
+            System.out.println("Input not valid. Input should be the first letter of the machine in upper case.\n" +
+                    "Try again: ");
+            letter = get_user_input();
+        }
+        return letter;
+    }
+
+
 
 /*
 
@@ -115,5 +185,6 @@ public class Smartphone {
     }
 
  */
+
 }
 

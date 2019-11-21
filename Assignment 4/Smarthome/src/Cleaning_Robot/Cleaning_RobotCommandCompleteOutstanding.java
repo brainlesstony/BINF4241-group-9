@@ -8,4 +8,9 @@ public class Cleaning_RobotCommandCompleteOutstanding implements Command{
     public void execute(){
         cleaning_robot.complete_outstanding();
     }
+
+    @Override
+    public String toString(){
+        return "[COMPLETE OUTSTANDING]";
+    }
 }

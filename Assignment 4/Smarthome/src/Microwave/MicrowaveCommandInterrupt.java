@@ -21,4 +21,9 @@ public class MicrowaveCommandInterrupt implements Command {
 
         this.microwave.setRunningFalse();
     }
+
+    @Override
+    public String toString(){
+        return "[INTERRUPT]";
+    }
 }

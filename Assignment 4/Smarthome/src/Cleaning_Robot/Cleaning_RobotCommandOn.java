@@ -13,4 +13,9 @@ public class Cleaning_RobotCommandOn implements Command {
         cleaning_robot.return_toBase();
         cleaning_robot.off();
     }
+
+    @Override
+    public String toString(){
+        return "[ON]";
+    }
 }

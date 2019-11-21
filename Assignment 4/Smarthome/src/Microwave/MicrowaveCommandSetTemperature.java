@@ -38,4 +38,9 @@ public class MicrowaveCommandSetTemperature implements Command{
             System.out.println("Input not allowed! Temperature is not valid!");
         }
     }
+
+    @Override
+    public String toString(){
+        return "[SET TEMPERATURE]";
+    }
 }

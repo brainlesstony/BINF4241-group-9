@@ -9,4 +9,9 @@ public class MicrowaveCommandOn implements Command {
     public void execute(){
         microwave.on();
     }
+
+    @Override
+    public String toString(){
+        return "[ON]";
+    }
 }

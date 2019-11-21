@@ -10,4 +10,9 @@ public class DishwasherCommandOn implements Command {
     public void execute(){
         dishwasher.on();
     }
+
+    @Override
+    public String toString(){
+        return "[ON]";
+    }
 }

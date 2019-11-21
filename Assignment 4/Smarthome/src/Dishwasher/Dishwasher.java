@@ -60,7 +60,7 @@ public class Dishwasher {
             state = "Not Washing";
         }
 
-        return "Appliance: Dishwasher\nState: " + state + "\nProgram: " + myProgram ;
+        return "Appliance: Dishwasher | State: " + state + " | Program: " + myProgram ;
     }
     void setProgram() {
         boolean not_done = false;

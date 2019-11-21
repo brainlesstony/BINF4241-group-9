@@ -30,4 +30,9 @@ public class OvenCommandSetProgram implements Command {
                 System.out.println("Input not valid. Please enter one the available programs");
         }
     }
+
+    @Override
+    public String toString(){
+        return "[SET PROGRAM]";
+    }
 }

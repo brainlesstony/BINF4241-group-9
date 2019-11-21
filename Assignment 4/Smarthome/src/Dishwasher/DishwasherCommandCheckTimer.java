@@ -8,4 +8,9 @@ public class DishwasherCommandCheckTimer implements Command{
     public void execute(){
         this.dishwasher.checktime();
     }
+
+    @Override
+    public String toString(){
+        return "[CHECK TIMER]";
+    }
 }

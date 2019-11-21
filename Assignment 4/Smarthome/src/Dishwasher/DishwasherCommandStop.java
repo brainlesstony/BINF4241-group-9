@@ -8,4 +8,9 @@ public class DishwasherCommandStop implements Command {
     public void execute(){
         this.dishwasher.stop();
     }
+
+    @Override
+    public String toString(){
+        return "[STOP]";
+    }
 }

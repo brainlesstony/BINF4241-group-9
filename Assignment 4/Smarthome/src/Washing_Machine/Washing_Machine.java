@@ -116,4 +116,6 @@ public class Washing_Machine {
         rt1.start();
         washing = false;
     }
+
+
 }

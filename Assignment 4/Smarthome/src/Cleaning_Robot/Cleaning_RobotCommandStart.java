@@ -11,4 +11,8 @@ public class Cleaning_RobotCommandStart implements Command {
         cleaning_robot.start_cleaner();
     }
 
+    @Override
+    public String toString(){
+        return "[START]";
+    }
 }

@@ -34,4 +34,9 @@ public class MicrowaveCommandSetTimer implements Command{
             System.out.println("Timer Input is not valid");
         }
     }
+
+    @Override
+    public String toString(){
+        return "[SET TIMER]";
+    }
 }

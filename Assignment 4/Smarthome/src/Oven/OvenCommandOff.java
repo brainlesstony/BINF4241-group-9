@@ -16,4 +16,9 @@ public class OvenCommandOff implements Command {
             System.out.println("Program must be finished first!");
         }
     }
+
+    @Override
+    public String toString(){
+        return "[OFF]";
+    }
 }

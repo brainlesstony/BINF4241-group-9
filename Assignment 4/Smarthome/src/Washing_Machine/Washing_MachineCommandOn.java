@@ -13,4 +13,9 @@ public class Washing_MachineCommandOn implements Command {
         washing_machine.on();
     }
 
+    @Override
+    public String toString(){
+        return "[ON]";
+    }
+
 }

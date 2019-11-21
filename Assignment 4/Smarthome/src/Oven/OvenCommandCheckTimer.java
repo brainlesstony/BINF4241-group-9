@@ -18,5 +18,10 @@ public class OvenCommandCheckTimer implements Command {
                 System.out.println("No active program. Last active timer was: " + this.oven.getTimer());
             }
         }
+
+    @Override
+    public String toString(){
+        return "[CHECK TIMER]";
+    }
 }
 

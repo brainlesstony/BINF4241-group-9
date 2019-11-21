@@ -34,4 +34,9 @@ public class OvenCommandSetTimer implements Command {
             System.out.println("Timer Input not valid");
         }
     }
+
+    @Override
+    public String toString(){
+        return "[SET TIMER]";
+    }
 }

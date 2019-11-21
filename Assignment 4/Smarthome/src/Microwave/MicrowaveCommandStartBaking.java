@@ -23,4 +23,9 @@ public class MicrowaveCommandStartBaking implements Command{
             this.microwave.setRunningFalse();
         }
     }
+
+    @Override
+    public String toString(){
+        return "[START BAKING]";
+    }
 }

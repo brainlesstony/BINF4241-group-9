@@ -12,6 +12,11 @@ public class Cleaning_RobotSetTimer implements Command {
     public void execute() {
         cleaning_robot.setTimer();
     }
+
+    @Override
+    public String toString(){
+        return "[SET TIMER]";
+    }
 }
 
 

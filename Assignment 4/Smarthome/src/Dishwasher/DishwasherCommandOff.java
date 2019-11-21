@@ -11,4 +11,9 @@ public class DishwasherCommandOff implements Command {
     public void execute(){
         dishwasher.off();
     }
+
+    @Override
+    public String toString(){
+        return "[OFF]";
+    }
 }

@@ -17,4 +17,9 @@ public class MicrowaveCommandOff implements Command {
             System.out.println("Microwave must finish first!");
         }
     }
+
+    @Override
+    public String toString(){
+        return "[OFF]";
+    }
 }

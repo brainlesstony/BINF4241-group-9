@@ -25,4 +25,9 @@ public class OvenCommandStartCooking implements Command {
             this.oven.setProgramDone();
         }
     }
+
+    @Override
+    public String toString(){
+        return "[START COOKING]";
+    }
 }

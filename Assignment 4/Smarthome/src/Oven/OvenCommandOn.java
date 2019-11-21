@@ -11,4 +11,9 @@ public class OvenCommandOn implements Command {
         oven.on();
     }
 
+    @Override
+    public String toString(){
+        return "[ON]";
+    }
+
 }

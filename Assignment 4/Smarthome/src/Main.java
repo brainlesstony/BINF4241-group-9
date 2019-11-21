@@ -11,7 +11,7 @@ public class Main {
         Smartphone smartphone = new Smartphone();
 
         while (true) {
-            smartphone.print_available_machines();
+            smartphone.run();
         }
     }
 

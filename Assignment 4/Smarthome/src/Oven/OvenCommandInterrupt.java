@@ -22,4 +22,9 @@ public class OvenCommandInterrupt implements Command {
         this.oven.setProgramNull();
 
     }
+
+    @Override
+    public String toString(){
+        return "[INTERRUPT]";
+    }
 }
