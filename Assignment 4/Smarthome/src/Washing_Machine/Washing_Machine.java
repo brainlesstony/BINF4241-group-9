@@ -108,7 +108,7 @@ public class Washing_Machine {
         }
     }
     void startProgram(){
-        this.runnable = new MyThread(this.timer);
+        this.runnable = new MyThread(this.timer*1000);
         Thread rt1;
         rt1 = new Thread(runnable,this.myProgram);
         this.thread = rt1;

@@ -6,6 +6,6 @@ public class Cleaning_RobotCommandCheckBattery implements Command{
         this.cleaning_robot = cleaning_robot;
     }
     public void execute(){
-        ;
+        cleaning_robot.get_battery_status();
     }
 }
