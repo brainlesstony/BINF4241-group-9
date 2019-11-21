@@ -1,11 +1,10 @@
 package Dishwasher;
 import Interfaces.Command;
-import Interfaces.Machine;
 
 public class DishwasherCommandOff implements Command {
-    private Machine dishwasher;
+    private Dishwasher dishwasher;
 
-    public DishwasherCommandOff(Machine the_machine) {
+    public DishwasherCommandOff(Dishwasher the_machine) {
         this.dishwasher = the_machine;
     }
 

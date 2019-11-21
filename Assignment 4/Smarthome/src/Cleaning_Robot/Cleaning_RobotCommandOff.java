@@ -1,12 +1,11 @@
 package Cleaning_Robot;
 import Interfaces.Command;
-import Interfaces.Machine;
 
 public class Cleaning_RobotCommandOff implements Command {
 
-    private Machine cleaning_robot;
+    private Cleaning_Robot cleaning_robot;
 
-    public Cleaning_RobotCommandOff(Machine cleaning_robot){
+    public Cleaning_RobotCommandOff(Cleaning_Robot cleaning_robot){
         this.cleaning_robot = cleaning_robot;
     }
 

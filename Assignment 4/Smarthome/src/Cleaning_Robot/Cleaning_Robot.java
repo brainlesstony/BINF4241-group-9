@@ -1,7 +1,6 @@
 package Cleaning_Robot;
-import Interfaces.Machine;
 
-public class Cleaning_Robot implements Machine{
+public class Cleaning_Robot{
     private boolean state;
     private int timer;
     private int battery_status;
@@ -43,9 +42,5 @@ public class Cleaning_Robot implements Machine{
         int get_cleaning_rate () {
             return this.elapsed / this.timer;
         }
-
-
-//    private Command [] getCommands(){
-//        return new Command[]{Cleaning_RobotCommandOn,Cleaning_RobotCommandOff,Cleaning_RobotSetTimer};
 }
 

@@ -1,6 +1,5 @@
 package Microwave;
 import Interfaces.Command;
-import Interfaces.Machine;
 
 public class MicrowaveCommandOn implements Command {
     private Microwave microwave;
