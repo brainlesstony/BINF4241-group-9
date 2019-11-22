@@ -21,7 +21,7 @@ public class MyThread implements Runnable {
     public void run() {
         try{
             running = true;
-            Thread.sleep((time));
+            Thread.sleep(time);
             running = false;
         } catch (InterruptedException e) {
             e.printStackTrace();

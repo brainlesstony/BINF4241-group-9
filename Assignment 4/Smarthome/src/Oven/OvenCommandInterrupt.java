@@ -13,14 +13,7 @@ public class OvenCommandInterrupt implements Command {
     }
     @Override
     public void execute() {
-        this.mt1 = null;
-        this.rt1 = null;
-
-        this.mt1 = new MyThread();
-        this.rt1 = new Thread(mt1, "Oven");
-
-        this.oven.setProgramNull();
-
+        oven.interrupt();
     }
 
     @Override
