@@ -7,12 +7,12 @@ public class Cleaning_Robot{
     private boolean state;
     private int timer;
     private int battery_status;
-    private int elapsed;
+    private long elapsed;
     private long startTime;
     private long completeTime;
     private float cleaning_percentage;
-    private Thread thread;
-    private Runnable runnable;
+    private Thread rt1;
+    private MyThread mt1;
     private boolean inBase;
 
     public Cleaning_Robot() {
@@ -28,14 +28,18 @@ public class Cleaning_Robot{
         return this.state;
     }
 
-    public void on() {
-        this.state = true;
-        System.out.println("Turn Cleaning Robot on.");
-    }
-
     public void off() {
-        this.state = false;
-        System.out.println("Turn Cleaning Robot off");
+        if(inBase && !state) {
+            System.out.println("I'm already sleeping");
+        }
+        else {
+            mt1 = null;
+            rt1 = null;
+            state = false;
+            inBase = true;
+            elapsed = System.currentTimeMillis() - elapsed;
+            System.out.println("Returned to Base and turned Cleaning Robot off");
+        }
     }
 
     void setTimer() {
@@ -53,7 +57,8 @@ public class Cleaning_Robot{
         }
 
         if (isAllDigit) {
-            this.timer = Integer.parseInt(answer);
+            timer = Integer.parseInt(answer);
+            timer = timer * 1000; //timer in milli
         } else {
             System.out.println("Timer Input is not valid");
             System.out.println("Timer is set.");
@@ -62,92 +67,106 @@ public class Cleaning_Robot{
 
 
     private void setSTime() {
-        this.startTime = System.currentTimeMillis();
+        startTime = System.currentTimeMillis();
     }
 
     private void setETime() {
-        this.completeTime = startTime + timer * 1000;
+        completeTime = System.currentTimeMillis() + timer;
     }
 
     void return_toBase() {
-        this.inBase = true;
+        inBase = true;
     }
 
     int get_battery_status() {
-        battery_status = (int) ((System.currentTimeMillis()-startTime) / 1000);
         return battery_status;
     }
-
+    void update_battery_status(){
+        battery_status = battery_status-(timer/1000);
+    }
     private void charging(){
         if (battery_status == 0) {
-            MyThread mt1 = new MyThread(100 * 1000);
-            runnable = mt1;
-            Thread rt1;
+            mt1 = new MyThread(100 * 1000);
             rt1 = new Thread(mt1, "Cleaning_Robot");
-            this.thread = rt1;
-            this.inBase = true;
+            inBase = true;
             rt1.start();
             battery_status = 100;
         }else {
-            int tmp = 100 - battery_status; //Differenz zur Vollladung
-            MyThread mt1 = new MyThread(tmp * 1000);
-            runnable = mt1;
-            Thread rt1;
+            int tmp = 100 - battery_status;
+            mt1 = new MyThread(tmp * 1000);
             rt1 = new Thread(mt1, "Cleaning_Robot");
-            this.thread = rt1;
-            this.inBase = true;
+            inBase = true;
             rt1.start();
             battery_status = 100;
             }
     }
 
     void complete_outstanding(){
-        if (this.inBase && this.get_battery_status() == 100){
+        if (inBase && get_battery_status() == 100){
             start_cleaner();
         }
     }
 
     float get_cleaning_percentage() {
-        elapsed = (int) ((startTime - System.currentTimeMillis())/1000);
-        cleaning_percentage = elapsed - timer;
-        return cleaning_percentage;
+        if (timer != 0 && state) {
+            float time = System.currentTimeMillis() - elapsed;
+            cleaning_percentage = time / timer;
+            return cleaning_percentage;
+        }else{
+            return cleaning_percentage = 0;
+        }
     }
 
     void start_cleaner() {
-        if (get_battery_status() == 100 && inBase) {
-            System.out.println("Started the vacuum cleaner.");
-            if (timer > battery_status) {
-                run();
-                battery_status = timer - battery_status;
-            }
-            else {
-                run();
-            }
-        } else {
+        if (timer == 0){
+            System.out.println("Set a timer first");
+        }
+        else if(battery_status == 0){
             System.out.println("Battery status too low.");
+        }
+        else if (get_battery_status() == 100 && inBase) {
+            System.out.println("Started the Cleaning_Robot\n");
+            if (timer/1000 > battery_status) {
+                run();
+                battery_status = timer/1000 - battery_status;
+            } else {
+                run();
+            }
         }
     }
 
     private void run(){
-        MyThread mt1 = new MyThread(battery_status*1000);
-        runnable = mt1;
-        Thread rt1;
+        int time;
+        if (battery_status*1000 > timer){
+            time = Math.abs(timer);
+        }else {
+            time = Math.abs(timer-(battery_status * 1000));
+        }
+        MyThread mt1 = new MyThread(time);
         rt1 = new Thread(mt1, "Cleaning_Robot");
-        this.thread = rt1;
-        this.inBase = false;
-        this.setSTime();
-        this.setETime();
-        on();
+        inBase = false;
+        setSTime();
+        setETime();
+        elapsed = System.currentTimeMillis();
+        state = true;
         rt1.start();
-        off();
-        battery_status = 0;
+        while (mt1.isRunning()){
+            System.out.println("The Cleaning_Robot is running");
+        }
+        System.out.println("Done with the cleaning");
+        state = false;
+        update_battery_status();
         return_toBase();
         charging();
     }
 
     void check_charging_status(){
-        if (this.inBase){
-            System.out.println("Battery status: " + this.battery_status + " | Time remaining until full charged: 100 seconds");
+        if (inBase && battery_status == 0){
+            System.out.println("Battery status: " + battery_status + " | Time remaining until full charged: 100 seconds");
+        }else if(inBase && battery_status == 100) {
+            System.out.println("Battery status: " + battery_status + " | Time remaining until full charged: 0 seconds");
+        }else{
+            System.out.println("Battery status: " + battery_status + " | Time remaining until full charged: "+ (100-battery_status) +"seconds");
         }
     }
 
