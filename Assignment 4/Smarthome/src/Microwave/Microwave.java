@@ -112,9 +112,8 @@ public class Microwave {
     void setTimer(){
         System.out.println("Set Timer: ");
         Scanner in = new Scanner(System.in);
-
         String answer = in.nextLine();
-        boolean isAllDigit= true;
+        boolean isAllDigit = true;
 
         for (int i = 0; i<answer.length(); i++){
             char character = answer.charAt(i);

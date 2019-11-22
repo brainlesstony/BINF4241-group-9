@@ -132,6 +132,6 @@ public class Washing_Machine {
         }else{
             state = "Off";
         }
-        return "Appliance: Washing_Machine | State: " + state + " | Program: " + myProgram ;
+        return "Appliance: Washing_Machine | State: " + state + " | Program: " + myProgram + " | Temperature: " + this.degree;
     }
 }

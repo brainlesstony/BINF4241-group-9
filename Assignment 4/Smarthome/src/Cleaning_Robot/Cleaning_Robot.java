@@ -42,6 +42,9 @@ public class Cleaning_Robot{
         }
     }
 
+    public void on(){
+        this.state = true;
+    }
 
     void setTimer() {
         System.out.println("Set Timer: ");

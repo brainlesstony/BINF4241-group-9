@@ -12,7 +12,6 @@ public class OvenCommandStartCooking implements Command {
     @Override
     public void execute() {
         oven.startCooking();
-        System.out.println("Started the cooking process");
     }
 
     @Override
