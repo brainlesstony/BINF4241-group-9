@@ -34,6 +34,7 @@ public class Washing_Machine {
     private String getProgram(){
         return myProgram;
     }
+
     void setProgram(){
         if (!this.state){
             System.out.println("Can not set Program. Machine is off");
@@ -73,6 +74,7 @@ public class Washing_Machine {
             }
         }
     }
+
     void setDegree(){
         if (!this.state){
             System.out.println("Machine is not on.");
@@ -96,6 +98,7 @@ public class Washing_Machine {
         }
 
     }
+
     void startProgram(){
         if (!this.state){
             System.out.println("Can not start machine because it is off");

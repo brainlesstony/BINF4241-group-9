@@ -138,6 +138,7 @@ public class Smartphone {
             button_number++;
         }
     }
+
     //-----------Helper methods---------------//
     private void which_remote_fu(){ // but which remote?
         System.out.println("Choose a machine (to choose a machine type the first capital letter e.g. O for oven): ");
