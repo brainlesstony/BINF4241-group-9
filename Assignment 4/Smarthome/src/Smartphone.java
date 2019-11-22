@@ -4,7 +4,6 @@ import Microwave.*;
 import Oven.*;
 import Washing_Machine.*;
 
-
 import Interfaces.Command;
 
 import java.util.ArrayList;
@@ -100,7 +99,7 @@ public class Smartphone {
 
     public void run(){
         print_machines();
-        print_remote();
+        which_remote_fu();
     }
 
     //----------display/print methods-------------//
@@ -115,50 +114,42 @@ public class Smartphone {
         }
     }
 
-    private void print_remote(){ // but which remote?
+    private void print_remote(ArrayList<Command> remote_list){
+        int button_number = 1;
+        System.out.println("||||||||||||||REMOTE||||||||||||||");
+        for (Command command : remote_list){
+            System.out.println("[" + button_number + "]" + command);
+            button_number++;
+        }
+    }
+    //-----------Helper methods---------------//
+    private void which_remote_fu(){ // but which remote?
         System.out.println("Choose a machine (to choose a machine type the first capital letter e.g. O for oven): ");
         // the user defines the remote
         String remote = which_machine_fu();
         int button_number = 1;
         if (remote.equals("C")){
-            for (Command command : remote_cleaning_robot){
-                System.out.println("[" + button_number + "]" + command);
-                button_number++;
-            }
+            print_remote(remote_cleaning_robot);
             pressButton(setCommand(remote_cleaning_robot));
         }
         else if (remote.equals("D")){
-            for (Command command : remote_dishwasher){
-                System.out.println("[" + button_number + "]" + command);
-                button_number++;
-            }
+            print_remote(remote_dishwasher);
             pressButton(setCommand(remote_dishwasher));
         }
         else if (remote.equals("O")){
-            for (Command command : remote_oven){
-                System.out.println("[" + button_number + "]" + command);
-                button_number++;
-            }
+            print_remote(remote_oven);
             pressButton(setCommand(remote_oven));
         }
         else if (remote.equals("W")){
-            for (Command command : remote_washing_machine){
-                System.out.println("[" + button_number + "]" + command);
-                button_number++;
-            }
+            print_remote(remote_washing_machine);
             pressButton(setCommand(remote_washing_machine));
         }
         else if (remote.equals("M")) {
-            for (Command command : remote_microwave) {
-                System.out.println("[" + button_number + "]" + command);
-                button_number++;
-            }
+            print_remote(remote_microwave);
             pressButton(setCommand(remote_microwave));
         }
     }
 
-
-    //-----------Helper methods---------------//
     private String get_user_input(){
         /**
          * This is the method for user input
@@ -197,18 +188,15 @@ public class Smartphone {
         return button_number;
     }
 
-    public Command setCommand(ArrayList remote){
+    private Command setCommand(ArrayList remote){
         System.out.println("Press a button: ");
         String command_fu = which_command_fu(); // integer 1-9
         int button_number = Integer.parseInt(command_fu);
         return (Command) remote.get(button_number - 1);
     }
 
-    public void pressButton(Command command){
+    private void pressButton(Command command){
         command.execute();
     }
-
-
-
 }
 
