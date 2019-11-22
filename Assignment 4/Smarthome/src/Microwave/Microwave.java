@@ -73,7 +73,7 @@ public class Microwave {
             if (this.running) {
                 System.out.println("Can not set temperature. Microwave is running");
             } else {
-                System.out.println("Set Temperature: ");
+                System.out.println("Set Temperature (100-300): ");
                 Scanner in = new Scanner(System.in);
 
                 String answer = in.nextLine();
@@ -189,7 +189,9 @@ public class Microwave {
                         setThread(rt1);
                         setRunningTrue();
                         setStartTime();
+                        System.out.println("Started baking in the microwave");
                         rt1.start();
+                        System.out.println("Finished baking in the microwave");
                         setRunningFalse();
                     }
 

@@ -115,7 +115,9 @@ public class Washing_Machine {
                     rt1 = new Thread(runnable, this.myProgram);
                     this.thread = rt1;
                     washing = true;
+                    System.out.println("Starting the washing process");
                     rt1.start();
+                    System.out.println("Finished the washing process");
                     washing = false;
                 }
             }

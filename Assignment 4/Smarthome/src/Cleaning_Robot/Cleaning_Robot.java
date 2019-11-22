@@ -154,7 +154,6 @@ public class Cleaning_Robot{
         elapsed = System.currentTimeMillis();
         state = true;
         rt1.start();
-        System.out.println(mt1.isRunning());
         while (mt1.isRunning()){
             System.out.println("The Cleaning_Robot is running");
         }

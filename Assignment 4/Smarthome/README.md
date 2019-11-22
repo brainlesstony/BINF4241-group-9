@@ -10,7 +10,7 @@
 - To choose a machine, type the first captial letter of the machine. It must be uppercase. e.g. D for dishwasher
 - To choose a command of a machine, type the button number. e.g. 1 for [1][ON]
 - To choose a program for example a oven, type in the program name eg. Grill for [Grill]
-
+- For the temperature -1 is the default value, if no temperature has been set.
 - Everytime you are in the "SMARTHOME APP" you can exit the app by typing "e"
 
 **Class Diagram**

@@ -90,18 +90,23 @@ public class Dishwasher {
                     case "Glasses":
                         this.myProgram = "Glasses";
                         this.timer = 20;
+                        break;
                     case "Plates":
                         this.myProgram = "Plates";
                         this.timer = 25;
+                        break;
                     case "Pans":
                         this.myProgram = "Pans";
                         this.timer = 32;
+                        break;
                     case "Mixed":
                         this.myProgram = "Mixed";
                         this.timer = 45;
+                        break;
                     case "Quick":
                         this.myProgram = "Quick";
                         this.timer = 15;
+                        break;
                 }
             }
         }
@@ -119,9 +124,9 @@ public class Dishwasher {
             this.thread = rt1;
             this.washing = true;
             setStartTime();
-
+            System.out.println("Starting the washing process");
             rt1.start();
-
+            System.out.println("Finished the washing process");
             washing = false;
         }
 

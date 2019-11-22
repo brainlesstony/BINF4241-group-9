@@ -120,7 +120,7 @@ public class Oven {
             if (this.running){
                 System.out.println("Can not set temp. Oven is cooking");
             }else{
-                System.out.println("Set Temperature: ");
+                System.out.println("Set Temperature (100-300): ");
                 Scanner in = new Scanner(System.in);
 
                 String answer = in.nextLine();
@@ -230,7 +230,6 @@ public class Oven {
             this.running = true;
             rt1.start();
             this.running = false;
-            System.out.println("Finished cooking in the oven");
             this.setProgramDone();
         }
     }
