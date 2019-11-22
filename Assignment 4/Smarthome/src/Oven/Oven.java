@@ -16,10 +16,14 @@ public class Oven {
     private Thread rt1;
     private Runnable mt1;
     private long startTime;
+    private boolean running;
 
-    public Oven() {
+    public Oven(){
         this.power = false;
         this.program = Program_oven.Off;
+        this.temperature = -1;
+        this.timer = -1;
+        this.running = false;
     }
 
     void on() { //package-private
@@ -80,56 +84,68 @@ public class Oven {
     }
 
     void setProgram(){
-        System.out.println("Choose one of the following Programs:");
-        System.out.println(("[Ventilated]  [Grill]  [Normal]"));
+        if (!getState()){
+            System.out.println("Can not set program. Oven is off");
+        }else{
+            if (this.running){
+                System.out.println("Can not set program. Oven is running");
+            }else{
+                System.out.println("Choose one of the following Programs:");
+                System.out.println(("[Ventilated]  [Grill]  [Normal]"));
 
-        Scanner in = new Scanner(System.in);
-        String answer = in.nextLine();
+                Scanner in = new Scanner(System.in);
+                String answer = in.nextLine();
 
-        switch (answer){
-            case "Ventilated":
-                program = Program_oven.Ventilated;
-                break;
-            case "Grill":
-                program = Program_oven.Grill;
-                break;
-            case "Normal":
-                program = Program_oven.Normal;
-                break;
-            default:
-                System.out.println("Input not valid. Please enter one the available programs");
+                switch (answer){
+                    case "Ventilated":
+                        program = Program_oven.Ventilated;
+                        break;
+                    case "Grill":
+                        program = Program_oven.Grill;
+                        break;
+                    case "Normal":
+                        program = Program_oven.Normal;
+                        break;
+                    default:
+                        System.out.println("Input not valid. Please enter one the available programs");
+                }
+            }
         }
     }
 
     void setTemperature() {
-        System.out.println("Set Temperature: ");
-        Scanner in = new Scanner(System.in);
+        if (!getState()){
+            System.out.println("Can not set temp. Oven off");
+        }else{
+            if (this.running){
+                System.out.println("Can not set temp. Oven is cooking");
+            }else{
+                System.out.println("Set Temperature: ");
+                Scanner in = new Scanner(System.in);
 
-        String answer = in.nextLine();
-        boolean isAllDigit = true;
-        for (int i = 0; i < answer.length(); i++) {
-            char character = answer.charAt(i);
-            if (!Character.isDigit(character)) {
-                isAllDigit = false;
-                break;
+                String answer = in.nextLine();
+                boolean isAllDigit = true;
+                for (int i = 0; i < answer.length(); i++) {
+                    char character = answer.charAt(i);
+                    if (!Character.isDigit(character)) {
+                        isAllDigit = false;
+                        break;
+                    }
+                }
+                if (isAllDigit) {
+                    int temperature = Integer.parseInt(answer);
+                    if (temperature >= 100&& temperature <=300) {
+                        this.temperature = temperature;
+                    }
+                    else{
+                        System.out.println("Temperature too high or too low!");
+                    }
+                }
+                else{
+                    System.out.println("Input not allowed! Temperature is not valid!");
+                }
             }
         }
-
-
-
-        if (isAllDigit) {
-            int temperature = Integer.parseInt(answer);
-            if (temperature >= 100&& temperature <=300) {
-                this.temperature = temperature;
-            }
-            else{
-                System.out.println("Temperature too high or too low!");
-            }
-        }
-        else{
-            System.out.println("Input not allowed! Temperature is not valid!");
-        }
-
     }
 
     void setThread(Thread mythread) {
@@ -145,28 +161,64 @@ public class Oven {
     }
 
     void setTimer() {
-        System.out.println("Set Timer in seconds: ");
-        Scanner in = new Scanner(System.in);
-        String answer = in.nextLine();
-        boolean isAllDigit = true;
+        if (!getState()){
+            System.out.println("Can not set timer. Oven is off");
+        }else{
+            if (this.running){
+                System.out.println("Can not set timer. Oven is running.");
+            }else{
+                System.out.println("Set Timer in seconds: ");
+                Scanner in = new Scanner(System.in);
+                String answer = in.nextLine();
+                boolean isAllDigit = true;
 
-        for (int i = 0; i < answer.length(); i++) {
-            char character = answer.charAt(i);
-            if (!Character.isDigit(character)) {
-                isAllDigit = false;
-                break;
+                for (int i = 0; i < answer.length(); i++) {
+                    char character = answer.charAt(i);
+                    if (!Character.isDigit(character)) {
+                        isAllDigit = false;
+                        break;
+                    }
+                }
+
+                if (isAllDigit) {
+                    int timer = Integer.parseInt(answer);
+                    this.timer = (1000 * timer);
+                } else {
+                    System.out.println("Timer Input not valid");
+                }
             }
-        }
-
-        if (isAllDigit) {
-            int timer = Integer.parseInt(answer);
-            this.timer = (1000 * timer);
-        } else {
-            System.out.println("Timer Input not valid");
         }
     }
 
     void startCooking() {
+        if (!getState()){
+            System.out.println("Can not start cooking. Oven off");
+        }else{
+            if (this.running){
+                System.out.println("Can not cooking. Oven already running");
+            }else{
+                if (this.temperature == -1 | this.timer == -1){
+                    System.out.println("Can not start cooking. Set parameters first");
+                }else{
+                    System.out.println("Getting baked.");
+                    MyThread mt1 = new MyThread(getTimer());
+                    this.setRunnable(mt1);
+                    Thread rt1;
+
+                    if (getTimer() != -1 && getProgram() != null && getTemperature() != -1 && getState()) {
+                        rt1 = new Thread(mt1, "Oven");
+                        this.setThread(rt1);
+                        this.setStartTime();
+                        this.running = true;
+                        rt1.start();
+                        this.running = false;
+                        System.out.println("Finished cooking in the oven");
+                        this.setProgramDone();
+                    }
+                }
+            }
+        }
+
         MyThread mt1 = new MyThread(getTimer());
         this.setRunnable(mt1);
         Thread rt1;
@@ -175,11 +227,14 @@ public class Oven {
             rt1 = new Thread(mt1, "Oven");
             this.setThread(rt1);
             this.setStartTime();
+            this.running = true;
             rt1.start();
+            this.running = false;
             System.out.println("Finished cooking in the oven");
             this.setProgramDone();
         }
     }
+
     void interrupt(){
         this.mt1 = null;
         this.rt1 = null;
