@@ -12,27 +12,7 @@ public class MicrowaveCommandSetTimer implements Command{
     }
 
     public void execute(){
-        System.out.println("Set Timer: ");
-        Scanner in = new Scanner(System.in);
-
-        String answer = in.nextLine();
-        boolean isAllDigit= true;
-
-        for (int i = 0; i<answer.length(); i++){
-            char character = answer.charAt(i);
-            if (!Character.isDigit(character)){
-                isAllDigit = false;
-                break;
-            }
-        }
-
-        if(isAllDigit){
-            int timer = Integer.parseInt(answer);
-            microwave.setTimer(timer*1000);
-        }
-        else{
-            System.out.println("Timer Input is not valid");
-        }
+       microwave.setTimer();
     }
 
     @Override

@@ -9,13 +9,7 @@ public class MicrowaveCommandCheckTimer implements Command {
     }
 
     public void execute(){
-
-        if(this.microwave.getRunning()){
-            System.out.println("Time left: " + (System.currentTimeMillis() - this.microwave.getStartTime()));
-        }
-        else {
-            System.out.println("Microwave isn't active. Last active timer was: " + this.microwave.getTimer());
-        }
+        microwave.checkTimer();
     }
 
     @Override

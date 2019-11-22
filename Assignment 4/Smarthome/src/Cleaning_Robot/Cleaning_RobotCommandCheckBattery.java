@@ -11,6 +11,7 @@ public class Cleaning_RobotCommandCheckBattery implements Command {
         cleaning_robot.get_battery_status();
         System.out.println("Battery status at: "+cleaning_robot.get_battery_status()+ "%");
     }
+
     @Override
     public String toString(){
         return "[CHECK BATTERY STATUS]";

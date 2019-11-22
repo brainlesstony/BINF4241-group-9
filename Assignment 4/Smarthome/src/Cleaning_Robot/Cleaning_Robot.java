@@ -42,6 +42,7 @@ public class Cleaning_Robot{
         }
     }
 
+
     void setTimer() {
         System.out.println("Set Timer: ");
         Scanner in = new Scanner(System.in);
@@ -142,7 +143,7 @@ public class Cleaning_Robot{
         }else {
             time = Math.abs(timer-(battery_status * 1000));
         }
-        MyThread mt1 = new MyThread(time);
+        mt1 = new MyThread(time);
         rt1 = new Thread(mt1, "Cleaning_Robot");
         inBase = false;
         setSTime();
@@ -150,6 +151,7 @@ public class Cleaning_Robot{
         elapsed = System.currentTimeMillis();
         state = true;
         rt1.start();
+        System.out.println(mt1.isRunning());
         while (mt1.isRunning()){
             System.out.println("The Cleaning_Robot is running");
         }
