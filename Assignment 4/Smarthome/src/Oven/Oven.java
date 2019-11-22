@@ -9,7 +9,7 @@ enum Program_oven{Grill, Ventilated, Normal, Off, Done}
 
 
 public class Oven {
-    private boolean power;
+    public boolean power;
     private int temperature;
     private int timer;
     private Program_oven program;

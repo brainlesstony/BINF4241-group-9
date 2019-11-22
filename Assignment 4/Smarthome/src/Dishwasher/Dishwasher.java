@@ -4,7 +4,7 @@ import Threads.MyThread;
 import java.util.Scanner;
 
 public class Dishwasher {
-    private boolean state;
+    public boolean state;
     private boolean washing;
     private Thread thread;
     private Runnable runnable;

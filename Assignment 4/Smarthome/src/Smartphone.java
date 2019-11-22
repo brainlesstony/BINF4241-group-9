@@ -12,11 +12,11 @@ import java.util.regex.Pattern;
 
 public class Smartphone {
     //---------all machines----------//
-    Oven oven;
-    Washing_Machine washing_machine;
-    Microwave microwave;
-    Cleaning_Robot cleaning_robot;
-    Dishwasher dishwasher;
+    private Oven oven;
+    private Washing_Machine washing_machine;
+    private Microwave microwave;
+    private Cleaning_Robot cleaning_robot;
+    private Dishwasher dishwasher;
 
     //--------machine List----------//
     private ArrayList<Object> machine_list;
@@ -27,17 +27,20 @@ public class Smartphone {
     private ArrayList<Command> remote_microwave;
     private ArrayList<Command> remote_oven;
     private ArrayList<Command> remote_washing_machine;
+    private ArrayList<Command> remote_dishwasherOff;
+    private ArrayList<Command> remote_microwaveOff;
+    private ArrayList<Command> remote_ovenOff;
+    private ArrayList<Command> remote_washing_machineOff;
 
 
     public Smartphone() {
 
         //--------add all machine to a list---------//
-        Oven oven = new Oven();
-        Washing_Machine washing_machine = new Washing_Machine();
-        Microwave microwave = new Microwave();
-        Cleaning_Robot cleaning_robot = new Cleaning_Robot();
-        Dishwasher dishwasher = new Dishwasher();
-
+        this.oven = new Oven();
+        this.washing_machine = new Washing_Machine();
+        this.microwave = new Microwave();
+        this.cleaning_robot = new Cleaning_Robot();
+        this.dishwasher = new Dishwasher();
         machine_list = new ArrayList<Object>();
         machine_list.add(oven);
         machine_list.add(washing_machine);
@@ -47,12 +50,17 @@ public class Smartphone {
 
 
 
+
         //---------assign each remote variable an ArrayList-------------//
         remote_cleaning_robot = new ArrayList<Command>();
         remote_dishwasher = new ArrayList<Command>();
+        remote_dishwasherOff = new ArrayList<Command>();
         remote_microwave = new ArrayList<Command>();
+        remote_microwaveOff = new ArrayList<Command>();
         remote_oven = new ArrayList<Command>();
+        remote_ovenOff = new ArrayList<Command>();
         remote_washing_machine = new ArrayList<Command>();
+        remote_washing_machineOff = new ArrayList<Command>();
 
         //---------init command list for Cleaning robot-----------//
         remote_cleaning_robot.add(new Cleaning_RobotCommandOff(cleaning_robot));
@@ -63,43 +71,48 @@ public class Smartphone {
         remote_cleaning_robot.add(new Cleaning_RobotCommandCompleteOutstanding(cleaning_robot));
         remote_cleaning_robot.add(new Cleaning_RobotCommandStart(cleaning_robot));
 
+        //--------init command list for DishwasherOff --------------//
+        remote_dishwasherOff.add(new DishwasherCommandOn(dishwasher));
         //--------init command list for Dishwasher --------------//
+        remote_dishwasher.add(new DishwasherCommandOn(dishwasher));
         remote_dishwasher.add(new DishwasherCommandCheckTimer(dishwasher));
         remote_dishwasher.add(new DishwasherCommandOff(dishwasher));
-        remote_dishwasher.add(new DishwasherCommandOn(dishwasher));
         remote_dishwasher.add(new DishwasherCommandStart(dishwasher));
         remote_dishwasher.add(new DishwasherCommandStop(dishwasher));
         remote_dishwasher.add(new DishwasherCommandSetProgram(dishwasher));
 
+        //--------init command list for MicrowaveOff ---------------//
+        remote_microwaveOff.add(new MicrowaveCommandOn(microwave));
         //--------init command list for Microwave ---------------//
+        remote_microwave.add(new MicrowaveCommandOn(microwave));
         remote_microwave.add(new MicrowaveCommandCheckTimer(microwave));
         remote_microwave.add(new MicrowaveCommandInterrupt(microwave));
         remote_microwave.add(new MicrowaveCommandOff(microwave));
-        remote_microwave.add(new MicrowaveCommandOn(microwave));
         remote_microwave.add(new MicrowaveCommandSetTemperature(microwave));
         remote_microwave.add(new MicrowaveCommandSetTimer(microwave));
         remote_microwave.add(new MicrowaveCommandStartBaking(microwave));
 
+        //--------init command list for OvenOff----------------------//
+        remote_ovenOff.add(new OvenCommandOn(oven));
         //--------init command list for Oven----------------------//
+        remote_oven.add(new OvenCommandOn(oven));
         remote_oven.add(new OvenCommandCheckTimer(oven));
         remote_oven.add(new OvenCommandInterrupt(oven));
         remote_oven.add(new OvenCommandOff(oven));
-        remote_oven.add(new OvenCommandOn(oven));
         remote_oven.add(new OvenCommandSetProgram(oven));
         remote_oven.add(new OvenCommandSetTemperature(oven));
         remote_oven.add(new OvenCommandSetTimer(oven));
         remote_oven.add(new OvenCommandStartCooking(oven));
 
-
+        //--------init command list for washing machineOff----------//
+        remote_washing_machineOff.add( new Washing_MachineCommandOn(washing_machine));
         //--------init command list for washing machine----------//
-
-        remote_washing_machine.add( new Washing_MachineCommandOff(washing_machine));
         remote_washing_machine.add( new Washing_MachineCommandOn(washing_machine));
+        remote_washing_machine.add( new Washing_MachineCommandOff(washing_machine));
         remote_washing_machine.add( new Washing_MachineCommandSetDegree(washing_machine));
         remote_washing_machine.add( new Washing_MachineCommandSetProgram(washing_machine));
         remote_washing_machine.add( new Washing_MachineCommandStart(washing_machine));
     }
-
     public void run(){
         print_machines();
         which_remote_fu();
@@ -135,21 +148,37 @@ public class Smartphone {
             print_remote(remote_cleaning_robot);
             pressButton(setCommand(remote_cleaning_robot));
         }
-        else if (remote.equals("D")){
+        else if (remote.equals("D")&& dishwasher.state){
             print_remote(remote_dishwasher);
             pressButton(setCommand(remote_dishwasher));
         }
-        else if (remote.equals("O")){
+        else if (remote.equals("D")){
+            print_remote(remote_dishwasherOff);
+            pressButton(setCommand(remote_dishwasherOff));
+        }
+        else if (remote.equals("O") && oven.power){
             print_remote(remote_oven);
             pressButton(setCommand(remote_oven));
         }
-        else if (remote.equals("W")){
+        else if (remote.equals("O")){
+            print_remote(remote_ovenOff);
+            pressButton(setCommand(remote_ovenOff));
+        }
+        else if (remote.equals("W") && washing_machine.state){
             print_remote(remote_washing_machine);
             pressButton(setCommand(remote_washing_machine));
         }
-        else if (remote.equals("M")) {
+        else if (remote.equals("W")){
+            print_remote(remote_washing_machineOff);
+            pressButton(setCommand(remote_washing_machineOff));
+        }
+        else if (remote.equals("M") && microwave.state) {
             print_remote(remote_microwave);
             pressButton(setCommand(remote_microwave));
+        }
+        else if (remote.equals("M")) {
+            print_remote(remote_microwaveOff);
+            pressButton(setCommand(remote_microwaveOff));
         }
     }
 

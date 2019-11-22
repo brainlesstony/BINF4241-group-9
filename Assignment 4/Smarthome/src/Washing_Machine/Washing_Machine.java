@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Washing_Machine {
     private String myProgram;
-    private boolean state;
+    public boolean state;
     private boolean washing;
     private String degree;
     private Thread thread;

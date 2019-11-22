@@ -6,7 +6,7 @@ import Threads.MyThread;
 import java.util.Scanner;
 
 public class Microwave {
-    private boolean state;
+    public boolean state;
     private int temperature;
     private int timer;
     private Thread thread;
