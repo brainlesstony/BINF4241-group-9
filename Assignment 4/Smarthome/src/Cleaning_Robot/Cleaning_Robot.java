@@ -24,9 +24,6 @@ public class Cleaning_Robot{
         this.cleaning_percentage = 0;
     }
 
-    public boolean get_state(){
-        return this.state;
-    }
 
     public void off() {
         if(inBase && !state) {
@@ -40,10 +37,6 @@ public class Cleaning_Robot{
             elapsed = System.currentTimeMillis() - elapsed;
             System.out.println("Returned to Base and turned Cleaning Robot off");
         }
-    }
-
-    public void on(){
-        this.state = true;
     }
 
     void setTimer() {
@@ -69,7 +62,6 @@ public class Cleaning_Robot{
         }
     }
 
-
     private void setSTime() {
         startTime = System.currentTimeMillis();
     }
@@ -85,9 +77,11 @@ public class Cleaning_Robot{
     int get_battery_status() {
         return battery_status;
     }
+
     void update_battery_status(){
         battery_status = battery_status-(timer/1000);
     }
+
     private void charging(){
         if (battery_status == 0) {
             mt1 = new MyThread(100 * 1000);
@@ -173,7 +167,6 @@ public class Cleaning_Robot{
             System.out.println("Battery status: " + battery_status + " | Time remaining until full charged: "+ (100-battery_status) +"seconds");
         }
     }
-
 
     @Override
     public String toString(){
