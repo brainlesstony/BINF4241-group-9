@@ -95,6 +95,9 @@ public class Smartphone {
 
         remote_washing_machine.add( new Washing_MachineCommandOff(washing_machine));
         remote_washing_machine.add( new Washing_MachineCommandOn(washing_machine));
+        remote_washing_machine.add( new Washing_MachineCommandSetDegree(washing_machine));
+        remote_washing_machine.add( new Washing_MachineCommandSetProgram(washing_machine));
+        remote_washing_machine.add( new Washing_MachineCommandStart(washing_machine));
     }
 
     public void run(){
