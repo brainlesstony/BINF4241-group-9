@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f63af0ae-33f3-4f82-8a3f-8ace0ef09b7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Assignment 4/Smarthome/out/production/Smarthome/Cleaning_Robot/Cleaning_Robot.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Assignment 4/Smarthome/out/production/Smarthome/Cleaning_Robot/Cleaning_Robot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Assignment 4/Smarthome/out/production/Smarthome/Dishwasher/Dishwasher.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Assignment 4/Smarthome/out/production/Smarthome/Dishwasher/Dishwasher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Assignment 4/Smarthome/out/production/Smarthome/Microwave/Microwave.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Assignment 4/Smarthome/out/production/Smarthome/Microwave/Microwave.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Assignment 4/Smarthome/out/production/Smarthome/Oven/Oven.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Assignment 4/Smarthome/out/production/Smarthome/Oven/Oven.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Assignment 4/Smarthome/out/production/Smarthome/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Assignment 4/Smarthome/out/production/Smarthome/Washing_Machine/Washing_Machine.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Assignment 4/Smarthome/out/production/Smarthome/Washing_Machine/Washing_Machine.class" afterDir="false" />
-    </list>
+    <list default="true" id="f63af0ae-33f3-4f82-8a3f-8ace0ef09b7f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +102,7 @@
       <workItem from="1570099805874" duration="1498000" />
       <workItem from="1570349964770" duration="831000" />
       <workItem from="1574863353450" duration="310000" />
+      <workItem from="1574863740083" duration="142000" />
     </task>
     <servers />
   </component>
