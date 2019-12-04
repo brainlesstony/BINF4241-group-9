@@ -1,7 +1,20 @@
-#Task 1
+#Task 1 Snake&Ladders Game
+Main Function is in the GameLogic
+
+*BoardTest*
+
 We have implemented setters to bypass the user input section.
 Since we have limited board size, each category needs to be tested.
-#Task 2
+
+*PlayerListTest*
+
+-Placeholder
+
+*GameLogicTest*
+
+-Placeholder
+
+#Task 2 Tic Tac Toe
 
 **Gameboard**
 
@@ -17,3 +30,4 @@ We could find another error in the "completesDiagonal" function, in the last ret
 
 The next error was in the "hasWin" method. If either of the players had completed or a row, the method would return false which was incorrect. After changing line 103 from "return false" to "return true" all tests passed.
 
+#Task 3 Uno
