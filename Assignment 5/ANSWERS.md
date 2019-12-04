@@ -1,4 +1,5 @@
 #Task 1
+We have implemented setters to bypass the user input section.
 Since we have limited board size, each category needs to be tested.
 #Task 2
 
