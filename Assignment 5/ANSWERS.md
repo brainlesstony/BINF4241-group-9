@@ -1,3 +1,5 @@
+#Task 1
+Since we have limited board size, each category needs to be tested.
 #Task 2
 
 **Gameboard**
