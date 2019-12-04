@@ -37,5 +37,8 @@ public class PlayerList {
     public List<Player> get_player_list(){
         return playerList;
     }
-
+    // Setter only for testing purposes
+    void setAddPlayer(Player player) {
+        this.playerList.add(player);
+    }
 }

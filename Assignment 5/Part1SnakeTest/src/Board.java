@@ -112,4 +112,7 @@ public class Board {
         get_board().get(0).add_player(player);
     }
 
+    void setBoard_size(int i) {
+        this.board_size = i;
+    }
 }

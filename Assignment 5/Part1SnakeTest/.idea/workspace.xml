@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fea0d772-5266-4ec5-a772-1481211bdbb6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/FirstSquare.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/FirstSquare.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/GameLogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Ladder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Ladder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/LastSquare.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/LastSquare.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/PlayerList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/PlayerList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Snake.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Snake.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakesAndLaddersä/Square.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FirstSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FirstSquare.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ladder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ladder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LastSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LastSquare.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlayerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Square.java" afterDir="false" />
-    </list>
+    <list default="true" id="fea0d772-5266-4ec5-a772-1481211bdbb6" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,11 +21,18 @@
   <component name="ProjectId" id="1RbUjjnRIYt3d1EHha5rAmyfi7D" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
@@ -61,7 +49,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.GameLogic">
+  <component name="RunManager" selected="JUnit.BoardTest">
     <configuration name="GameLogic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameLogic" />
       <module name="SnakesAndLaddersä" />
@@ -83,8 +71,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SnakesAndLaddersä" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BoardTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SnakesAndLaddersä" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PlayerListTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BoardTest" />
+        <item itemvalue="JUnit.PlayerListTest" />
         <item itemvalue="Application.GameLogic" />
         <item itemvalue="Application.HelloWorld" />
         <item itemvalue="Application.Test34" />
@@ -105,6 +113,7 @@
       <workItem from="1570035692564" duration="4517000" />
       <workItem from="1570099805874" duration="1498000" />
       <workItem from="1570349964770" duration="831000" />
+      <workItem from="1575477459498" duration="520000" />
     </task>
     <servers />
   </component>
