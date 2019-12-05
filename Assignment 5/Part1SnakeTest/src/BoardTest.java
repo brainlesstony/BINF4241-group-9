@@ -1,15 +1,34 @@
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 public class BoardTest {
 
+    public void shouldTakeUserInput(String user_input) {
+        InputStream in = new ByteArrayInputStream(user_input.getBytes());
+        System.setIn(in);
+    }
+//    public void shouldTakeUserInput(Integer user_input) {
+//        InputStream in = new ByteArrayInputStream(user_input.getBytes());
+//        System.setIn(in);
+//    }
 
-    /**
-     * Resets the player's location when he jumps on a snake and the location is already occupied
-     * Made a new function setBoardsize for testing purposes
-     * @return true
-     */
-
+//    @Test
+//    public void get_board_size_from_userTest(){
+//        StringInput
+//        shouldTakeUserInput();
+//    }
+    
+    
+    
+    
+        /**
+         * Resets the player's location when he jumps on a snake and the location is already occupied
+         * Made a new function set Boardsize for testing purposes
+         * @return true
+         */
+        
     @Test
     public void backToStartTest(){
         //setup
@@ -36,7 +55,8 @@ public class BoardTest {
     }
 
     /**
-     * Because this method is private I cannot test it otherwise
+     * I hardcoded this test because I cannot access the method because it is defined as private
+     * @return true if there is now a snake instead of a normal square
      */
 
     @Test
@@ -48,6 +68,11 @@ public class BoardTest {
         tester.get_board().set(2, snake);
         Assertions.assertTrue(tester.get_board().get(2).get_isSnake());
     }
+
+    /**
+     * I hardcoded this test because I cannot access the method because it is defined as private
+     * @return true if there is now a ladder instead of a normal square
+     */
 
     @Test
     public void exchangeLadderTest(){
