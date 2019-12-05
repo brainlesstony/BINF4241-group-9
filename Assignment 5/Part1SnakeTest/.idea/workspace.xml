@@ -57,33 +57,41 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BoardTest">
-    <configuration name="GameLogic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GameLogic" />
-      <module name="SnakesAndLaddersä" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="HelloWorld" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Desktop" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test34" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Test34" />
-      <module name="SnakesAndLaddersä" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.DieTest">
     <configuration name="BoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SnakesAndLaddersä" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BoardTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardTest.game_overTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SnakesAndLaddersä" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BoardTest" />
+      <option name="METHOD_NAME" value="game_overTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DieTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SnakesAndLaddersä" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DieTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DieTest.Die_1Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SnakesAndLaddersä" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DieTest" />
+      <option name="METHOD_NAME" value="Die_1Test" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -99,11 +107,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DieTest" />
+        <item itemvalue="JUnit.DieTest.Die_1Test" />
         <item itemvalue="JUnit.BoardTest" />
+        <item itemvalue="JUnit.BoardTest.game_overTest" />
         <item itemvalue="JUnit.PlayerListTest" />
-        <item itemvalue="Application.GameLogic" />
-        <item itemvalue="Application.HelloWorld" />
-        <item itemvalue="Application.Test34" />
       </list>
     </recent_temporary>
   </component>
@@ -121,7 +129,9 @@
       <workItem from="1570035692564" duration="4517000" />
       <workItem from="1570099805874" duration="1498000" />
       <workItem from="1570349964770" duration="831000" />
-      <workItem from="1575477459498" duration="811000" />
+      <workItem from="1575477459498" duration="907000" />
+      <workItem from="1575478407396" duration="52000" />
+      <workItem from="1575565282962" duration="1573000" />
     </task>
     <servers />
   </component>

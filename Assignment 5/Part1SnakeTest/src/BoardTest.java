@@ -89,5 +89,22 @@ public class BoardTest {
         Assertions.assertTrue(tester.get_board().get(21).get_isSnake());
     }
 
+    @Test
+    public void game_notOverTest(){
+        Board tester = new Board();
+        tester.setBoard_size(24);
+        tester.make_board();
+        Assertions.assertFalse(tester.get_board().get(tester.get_board_size()-1).get_isOccupied());
+    }
+    @Test
+    public void game_overTest(){
+        Board tester = new Board();
+        tester.setBoard_size(24);
+        tester.make_board();
+        Player player = new Player("Peter");
+        tester.get_board().get(23).add_player(player);
+        Assertions.assertTrue(tester.get_board().get(tester.get_board_size()-1).get_isOccupied());
+    }
+
 
 }
