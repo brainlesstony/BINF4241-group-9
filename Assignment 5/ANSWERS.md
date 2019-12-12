@@ -9,18 +9,12 @@ Our snake & ladders game has the main restriction which is the limited board siz
 Since we have limited board size, each category needs to be tested.
 This is the way we constructed it in the first assignment. 
 First Square/Last Square/Square, Snakes and Ladders are all tested in the BoardTest (since they are crucial for tests on the board class). 
+The conditions game over and not over are methods in the Board Class and therefore tested in BoardTest.
 
 *Bugfixes*
 
 - Fixed empty input for board size in Board Class. 
 - Fixed empty input for amount of players in PlayerList Class.
-
-
-
-
-
-
-
 #Task 2 Tic Tac Toe
 
 **Gameboard**

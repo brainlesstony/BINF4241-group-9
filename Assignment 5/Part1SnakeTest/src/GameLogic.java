@@ -38,7 +38,7 @@ public class GameLogic {
                             } else {
                                 board.move(player, board.get_board().get(target).get_destination());
                             }
-                        } else if (board.get_board().get(target) instanceof Ladder) { // if ladder. "Butthole" looks at destination if it is not occupied
+                        } else if (board.get_board().get(target) instanceof Ladder) { // if ladder. "Butt****" looks at destination if it is not occupied
                             if (!board.get_butthole(target).get_isOccupied()) {
                                 board.move(player, board.get_board().get(target).get_destination());
                             } else {

@@ -192,7 +192,7 @@ public class BoardTest {
         Board tester = new Board();
         tester.setBoard_size(24);
         tester.make_board();
-        Assertions.assertFalse(tester.get_board().get(tester.get_board_size()-1).get_isOccupied());
+        Assertions.assertFalse(tester.game_over());
     }
 
     /**
@@ -207,7 +207,7 @@ public class BoardTest {
         tester.make_board();
         Player player = new Player("Peter");
         tester.get_board().get(23).add_player(player);
-        Assertions.assertTrue(tester.get_board().get(tester.get_board_size()-1).get_isOccupied());
+        Assertions.assertTrue(tester.game_over());
     }
 
 
