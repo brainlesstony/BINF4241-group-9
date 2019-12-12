@@ -3,8 +3,8 @@ import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 
 public class PlayerListTest {
-    @Rule
-    public final ExpectedSystemExit exit = ExpectedSystemExit.none();
+//    @Rule
+//    public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 
     @Test
     public void ui_player_countTestEmpty(){

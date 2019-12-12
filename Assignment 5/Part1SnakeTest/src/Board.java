@@ -25,7 +25,12 @@ public class Board {
     } // creates the board
     public void get_board_size_from_user(){
         Scanner scanner_board = new Scanner(System.in);
-        int board_size_from_user = scanner_board.nextInt();
+        String in = scanner_board.nextLine();
+        if (in.equals("")){
+            System.out.println("Board must satisfy the requirements!");
+            System.exit(0);
+        }
+        int board_size_from_user = Integer.parseInt(in);
         if (board_size_from_user < 6 || board_size_from_user > 30){
             System.out.println("Board must satisfy the requirements!");
             System.exit(0);

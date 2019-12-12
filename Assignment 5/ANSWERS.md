@@ -1,18 +1,21 @@
 #Task 1 Snake&Ladders Game
-Main Function is in the GameLogic
 
-*BoardTest*
-
-We have implemented setters to bypass the user input section.
+Main Function is in the GameLogic.
+Our snake & ladders game has one main restriction which is the limited board size.
 Since we have limited board size, each category needs to be tested.
+This is the way we constructed it in the first assignment. 
+We used setters in order to test methods that were not testable from outside the class. 
+We hardcoded a few test methods, since they were private and could not be tested from outside the class.
 
-*PlayerListTest*
+*Bugfixes*
 
--Placeholder
+- Fixed empty input for board size in Board Class. 
 
-*GameLogicTest*
 
--Placeholder
+
+
+
+
 
 #Task 2 Tic Tac Toe
 

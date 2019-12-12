@@ -1,32 +1,61 @@
-import org.junit.Test;
 import org.junit.Rule;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Scanner;
+
 public class BoardTest {
 
-    public void shouldTakeUserInput(String user_input) {
-        InputStream in = new ByteArrayInputStream(user_input.getBytes());
-        System.setIn(in);
-    }
-//    public void shouldTakeUserInput(Integer user_input) {
-//        InputStream in = new ByteArrayInputStream(user_input.getBytes());
-//        System.setIn(in);
-//    }
 
-//    @Test
-//    public void get_board_size_from_userTest(){
-//        StringInput
-//        shouldTakeUserInput();
-//    }
-    
-    
-    
-    
+
+    @Test
+    public void get_board_size_from_userTestNotEmpty() {
+        Board tester = new Board();
+        Assertions.assertNull(tester.get_board_size());
+
+    }
+
+    /**
+     * Not testing for different input types because the input method uses nextInt(), since this is a java method we can assume it only accepts Integers.
+     * Testing whether the size is allowed (6-30) was our fixed length for assignment 1.
+     * @throws AssertionError if the size of the board is not equal to input size
+     */
+    @Test
+    public void get_board_size_from_userTest() {
+        int input = 12;
+        Board tester = new Board();
+        tester.setBoard_size(input);
+       Assertions.assertEquals(12,tester.get_board_size());
+
+    }
+
+    /**
+     * Checking whether a too small board can be initialized
+     * @throws AssertionError if the board is too small
+     */
+    @Test
+    public void get_board_size_from_userTestTooSmall() {
+        Board tester = new Board();
+        tester.setBoard_size(5);
+        Assertions.assertFalse(tester.get_board_size() >= 6);
+    }
+
+    /**
+     * Checking whether a too large board can be initialized
+     * @throws AssertionError if the board is too large
+     */
+    @Test
+    public void get_board_size_from_userTestTooLarge() {
+        Board tester = new Board();
+        tester.setBoard_size(35);
+        Assertions.assertFalse(tester.get_board_size() <= 30);
+    }
+
         /**
-         * Resets the player's location when he jumps on a snake and the location is already occupied
-         * Made a new function set Boardsize for testing purposes
-         * @return true
+         * Resets the player's location to the start location
+         * when he jumps on a snake and the location is already occupied
+         * @throws AssertionError if player's is not moved back to start
+         *
          */
         
     @Test
@@ -42,7 +71,8 @@ public class BoardTest {
     }
 
     /**
-     *
+     *Player is moved with move method and the square, which is the destination holds the specific player that was moved onto it
+     * @throws AssertionError if PLayer is not moved onto new square
      */
     @Test
     public void moveTest(){
@@ -55,8 +85,9 @@ public class BoardTest {
     }
 
     /**
-     * I hardcoded this test because I cannot access the method because it is defined as private
-     * @return true if there is now a snake instead of a normal square
+     * This test (for the method exchangeSnakeTest) is hardcoded since the method is defined as private but should still be tested
+     * A square will be replaced by an action field which is a snake
+     * @throws AssertionError if the square, which is exchanged is not of type snake
      */
 
     @Test
@@ -70,8 +101,9 @@ public class BoardTest {
     }
 
     /**
+     * This test(for the method exchangeLadderTest) is hardcoded since the method is defined as private but should still be tested
      * I hardcoded this test because I cannot access the method because it is defined as private
-     * @return true if there is now a ladder instead of a normal square
+     * @throws AssertionError if the square, which is exchanged is not of type ladder
      */
 
     @Test
@@ -85,6 +117,10 @@ public class BoardTest {
 
     }
 
+    /**
+     * Check whether the snakes and ladders are set on the board (Small size)
+     * @throws AssertionError if the board does not contain snake and ladder at preset location
+     */
     @Test
     public void set_snakes_and_laddersTestSmall(){
         Board tester = new Board();
@@ -95,6 +131,11 @@ public class BoardTest {
         Assertions.assertTrue(tester.get_board().get(4).get_isSnake());
 
     }
+
+    /**
+     * Check whether the snakes and ladders are set on the board (Large size)
+     * @throws AssertionError if the board does not contain snake and ladder at preset location
+     */
     @Test
     public void set_snakes_and_laddersTestLarge() {
         Board tester = new Board();
@@ -104,6 +145,11 @@ public class BoardTest {
         Assertions.assertTrue(tester.get_board().get(7).get_isLadder());
         Assertions.assertTrue(tester.get_board().get(11).get_isSnake());
     }
+
+    /**
+     * Check whether the snakes and ladders are set on the board (Medium size)
+     * @throws AssertionError if the board does not contain snake and ladder at preset location
+     */
     @Test
     public void set_snakes_and_laddersTestMedium(){
         Board tester = new Board();
@@ -113,7 +159,10 @@ public class BoardTest {
         Assertions.assertTrue(tester.get_board().get(17).get_isLadder());
         Assertions.assertTrue(tester.get_board().get(21).get_isSnake());
     }
-
+    /**
+     * Checks whether the last square is not occupied at the beginning of the game
+     * @throws AssertionError if last square is occupied at the start of the game
+     */
     @Test
     public void game_notOverTest(){
         Board tester = new Board();
@@ -121,6 +170,10 @@ public class BoardTest {
         tester.make_board();
         Assertions.assertFalse(tester.get_board().get(tester.get_board_size()-1).get_isOccupied());
     }
+    /**
+     * Checks whether the last square is occupied
+     * @throws AssertionError if last square is not occupied
+     */
     @Test
     public void game_overTest(){
         Board tester = new Board();
