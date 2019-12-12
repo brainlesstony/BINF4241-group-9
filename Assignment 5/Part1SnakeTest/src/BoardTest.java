@@ -1,18 +1,21 @@
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import java.io.InputStream;
-import java.util.Scanner;
 
 public class BoardTest {
 
-
+    /**
+     * Since the input to the board size can be empty this needs to be tested
+     * This checks whether the input can be empty or null
+     * @throws AssertionError if the input is null or empty
+     */
 
     @Test
     public void get_board_size_from_userTestNotEmpty() {
         Board tester = new Board();
-        Assertions.assertNull(tester.get_board_size());
-
+        String input = "";
+        Assertions.assertTrue(input.isBlank());
+        String input2 = null;
+        Assertions.assertNull(input2);
     }
 
     /**
@@ -20,19 +23,20 @@ public class BoardTest {
      * Testing whether the size is allowed (6-30) was our fixed length for assignment 1.
      * @throws AssertionError if the size of the board is not equal to input size
      */
+
     @Test
     public void get_board_size_from_userTest() {
         int input = 12;
         Board tester = new Board();
         tester.setBoard_size(input);
-       Assertions.assertEquals(12,tester.get_board_size());
-
+        Assertions.assertEquals(12,tester.get_board_size());
     }
 
     /**
      * Checking whether a too small board can be initialized
      * @throws AssertionError if the board is too small
      */
+
     @Test
     public void get_board_size_from_userTestTooSmall() {
         Board tester = new Board();
@@ -44,11 +48,26 @@ public class BoardTest {
      * Checking whether a too large board can be initialized
      * @throws AssertionError if the board is too large
      */
+
     @Test
     public void get_board_size_from_userTestTooLarge() {
         Board tester = new Board();
         tester.setBoard_size(35);
         Assertions.assertFalse(tester.get_board_size() <= 30);
+    }
+
+    /**
+     * To test if the board is created
+     * We check if a pos in the Arraylist<Square> board is not null
+     * @throws AssertionError if the board is not constructed
+     */
+
+    @Test
+    public void make_boardTest(){
+        Board tester = new Board();
+        tester.setBoard_size(16);
+        tester.make_board();
+        Assertions.assertNotNull(tester.get_board().get(3));
     }
 
         /**
@@ -57,7 +76,7 @@ public class BoardTest {
          * @throws AssertionError if player's is not moved back to start
          *
          */
-        
+
     @Test
     public void backToStartTest(){
         //setup
@@ -74,6 +93,7 @@ public class BoardTest {
      *Player is moved with move method and the square, which is the destination holds the specific player that was moved onto it
      * @throws AssertionError if PLayer is not moved onto new square
      */
+
     @Test
     public void moveTest(){
         Player pan = new Player("Pan");
@@ -121,6 +141,7 @@ public class BoardTest {
      * Check whether the snakes and ladders are set on the board (Small size)
      * @throws AssertionError if the board does not contain snake and ladder at preset location
      */
+
     @Test
     public void set_snakes_and_laddersTestSmall(){
         Board tester = new Board();
@@ -129,13 +150,13 @@ public class BoardTest {
         tester.set_snakes_and_ladders();
         Assertions.assertTrue(tester.get_board().get(1).get_isLadder());
         Assertions.assertTrue(tester.get_board().get(4).get_isSnake());
-
     }
 
     /**
      * Check whether the snakes and ladders are set on the board (Large size)
      * @throws AssertionError if the board does not contain snake and ladder at preset location
      */
+
     @Test
     public void set_snakes_and_laddersTestLarge() {
         Board tester = new Board();
@@ -150,6 +171,7 @@ public class BoardTest {
      * Check whether the snakes and ladders are set on the board (Medium size)
      * @throws AssertionError if the board does not contain snake and ladder at preset location
      */
+
     @Test
     public void set_snakes_and_laddersTestMedium(){
         Board tester = new Board();
@@ -159,10 +181,12 @@ public class BoardTest {
         Assertions.assertTrue(tester.get_board().get(17).get_isLadder());
         Assertions.assertTrue(tester.get_board().get(21).get_isSnake());
     }
+
     /**
      * Checks whether the last square is not occupied at the beginning of the game
      * @throws AssertionError if last square is occupied at the start of the game
      */
+
     @Test
     public void game_notOverTest(){
         Board tester = new Board();
@@ -170,10 +194,12 @@ public class BoardTest {
         tester.make_board();
         Assertions.assertFalse(tester.get_board().get(tester.get_board_size()-1).get_isOccupied());
     }
+
     /**
      * Checks whether the last square is occupied
      * @throws AssertionError if last square is not occupied
      */
+
     @Test
     public void game_overTest(){
         Board tester = new Board();

@@ -16,7 +16,12 @@ public class PlayerList {
     public void ui_player_count(){
         System.out.println("How many players are playing (2-4)?");
         Scanner scanner_name_num = new Scanner(System.in);
-        int player_count_fu = scanner_name_num.nextInt(); // fu = from user
+        String in = scanner_name_num.nextLine();
+        if (in.equals("")){
+            System.out.println("Sorry, this game can only be played by 2-4 players");
+            System.exit(0);
+        }
+        int player_count_fu =  Integer.parseInt(in); // fu = from user
         if (player_count_fu < 2 || player_count_fu > 4){
             System.out.println("Sorry, this game can only be played by 2-4 players");
             System.exit(0);

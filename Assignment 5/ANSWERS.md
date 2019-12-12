@@ -1,15 +1,19 @@
 #Task 1 Snake&Ladders Game
 
 Main Function is in the GameLogic.
-Our snake & ladders game has one main restriction which is the limited board size.
+First of all, our snake & ladders game was a bit unstructured so in order to test a few methods,
+the test cases need to be in a different test class or need to be hardcoded to test.
+E.g. private methods and methods from classes which access other classes in order to function.
+Furthermore, we used setters in order to test methods that were not testable from outside the class. 
+Our snake & ladders game has the main restriction which is the limited board size.
 Since we have limited board size, each category needs to be tested.
 This is the way we constructed it in the first assignment. 
-We used setters in order to test methods that were not testable from outside the class. 
-We hardcoded a few test methods, since they were private and could not be tested from outside the class.
+First Square/Last Square/Square, Snakes and Ladders are all tested in the BoardTest (since they are crucial for tests on the board class). 
 
 *Bugfixes*
 
 - Fixed empty input for board size in Board Class. 
+- Fixed empty input for amount of players in PlayerList Class.
 
 
 
