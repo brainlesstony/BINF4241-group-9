@@ -17,6 +17,10 @@ public class GameLogicTest {
 //
 //    }
 
+    /**
+     * Checking whether a regular move is possible
+     * @throws AssertionError if player lands on another field than indicated
+     */
     @Test
     public void regular_moveTest(){
         Board board = new Board();
