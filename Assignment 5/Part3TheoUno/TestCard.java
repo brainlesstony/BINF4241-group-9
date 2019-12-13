@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.*;
 
-public class TestCard(){
+public class TestCard{
 
     /**
      * This test controlls if a card has return the right color as it was initialized.

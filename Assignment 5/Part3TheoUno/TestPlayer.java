@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.*;
 
-public class TestPlayer(){
+public class TestPlayer{
 
     /**
      * This test checks if a player draws the right amount of cards

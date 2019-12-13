@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.*;
 
-public class TestReverse(){
+public class TestReverse{
 
     /**
     * this test checks if the sequence of the player actually reverses

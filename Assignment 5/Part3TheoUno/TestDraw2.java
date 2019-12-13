@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.*;
 
-public class TestDraw2(){
+public class TestDraw2{
 
     /**
      *  Actually this the method should give the next player two cards but we

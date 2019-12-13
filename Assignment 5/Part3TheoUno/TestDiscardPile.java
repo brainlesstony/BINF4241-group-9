@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.*;
 
-class TestDiscardPile(){
+class TestDiscardPile{
 
     /**
      *  This function tests if the discard pile actually shuffles.

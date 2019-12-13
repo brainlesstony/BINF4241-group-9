@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.*;
 
-public class TestMain(){
+public class TestMain{
 
     /**
      * Test initialization of the playerlist

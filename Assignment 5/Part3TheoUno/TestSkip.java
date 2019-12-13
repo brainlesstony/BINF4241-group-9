@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.*;
 
-public class TestSkip(){
+public class TestSkip{
 
     /**
      * this test checks if a player has been skipped.
