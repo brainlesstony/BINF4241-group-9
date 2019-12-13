@@ -21,6 +21,12 @@ public class PlayerList {
             System.out.println("Sorry, this game can only be played by 2-4 players");
             System.exit(0);
         }
+        for (char letter : in.toCharArray()) {
+            if (!Character.isDigit(letter)) {
+                System.out.println("Player amount can only be an integer value");
+                System.exit(0);
+            }
+        }
         int player_count_fu =  Integer.parseInt(in); // fu = from user
         if (player_count_fu < 2 || player_count_fu > 4){
             System.out.println("Sorry, this game can only be played by 2-4 players");

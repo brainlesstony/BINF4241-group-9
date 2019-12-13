@@ -30,6 +30,12 @@ public class Board {
             System.out.println("Board must satisfy the requirements!");
             System.exit(0);
         }
+        for (char letter : in.toCharArray()) {
+            if (!Character.isDigit(letter)) {
+                System.out.println("Board size can only be an integer value");
+                System.exit(0);
+            }
+        }
         int board_size_from_user = Integer.parseInt(in);
         if (board_size_from_user < 6 || board_size_from_user > 30){
             System.out.println("Board must satisfy the requirements!");

@@ -15,6 +15,11 @@ The conditions game over and not over are methods in the Board Class and therefo
 
 - Fixed empty input for board size in Board Class. 
 - Fixed empty input for amount of players in PlayerList Class.
+
+The bugs were found by checking what input is allowed for our methods that need user input.
+There was twice the possibility(board size & player amount) of just entering nothing and the program would not end nor return an error message.
+This was fixed by first checking whether the input is empty and then making sure that it only contains digits in order to check for string/float/etc. input
+
 #Task 2 Tic Tac Toe
 
 **Gameboard**
