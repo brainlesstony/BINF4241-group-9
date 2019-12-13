@@ -74,6 +74,8 @@ Also to make it more like the real UNO game, one can display all handdeck to see
 But it shouldn`t display all handdeck visible, just the active players handdeck should be visible.
 
 
+**UNO Class Diagram**
+![Class Diagram](UNO_class_diagram.jpeg)
 
 
 
